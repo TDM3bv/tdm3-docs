@@ -1846,6 +1846,11 @@ vuepress-bar@^0.2.1:
     markdown-it-meta "0.0.1"
     transliteration "^2.1.7"
 
+vuepress-plugin-reading-progress@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-reading-progress/-/vuepress-plugin-reading-progress-1.0.7.tgz#9a278866b5280e447226579945eded3055ba48ce"
+  integrity sha512-XFnD42/Xt4ZQ3G0j1ViF2WmBJM7f+zYJLKfD2ZEkIq3Ar38c3FKR/LU94aENaWRGnfDMDmAMEYjLrcmR4uq49g==
+
 vuepress-theme-cool@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/vuepress-theme-cool/-/vuepress-theme-cool-1.2.1.tgz#849a02d00775cd4bc4ee0c21128988678c451484"

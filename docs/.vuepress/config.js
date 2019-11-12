@@ -6,14 +6,17 @@ const barConfig = getConfig('${__dirName}/../docs');
 //barConfig.sidebar = barConfig.sidebar.filter(x => x.text == 'Nurse');
 console.log(barConfig);
 barConfig.sidebar.map(item => {
-  item.collapsable = false;
+  item.collapsable = true;
   if(item.title == "Nurse")
   {
     item.title = "Thuisverpleging"
+  } else if(item.title == "Doctor")
+  {
+    item.title = "Huisartsen";
   }
 });
 module.exports = {
-  plugins: ['@vuepress/back-to-top', '@vuepress/pwa', {
+  plugins: ['@vuepress/back-to-top','reading-progress', '@vuepress/pwa', {
     serviceWorker: true,
     updatePopup: true
   }],
@@ -28,7 +31,7 @@ module.exports = {
   themeConfig: {
     // logo: './myAvatar.png',
     sidebar: barConfig.sidebar,
-      sidebarDepth: 3,
+      sidebarDepth: 4,
     displayAllHeaders: true, // Default: false
     nav: [
       { text: 'Home', link: '/' },
