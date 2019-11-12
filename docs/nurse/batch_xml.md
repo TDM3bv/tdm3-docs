@@ -44,34 +44,34 @@ Deze kunnen en mogen in de xml meegaan en worden gefactureerd onder de KB90 nome
 !!! info Locatie veld bij node uitgevoerde zorg
 De nomenclatuur specifieert enkel “praktijkkamer OF hersteloord”. Vanaf prestatiedatum 1 april 2016 kan men voor deze nomenclatuurnrs geen bedrag meer factureren, tenzij deze is uitgevoerd in een hersteloord. Om dit onderscheid te kunnen maken wordt de locatie gespescifieerd via een pseudocode (zie onderstaande tabel).
 Wanneer de doorgegeven nomenclatuurnr een “praktijkkamer of hersteloord” betreft, moet een van de onderstaande pseudocodes worden vermeld. Op basis van deze pseudocode zal TDM3 dan al dan niet een bedrag factureren. 
-|NomenclatuurCode |	Omschrijving |
-|---|---|
-|421131	|Verpleegkundigen: pseudo-code betrekkelijke verstrekking: alleenstaande praktijkkamer van verpleegkundige(n)|
-|421212	|Verpleegkundigen: pseudo-code betrekkelijke verstrekking: hersteloord|
-|421175	|Verpleegkundigen: pseudo-code betrekkelijke verstrekking: praktijkkamer van verpleegkundige(n) in een ziekenhuis|
-|421190 |	Verpleegkundigen: pseudo-code betrekkelijke verstrekking: praktijkkamer van verpleegkundige(n) in een polikliniek buiten een ziekenhuiscampus bij geneesheer specialist(en)|
-|421153 |	Verpleegkundigen: pseudo-code betrekkelijke verstrekking: praktijkkamer van verpleegkundige(n) deel uit makend van een multidisciplinaire groepspraktijk van eerste lijns gezondheidszorg |
+| NomenclatuurCode | Omschrijving                                                                                                                                                                              |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 421131           | Verpleegkundigen: pseudo-code betrekkelijke verstrekking: alleenstaande praktijkkamer van verpleegkundige(n)                                                                              |
+| 421212           | Verpleegkundigen: pseudo-code betrekkelijke verstrekking: hersteloord                                                                                                                     |
+| 421175           | Verpleegkundigen: pseudo-code betrekkelijke verstrekking: praktijkkamer van verpleegkundige(n) in een ziekenhuis                                                                          |
+| 421190           | Verpleegkundigen: pseudo-code betrekkelijke verstrekking: praktijkkamer van verpleegkundige(n) in een polikliniek buiten een ziekenhuiscampus bij geneesheer specialist(en)               |
+| 421153           | Verpleegkundigen: pseudo-code betrekkelijke verstrekking: praktijkkamer van verpleegkundige(n) deel uit makend van een multidisciplinaire groepspraktijk van eerste lijns gezondheidszorg |
 !!!
 
 !!! info Pijnpompcodes
 Aangezien op basis van de pseudocode niet is op te maken welke betalende nomenclatuurcode TDM3 dient toe te voegen, moet in de xml de betalende nomenclatuurcode alsook de pseudocode meegaan, als aparte uitgevoerdezorg nodes:  1 met veld nomenclatuurummer  ingevuld, voor de betalende nomenclatuurcode, de andere met het veld Pseudocodenummer ingevuld, voor de pseudocode.
 
 **Betalende codes**
-| NomenclatuurCode | WWaarde | KorteOmschrijvingNL |
-| --- | --- | --- |
-| 429251 | 2.94600 | vervangen suprapubische sonde met ballon / verblijfplaats mindervaliden |
-| 427571 | 2.94600 | toezicht/opvolging pompsystemen catheter / praktijkkamer |
-| 427534 | 2.94600 | toezicht/opvolging pompsystemen catheter / weekdag aan huis |
-| 427556 | 4.50400 | toezicht/opvolging pompsystemen catheter / weekend/feestdag aan huis |
+| NomenclatuurCode | WWaarde | KorteOmschrijvingNL                                                     |
+| ---------------- | ------- | ----------------------------------------------------------------------- |
+| 429251           | 2.94600 | vervangen suprapubische sonde met ballon / verblijfplaats mindervaliden |
+| 427571           | 2.94600 | toezicht/opvolging pompsystemen catheter / praktijkkamer                |
+| 427534           | 2.94600 | toezicht/opvolging pompsystemen catheter / weekdag aan huis             |
+| 427556           | 4.50400 | toezicht/opvolging pompsystemen catheter / weekend/feestdag aan huis    |
 
   **Pseudocodes**
-| NomenclatuurCode | WWaarde | OmschrijvingNL |
-| --- | --- | --- |
-| 427615 | NULL | Thuiszorgen verpleegkunde, specifieke technische verstrekkingen : Pseudocode te vermelden voor elke verbandwissel dat tijdens de verzorgingsdag is verleend bij de facturatie van de verstrekking 427534, 427556, 427571 of 429251 |
-| 427593 | NULL | Thuiszorgen verpleegkunde, specifieke technische verstrekkingen : Pseudocode te vermelden voor elk bijkomend bezoek dat tijdens de verzorgingsdag is verleend bij de facturatie van de verstrekking 427534, 427556, 427571 of 429251 |
-| 427630 | NULL | Thuiszorgen verpleegkunde, specifieke technische verstrekkingen : Pseudocode te vermelden voor elk heropstarten van de pomp dat tijdens de verzorgingsdag is verleend bij de facturatie van de verstrekking 427534, 427556, 427571 of 429251 |
-| 427674 | NULL | Thuiszorgen verpleegkunde, specifieke technische verstrekkingen : Pseudocode te vermelden voor elk wisselen van het medicatiereservoir dat tijdens de verzorgingsdag is verleend bij de facturatie van de verstrekking 427534, 427556, 427571 of 429251 |
-| 427652 | NULL | Thuiszorgen verpleegkunde, specifieke technische verstrekkingen : Pseudocode te vermelden voor elke wijziging van de onderhoudsdosis dat tijdens de verzorgingsdag is verleend bij de facturatie van de verstrekking 427534, 427556, 427571 of 429251 |
+| NomenclatuurCode | WWaarde | OmschrijvingNL                                                                                                                                                                                                                                          |
+| ---------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 427615           | NULL    | Thuiszorgen verpleegkunde, specifieke technische verstrekkingen : Pseudocode te vermelden voor elke verbandwissel dat tijdens de verzorgingsdag is verleend bij de facturatie van de verstrekking 427534, 427556, 427571 of 429251                      |
+| 427593           | NULL    | Thuiszorgen verpleegkunde, specifieke technische verstrekkingen : Pseudocode te vermelden voor elk bijkomend bezoek dat tijdens de verzorgingsdag is verleend bij de facturatie van de verstrekking 427534, 427556, 427571 of 429251                    |
+| 427630           | NULL    | Thuiszorgen verpleegkunde, specifieke technische verstrekkingen : Pseudocode te vermelden voor elk heropstarten van de pomp dat tijdens de verzorgingsdag is verleend bij de facturatie van de verstrekking 427534, 427556, 427571 of 429251            |
+| 427674           | NULL    | Thuiszorgen verpleegkunde, specifieke technische verstrekkingen : Pseudocode te vermelden voor elk wisselen van het medicatiereservoir dat tijdens de verzorgingsdag is verleend bij de facturatie van de verstrekking 427534, 427556, 427571 of 429251 |
+| 427652           | NULL    | Thuiszorgen verpleegkunde, specifieke technische verstrekkingen : Pseudocode te vermelden voor elke wijziging van de onderhoudsdosis dat tijdens de verzorgingsdag is verleend bij de facturatie van de verstrekking 427534, 427556, 427571 of 429251   |
 !!!
 
 !!! info het doorgeven van een afscoring forfait
@@ -315,4 +315,361 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
   - 5 - Dagverzorgings centrum
 - **metadata**(type metadata, optioneel element)**:** een &quot;key-value&quot; pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven, die niet direct te maken heeft met de tarificatie van prestaties.
 
+```xml
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>…</input_uitgevoerdezorg_id>
+	<externeid>…</externeid>
+	<datumuitvoering>…</datumuitvoering>
+	<datumvoorschrift>…</datumvoorschrift>
+	<rizivnummervoorschrijver>…</rizivnummervoorschrijver>
+	<naamvoorschrijver>…</naamvoorschrijver>
+	<remgeld>…</remgeld>
+	<nomenclatuurnummer>…</nomenclatuurnummer>
+	<pseudocodenummer>…</pseudocodenummer>
+	<kb90bedrag>…</kb90bedrag>
+	<ziekenfondscode>…</ziekenfondscode>
+	<rizivnummerverpleegkundige>…</rizivnummerverpleegkundige>
+	<patientgegevens_id>…</patientgegevens_id>
+	<bezoeknummer>…</bezoeknummer>
+	<rep_typebestemmeling_id>…</rep_typebestemmeling_id>
+	<insuline>…</insuline>
+	<derdebetalercode>…</derdebetalercode>
+	<derdebetalernaam>…</derdebetalernaam>
+	<derdebetaleradres>…</derdebetaleradres>
+	<polisnummer>…</polisnummer>
+	<dossiernummer>…</dossiernummer>
+	<datumongeval>…</datumongeval>
+	<werkgever>…</werkgever>
+</uitgevoerdezorg>
+```
 
+## Node tarificatiedienst
+
+Deze node bevat de code en naam van de tarificatiedienst waar de prestaties verwerkt zullen worden.
+
+-	**code** (string): De code van de tarificatiedienst. Dit moet TDM3 zijn.
+-	**naam** (string): De naam van de tarificatiedienst. Dit moet TDM3 zijn.
+
+Voorbeeld:
+```xml
+<tarificatiedienst>
+	<code>TDM3</code>
+	<naam>TDM3</naam>
+</tarificatiedienst>
+
+```
+
+## Node facturatieperiode
+
+Deze node bevat het jaar en de maand van de verwerking van de prestaties.
+
+- **jaar** (int): Het jaar van de verwerking van de prestaties.
+- **maand** (int): De maand van de verwerking van de prestaties.
+
+**Voorbeeld:**
+
+```xml
+<facturatieperiode>
+	<jaar>…</jaar>
+	<maand>…</maand>
+</facturatieperiode>
+```
+
+## Node vereniging
+Node vereniging
+
+Deze node bevat de code en naam van de vereniging waar de prestaties vandaan komen.
+
+- **code** (string): De code van de vereniging (praktijk) waar de prestaties vandaan komen.  Via TDM3 aan te vragen.
+- **naam** (string): De naam van de vereniging waar de prestaties vandaan komen.
+
+**Voorbeeld:**
+```xml
+<vereniging>
+	<code>…</code>
+	<naam>…</naam>
+</vereniging>
+```
+
+## Node Prijsberekening
+
+Deze node bevat een indicator die aangeeft of de prijsberekening een tijdelijke prijsberekening is of niet.
+
+**- tijdelijk** (boolean): True als het een tijdelijke prijsberekening is.
+
+```xml
+<prijsberekening>
+	<tijdelijk>false</tijdelijk>
+</prijsberekening>
+```
+
+## Node profielen
+Per patientprofiel is er een profielen-node met daarin volgende gegevens (in volgorde zoals ze hieronder staan).
+De startdatum van het palliatief akkoord wordt op patientgegeven node meegegeven, in het veld &quot;startdatumpal&quot;.
+
+- **externeid** (int): de patientid uit het versturende systeem refererend naar externid van patientgegevens.
+- **startdatum** (dateTime): Startdatum van het mycarenet akkoord/profiel
+- **einddatum** (dateTime): Einddatum van het mycarenet akkoord/profiel
+- **patientgegevens\_id** (int): De unieke nummer van de patiënt binnen dit bestand.
+- **profiel** (string): Het type profiel van de patiënt.
+
+Mogelijke waardes zijn :
+| **profiel** | Omschrijving       | Aantal toilleten |
+| ----------- | ------------------ | ---------------- |
+| A           | Profiel A          | 7                |
+| B           | Profiel B          | 7                |
+| C           | Profiel C          | 7                |
+| P2          | Palliatief Profiel | 2                |
+| P7          | Palliatief Profiel | 7                |
+| PA          | Forfait PA         | 7                |
+| PB          | Forfait PB         | 7                |
+| PC          | Forfait PC         | 7                |
+| PN          | Forfait PN         | 7                |
+| PP          | Forfait PP         | 7                |
+| T2          | Profiel N          | 2                |
+| T7          | Profiel N          | 7                |
+
+```xml
+<profielen>
+	<externeid>…</externeid>
+	<startdatum>…</startdatum>
+	<einddatum>…</einddatum>
+	<patientgegevens_id>…<patientgegevens_id>
+	<profiel>…</profiel>
+</profielen>
+```
+
+
+## Node lezingidentiteit
+Dit is enkel van toepassing bij facturatie via electronische derdebetaler! Maw, niet bij facturatie naar een Medisch huis, verzekering, patiënt,…
+-	Vanaf 1/10/2017 is er verplichte verificatie van de identiteit van de patiënt, bij toepassing van facturatie via electronische derdebetaler
+-	**De richtlijnen omtrent “lezing identiteit node” in deze xml volgen 1-op-1 de richtlijnen van de ‘groene bijbel’ (instructies electronische facturatie)**
+-	Elk bezoek bij elke patiënt, dat via electronische derdebetaler wordt gefactureerd, geeft dus aanleiding tot een “lezingidentiteit” node (vanaf 1/10/2017).
+-	Zorgen die geen bezoek vereisen en autonoom voorkomen, geven ook aanleiding tot een “lezingidentiteit” node, maar dan met “typevandrageridentiteitsdocument” = 7 en “redengebruikvignet” = 1
+-	TDM3 zal ter hoogte van de facturatie rekening houden met enkel de lezingen identiteit die van toepassing zijn.
+
+De volgende gegevens zijn vereist.
+-	**externeid** (int): de patientid uit het versturende systeem refererend naar externid van patientgegevens. Cfr de uitgevoerdezorg node
+-	**patientgegevens_id** (int): De unieke nummer van de patiënt binnen dit bestand. Cfr de uitgevoerdezorg node 
+-	**redenmanueleinvoering** (int):
+    - Mogelijke waardes
+    0.  Niet van toepassing
+    1. Gebruik identiteitsdocument zonder chip
+    2. Onbeschikbaarheid kaartlezer
+    3. Panne informaticasysteem 
+-	**bezoeknummer** (int): Nummer van het bezoek. Cfr node uitgevoerdezorg.
+-	**datumuitvoering** (dateTime): de datum van het bezoek, cfr datumuitvoering veld in uitgevoerdezorg node
+-	**datumlezingidentiteitsdocument** (dateTime): datum waarop het identiteitsdocument is ingelezen. Dit element moet steeds ingevuld worden, behalve indien “typevanlezingidentiteitsdocument” = 4 en redenmanueleinvoering = 3.
+-	**identificatiepatient** (string): de rijksregisternr, insz van de rechthebbende, cfr patientgegeven node.
+-	**typevanlezingidentiteitsdocument** (int): Mogelijke waardes
+    1. Lezing van de chipkaart
+    2. Lezing van de streepjescode
+    3. Lezing QR code
+    4. Manuele invoering
+       - Bij gebruik van deze waarde moet in “redenmanueleinvoering“ de reden vermeld worden.
+-	**typevandrageridentiteitsdocument** (int):
+    1. Belgische elektronische identiteitskaart (of Kids-id)
+    2. Elektronische vreemdelingenkaart
+    3. Kid-id kaart (*)
+       - mogelijk tot en met gefactureerde maand december 2016; vanaf gefactureerde maand januari 2017 moet waarde 1 gebruikt worden ingeval van Kids-id.
+    4. ISI+ kaart
+    5. Elektronisch verblijfsdocument
+    6. Een nog geldige sociale identiteitskaart (SIS-kaart) (**)
+       - Niet meer geldig vanaf 01/01/2017
+    7. Een vignet met streepjescode
+        - Bij gebruik van deze waarde, moet in element “redengebruikvignet” de reden vermeld worden.
+    8. Attest van sociaal verzekerde
+    9. Attest van verlies of diefstal van Belgische elektronische
+
+-	**redengebruikvignet** (int):
+    -	Mogelijke waardes
+    1. Niet van toepassing
+    2. Rechthebbende niet aanwezig tijdens verstrekking en gelijktijdige aanwezigheid van rechthebbende en zorgverlener niet reglementair vereist
+    3. Rechthebbende bezit geen identiteitsdocument
+-	**uurvanlezingidentiteitsdocument** (string): formaat HHmm
+    -  Voorbeeld: 1510, 0109, 1305, etc
+    -  dit element moet steeds ingevuld worden, behalve indien **“typevanlezingidentiteitsdocument”** = 4 en **“redenmanueleinvoering”** = 3
+-	**rizivnummerverstrekker** (string): de rizivnummer van de verstrekker
+-	**serienummervandedrager** (string): Het serienummer van de drager (eID-kaart, …) moet in dit element vermeld worden. Deze zone moet steeds ingevuld worden, ook ingeval van manuele invoering, behalve indien typevandrageridentiteitsdocument  = 7, 8 of 9.
+-	**nummerbewijsstuk** (string): Het nummer van het bewijsstuk afgeleverd aan de patiënt moet in deze zone vermeld worden. Dit hoeft niet ingevuld te worden wanneer de TDM3 Facturatiedienst het bewijsstuk opmaak, dit is dus de standaard situatie!
+
+## Type “metadata” en optioneel element metadata op patientgegeven en uitgevoerdezorg
+**metadata** (type metadata, optioneel element): een “key-value” pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven. Dit laat toe om op een flexibel manier informatie mee te geven die niet direct te maken heeft met de tarificatie van prestaties, zonder steeds het XSD schema aan te passen.
+Het metadata is volledig optioneel voor de software ontwikkelaar van het END. Welke informatie die wordt meegegeven is, zoals steeds, nav concrete afspraken.
+Zowel **naam** als **waarde** zijn van type “string”.
+
+```xml
+<metadata>
+      <item>
+        <naam>venootschap</naam>
+        <waarde>de zonnebloem</waarde>
+      </item>
+      <item>
+        <naam>ronde</naam>
+        <waarde>tour 1</waarde>
+      </item>
+    </metadata>
+```
+
+# Opmerkingen
+## Het dateTime formaat
+Dit formaat wordt als volgt gedefinëerd: JJJJ-MM-DDTHH:MM:SS.
+- JJJJ: jaar (4 posities)
+- MM: maand (2 posities)
+- DD: dag (2 posities)
+- T: vaste waarde, duidt aan dat de tijd volgt.
+- HH: uur (2 posities)
+- MM: minuten (2 posities)
+- SS: seconden (2 posities)
+
+## Benaming van de velden
+Aangezien XML case-sensitive is moeten alle veldnamen in de juiste case staan zoals in de xsd! De opgegeven benamingen moeten dus letterlijk gebruikt worden.
+
+## Het veld patientgegevens_id
+Per patientgegeven-node bestaat er een unieke patientgegevens_id. Deze id moet op elke uitgevoerdezorg-node en op elk profielen-node van de patiënt ingevuld worden. Op basis van dit veld, samen met het veld ‘externeid’, worden dan de uitgevoerde zorgen en profielen gelinkt aan de patiënt. 
+
+In elk XML-bestand wordt er begonnen met patientgegevens_id 1 voor de eerste patiënt.
+
+## Het veld externeid
+Per patientgegeven-node bestaat er een unieke externeid, afkomstig uit het versturende systeem. Deze id moet op elke uitgevoerdezorg-node en op elke profielen-node van de patiënt ingevuld worden. Op basis van dit veld, samen met het veld ‘patientgegevens_id’, worden dan de uitgevoerde zorgen en profielen gelinkt aan de patiënt.
+
+
+# Volledig voorbeeld
+Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. De eerste patiënt is een patiënt die aangesloten is bij een ziekenfonds, de tweede patiënt is verzekerd bij Fortis AG.
+
+```xml
+<pakketgegevens>
+	<softwarehuis>
+		<code>A001</code>
+		<naam>AAAAA</naam>
+		<telefoonnummer>012/345678</telefoonnummer>
+		<email>info@aaaaa.be</email>
+	</softwarehuis>
+	<patientgegevens>
+		<patientgegevens_id>1</patientgegevens_id>
+		<externeid>23123</externeid>
+		<naam>PEETERS</naam>
+		<voornaam>PETER</voornaam>
+		<geslacht>M</geslacht>
+		<geboortedatum>1920-12-31T00:00:00           </geboortedatum>
+		<straat>Kerkstraat</straat>
+		<huisnummer>1</huisnummer>
+		<postcode>9000</postcode>
+		<gemeente>Gent</gemeente>
+		<landcode>BE</landcode>
+		<ziekenfondscode>131</ziekenfondscode>
+		<stamnummer/>
+		<risicocode1>110</risicocode1>
+		<risicocode2>110</risicocode2>
+		<ruraal>false</ruraal>
+		<startdatumpal/>
+		<rijksregisternummer>20123112345</rijksregisternummer>
+	</patientgegevens>
+	<patientgegevens>
+		<patientgegevens_id>2</patientgegevens_id>
+		<externeid>23045</externeid>
+		<naam>JANSSEN</naam>
+		<voornaam>JAN</voornaam>
+		<geslacht>M</geslacht>
+		<geboortedatum/>
+		<straat>Kerkstraat</straat>
+		<huisnummer>2</huisnummer>
+		<postcode>9000</postcode>
+		<gemeente>Gent</gemeente>
+		<landcode>BE</landcode>
+		<ziekenfondscode/>
+		<stamnummer/>
+		<risicocode1/>
+		<risicocode2/>
+		<ruraal>false</ruraal>
+		<startdatumpal/>
+		<rijksregisternummer>13456724561</rijksregisternummer>
+	</patientgegevens> 
+	<uitgevoerdezorg>
+		<input_uitgevoerdezorg_id>1234</input_uitgevoerdezorg_id>
+		<externeid>23123</externeid>
+		<datumuitvoering>2006-05-01T17:00:00           </datumuitvoering>
+		<datumvoorschrift>2006-04-25T00:00:00           </datumvoorschrift>
+		<rizivnummervoorschrijver>10765119340</rizivnummervoorschrijver>
+		<naamvoorschrijver>WITTERS KATRIJN</naamvoorschrijver>
+		<remgeld/>
+		<nomenclatuurnummer>423275</nomenclatuurnummer>
+		<pseudocodenummer>000000</pseudocodenummer>
+		<kb90bedrag/>
+		<ziekenfondscode/>
+		<rizivnummerverpleegkundige>148594426401</rizivnummerverpleegkundige>
+		<patientgegevens_id>1</patientgegevens_id>
+		<bezoeknummer>1</bezoeknummer>
+		<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+		<insuline>false</insuline>
+		<vorige_factuur_id/>
+		<derdebetalercode/>
+		<derdebetalernaam/>
+		<derdebetaleradres/>
+		<polisnummer/>
+		<dossiernummer/>
+		<datumongeval/>
+		<werkgever/>
+		<naamverwijzing/>
+		<datumverwijzing/>
+	</uitgevoerdezorg>
+	<uitgevoerdezorg>
+		<input_uitgevoerdezorg_id>37400</input_uitgevoerdezorg_id>
+		<externeid>23045</externeid>
+		<datumuitvoering>2006-05-25T18:00:00           </datumuitvoering>
+		<datumvoorschrift>2006-05-24T00:00:00           </datumvoorschrift>
+		<rizivnummervoorschrijver>17264911340</rizivnummervoorschrijver>
+		<naamvoorschrijver>VOSSEN C</naamvoorschrijver>
+		<remgeld/>
+		<nomenclatuurnummer>423275</nomenclatuurnummer>
+		<pseudocodenummer>000000</pseudocodenummer>
+		<kb90bedrag/>
+		<ziekenfondscode/>
+		<rizivnummerverpleegkundige>148946002401</rizivnummerverpleegkundige>
+		<patientgegevens_id>2</patientgegevens_id>
+		<bezoeknummer>1</bezoeknummer>
+		<rep_typebestemmeling_id>2</rep_typebestemmeling_id>
+		<insuline>false</insuline>
+		<vorige_factuur_id/>
+		<derdebetalercode>6</derdebetalercode>
+		<derdebetalernaam>Fortis AG</derdebetalernaam>
+		<derdebetaleradres>E.Jacqmainlaan</derdebetaleradres>
+		<polisnummer/>
+		<dossiernummer/>
+		<datumongeval/>
+		<werkgever/>
+		<naamverwijzing/>
+		<datumverwijzing/>
+	</uitgevoerdezorg>
+	<tarificatiedienst>
+		<code>TDM3</code>
+		<naam>TDM3</naam>
+	</tarificatiedienst>
+	<facturatieperiode>
+		<jaar>2006</jaar>
+		<maand>5</maand>
+	</facturatieperiode>
+	<vereniging>
+		<code>7139</code>
+		<naam>Mederi NV</naam>
+	</vereniging>
+	<prijsberekening>
+		<tijdelijk>false</tijdelijk>
+	</prijsberekening>
+	<profielen>
+		<externeid>23123</externeid>
+		<startdatum>2006-01-01T00:00:00           </startdatum>
+		<einddatum>2006-12-31T00:00:00           </einddatum>
+		<patientgegevens_id>1</patientgegevens_id>
+		<profiel>A</profiel>
+	</profielen>
+	<profielen>
+		<externeid>23045</externeid>
+		<startdatum>2006-04-12T00:00:00           </startdatum>
+		<einddatum>2007-04-11T00:00:00           </einddatum>
+		<patientgegevens_id>2</patientgegevens_id>
+		<profiel>T7</profiel>
+	</profielen>
+</pakketgegevens>
+
+```
