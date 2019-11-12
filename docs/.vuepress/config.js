@@ -17,7 +17,7 @@ module.exports = {
     serviceWorker: true,
     updatePopup: true
   }],
-  base: '/',
+  base: '/tdm3-docs/',
   theme: 'cool',
   //dest: 'dist',
   head: [
