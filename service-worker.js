@@ -27,11 +27,11 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "f73b2e1d94942209e57884cf4d288f57"
+    "revision": "76a1674272cbd469eb767d0311a33e5b"
   },
   {
-    "url": "assets/css/0.styles.9f714a23.css",
-    "revision": "4a78121bf691f7a0294f720c83307e2e"
+    "url": "assets/css/0.styles.fe9ff009.css",
+    "revision": "226b300460426eb38277a1f4ba9a408e"
   },
   {
     "url": "assets/img/search.83621669.svg",
@@ -102,12 +102,12 @@ self.__precacheManifest = [
     "revision": "8a1feb0da80c874ccb402cc9a1092ff6"
   },
   {
-    "url": "assets/js/app.8f579996.js",
-    "revision": "bd3235528e6f685f4e13efb61c8ec73c"
+    "url": "assets/js/app.90cd1e85.js",
+    "revision": "2c19da26b3c6b2a2ba7e06c77e6c1126"
   },
   {
     "url": "index.html",
-    "revision": "7aa79d23244a4c40a2c8ee7513b7f918"
+    "revision": "61b22b94c2956ed09bd8c736ca90cebd"
   },
   {
     "url": "myAvatar.png",
@@ -115,11 +115,11 @@ self.__precacheManifest = [
   },
   {
     "url": "nurse/batch_xml.html",
-    "revision": "530536a4a6d249ca2f29a25a49c2829b"
+    "revision": "0297b3328be041606cc9ee44ca32f1f2"
   },
   {
     "url": "nurse/index.html",
-    "revision": "f05152c07b1147393aa8a712931d1a88"
+    "revision": "5ca3cec150bf48370a3f75df65ae8039"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
