@@ -1,10 +1,23 @@
-// .vuepress/config.js
+// .vuepress/configconst getConfig = require("vuepress-bar");
+
+const getConfig = require("vuepress-bar");
+
+const barConfig = getConfig('${__dirName}/../docs');
+//barConfig.sidebar = barConfig.sidebar.filter(x => x.text == 'Nurse');
+console.log(barConfig);
+barConfig.sidebar.map(item => {
+  item.collapsable = false;
+  if(item.title == "Nurse")
+  {
+    item.title = "Thuisverpleging"
+  }
+});
 module.exports = {
   plugins: ['@vuepress/back-to-top', '@vuepress/pwa', {
     serviceWorker: true,
     updatePopup: true
   }],
-  base: '/vuepress-theme-cool-starter/',
+  base: '/',
   theme: 'cool',
   //dest: 'dist',
   head: [
@@ -14,27 +27,18 @@ module.exports = {
   ],
   themeConfig: {
     // logo: './myAvatar.png',
-    sidebar: { 
-	  '/' : [
-	     '',
-		 'admonitions',
-		 'diagrams',
-		 'charts-math',
-		 'custom-components'
-	  ]
-	},
-    sidebarDepth: 2,
+    sidebar: barConfig.sidebar,
+      sidebarDepth: 3,
     displayAllHeaders: true, // Default: false
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Admonitions', link: '/admonitions' },
-      { text: 'Diagrams', link: '/diagrams'},
-      { text: 'Charts And Math', link:'/charts-math'},
-	  { text: 'Custom Components', link: '/custom-components'}
+      { text: 'Thuisverpleging', link: '/nurse/' },
+      { text: 'Huisartsen', link: '/doctor/'},
     ],
+    
     lastUpdated: 'Last Updated', // string | boolean
       // Assumes GitHub. Can also be a full GitLab url.
-    repo: 'FriendlyUser/vuepress-theme-cool-starter',
+    repo: 'tdm3cvba/tdm3-docs',
     // Customising the header label
     // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on `themeConfig.repo`
     repoLabel: 'Github',
@@ -53,8 +57,8 @@ module.exports = {
     editLinkText: 'Help us improve this page!'
 
   },
-  title: 'Vuepress Theme Cool Starter V1',
-  description: 'Simple Example project to get started with vuepress-theme-cool V1',
+  title: 'TDM3 Docs',
+  description: "publieke documentatie TDM3 API's",
   configureWebpack: {
     resolve: {
       alias: {

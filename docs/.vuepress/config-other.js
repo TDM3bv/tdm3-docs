@@ -5,7 +5,7 @@ const path = require('path')
 const util = require('util')
 
 module.exports = {
-  base: '/vuepress-theme-cool-starter/',
+  base: '/other',
   theme: 'cool',
   //dest: 'dist',
   head: [
@@ -21,12 +21,14 @@ module.exports = {
   themeConfig: {
     // logo: './myAvatar.png',
     sidebar: genSideBar('.'),
+  
     sidebarDepth: 2,
     displayAllHeaders: true, // Default: false themeConfig: {
     nav:  genNavBarList(),
+  
     lastUpdated: 'Last Updated', // string | boolean
     // Assumes GitHub. Can also be a full GitLab url.
-    repo: 'FriendlyUser/vuepress-theme-cool-starter',
+    repo: 'tdm3cvba/tdm3-docs',
     // Customising the header label
     // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on `themeConfig.repo`
     repoLabel: 'Contribute!',
@@ -43,8 +45,8 @@ module.exports = {
     editLinkText: 'Help us improve this page!'
 
   },
-  title: 'Vuepress Theme Cool Starter',
-  description: 'Example project to get started with the vuepress-theme-cool',
+  title: 'TDM3 Docs',
+  description: "publieke documentatie TDM3 API's",
   configureWebpack: {
     resolve: {
       alias: {

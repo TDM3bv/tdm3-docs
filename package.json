@@ -13,7 +13,8 @@
     "build": "vuepress build docs"
   },
   "dependencies": {
-    "vuepress-theme-cool": "^1.2.1"
+    "vuepress-bar": "^0.2.1",
+    "vuepress-theme-cool": "1.2.1"
   },
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.1.0",

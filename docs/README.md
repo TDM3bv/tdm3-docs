@@ -1,38 +1,16 @@
 ---
 home: true
-actionText: Get Started →
-actionLink: /custom-components/
+heroImage: https://v1.vuepress.vuejs.org/hero.png
+tagline: documentatie van publieke TDM3 API's
+actionText: Quick Start →
+actionLink: /nurse/
 features:
-- title: Admonitions and Tables
-  details: Uses google material icons and sortable tables
-- title: Charts and Math
-  details: Leverage chartjs and katex 
-- title: Diagramming tools
-  details: Integrated with mermaid and plantuml
-footer: MIT Licensed | Copyright © 2019-present David Li
+- title: Huisartsen
+  details: Doctar API,..
+- title: Thuisverpleging
+  details: Batch XML,..
+  link: /nurse/
+- title: Kine
+  details: soon
+footer: Made by TDM3 with ❤️
 ---
-
-
-## Disclaimer
-
-Currently updated to Vuepress theme V1, issues may arise. This repo has installed `vuepress-theme-cool@1.2.0`
-
-[![Build Status](https://travis-ci.org/FriendlyUser/vuepress-theme-cool-starter.svg?branch=master)](https://travis-ci.org/FriendlyUser/vuepress-theme-cool-starter)
-## ReadMe 
-
-This is an example of how to use the `vuepress-theme-cool` vuepress theme, look into docs for example files.
-
-## Installation and Running
-
-To install:
-
-`npm install`
-
-To run:
-
-`npm run docs:dev`
-
-
-## Customization
-
-Most of the customization is done in `config.js`, automatic navbar and sidebar navigation is available in `config-other.js`
