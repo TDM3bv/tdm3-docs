@@ -40,8 +40,6 @@ To demonstrate the API we developed a demo app. This demo app is forked from htt
 
 
 ## Demo App
-- Built with [Vue.js](https://vuejs.org/), continous integration with [Travis](https://travis-ci.org/stfnh/bb-clear-smart-fhir), automated unit tests by [Jest](https://jestjs.io/). Hosted on GitHub Pages (needs to be launched from a SMART on FHIR sandbox, see below).
-
 Run the app using SMART App Launcher
 
 Click [here](http://launch.smarthealthit.org/ehr.html?app=https%3A%2F%2Ftdm3cvba.github.io%2Fbb-clear-smart-fhir%2Flaunch.html%3Flaunch%3DeyJhIjoiMSIsImYiOiIxIn0%26iss%3Dhttps%253A%252F%252Flaunch.smarthealthit.org%252Fv%252Fr4%252Ffhir&user=) for a direct link or follow the steps below
@@ -54,6 +52,7 @@ Click [here](http://launch.smarthealthit.org/ehr.html?app=https%3A%2F%2Ftdm3cvba
 6. Select a patient
 7. You will see the SMART on FHIR app populated with data from the Sandbox / Electronic Health Record system!
 
+- The app is built with [Vue.js](https://vuejs.org/) and hosted on GitHub Pages (needs to be launched from a SMART on FHIR sandbox, see above).
 
 
 ## Sample code
