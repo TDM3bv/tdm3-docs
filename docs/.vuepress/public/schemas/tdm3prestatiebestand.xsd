@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="pakketgegevens" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="metadata">
+    <xs:sequence>
+      <xs:element name="item" type="metadataitem"  minOccurs="0" maxOccurs="unbounded">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="metadataitem">
+    <xs:sequence>
+      <xs:element name="naam" type="xs:string" minOccurs="1" />
+      <xs:element name="waarde" type="xs:string" minOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="pakketgegevens" >
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="softwarehuis">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="code" type="xs:string" minOccurs="0" />
+              <xs:element name="naam" type="xs:string" minOccurs="0" />
+              <xs:element name="telefoonnummer" type="xs:string" minOccurs="0" />
+              <xs:element name="email" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="patientgegevens">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="patientgegevens_id" type="xs:long" minOccurs="1" />
+              <xs:element name="externeid" type="xs:long" minOccurs="1" />
+              <xs:element name="naam" type="xs:string" minOccurs="1" />
+              <xs:element name="email" type="xs:string" minOccurs="0" />
+              <xs:element name="voornaam" type="xs:string" minOccurs="1" />
+              <xs:element name="geslacht" type="xs:string" minOccurs="0" />
+              <xs:element name="geboortedatum" type="emptyDateTime" minOccurs="0" />
+              <xs:element name="straat" type="xs:string" minOccurs="0" />
+              <xs:element name="huisnummer" type="xs:string" minOccurs="0" />
+              <xs:element name="postcode" type="xs:string" minOccurs="0" />
+              <xs:element name="gemeente" type="xs:string" minOccurs="0" />
+              <xs:element name="landcode" type="xs:string" minOccurs="0" />
+              <xs:element name="ziekenfondscode" type="xs:string" minOccurs="0" />
+              <xs:element name="stamnummer" type="xs:string" minOccurs="0" />
+              <xs:element name="hoedanigheid" type="xs:string" minOccurs="0" />
+              <xs:element name="risicocode1" type="xs:string" minOccurs="0" />
+              <xs:element name="risicocode2" type="xs:string" minOccurs="0" />
+              <xs:element name="geldigvan"   type="xs:dateTime" minOccurs="0" />
+              <xs:element name="geldigtot"   type="emptyDateTime" minOccurs="0" />
+              <xs:element name="ruraal" type="xs:string" minOccurs="0" />
+              <xs:element name="factuurnummer" type="xs:string" minOccurs="0" />
+              <xs:element name="startdatumpal"  type="emptyDateTime" minOccurs="0" />
+              <xs:element name="rijksregisternummer" type="xs:string" minOccurs="0" />
+              <xs:element name="kanaalbewijsstuk " type="xs:int" minOccurs="0" />
+              <xs:element name="bestemmelingbewijsstuk" type="xs:int" minOccurs="0" />
+              <xs:element name="naambestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
+              <xs:element name="voornaambestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
+              <xs:element name="straatbestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
+              <xs:element name="huisnummerbestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
+              <xs:element name="postcodebestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
+              <xs:element name="gemeentebestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
+              <xs:element name="landcodebestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
+              <xs:element name="emailbestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
+              <xs:element name="identificatiebestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
+              <xs:element name="identificatietypebestemmelingbewijsstuk" type="xs:int" minOccurs="0" />
+              <xs:element name="taalcodebewijsstuk " type="xs:string" minOccurs="0" />
+              <xs:element name="metadata" type="metadata" minOccurs="0" />
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="uitgevoerdezorg">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="input_uitgevoerdezorg_id" type="xs:long" minOccurs="1" />
+              <xs:element name="externeid" type="xs:long" minOccurs="1" />
+              <xs:element name="datumuitvoering" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="zorgminuten" type="xs:int" minOccurs="0" />
+              <xs:element name="datumvoorschrift"  type="emptyDateTime" minOccurs="0" />
+              <xs:element name="rizivnummervoorschrijver" type="xs:string" minOccurs="0" />
+              <xs:element name="naamvoorschrijver" type="xs:string" minOccurs="0" />
+              <xs:element name="remgeld" type="xs:string" minOccurs="0" />
+              <xs:element name="nomenclatuurnummer" type="xs:string" minOccurs="0" />
+              <xs:element name="pseudocodenummer" type="xs:string" minOccurs="0" />
+              <xs:element name="kb90bedrag" type="xs:string" minOccurs="0" />
+              <xs:element name="kb90omschrijving" type="xs:string" minOccurs="0" />
+              <xs:element name="rizivnummerzorgkundige" type="xs:string" minOccurs="0" />
+              <xs:element name="naamzorgkundige" type="xs:string" minOccurs="0" />
+              <xs:element name="rizivnummerverpleegkundige" type="xs:string" minOccurs="0" />
+              <xs:element name="ziekenfondscode" type="xs:string" minOccurs="0" />
+              <xs:element name="patientgegevens_id" type="xs:long" minOccurs="1" />
+              <xs:element name="bezoeknummer" type="xs:long" minOccurs="0" />
+              <xs:element name="rep_typebestemmeling_id" type="xs:long" minOccurs="0" />
+              <xs:element name="insuline" type="xs:boolean" minOccurs="0" />
+              <xs:element name="derdebetalercode" type="xs:string" minOccurs="0" />
+              <xs:element name="derdebetalernaam" type="xs:string" minOccurs="0" />
+              <xs:element name="derdebetaleradres" type="xs:string" minOccurs="0" />
+              <xs:element name="polisnummer" type="xs:string" minOccurs="0" />
+              <xs:element name="dossiernummer" type="xs:string" minOccurs="0" />
+              <xs:element name="datumongeval"  type="emptyDateTime" minOccurs="0" />
+              <xs:element name="werkgever" type="xs:string" minOccurs="0" />
+              <xs:element name="ZHOpname" type="xs:string" minOccurs="0" />
+              <xs:element name="Locatie" type="xs:string" minOccurs="0" />
+              <xs:element name="TypeFacturering" type="xs:int" minOccurs="0" />
+              <xs:element name="metadata" type="metadata" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tarificatiedienst">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="code" type="xs:string" minOccurs="1" />
+              <xs:element name="naam" type="xs:string" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="facturatieperiode">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="jaar" type="xs:long" minOccurs="1" />
+              <xs:element name="maand" type="xs:long" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vereniging">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="code" type="xs:string" minOccurs="1" />
+              <xs:element name="naam" type="xs:string" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="prijsberekening">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tijdelijk" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="profielen">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="externeid" type="xs:long" minOccurs="1" />
+              <xs:element name="startdatum" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="einddatum" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="patientgegevens_id" type="xs:long" minOccurs="0" />
+              <xs:element name="profiel" type="xs:string" minOccurs="1" />
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="lezingidentiteit">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="externeid" type="xs:long" minOccurs="1" />
+              <xs:element name="patientgegevens_id" type="xs:long" minOccurs="1" />
+              <xs:element name="redenmanueleinvoering" type="xs:int" minOccurs="1" />
+              <xs:element name="bezoeknummer" type="xs:long" minOccurs="1" />
+              <xs:element name="datumuitvoering" type="xs:dateTime" minOccurs="1" />
+              <xs:element name="datumlezingidentiteitsdocument" type="emptyDateTime" minOccurs="1" />
+              <xs:element name="identificatiepatient" type="xs:string" minOccurs="1" />
+              <xs:element name="typevanlezingidentiteitsdocument" type="xs:int" minOccurs="1" />
+              <xs:element name="typevandrageridentiteitsdocument" type="xs:int" minOccurs="1" />
+              <xs:element name="redengebruikvignet" type="xs:int" minOccurs="1" />
+              <xs:element name="uurvanlezingidentiteitsdocument" type="xs:string" minOccurs="1" />
+              <xs:element name="rizivnummerverstrekker" type="xs:string" minOccurs="1" />
+              <xs:element name="serienummervandedrager" type="xs:string" minOccurs="1" />
+              <xs:element name="nummerbewijsstuk" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="emptyDateTime">
+    <xs:annotation>
+      <xs:documentation>Simple union for enabling null for date</xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="xs:dateTime">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+</xs:schema>

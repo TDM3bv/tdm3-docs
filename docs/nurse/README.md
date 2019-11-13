@@ -1,5 +1,33 @@
 # Beschrijving batch XML
-[[toc]]
+
+!!! tip XSD Schema
+[Download](/schemas/tdm3prestatiebestand.xsd)
+
+@startuml
+node p as "pakketgegevens"
+node s as "softwarehuis"
+node pat as "patientgegevens"
+node zorg as "uitgevoerdezorg"
+node lez as "lezingidentiteit"
+node tar as "tarificatiedienst"
+node pr as "prijsberekening"
+node ver as "vereniging"
+node prof as "profielen"
+node fac as "facturatieperiode"
+
+p --> s
+p --> pat
+p --> zorg
+p --> lez
+p --> tar
+p --> fac
+p --> pr
+p --> ver
+p --> prof
+
+@enduml
+!!!
+
 
 ## Belangrijkste wijzigingen
 
@@ -17,15 +45,17 @@
 | 1.36   | Toevoeging: waarde eBox (3) bij kanaalbewijsstuk op node patientgegeven Verduidelijking startdatum profiel/akkoord vs palliatief akkoord                                    |
 | 1.37   | Toevoeging: element identificatiebestemmelingbewijsstuk op node patientgegeven Toevoeging element identificatietypebestemmelingbewijsstuk op node patientgegeven            |
 
+
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er 1 xml bestand aangemaakt.
 
-!!! warning Toevoegingen door TDM3
+### Toevoegingen door TDM3
+
 De uitgevoerde zorgen (als nomenclatuurode) worden doorgegeven in het xml bestand. 
 TDM3 voegt zelf onderstaande zaken toe ikv tarificatie.
 -	Basisverstrekkingen (eerste, tweede,derde)
 -	Forfait A, B, C, PA, PB, PC, PP
-o	De nomenclatuurcodes ikv zorgen worden dan vervangen door pseudocodes
+	-   De nomenclatuurcodes ikv zorgen worden dan vervangen door pseudocodes
 -	Supplementair forfait: PN
 -	Opvolgingshonorarium diabetes (op basis van waarde “insuline= true” op node uitgevoerde zorg)
 -	Verplaatsingskosten (op basis van waarde “ruraal=true” op node patientgegeven)
@@ -33,9 +63,9 @@ o	De nomenclatuurcodes ikv zorgen worden dan vervangen door pseudocodes
 Dit betekent dat deze nomenclatuurcodes (basisverstrekking, forfaits, pseudocodes als vervanging van) niet meekomen in de xml. Een paliatief forfait wordt aangerekend op basis van 
 -	de startdatum “Paliatief” op node patientgegeven. 
 -	In combinatie met het doorgegeven patientprofiel. Ook al zou er in de node “patientprofiel” een paliatief forfait profiel zijn aangeduid, TDM3 kijkt altijd naar de startdatum “Paliatief” op node patientgegeven om te bepalen of een patiënt palliatief is of niet.
-!!!
 
-!!! info pseudocodes die wel kunnen meegegeven worden in het xml bestand:
+
+### pseudocodes die wel kunnen meegegeven worden in het xml bestand:
 Pseudocodes die een bijkomende noodzakelijke registratie betekenen en dus op zichzelf noodzakelijk zijn ikv tarificatie, kunnen en moeten wel meekomen in de xml.
 
 Bijvoorbeeld: 
@@ -43,21 +73,22 @@ Bijvoorbeeld:
 - 426510:  	Thuiszorgen verpleegkunde, palliatieve patiënten : pseudocode te vermelden voor elk dringend bezoek overdag dat tijdens de verzorgingsdag is verleend voor              het forfait PA (427055 en 427136), voor het forfait PB (427033 en 427114), voor het forfait PC (427011 en 427092), voor het forfait PP (427173 en 427195)               en voor het forfait PN (427070 en 427151)
 - 426893: 	Thuiszorgen verpleegkunde, palliatieve patiënten : pseudocode te vermelden voor elk overlegvergadering met de huisarts dat tijdens de verzorgingsdag is                 verleend voor het forfait PA (427055 en 427136), voor het forfait PB (427033 en 427114), voor het forfait PC (427011 en 427092), voor het forfait PP                    (427173 en 427195) en voor het forfait PN (427070 en 427151)
 
-!!!
 
-!!! info Remgeld
+
+### Remgeld
+
 Indien er gefactureerd wordt aan een verzekeringsinstelling (type bestemmeling = 2), dan moet bij remgeld (=het deel dat aan de patient wordt gevraagd en dus de patient niet van de derdebetaler (verzekeringsinstelling) terugtrekt). Doorgaans wordt er geen remgeld gevraagd bij individuele verzekeringsinstellingen en is dit zinloos. Maar als dit veld is ingevuld dan zal TDM3 remgeld factureren aan de patient en niet aan de derdebetaler.
-!!!
 
-!!! info Herindieningen
+
+### Herindieningen
 Aangezien de facturen en afrekeningenen worden opgemaakt ter hoogte van TDM3, kunnen en mogen herindieningen als gewone indieningen (type facturering = 0) of als expliciet herindiening (type facturering = 1) meegaan, TDM3 voegt de bijkomende gegevens waarover het END niet kan beschikken, toe.
-!!!
 
-!!! info Zorgen zonder riziv-nomenclatuur
+
+### Zorgen zonder riziv-nomenclatuur
 Deze kunnen en mogen in de xml meegaan en worden gefactureerd onder de KB90 nomenclatuurnr. In het veld KB90Bedrag wordt dan het te factureren bedrag aangeduid.
-!!!
 
-!!! info Locatie veld bij node uitgevoerde zorg
+
+### Locatie veld bij node uitgevoerde zorg
 De nomenclatuur specifieert enkel “praktijkkamer OF hersteloord”. Vanaf prestatiedatum 1 april 2016 kan men voor deze nomenclatuurnrs geen bedrag meer factureren, tenzij deze is uitgevoerd in een hersteloord. Om dit onderscheid te kunnen maken wordt de locatie gespescifieerd via een pseudocode (zie onderstaande tabel).
 Wanneer de doorgegeven nomenclatuurnr een “praktijkkamer of hersteloord” betreft, moet een van de onderstaande pseudocodes worden vermeld. Op basis van deze pseudocode zal TDM3 dan al dan niet een bedrag factureren. 
 | NomenclatuurCode | Omschrijving                                                                                                                                                                              |
@@ -67,9 +98,9 @@ Wanneer de doorgegeven nomenclatuurnr een “praktijkkamer of hersteloord” bet
 | 421175           | Verpleegkundigen: pseudo-code betrekkelijke verstrekking: praktijkkamer van verpleegkundige(n) in een ziekenhuis                                                                          |
 | 421190           | Verpleegkundigen: pseudo-code betrekkelijke verstrekking: praktijkkamer van verpleegkundige(n) in een polikliniek buiten een ziekenhuiscampus bij geneesheer specialist(en)               |
 | 421153           | Verpleegkundigen: pseudo-code betrekkelijke verstrekking: praktijkkamer van verpleegkundige(n) deel uit makend van een multidisciplinaire groepspraktijk van eerste lijns gezondheidszorg |
-!!!
 
-!!! info Pijnpompcodes
+
+### Pijnpompcodes
 Aangezien op basis van de pseudocode niet is op te maken welke betalende nomenclatuurcode TDM3 dient toe te voegen, moet in de xml de betalende nomenclatuurcode alsook de pseudocode meegaan, als aparte uitgevoerdezorg nodes:  1 met veld nomenclatuurummer  ingevuld, voor de betalende nomenclatuurcode, de andere met het veld Pseudocodenummer ingevuld, voor de pseudocode.
 
 **Betalende codes**
@@ -88,9 +119,8 @@ Aangezien op basis van de pseudocode niet is op te maken welke betalende nomencl
 | 427630           | NULL    | Thuiszorgen verpleegkunde, specifieke technische verstrekkingen : Pseudocode te vermelden voor elk heropstarten van de pomp dat tijdens de verzorgingsdag is verleend bij de facturatie van de verstrekking 427534, 427556, 427571 of 429251            |
 | 427674           | NULL    | Thuiszorgen verpleegkunde, specifieke technische verstrekkingen : Pseudocode te vermelden voor elk wisselen van het medicatiereservoir dat tijdens de verzorgingsdag is verleend bij de facturatie van de verstrekking 427534, 427556, 427571 of 429251 |
 | 427652           | NULL    | Thuiszorgen verpleegkunde, specifieke technische verstrekkingen : Pseudocode te vermelden voor elke wijziging van de onderhoudsdosis dat tijdens de verzorgingsdag is verleend bij de facturatie van de verstrekking 427534, 427556, 427571 of 429251   |
-!!!
 
-!!! info het doorgeven van een afscoring forfait
+###  het doorgeven van een afscoring forfait
 Het oorspronkelijke forfait en oorspronkelijke zorgen hoeven niet doorgegeven worden. De zorgen + nieuw profiel moeten doorgegeven worden. 
 Bij de betrokken zorgen hoeft enkel type facturering = 5 meegegeven te worden. TDM3 kan dan een  correctie forfait factuur opstellen,  de originele factuurlijnen worden opgehaald, in min gezet en de nieuwe factuurlijnen worden in plus zetten.
 Wat indien de oorspronkelijke facturatie niet door TDM3 of onder een ander groepsnr is uitgevoerd? Dit gebeurt niet via de xml en verijst manuele interventie van een TDM3 tarificateur.
@@ -136,7 +166,7 @@ Voorbeeld afscoring forfait/profiel van A naar T7
     <TypeFacturering>5</TypeFacturering>
   </uitgevoerdezorg>
 ```
-!!!
+
 
 ## XML Nodes
 ### Node Pakketgegevens
@@ -147,26 +177,6 @@ Deze node is de overkoepelende node waaronder alle andere nodes verzameld staan.
 - één tarificatiedienst-node (zie 1.3), één facturatieperiode-node (zie 1.4), 
 - één vereniging-node (zie 1.5) en uiteindelijk een aantal profielen-nodes (zie 1.7). 
 De nodes moeten in opgegeven volgorde voorkomen!
-
-@startuml
-node p as "Pakketgegevens"
-node s as "softwarehuis"
-node pat as "patientgegevens"
-node zorg as "uitgevoerdezorg"
-node tar as "tarificatiedienst"
-node ver as "vereniging"
-node prof as "profielen"
-node fac as "facturatieperiode"
-
-p --> s
-p --> pat
-p --> zorg
-p --> tar
-p --> fac
-p --> ver
-p --> prof
-
-@enduml
 
 ```xml
 <pakketgegevens>
@@ -319,7 +329,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **nomenclatuurnummer** (string): De nomenclatuurnummer van de prestatie.
 - **pseudocodenummer** (string): De pseudocode voor de nomenclatuur. Moet enkel ingevuld worden indien er geen nomenclatuurnummer bestaat (palliatieve zorgen en niet vergoedbare zorgen). Dan moet de nomenclatuurnummer 000000 zijn. Indien geen pseudocode veld opvullen met 000000.
 - **kb90bedrag** (double): Het bedrag van de uitgevoerde zorg die valt onder het KB van 1990. Voor deze zorg bestaat geen nomenclatuurnummer en moet 426856 als pseudocodenummer hebben.
-- **kb90omschrijving ****:** een vrije omschrijving van de zorg die gefactureerd wordt onder de kb90 nomenclatuur.
+- **kb90omschrijving:** een vrije omschrijving van de zorg die gefactureerd wordt onder de kb90 nomenclatuur.
   - Deze omschrijving zal verschijnen op het bewijsstuk naar de patiënt en op de factuur naar de patiënt of de verzekering
 - **ziekenfondscode** (string): Het ziekenfonds van de patiënt.
 - **rizivnummerverpleegkundige** (string): De rizivnummer van de verpleegkundige. Deze moet voorafgaan door 0 of 1 :
@@ -428,7 +438,7 @@ Deze node bevat de code en naam van de vereniging waar de prestaties vandaan kom
 </vereniging>
 ```
 
-### Node Prijsberekening
+### Node prijsberekening
 
 Deze node bevat een indicator die aangeeft of de prijsberekening een tijdelijke prijsberekening is of niet.
 
@@ -486,49 +496,50 @@ Dit is enkel van toepassing bij facturatie via electronische derdebetaler! Maw, 
 -	TDM3 zal ter hoogte van de facturatie rekening houden met enkel de lezingen identiteit die van toepassing zijn.
 
 De volgende gegevens zijn vereist.
--	**externeid** (int): de patientid uit het versturende systeem refererend naar externid van patientgegevens. Cfr de uitgevoerdezorg node
--	**patientgegevens_id** (int): De unieke nummer van de patiënt binnen dit bestand. Cfr de uitgevoerdezorg node 
--	**redenmanueleinvoering** (int):
-    - Mogelijke waardes
+
+* **externeid** (int): de patientid uit het versturende systeem refererend naar externid van patientgegevens.	Cfr de uitgevoerdezorg node 
+* **patientgegevens_id** (int): De unieke nummer van de patiënt binnen dit bestand. Cfr de uitgevoerdezorg node 
+* **redenmanueleinvoering** (int):
+    * Mogelijke waardes
     1.  Niet van toepassing
     2. Gebruik identiteitsdocument zonder chip
     3. Onbeschikbaarheid kaartlezer
     4. Panne informaticasysteem 
--	**bezoeknummer** (int): Nummer van het bezoek. Cfr node uitgevoerdezorg.
--	**datumuitvoering** (dateTime): de datum van het bezoek, cfr datumuitvoering veld in uitgevoerdezorg node
--	**datumlezingidentiteitsdocument** (dateTime): datum waarop het identiteitsdocument is ingelezen. Dit element moet steeds ingevuld worden, behalve indien “typevanlezingidentiteitsdocument” = 4 en redenmanueleinvoering = 3.
--	**identificatiepatient** (string): de rijksregisternr, insz van de rechthebbende, cfr patientgegeven node.
--	**typevanlezingidentiteitsdocument** (int): Mogelijke waardes
-    1. Lezing van de chipkaart
-    2. Lezing van de streepjescode
-    3. Lezing QR code
-    4. Manuele invoering
-       - Bij gebruik van deze waarde moet in “redenmanueleinvoering“ de reden vermeld worden.
--	**typevandrageridentiteitsdocument** (int):
-    1. Belgische elektronische identiteitskaart (of Kids-id)
-    2. Elektronische vreemdelingenkaart
-    3. Kid-id kaart (*)
-       - mogelijk tot en met gefactureerde maand december 2016; vanaf gefactureerde maand januari 2017 moet waarde 1 gebruikt worden ingeval van Kids-id.
-    4. ISI+ kaart
-    5. Elektronisch verblijfsdocument
-    6. Een nog geldige sociale identiteitskaart (SIS-kaart) (**)
-       - Niet meer geldig vanaf 01/01/2017
-    7. Een vignet met streepjescode
-        - Bij gebruik van deze waarde, moet in element “redengebruikvignet” de reden vermeld worden.
-    8. Attest van sociaal verzekerde
-    9. Attest van verlies of diefstal van Belgische elektronische
+* **datumuitvoering** (dateTime): de datum van het bezoek, cfr datumuitvoering veld in uitgevoerdezorg node
+* **bezoeknummer** (int): Nummer van het bezoek. Cfr node uitgevoerdezorg.
+* **datumlezingidentiteitsdocument** (dateTime): datum waarop het identiteitsdocument is ingelezen. Dit element moet steeds ingevuld worden, behalve indien “typevanlezingidentiteitsdocument” = 4 en redenmanueleinvoering = 3.
+*	**identificatiepatient** (string): de rijksregisternr, insz van de rechthebbende, cfr patientgegeven node.
+*	**typevanlezingidentiteitsdocument** (int): Mogelijke waardes
+      1. Lezing van de chipkaart
+      2. Lezing van de streepjescode
+      3. Lezing QR code
+      4. Manuele invoering
+        - Bij gebruik van deze waarde moet in “redenmanueleinvoering“ de reden vermeld worden.
+*	**typevandrageridentiteitsdocument** (int):
+      1. Belgische elektronische identiteitskaart (of Kids-id)
+      2. Elektronische vreemdelingenkaart
+      3. Kid-id kaart (*)
+         - mogelijk tot en met gefactureerde maand december 2016; vanaf gefactureerde maand januari 2017 moet waarde 1 gebruikt worden ingeval van Kids-id.
+      4. ISI+ kaart
+      5. Elektronisch verblijfsdocument
+      6. Een nog geldige sociale identiteitskaart (SIS-kaart) (**)
+         - Niet meer geldig vanaf 01/01/2017
+      7. Een vignet met streepjescode
+          - Bij gebruik van deze waarde, moet in element “redengebruikvignet” de reden vermeld worden.
+      8. Attest van sociaal verzekerde
+      9. Attest van verlies of diefstal van Belgische elektronische
 
--	**redengebruikvignet** (int):
+*	**redengebruikvignet** (int):
     -	Mogelijke waardes
     1. Niet van toepassing
     2. Rechthebbende niet aanwezig tijdens verstrekking en gelijktijdige aanwezigheid van rechthebbende en zorgverlener niet reglementair vereist
     3. Rechthebbende bezit geen identiteitsdocument
--	**uurvanlezingidentiteitsdocument** (string): formaat HHmm
+*	**uurvanlezingidentiteitsdocument** (string): formaat HHmm
     -  Voorbeeld: 1510, 0109, 1305, etc
     -  dit element moet steeds ingevuld worden, behalve indien **“typevanlezingidentiteitsdocument”** = 4 en **“redenmanueleinvoering”** = 3
--	**rizivnummerverstrekker** (string): de rizivnummer van de verstrekker
--	**serienummervandedrager** (string): Het serienummer van de drager (eID-kaart, …) moet in dit element vermeld worden. Deze zone moet steeds ingevuld worden, ook ingeval van manuele invoering, behalve indien typevandrageridentiteitsdocument  = 7, 8 of 9.
--	**nummerbewijsstuk** (string): Het nummer van het bewijsstuk afgeleverd aan de patiënt moet in deze zone vermeld worden. Dit hoeft niet ingevuld te worden wanneer de TDM3 Facturatiedienst het bewijsstuk opmaak, dit is dus de standaard situatie!
+*	**rizivnummerverstrekker** (string): de rizivnummer van de verstrekker
+*	**serienummervandedrager** (string): Het serienummer van de drager (eID-kaart, …) moet in dit element vermeld worden. Deze zone moet steeds ingevuld worden, ook ingeval van manuele invoering, behalve indien typevandrageridentiteitsdocument  = 7, 8 of 9.
+*	**nummerbewijsstuk** (string): Het nummer van het bewijsstuk afgeleverd aan de patiënt moet in deze zone vermeld worden. Dit hoeft niet ingevuld te worden wanneer de TDM3 Facturatiedienst het bewijsstuk opmaak, dit is dus de standaard situatie!
 
 ### Type “metadata” en optioneel element metadata op patientgegeven en uitgevoerdezorg
 **metadata** (type metadata, optioneel element): een “key-value” pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven. Dit laat toe om op een flexibel manier informatie mee te geven die niet direct te maken heeft met de tarificatie van prestaties, zonder steeds het XSD schema aan te passen.

@@ -4,12 +4,13 @@ const getConfig = require("vuepress-bar");
 
 const barConfig = getConfig('${__dirName}/../docs');
 //barConfig.sidebar = barConfig.sidebar.filter(x => x.text == 'Nurse');
-console.log(barConfig);
+
 barConfig.sidebar.map(item => {
   item.collapsable = true;
   if(item.title == "Nurse")
   {
     item.title = "Thuisverpleging"
+  
   } else if(item.title == "Doctor")
   {
     item.title = "Huisartsen";
@@ -32,6 +33,7 @@ module.exports = {
     // logo: './myAvatar.png',
     sidebar: barConfig.sidebar,
       sidebarDepth: 4,
+      smoothScroll: true,
     displayAllHeaders: true, // Default: false
     nav: [
       { text: 'Home', link: '/' },
@@ -57,7 +59,8 @@ module.exports = {
     // defaults to false, set to true to enable
     editLinks: true,
     // custom text for edit link. Defaults to "Edit this page"
-    editLinkText: 'Help us improve this page!'
+    editLinkText: 'Help us improve this page!',
+    searchPlaceholder: 'Search...'
 
   },
   title: 'TDM3 Docs',
