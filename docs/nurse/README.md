@@ -1,7 +1,7 @@
 # Beschrijving batch XML
 
 !!! tip XSD Schema
-[Download](tdm3-docs/schemas/tdm3prestatiebestand.xsd)
+[Download](/tdm3-docs/schemas/tdm3prestatiebestand.xsd)
 
 @startuml
 node p as "pakketgegevens"
