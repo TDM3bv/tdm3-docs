@@ -11,11 +11,17 @@
 sequenceDiagram
     participant ClientApp
     participant Doctar API
+    participant User
     participant Doctar Webclient
     ClientApp->>Doctar API:REQUEST: transaction
     Doctar API ->>ClientApp: RESPONSE:201 Created+Links
-    ClientApp->>Doctar Webclient:Forward User to certificate_webflow link
-    Note right of Doctar Webclient: User Authentication
+    ClientApp->>User:Forward User to certificate_webflow link
+        alt Authentication
+        User->>Doctar Webclient: Authentication
+    end
+        alt Forward user
+        User->>Doctar Webclient: complete+confirm transaction
+    end
 </mermaid>
 
 1. Client sends data to the API endpoint. 
