@@ -13,7 +13,7 @@ sequenceDiagram
     participant Doctar API
     participant User
     participant Doctar Webclient
-    ClientApp->>Doctar API:REQUEST: transaction
+    ClientApp->>Doctar API:REQUEST: transaction (data)
     Doctar API ->>ClientApp: RESPONSE:201 Created+Links
     ClientApp->>User:Forward User to certificate_webflow link
         alt Authentication
@@ -27,7 +27,7 @@ sequenceDiagram
 1. Client sends data to the API endpoint. 
 2. Server responds with a 201 Created and a collection of links
 3. Client forwards user to the certificate_webflow link
-4. User authenticates on Doctar app and completes the e-attest form
+4. User authenticates on Doctar app and completes+confirms the transaction form
 
 You can see this flow in the gif below. The user has already authenticated.
 ![Demo](https://github.com/TDM3cvba/bb-clear-smart-fhir/raw/master/bb-clear-smart-fhir-demo.gif)
@@ -35,7 +35,7 @@ You can see this flow in the gif below. The user has already authenticated.
 The current use case of the Doctar transaction request API assumes no delegated authorization flow between client (server) and the Doctar API. The JWT token is to track, identify and authorize  the vendor. The user is authenticated and authorized when he/she gets forwarded to the webclient.
 There are other (security) scenarios possible, but this is the easiest and simplest one.
 
-To demonstrate the API we developed a demo app. This demo app is forked from https://github.com/stfnh/bb-clear-smart-fhir. Its purpose is to demonstrate the flow described below. Source code can be found [here](https://github.com/TDM3cvba/bb-clear-smart-fhir)
+To demonstrate the API we developed a demo app. This demo app is forked from https://github.com/stfnh/bb-clear-smart-fhir. Its purpose is to demonstrate the flow described above. Source code can be found [here](https://github.com/TDM3cvba/bb-clear-smart-fhir)
 
 
 
