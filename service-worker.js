@@ -27,7 +27,7 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "85535d86d3bf229466bf8ffc7dca7065"
+    "revision": "8de0f895e85d248e1fa20a13ea5d3086"
   },
   {
     "url": "assets/css/0.styles.d3469a09.css",
@@ -102,16 +102,16 @@ self.__precacheManifest = [
     "revision": "14f54268959f4ac813cffc6c81fe8efe"
   },
   {
-    "url": "assets/js/app.4c9e8af1.js",
-    "revision": "4ee30a42a5964026ad48c1c74abde45e"
+    "url": "assets/js/app.fd33f5c1.js",
+    "revision": "e361b1c49387d7e1335d4c2123a3933d"
   },
   {
     "url": "doctor/index.html",
-    "revision": "899e56eef5fa5c50f80543ddf72f1ffa"
+    "revision": "9bdbcc880864adc1743ff10c4db73b07"
   },
   {
     "url": "index.html",
-    "revision": "5c5fab7d200d7a450f470a3e41c073d8"
+    "revision": "5a0431c7591c7101a26b9bd1c9371526"
   },
   {
     "url": "myAvatar.png",
@@ -119,7 +119,7 @@ self.__precacheManifest = [
   },
   {
     "url": "nurse/index.html",
-    "revision": "8070279952f5003a04cf538ee6e224ae"
+    "revision": "5a640dc8d2aadcb21bb34689a604e188"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
