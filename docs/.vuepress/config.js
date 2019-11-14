@@ -21,7 +21,8 @@ module.exports = {
     serviceWorker: true,
     updatePopup: true
   }],
-  base: '/tdm3-docs/',
+  //base: '/tdm3-docs/',
+  base: process.env.VUEPRESS_BASE || '/',
   theme: 'cool',
   //dest: 'dist',
   head: [
