@@ -10,7 +10,5 @@ features:
 - title: Thuisverpleging
   details: Batch XML,..
   link: /nurse/
-- title: Kine
-  details: soon
 footer: Made by TDM3 with ❤️
 ---
