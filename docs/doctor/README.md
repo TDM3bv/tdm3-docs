@@ -56,6 +56,8 @@ Click [here](http://launch.smarthealthit.org/ehr.html?app=https%3A%2F%2Ftdm3cvba
 
 
 ## Sample code
+Sample code, which implements the client side code in javascript.
+
 ```javascript
 var jwtToken = '[JWT TOKEN HERE]';
 var endpoint = 'https://[BASE_ENDPOINT]';
@@ -125,7 +127,7 @@ transactionRequest: function(encounter) {
                 ct1: '110',
                 ct2: '110'
               },
-              mutualityCode: 105
+              mutualityCode: "105"
             },
             address: {
               street: homeAddress.line.join(' '),
