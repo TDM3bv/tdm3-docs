@@ -37,15 +37,15 @@ You can see this flow in the gif below. The user has already authenticated.
 The current use case of the Doctar transaction request API assumes no delegated authorization flow between clientapp (server) and the Doctar API. The JWT token is to track, identify and authorize the vendor. The user is authenticated and authorized when he/she gets forwarded to the webclient.
 There are other (security) scenarios possible, but this is the easiest and simplest one.
 
-
-## What do you need to integrate?
+## The API
+### What do you need to integrate?
 - A JWT token for QUA
 - A JWT token for PROD
 - The endpoint to QUA
 - The endpoint to PROD
 - Be able to forward the user to a specific url on the user-default webbrowser (Chrome, Firefox, etc)
 
-## How does the API behave?
+### How does the API behave?
 - The API requires as little data as possible to furfill its purpose
 - Certain fields are necassary to facilitate a better user experience. Meaning, if the ClientApp sends a valid and complete request, the user needs to enter less him or herself
 - We don't validate the request, except on being technically correct, which is the best kind of correct.
@@ -55,7 +55,15 @@ There are other (security) scenarios possible, but this is the easiest and simpl
   - This validation will change over time as the Doctar App will require less and less information from the ClientApp for certain types of use cases as more and more mycarenet webservices are supported natively in the Doctar App itself (invoicing to Mutuality vs ...) 
 - The clientApp can send performance data, or let the user enter it in the Doctar webclient itself
   - We only require nomenclature codes, all complexity regarding pricing and tarification is handled by the Doctar webclient
-  
+
+### Request examples
+
+!!! example TODO: explain the following request examples
+- [ ] standard request
+- [ ] minimal request
+- [ ] request with performances
+- [ ] request with payer
+!!!
 
 ## Demo App
 To demonstrate the API we developed a demo app. This demo app is forked from [stfnh/bb-clear-smart-fhir](https://github.com/stfnh/bb-clear-smart-fhir) repo. Its purpose is to demonstrate the flow described above. The modified source code can be found on [TDM3cvba/bb-clear-smart-fhir](https://github.com/TDM3cvba/bb-clear-smart-fhir)
@@ -75,7 +83,7 @@ Click [here](http://launch.smarthealthit.org/ehr.html?app=https%3A%2F%2Ftdm3cvba
 - The app is built with [Vue.js](https://vuejs.org/) and hosted on GitHub Pages
 
 
-## Example code
+### Example code
 Sample code, which implements the client side code in javascript.
 
 ```javascript
