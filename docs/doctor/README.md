@@ -38,7 +38,7 @@ The current use case of the Doctar transaction request API assumes no delegated 
 There are other (security) scenarios possible, but this is the easiest and simplest one.
 
 
-## What do yOU need to integrate?
+## What do you need to integrate?
 - A JWT token for QUA
 - A JWT token for PROD
 - The endpoint to QUA
