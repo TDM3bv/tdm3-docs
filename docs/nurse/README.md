@@ -44,6 +44,7 @@ p --> prof
 | 1.35   | Verduidelijking doorgeven afscoring forfait                                                                                                                                |
 | 1.36   | Toevoeging: waarde eBox (3) bij kanaalbewijsstuk op node patientgegeven Verduidelijking startdatum profiel/akkoord vs palliatief akkoord                                    |
 | 1.37   | Toevoeging: element identificatiebestemmelingbewijsstuk op node patientgegeven Toevoeging element identificatietypebestemmelingbewijsstuk op node patientgegeven            |
+| 1.38	| Toevoeging: [facturatie wekelijks voorbereiding](#facturatie-424874-wekelijkse-voorbereiding-van-de-geneesmiddelen-per-os), [uitzondering dagelijks toilet bij een T2 profiel](#node-profielen) |
 
 
 ## Algemene opmerkingen
@@ -127,44 +128,44 @@ Wat indien de oorspronkelijke facturatie niet door TDM3 of onder een ander groep
     
 Voorbeeld afscoring forfait/profiel van A naar T7
 ```xml
-<profielen>
-    <externeid>2</externeid>
-    <startdatum>2018-04-01T00:00:00</startdatum>
-    <einddatum>2018-04-30T00:00:00</einddatum>
-    <patientgegevens_id>341</patientgegevens_id>
-    <profiel>T7</profiel>
-  </profielen>
-<uitgevoerdezorg>
-    <input_uitgevoerdezorg_id>7007</input_uitgevoerdezorg_id>
-    <externeid>423</externeid>
-    <datumuitvoering>2018-04-28T11:00:00</datumuitvoering>
-    <datumvoorschrift>2018-04-01T00:00:00</datumvoorschrift>
-    <rizivnummervoorschrijver/>
-    <naamvoorschrijver> </naamvoorschrijver>
-    <remgeld>0</remgeld>
-    <nomenclatuurnummer>425515</nomenclatuurnummer>
-    <pseudocodenummer>000000</pseudocodenummer>
-    <kb90bedrag/>
-    <kb90omschrijving/>
-    <rizivnummerzorgkundige/>
-    <naamzorgkundige/>
-    <rizivnummerverpleegkundige>149488014401</rizivnummerverpleegkundige>
-    <ziekenfondscode>322</ziekenfondscode>
-    <patientgegevens_id>341</patientgegevens_id>
-    <bezoeknummer>1</bezoeknummer>
-    <rep_typebestemmeling_id>1</rep_typebestemmeling_id>
-    <insuline>false</insuline>
-    <derdebetalercode/>
-    <derdebetalernaam/>
-    <derdebetaleradres/>
-    <polisnummer/>
-    <dossiernummer/>
-    <datumongeval/>
-    <werkgever/>
-    <ZHOpname/>
-    <Locatie/>
-    <TypeFacturering>5</TypeFacturering>
-  </uitgevoerdezorg>
+	<profielen>
+		<externeid>2</externeid>
+		<startdatum>2018-04-01T00:00:00</startdatum>
+		<einddatum>2018-04-30T00:00:00</einddatum>
+		<patientgegevens_id>341</patientgegevens_id>
+		<profiel>T7</profiel>
+	</profielen>
+	<uitgevoerdezorg>
+		<input_uitgevoerdezorg_id>7007</input_uitgevoerdezorg_id>
+		<externeid>423</externeid>
+		<datumuitvoering>2018-04-28T11:00:00</datumuitvoering>
+		<datumvoorschrift>2018-04-01T00:00:00</datumvoorschrift>
+		<rizivnummervoorschrijver/>
+		<naamvoorschrijver> </naamvoorschrijver>
+		<remgeld>0</remgeld>
+		<nomenclatuurnummer>425515</nomenclatuurnummer>
+		<pseudocodenummer>000000</pseudocodenummer>
+		<kb90bedrag/>
+		<kb90omschrijving/>
+		<rizivnummerzorgkundige/>
+		<naamzorgkundige/>
+		<rizivnummerverpleegkundige>149488014401</rizivnummerverpleegkundige>
+		<ziekenfondscode>322</ziekenfondscode>
+		<patientgegevens_id>341</patientgegevens_id>
+		<bezoeknummer>1</bezoeknummer>
+		<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+		<insuline>false</insuline>
+		<derdebetalercode/>
+		<derdebetalernaam/>
+		<derdebetaleradres/>
+		<polisnummer/>
+		<dossiernummer/>
+		<datumongeval/>
+		<werkgever/>
+		<ZHOpname/>
+		<Locatie/>
+		<TypeFacturering>5</TypeFacturering>
+	</uitgevoerdezorg>
 ```
 
 
@@ -178,41 +179,41 @@ Deze node is de overkoepelende node waaronder alle andere nodes verzameld staan.
 - één vereniging-node (zie 1.5) en uiteindelijk een aantal profielen-nodes (zie 1.7). 
 De nodes moeten in opgegeven volgorde voorkomen!
 
-```xml
-<pakketgegevens>
-	<softwarehuis>
+	```xml
+	<pakketgegevens>
+		<softwarehuis>
+			…
+		</softwarehuis >
+		<patientgegevens>
+			…
+		</patientgegevens>
+		<patientgegevens>
+			…
+		</patientgegevens>
+		<uitgevoerdezorg>
+			…
+		</uitgevoerdezorg>
+		<uitgevoerdezorg>
+			…
+		</uitgevoerdezorg>
+		<tarificatiedienst>
+			…
+		</tarificatiedienst>
+		<facturatieperiode>
+			…
+		</facturatieperiode>
+	<vereniging>
 		…
-	</softwarehuis >
-	<patientgegevens>
-		…
-	</patientgegevens>
-	<patientgegevens>
-		…
-	</patientgegevens>
-	<uitgevoerdezorg>
-		…
-	</uitgevoerdezorg>
-	<uitgevoerdezorg>
-		…
-	</uitgevoerdezorg>
-	<tarificatiedienst>
-		…
-	</tarificatiedienst>
-	<facturatieperiode>
-		…
-	</facturatieperiode>
-<vereniging>
-	…
-</vereniging>
-	<profielen>
-		…
-	</profielen>
-	<profielen>
-		…
-	</profielen>
-</pakketgegevens>
+	</vereniging>
+		<profielen>
+			…
+		</profielen>
+		<profielen>
+			…
+		</profielen>
+	</pakketgegevens>
 
-```
+	```
 
 ### Node softwarehuis
 Deze node bevat de gegevens van het softwarehuis
@@ -224,14 +225,14 @@ Deze node bevat de gegevens van het softwarehuis
 
 
 Voorbeeld:
-```xml
-<softwarehuis>
-	<code>…</code>
-	<naam>…</naam>
-	<telefoonnummer>…</telefoonnummer>
-	<email>…</email>
-</softwarehuis>
-```
+	```xml
+	<softwarehuis>
+		<code>…</code>
+		<naam>…</naam>
+		<telefoonnummer>…</telefoonnummer>
+		<email>…</email>
+	</softwarehuis>
+	```
 
 ### Node patiëntgegevens
 
@@ -276,42 +277,43 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
   - type identificatie eigenaar eBox, 1 = INSS , 2 = NIHII, 3 = CBE (organization)
 - **metadata**(type metadata, optioneel element)**:** een &quot;key-value&quot; pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven, die niet direct te maken heeft met de tarificatie van prestaties.
 
-    Voorbeeld metadata item
-```xml
-        <metadata>
-        <item>
-            <naam>venootschap</naam>
-            <waarde>de zonnebloem</waarde>
-        </item>
-        <item>
-            <naam>ronde</naam>
-            <waarde>tour 1</waarde>
-        </item>
-        </metadata>
-```
+		Voorbeeld metadata item
+	```xml
+			<metadata>
+			<item>
+				<naam>venootschap</naam>
+				<waarde>de zonnebloem</waarde>
+			</item>
+			<item>
+				<naam>ronde</naam>
+				<waarde>tour 1</waarde>
+			</item>
+			</metadata>
+	```
+
 Voorbeeld patientgegeven
-```xml
-<patientgegevens>
-	<patientgegevens_id>…</patientgegevens_id>
-	<externeid>…</externeid>
-	<naam>…</naam>
-	<voornaam>…</voornaam>
-	<geslacht>…</geslacht>
-	<geboortedatum>…</geboortedatum>
-	<straat>…</straat>
-	<huisnummer>…</huisnummer>
-	<postcode>…</postcode>
-	<gemeente>…</gemeente>
-	<landcode>…</landcode>
-	<ziekenfondscode>…</ziekenfondscode>
-	<stamnummer>…</stamnummer>
-	<risicocode1>…</risicocode1>
-	<risicocode2>…</risicocode2>
-	<ruraal>…</ruraal>
-	<startdatumpal>…</startdatumpal>
-	<rijksregisternummer>…</rijksregisternummer>
-</patientgegevens>
-```
+	```xml
+	<patientgegevens>
+		<patientgegevens_id>…</patientgegevens_id>
+		<externeid>…</externeid>
+		<naam>…</naam>
+		<voornaam>…</voornaam>
+		<geslacht>…</geslacht>
+		<geboortedatum>…</geboortedatum>
+		<straat>…</straat>
+		<huisnummer>…</huisnummer>
+		<postcode>…</postcode>
+		<gemeente>…</gemeente>
+		<landcode>…</landcode>
+		<ziekenfondscode>…</ziekenfondscode>
+		<stamnummer>…</stamnummer>
+		<risicocode1>…</risicocode1>
+		<risicocode2>…</risicocode2>
+		<ruraal>…</ruraal>
+		<startdatumpal>…</startdatumpal>
+		<rijksregisternummer>…</rijksregisternummer>
+	</patientgegevens>
+	```
 
 ### Node uitgevoerdezorg
 
@@ -362,33 +364,55 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
   - 5 - Dagverzorgings centrum
 - **metadata**(type metadata, optioneel element)**:** een &quot;key-value&quot; pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven, die niet direct te maken heeft met de tarificatie van prestaties.
 
-```xml
-<uitgevoerdezorg>
-	<input_uitgevoerdezorg_id>…</input_uitgevoerdezorg_id>
-	<externeid>…</externeid>
-	<datumuitvoering>…</datumuitvoering>
-	<datumvoorschrift>…</datumvoorschrift>
-	<rizivnummervoorschrijver>…</rizivnummervoorschrijver>
-	<naamvoorschrijver>…</naamvoorschrijver>
-	<remgeld>…</remgeld>
-	<nomenclatuurnummer>…</nomenclatuurnummer>
-	<pseudocodenummer>…</pseudocodenummer>
-	<kb90bedrag>…</kb90bedrag>
-	<ziekenfondscode>…</ziekenfondscode>
-	<rizivnummerverpleegkundige>…</rizivnummerverpleegkundige>
-	<patientgegevens_id>…</patientgegevens_id>
-	<bezoeknummer>…</bezoeknummer>
-	<rep_typebestemmeling_id>…</rep_typebestemmeling_id>
-	<insuline>…</insuline>
-	<derdebetalercode>…</derdebetalercode>
-	<derdebetalernaam>…</derdebetalernaam>
-	<derdebetaleradres>…</derdebetaleradres>
-	<polisnummer>…</polisnummer>
-	<dossiernummer>…</dossiernummer>
-	<datumongeval>…</datumongeval>
-	<werkgever>…</werkgever>
-</uitgevoerdezorg>
-```
+	```xml
+	<uitgevoerdezorg>
+		<input_uitgevoerdezorg_id>…</input_uitgevoerdezorg_id>
+		<externeid>…</externeid>
+		<datumuitvoering>…</datumuitvoering>
+		<datumvoorschrift>…</datumvoorschrift>
+		<rizivnummervoorschrijver>…</rizivnummervoorschrijver>
+		<naamvoorschrijver>…</naamvoorschrijver>
+		<remgeld>…</remgeld>
+		<nomenclatuurnummer>…</nomenclatuurnummer>
+		<pseudocodenummer>…</pseudocodenummer>
+		<kb90bedrag>…</kb90bedrag>
+		<ziekenfondscode>…</ziekenfondscode>
+		<rizivnummerverpleegkundige>…</rizivnummerverpleegkundige>
+		<patientgegevens_id>…</patientgegevens_id>
+		<bezoeknummer>…</bezoeknummer>
+		<rep_typebestemmeling_id>…</rep_typebestemmeling_id>
+		<insuline>…</insuline>
+		<derdebetalercode>…</derdebetalercode>
+		<derdebetalernaam>…</derdebetalernaam>
+		<derdebetaleradres>…</derdebetaleradres>
+		<polisnummer>…</polisnummer>
+		<dossiernummer>…</dossiernummer>
+		<datumongeval>…</datumongeval>
+		<werkgever>…</werkgever>
+	</uitgevoerdezorg>
+	```
+
+#### facturatie 424874 - Wekelijkse voorbereiding van de geneesmiddelen per os
+- Voorafgaandelijk aan de facturatie van verstrekking **424874** moet er een verstrekking **424896** *"Verpleegkundig advies en overleg in functie van de wekelijkse voorbereiding van de geneesmiddelen per os met akkoord van de behandelend arts"* zijn gefactureerd. Deze verstrekking kan reeds gefactureerd zijn door een externe partij. Indien in het EMD gekend is wanneer deze verstrekkering 424896 is gefactureerd door deze externe partij, mag er een metadata item toegevoegd worden bij op de uitgevoerdezorg 424874, met volgende waarde
+    - **naam** : "externf424896"
+    - **waarde**: "datum" (geformateerd als yyyy-MM-dd)
+- Deze informatie laat de facturatiedienst toe een betere controle uit te voeren
+
+	```xml
+	<uitgevoerdezorg>
+		...
+		<nomenclatuurnummer>424874</nomenclatuurnummer>
+		<datumuitvoering>2019-10-18T01:00:00</datumuitvoering>
+		...
+		<metadata>
+		<item>
+			<naam>externf424896</naam>
+			<waarde>2019-05-18</waarde>
+		</item>
+		</metadata>
+	<uitgevoerdezorg>
+	```
+ 
 
 ### Node tarificatiedienst
 
@@ -459,6 +483,12 @@ De startdatum van het palliatief akkoord wordt op patientgegeven node meegegeven
 - **einddatum** (dateTime): Einddatum van het mycarenet akkoord/profiel
 - **patientgegevens\_id** (int): De unieke nummer van de patiënt binnen dit bestand.
 - **profiel** (string): Het type profiel van de patiënt.
+- **toiletten** (int): aantal toilletten
+  - wordt standaard niet ingevuld
+  - wordt ingevuld met waarde '7' nav een van de uitzonderingen bij een T2 profiel, waardoor er wel een dagelijks toilet mag uitgevoerd worden
+     - ‘desoriëntatie’, Matig / ernstig  
+     - ‘nachtelijke incontinentie’ vanaf een bepaalde score
+
 
 Mogelijke waardes zijn :
 | **profiel** | Omschrijving       | Aantal toilleten |

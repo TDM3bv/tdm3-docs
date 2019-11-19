@@ -8,9 +8,9 @@
   "license": "ISC",
   "scripts": {
     "docs:dev": "npx vuepress dev docs",
-    "docs:build": "set VUEPRESS_BASE=/tdm3-docs && npx vuepress build docs",
+    "docs:build": "set VUEPRESS_BASE=/tdm3-docs/ && npx vuepress build docs",
     "docs:build:netlify": "npx vuepress build docs",
-    "dev": "set VUEPRESS_BASE=/tdm3-docs && vuepress dev docs", 
+    "dev": "set VUEPRESS_BASE=/tdm3-docs/ && npx vuepress dev docs", 
     "dev:netlify": "vuepress dev docs", 
     "build": "vuepress build docs"
   },
