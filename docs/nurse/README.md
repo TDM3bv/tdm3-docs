@@ -393,7 +393,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 	```
 
 #### facturatie 424874 - Wekelijkse voorbereiding van de geneesmiddelen per os
-- Voorafgaandelijk aan de facturatie van verstrekking **424874** moet er een verstrekking **424896** *"Verpleegkundig advies en overleg in functie van de wekelijkse voorbereiding van de geneesmiddelen per os met akkoord van de behandelend arts"* zijn gefactureerd. Deze verstrekking kan reeds gefactureerd zijn door een externe partij. Indien in het EMD gekend is wanneer deze verstrekkering 424896 is gefactureerd door deze externe partij, mag er een metadata item toegevoegd worden bij op de uitgevoerdezorg 424874, met volgende waarde
+- Voorafgaandelijk aan de facturatie van verstrekking **424874** moet er een verstrekking **424896** *"Verpleegkundig advies en overleg in functie van de wekelijkse voorbereiding van de geneesmiddelen per os met akkoord van de behandelend arts"* zijn gefactureerd. Deze verstrekking kan reeds gefactureerd zijn door een externe partij. Indien in het EMD gekend is wanneer deze verstrekkering 424896 is gefactureerd door deze externe partij, mag er een **metadata** item toegevoegd worden in de uitgevoerdezorg node van 424874, met volgende waarde
     - **naam** : "externf424896"
     - **waarde**: "datum" (geformateerd als yyyy-MM-dd)
 - Deze informatie laat de facturatiedienst toe een betere controle uit te voeren
