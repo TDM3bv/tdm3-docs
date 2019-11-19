@@ -225,14 +225,14 @@ Deze node bevat de gegevens van het softwarehuis
 
 
 Voorbeeld:
-	```xml
+```xml
 	<softwarehuis>
 		<code>…</code>
 		<naam>…</naam>
 		<telefoonnummer>…</telefoonnummer>
 		<email>…</email>
 	</softwarehuis>
-	```
+```
 
 ### Node patiëntgegevens
 
@@ -292,7 +292,7 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 	```
 
 Voorbeeld patientgegeven
-	```xml
+```xml
 	<patientgegevens>
 		<patientgegevens_id>…</patientgegevens_id>
 		<externeid>…</externeid>
@@ -313,7 +313,7 @@ Voorbeeld patientgegeven
 		<startdatumpal>…</startdatumpal>
 		<rijksregisternummer>…</rijksregisternummer>
 	</patientgegevens>
-	```
+```
 
 ### Node uitgevoerdezorg
 
@@ -483,7 +483,7 @@ De startdatum van het palliatief akkoord wordt op patientgegeven node meegegeven
 - **einddatum** (dateTime): Einddatum van het mycarenet akkoord/profiel
 - **patientgegevens\_id** (int): De unieke nummer van de patiënt binnen dit bestand.
 - **profiel** (string): Het type profiel van de patiënt.
-- **toiletten** (int): aantal toilletten
+- **toiletten** (int): aantal toilletten *
   - wordt standaard niet ingevuld
   - wordt ingevuld met waarde '7' nav een van de uitzonderingen bij een T2 profiel, waardoor er wel een dagelijks toilet mag uitgevoerd worden
      - ‘desoriëntatie’, Matig / ernstig  
@@ -496,14 +496,14 @@ Mogelijke waardes zijn :
 | A           | Profiel A          | 7                |
 | B           | Profiel B          | 7                |
 | C           | Profiel C          | 7                |
-| P2          | Palliatief Profiel | 2                |
+| P2          | Palliatief Profiel | 2 (7*)           |
 | P7          | Palliatief Profiel | 7                |
 | PA          | Forfait PA         | 7                |
 | PB          | Forfait PB         | 7                |
 | PC          | Forfait PC         | 7                |
 | PN          | Forfait PN         | 7                |
 | PP          | Forfait PP         | 7                |
-| T2          | Profiel N          | 2                |
+| T2          | Profiel N          | 2 (7*)           |
 | T7          | Profiel N          | 7                |
 
 ```xml
