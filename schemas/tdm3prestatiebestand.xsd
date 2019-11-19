@@ -145,6 +145,7 @@
               <xs:element name="einddatum" type="xs:dateTime" minOccurs="0" />
               <xs:element name="patientgegevens_id" type="xs:long" minOccurs="0" />
               <xs:element name="profiel" type="xs:string" minOccurs="1" />
+              <xs:element name="toiletten" type="xs:int" minOccurs="0" />
 
             </xs:sequence>
           </xs:complexType>
