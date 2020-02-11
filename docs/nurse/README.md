@@ -45,6 +45,7 @@ p --> prof
 | 1.36   | Toevoeging: waarde eBox (3) bij kanaalbewijsstuk op node patientgegeven Verduidelijking startdatum profiel/akkoord vs palliatief akkoord                                    |
 | 1.37   | Toevoeging: element identificatiebestemmelingbewijsstuk op node patientgegeven Toevoeging element identificatietypebestemmelingbewijsstuk op node patientgegeven            |
 | 1.38	| Toevoeging: [facturatie wekelijks voorbereiding](#facturatie-424874-wekelijkse-voorbereiding-van-de-geneesmiddelen-per-os), [uitzondering dagelijks toilet bij een T2 profiel](#node-profielen) |
+| 1.39 |Fix- Verduidelijking oplijsting type bestemmeling op node uitgevoerdezorg (medisch huis) |
 
 
 ## Algemene opmerkingen
