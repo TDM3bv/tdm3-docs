@@ -339,7 +339,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
     - 1 : wel geconventioneerd
 - **patientgegevens\_id** (int): De unieke nummer van de patiënt binnen dit bestand.
 - **bezoeknummer** (int): Nummer van het bezoek.
-- **rep\_typebestemmeling\_id** (int): Indicator die aangeeft voor wie de factuur is. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, medisch huis,…
+- **rep\_typebestemmeling\_id** (int): Indicator die aangeeft voor wie de factuur is. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis,…
 - **insuline** (boolean): Dit zou op &#39;True&#39; moeten staan wanneer de verpleegkundige een dossier bijhoudt van een diabetes patiënt en de verpleegkundige insuline inspuitingen geeft.  De verpleegkundige krijgt dan een forfait honoraria (423231,423334).  Dit forfait wordt dan door TDM3 toegevoegd.
 - **derdebetalercode** (string): Enkel voor Patiënt- en Verzekeringsfacturen. Voor patiëntfacturen staat hier de patientnummer(dit mag een interne id zijn, eigen nummering,…), voor verzekeringsfacturen staat hierin de id van de verzekering in het versturende systeem. Dit veld mag maximum 10 posities lang zijn.
 - **derdebetalernaam** (string): Enkel voor Patiënt- en Verzekeringsfacturen. Voor patiëntfacturen staat hier de naam van de patiënt, voor verzekeringsfacturen staat hier de naam van de verzekeringsinstelling.
