@@ -46,7 +46,7 @@ p --> prof
 | 1.37   | Toevoeging: element identificatiebestemmelingbewijsstuk op node patientgegeven Toevoeging element identificatietypebestemmelingbewijsstuk op node patientgegeven            |
 | 1.38	| Toevoeging: [facturatie wekelijks voorbereiding](#facturatie-424874-wekelijkse-voorbereiding-van-de-geneesmiddelen-per-os), [uitzondering dagelijks toilet bij een T2 profiel](#node-profielen) |
 | 1.39 |Fix- Verduidelijking oplijsting type bestemmeling op node uitgevoerdezorg (medisch huis = 5) |
-
+| 1.40 |Fix verduidelijking noodzaak derdebetalercode, -naam en -adres op node uitgevoerdezorg
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er 1 xml bestand aangemaakt.
@@ -342,9 +342,9 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **bezoeknummer** (int): Nummer van het bezoek.
 - **rep\_typebestemmeling\_id** (int): Indicator die aangeeft voor wie de factuur is. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis,…
 - **insuline** (boolean): Dit zou op &#39;True&#39; moeten staan wanneer de verpleegkundige een dossier bijhoudt van een diabetes patiënt en de verpleegkundige insuline inspuitingen geeft.  De verpleegkundige krijgt dan een forfait honoraria (423231,423334).  Dit forfait wordt dan door TDM3 toegevoegd.
-- **derdebetalercode** (string): Enkel voor Patiënt- en Verzekeringsfacturen. Voor patiëntfacturen staat hier de patientnummer(dit mag een interne id zijn, eigen nummering,…), voor verzekeringsfacturen staat hierin de id van de verzekering in het versturende systeem. Dit veld mag maximum 10 posities lang zijn.
-- **derdebetalernaam** (string): Enkel voor Patiënt- en Verzekeringsfacturen. Voor patiëntfacturen staat hier de naam van de patiënt, voor verzekeringsfacturen staat hier de naam van de verzekeringsinstelling.
-- **derdebetaleradres** (string): Enkel voor Patiënt- en Verzekeringsfacturen. Voor patiëntfacturen staat hier het adres van de patiënt, voor verzekeringsfacturen staat hier het adres van de verzekeringsinstelling.
+- **derdebetalercode** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering medisch huis, ocmw, etc). Voor patiëntfacturen staat hier de patientnummer(dit mag een interne id zijn, eigen nummering,…), voor andere staat hierin de id van de verzekering in het versturende systeem. Dit veld mag maximum 10 posities lang zijn.
+- **derdebetalernaam** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering medisch huis, ocmw, etc). Voor patiëntfacturen staat hier de naam van de patiënt, voor andere staat hier de naam van de verzekeringsinstelling.
+- **derdebetaleradres** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering medisch huis, ocmw, etc). Voor patiëntfacturen staat hier het adres van de patiënt, voor andere staat hier het adres van de verzekeringsinstelling.
 - **polisnummer** (string): In geval van een arbeidsongeval staat hier het polisnummer.
 - **dossiernummer** (string): In geval van arbeidsongeval staat hier het dossiernummer.
 - **datumongeval** (dateTime): In geval van een arbeidsongeval staat hier de datum van het ongeval.
