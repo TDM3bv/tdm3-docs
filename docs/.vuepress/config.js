@@ -61,11 +61,8 @@ module.exports = {
     editLinks: true,
     // custom text for edit link. Defaults to "Edit this page"
     editLinkText: 'Help us improve this page!',
-    searchPlaceholder: 'Search...',
-    algolia: {
-      apiKey: 'f9eeba70022d5b1b794db52772086c05',
-      indexName: 'tdm3'
-    }
+    searchPlaceholder: 'Search...'
+    
 
   },
   title: 'TDM3 Docs',
