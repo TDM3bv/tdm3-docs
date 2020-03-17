@@ -58,7 +58,7 @@ There are other (security) scenarios possible, but this is the easiest and simpl
 
 ### Request examples
 
-#### minimal request
+#### 1. Minimal request
 This is the absolute minimal request that will not trigger technical validation errors
 
 ``` json
@@ -77,8 +77,92 @@ This is the absolute minimal request that will not trigger technical validation 
 !!! warning
 It is of course not useful to the user. To ease development, it's advised to set an optional http header "X-Validate: true" to force more meaningful validation of the request.
 !!!
+If the X-Validate header is set, the following error response is returned
 
-#### request with performances
+``` json
+{
+    "title": "One or more validation errors occurred.",
+    "status": 422,
+    "errors": {
+        "CareProvider.Nihii": [
+            "Nihii is not a valid Nihii: Length of Nihii =0. This is less than 11 characters",
+            "The length of 'Nihii' must be at least 11 characters. You entered 4 characters.",
+            "'Nihii' is not in the correct format."
+        ],
+        "CareReceiver.Inss": [
+            "The specified condition was not met for 'Inss'.",
+            "'Inss' is not in the correct format."
+        ],
+        "CareReceiver.Name": [
+            "'Name' must not be empty."
+        ],
+        "CareReceiver.FirstName": [
+            "'First Name' must not be empty."
+        ],
+        "CareReceiver.InsurabilitySituation": [
+            "'Insurability Situation' must not be empty."
+        ]
+    }
+}
+```
+
+#### 2. standard request
+
+``` json
+{
+  "packageProvider": {
+    "name": "MyEmd"
+  },
+  "inputReference": "d834f107-da4b-4a75-ada6-4dd61a89e169",
+  "careDate": "2020-03-17T00:00:00+01:00",
+  "careProvider": {
+    "nihii": "12334539004",
+    "name": "Jansens",
+    "firstName": "Peter",
+    "inputReference": "7b46d4bb-0e93-4144-ab4d-70ff78d6553d",
+    "practiceReference": "fafca8e1-3728-42b1-a5f3-ec2c34946878"
+  },
+  "careReceiver": {
+    "inputReference": null,
+    "name": "Durnez",
+    "firstName": "Martijn",
+    "inss": "80042000536",
+    "email": null,
+    "birthDate": "1980-04-20T00:00:00",
+    "gender": 1,
+    "phone": null,
+    "language": "nl",
+    "country": "BE",
+    "address": {
+      "street": "Driesleutelstraat 74",
+      "box": null,
+      "postalCode": "9300",
+      "city": "Aalst",
+      "province": "Oost-Vlaanderen",
+      "country": "BE"
+    },
+    "insurabilitySituation": {
+      "codeEntitled": {
+        "cT1": "110",
+        "cT2": "110"
+      },
+      "mutualityCode": "105"
+    },
+    "careProgram": false,
+    "chronicallyIll": false,
+    "palliative": true,
+    "institutionNihii": null,
+    "gmdInfo": {
+      "gmdManagerNihii": null,
+      "beginMoment": "2018-01-01T00:00:00",
+      "endMoment": "2018-12-31T00:00:00"
+    }
+  }
+}
+
+```
+
+#### 3. Request with performances
 ``` json
 {
   "packageProvider": {
@@ -141,64 +225,6 @@ It is of course not useful to the user. To ease development, it's advised to set
   ]
 }
 ```
-
-#### standard request
-
-``` json
-{
-  "packageProvider": {
-    "name": "MyEmd"
-  },
-  "inputReference": "d834f107-da4b-4a75-ada6-4dd61a89e169",
-  "careDate": "2020-03-17T00:00:00+01:00",
-  "careProvider": {
-    "nihii": "12334539004",
-    "name": "Jansens",
-    "firstName": "Peter",
-    "inputReference": "7b46d4bb-0e93-4144-ab4d-70ff78d6553d",
-    "practiceReference": "fafca8e1-3728-42b1-a5f3-ec2c34946878"
-  },
-  "careReceiver": {
-    "inputReference": null,
-    "name": "Durnez",
-    "firstName": "Martijn",
-    "inss": "80042000536",
-    "email": null,
-    "birthDate": "1980-04-20T00:00:00",
-    "gender": 1,
-    "phone": null,
-    "language": "nl",
-    "country": "BE",
-    "address": {
-      "street": "Driesleutelstraat 74",
-      "box": null,
-      "postalCode": "9300",
-      "city": "Aalst",
-      "province": "Oost-Vlaanderen",
-      "country": "BE"
-    },
-    "insurabilitySituation": {
-      "codeEntitled": {
-        "cT1": "110",
-        "cT2": "110"
-      },
-      "mutualityCode": "105"
-    },
-    "careProgram": false,
-    "chronicallyIll": false,
-    "palliative": true,
-    "institutionNihii": null,
-    "gmdInfo": {
-      "gmdManagerNihii": null,
-      "beginMoment": "2018-01-01T00:00:00",
-      "endMoment": "2018-12-31T00:00:00"
-    }
-  }
-}
-
-```
-
-
 
 ## Demo App
 To demonstrate the API we developed a demo app. This demo app is forked from [stfnh/bb-clear-smart-fhir](https://github.com/stfnh/bb-clear-smart-fhir) repo. Its purpose is to demonstrate the flow described above. The modified source code can be found on [TDM3cvba/bb-clear-smart-fhir](https://github.com/TDM3cvba/bb-clear-smart-fhir)
