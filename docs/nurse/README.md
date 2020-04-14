@@ -175,8 +175,10 @@ Voorbeeld afscoring forfait/profiel van A naar T7
 	Dit kan via de xml aangeduid worden door de pseudocode **792433** te vermelden in het element **pseudocodenummer** ([Bron RIZIV](https://www.riziv.fgov.be/nl/covid19/Paginas/diabeteseducatie-1ste-lijn-videoconsultatie.aspx))
 	```xml
 	    <uitgevoerdezorg>
+		     ...andere elementen...
 			<nomenclatuurnummer>794312 </nomenclatuurnummer>
 			<pseudocodenummer>792433</pseudocodenummer>
+	         ...andere elementen...
 		</uitgevoerdezorg>
 	```
 
