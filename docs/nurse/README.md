@@ -47,7 +47,7 @@ p --> prof
 | 1.38	| Toevoeging: [facturatie wekelijks voorbereiding](#facturatie-424874-wekelijkse-voorbereiding-van-de-geneesmiddelen-per-os), [uitzondering dagelijks toilet bij een T2 profiel](#node-profielen) |
 | 1.39 |Fix- Verduidelijking oplijsting type bestemmeling op node uitgevoerdezorg (medisch huis = 5) |
 | 1.40 |Fix verduidelijking noodzaak derdebetalercode, -naam en -adres op node uitgevoerdezorg |
-| 1.41 | Toevoeging:[instructies diabeteseducatie via videoconsultatie tijdens COVID19-crisis](#covid19-crisis-instructies) |
+| 1.41 | Toevoeging: [instructies diabeteseducatie via videoconsultatie tijdens COVID19-crisis](#covid19-crisis-instructies) |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er 1 xml bestand aangemaakt.
@@ -172,12 +172,12 @@ Voorbeeld afscoring forfait/profiel van A naar T7
 ### COVID19-crisis instructies
 #### Diabeteseducatie via videoconsultatie tijdens de COVID19-crisis
 - Als tijdelijke aanpassing mag een individuele sessie tijdens de duur van de maatregelen, door middel van videocommunicatie plaatsvinden.
-	Dit kan via de xml aangeduid worden door de pseudocode **792433** te vermelden in het element **pseudocodenummer** ([Bron RIZIV](https://www.riziv.fgov.be/nl/covid19/Paginas/diabeteseducatie-1ste-lijn-videoconsultatie.aspx))
+	Deze "locatie" kan via de xml aangeduid worden door de pseudocode **792433** te vermelden in het element **Locatie** ([Bron RIZIV](https://www.riziv.fgov.be/nl/covid19/Paginas/diabeteseducatie-1ste-lijn-videoconsultatie.aspx))
 	```xml
 	    <uitgevoerdezorg>
 		     ...andere elementen...
 			<nomenclatuurnummer>794312 </nomenclatuurnummer>
-			<pseudocodenummer>792433</pseudocodenummer>
+			<Locatie>792433</Locatie>
 	         ...andere elementen...
 		</uitgevoerdezorg>
 	```
@@ -342,7 +342,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **naamvoorschrijver** (string): De naam van de voorschrijvende geneesheer.
 - **remgeld** (int): De verhoogde tegemoetkoming (als percentage). 0 is geen remgeld tellen, 100 is alles naar de patient.
 - **nomenclatuurnummer** (string): De nomenclatuurnummer van de prestatie.
-- **pseudocodenummer** (string): De pseudocode voor de nomenclatuur. Moet enkel ingevuld worden indien er geen nomenclatuurnummer bestaat (palliatieve zorgen en niet vergoedbare zorgen). Dan moet de nomenclatuurnummer 000000 zijn. Indien geen pseudocode veld opvullen met 000000. Moet wel ingevuld worden ikv diabeteseducatie via videoconsultatie tijdens COVID19-crisis. De betrekkelijke verstrekking wordt dan in dit element ingevuld.
+- **pseudocodenummer** (string): De pseudocode voor de nomenclatuur. Moet enkel ingevuld worden indien er geen nomenclatuurnummer bestaat (palliatieve zorgen en niet vergoedbare zorgen). Dan moet de nomenclatuurnummer 000000 zijn. Indien geen pseudocode veld opvullen met 000000. 
 - **kb90bedrag** (double): Het bedrag van de uitgevoerde zorg die valt onder het KB van 1990. Voor deze zorg bestaat geen nomenclatuurnummer en moet 426856 als pseudocodenummer hebben.
 - **kb90omschrijving:** een vrije omschrijving van de zorg die gefactureerd wordt onder de kb90 nomenclatuur.
   - Deze omschrijving zal verschijnen op het bewijsstuk naar de patiënt en op de factuur naar de patiënt of de verzekering
@@ -368,7 +368,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **rizivnummerzorgkundige** (string): De rizivnummer van de zorgkundige
 - **naamzorgkundige** (string): De naam van de zorgkundige
 - **ZHOpname (int):** ptioneel veld om aan te duiden of het over een ziekenhuisopname gaat of niet.
-- **Locatie:** Ikv Verordening van 28 juli 2003 bijlage 85, wordt hier de overeenkomstige pseudocode meegegeven die moeten vermeld worden bij de verstrekkingen van art. 8, §1, 3° van de nomenclatuur (&quot;verstrekkingen verleend hetzij in de praktijkkamer van de beoefenaar van de verpleegkunde, hetzij in een hersteloord&quot;). Deze pseudo-codes geven de plaats van verstrekking weer.
+- **Locatie:** Ikv Verordening van 28 juli 2003 bijlage 85, wordt hier de overeenkomstige pseudocode meegegeven die moeten vermeld worden bij de verstrekkingen van art. 8, §1, 3° van de nomenclatuur (&quot;verstrekkingen verleend hetzij in de praktijkkamer van de beoefenaar van de verpleegkunde, hetzij in een hersteloord&quot;). Deze pseudo-codes geven de plaats van verstrekking weer. Wordt ook gebruikt ikv diabeteseducatie via videoconsultatie tijdens COVID19-crisis. De betrekkelijke verstrekking wordt dan in dit element ingevuld.
 - **typebezoek (int) – **optioneel om mee te geven. Laat toe om presaties zoals** 424874** ( _wekelijkse voorbereiding van geneesmiddelen per os_) die zijn uitgevoerd in een locatie waar geen vergoeding voor bestaat (&#39;instelling/ hersteloord/praktijkkamer&#39;) toch tegen te houden
   - 1 - aan huis van de patiënt op weekdag
   - 2 - aan huis van de patiënt in weekend en op feestdagen
