@@ -47,7 +47,7 @@ p --> prof
 | 1.38	| Toevoeging: [facturatie wekelijks voorbereiding](#facturatie-424874-wekelijkse-voorbereiding-van-de-geneesmiddelen-per-os), [uitzondering dagelijks toilet bij een T2 profiel](#node-profielen) |
 | 1.39 |Fix- Verduidelijking oplijsting type bestemmeling op node uitgevoerdezorg (medisch huis = 5) |
 | 1.40 |Fix verduidelijking noodzaak derdebetalercode, -naam en -adres op node uitgevoerdezorg |
-| 1.41 | Toevoeging:[instructies diabeteseducatie via videoconsultatie tijdens COVID19-crisis](#COVID19-crisis-instructies) |
+| 1.41 | Toevoeging:[instructies diabeteseducatie via videoconsultatie tijdens COVID19-crisis](#covid19-crisis-instructies) |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er 1 xml bestand aangemaakt.
