@@ -340,7 +340,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **datumvoorschrift** (dateTime): De datum waarop de prestatie is voorgeschreven.
 - **rizivnummervoorschrijver** (string): De rizivnummer van de voorschrijvende geneesheer.
 - **naamvoorschrijver** (string): De naam van de voorschrijvende geneesheer.
-- **remgeld** (int): De verhoogde tegemoetkoming (als percentage). 0 is geen remgeld tellen, 100 is alles naar de patient.
+- **remgeld** (int): uitgedrukt als percentage van het persoonlijk aandeel dat wordt gevraagd, van 0 tem 100. 0 is geen remgeld tellen, 100 = het volledige persoonlijk aandeel wordt gevraagd.
 - **nomenclatuurnummer** (string): De nomenclatuurnummer van de prestatie.
 - **pseudocodenummer** (string): De pseudocode voor de nomenclatuur. Moet enkel ingevuld worden indien er geen nomenclatuurnummer bestaat (palliatieve zorgen en niet vergoedbare zorgen). Dan moet de nomenclatuurnummer 000000 zijn. Indien geen pseudocode veld opvullen met 000000. 
 - **kb90bedrag** (double): Het bedrag van de uitgevoerde zorg die valt onder het KB van 1990. Voor deze zorg bestaat geen nomenclatuurnummer en moet 426856 als pseudocodenummer hebben.
