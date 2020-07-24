@@ -10,18 +10,18 @@
     "docs:dev": "npx vuepress dev docs",
     "docs:build": "set VUEPRESS_BASE=/tdm3-docs/ && npx vuepress build docs",
     "docs:build:netlify": "npx vuepress build docs",
-    "dev": "set VUEPRESS_BASE=/tdm3-docs/ && npx vuepress dev docs", 
-    "dev:netlify": "vuepress dev docs", 
+    "dev": "set VUEPRESS_BASE=/tdm3-docs/ && npx vuepress dev docs",
+    "dev:netlify": "vuepress dev docs",
     "build": "vuepress build docs"
   },
   "dependencies": {
-    "vuepress-bar": "^0.2.1",
-    "vuepress-plugin-reading-progress": "^1.0.7",
+    "vuepress-bar": "^0.2.7",
+    "vuepress-plugin-reading-progress": "^1.0.10",
     "vuepress-theme-cool": "1.2.1"
   },
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.1.0",
-    "@vuepress/plugin-pwa": "^1.1.0"
+    "@vuepress/plugin-back-to-top": "^1.5.2",
+    "@vuepress/plugin-pwa": "^1.5.2"
   },
   "devComments": {
     "vuepress": "Install vuepress to test run plugins. According to https://github.com/vuejs/vuepress/issues/1608"
