@@ -49,7 +49,7 @@ p --> prof
 | 1.40 |Fix verduidelijking noodzaak derdebetalercode, -naam en -adres op node uitgevoerdezorg |
 | 1.41 | Toevoeging: [instructies diabeteseducatie via videoconsultatie tijdens COVID19-crisis](#covid19-crisis-instructies) |
 | 1.42 | Toevoeging: toevoeging 426576 bij pseudocodes die mag/moet meegegeven worden   |
-| 1.43 | Toevoeging: waarde A op element LezingIdentiteit voor typevanlezing en typevandrager, typevanlezing en typevandrager zijn veranderd van xs:int naar xs:string    |
+| 1.43 | Toevoeging: waarde A op element [LezingIdentiteit](#node-lezingidentiteit) voor typevanlezing en typevandrager, typevanlezing en typevandrager zijn veranderd van xs:int naar xs:string    |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er 1 xml bestand aangemaakt.
