@@ -49,6 +49,7 @@ p --> prof
 | 1.40 |Fix verduidelijking noodzaak derdebetalercode, -naam en -adres op node uitgevoerdezorg |
 | 1.41 | Toevoeging: [instructies diabeteseducatie via videoconsultatie tijdens COVID19-crisis](#covid19-crisis-instructies) |
 | 1.42 | Toevoeging: toevoeging 426576 bij pseudocodes die mag/moet meegegeven worden   |
+| 1.43 | Toevoeging: waarde A op element LezingIdentiteit voor typevanlezing en typevandrager, typevanlezing en typevandrager zijn veranderd van xs:int naar xs:string    |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er 1 xml bestand aangemaakt.
@@ -553,13 +554,14 @@ De volgende gegevens zijn vereist.
 * **bezoeknummer** (int): Nummer van het bezoek. Cfr node uitgevoerdezorg.
 * **datumlezingidentiteitsdocument** (dateTime): datum waarop het identiteitsdocument is ingelezen. Dit element moet steeds ingevuld worden, behalve indien “typevanlezingidentiteitsdocument” = 4 en redenmanueleinvoering = 3.
 *	**identificatiepatient** (string): de rijksregisternr, insz van de rechthebbende, cfr patientgegeven node.
-*	**typevanlezingidentiteitsdocument** (int): Mogelijke waardes
+*	**typevanlezingidentiteitsdocument** (string): Mogelijke waardes
       1. Lezing van de chipkaart
       2. Lezing van de streepjescode
       3. Lezing QR code
       4. Manuele invoering
         - Bij gebruik van deze waarde moet in “redenmanueleinvoering“ de reden vermeld worden.
-*	**typevandrageridentiteitsdocument** (int):
+     - A: Elektronische invoering (itsme®)
+*	**typevandrageridentiteitsdocument** (string):
       1. Belgische elektronische identiteitskaart (of Kids-id)
       2. Elektronische vreemdelingenkaart
       3. Kid-id kaart (*)
@@ -572,6 +574,7 @@ De volgende gegevens zijn vereist.
           - Bij gebruik van deze waarde, moet in element “redengebruikvignet” de reden vermeld worden.
       8. Attest van sociaal verzekerde
       9. Attest van verlies of diefstal van Belgische elektronische
+     - A: Elektronische invoering (itsme®)
 
 *	**redengebruikvignet** (int):
     -	Mogelijke waardes

@@ -8,7 +8,7 @@
 - [Demo app](http://launch.smarthealthit.org/ehr.html?app=https%3A%2F%2Ftdm3cvba.github.io%2Fbb-clear-smart-fhir%2Flaunch.html%3Flaunch%3DeyJhIjoiMSIsImYiOiIxIn0%26iss%3Dhttps%253A%252F%252Flaunch.smarthealthit.org%252Fv%252Fr4%252Ffhir&user=)
 
 ## Sequence
-<mermaid>
+<!-- <mermaid>
 sequenceDiagram
     participant ClientApp
     participant Doctar API
@@ -23,7 +23,9 @@ sequenceDiagram
         alt Forward user
         User->>Doctar Webclient: complete+confirm transaction
     end
-</mermaid>
+</mermaid> -->
+
+![Download](../schemas/doctar-sequence.jpg)
 
 1. ClientApp sends data to the API endpoint. 
 2. Server responds with a 201 Created and a collection of links
