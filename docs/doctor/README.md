@@ -25,8 +25,6 @@ sequenceDiagram
     end
 </mermaid> -->
 
-![Download](../schemas/doctar-sequence.jpg)
-
 1. ClientApp sends data to the API endpoint. 
 2. Server responds with a 201 Created and a collection of links
 3. ClientApp forwards user to the certificate_webflow link (absolute url)
