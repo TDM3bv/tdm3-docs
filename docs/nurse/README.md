@@ -188,10 +188,13 @@ Voorbeeld afscoring forfait/profiel van A naar T7
 ### Node Pakketgegevens
 Deze node is de overkoepelende node waaronder alle andere nodes verzameld staan.
 
-- Ze bevat eerst een aantal patientgegevens-nodes (zie 1.1)
-- dan een aantal uitgevoerdezorg-nodes (zie 1.2),
-- één tarificatiedienst-node (zie 1.3), één facturatieperiode-node (zie 1.4), 
-- één vereniging-node (zie 1.5) en uiteindelijk een aantal profielen-nodes (zie 1.7). 
+- Ze bevat een aantal patientgegevens-node
+- een aantal uitgevoerdezorg-nodes
+- één tarificatiedienst-node
+- één facturatieperiode-node
+- één vereniging-node
+- een aantal profielen-nodes
+- een aantal lezingidentiteit nodes
 De nodes moeten in opgegeven volgorde voorkomen!
 
 	```xml
@@ -226,6 +229,9 @@ De nodes moeten in opgegeven volgorde voorkomen!
 		<profielen>
 			…
 		</profielen>
+		<lezingidentiteit>
+		--
+		</lezingidentiteit>
 	</pakketgegevens>
 
 	```
