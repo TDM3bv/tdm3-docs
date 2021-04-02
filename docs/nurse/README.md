@@ -195,7 +195,6 @@ Deze node is de overkoepelende node waaronder alle andere nodes verzameld staan.
 - één vereniging-node
 - een aantal profielen-nodes
 - een aantal lezingidentiteit nodes
-De nodes moeten in opgegeven volgorde voorkomen!
 
 	```xml
 	<pakketgegevens>
