@@ -95,6 +95,7 @@
               <xs:element name="derdebetalercode" type="xs:string" minOccurs="0" />
               <xs:element name="derdebetalernaam" type="xs:string" minOccurs="0" />
               <xs:element name="derdebetaleradres" type="xs:string" minOccurs="0" />
+              <xs:element name="derdebetaleremail" type="xs:string" minOccurs="0" />
               <xs:element name="polisnummer" type="xs:string" minOccurs="0" />
               <xs:element name="dossiernummer" type="xs:string" minOccurs="0" />
               <xs:element name="datumongeval"  type="emptyDateTime" minOccurs="0" />

@@ -50,6 +50,7 @@ p --> prof
 | 1.41 | Toevoeging: [instructies diabeteseducatie via videoconsultatie tijdens COVID19-crisis](#covid19-crisis-instructies) |
 | 1.42 | Toevoeging: toevoeging 426576 bij pseudocodes die mag/moet meegegeven worden   |
 | 1.43 | Toevoeging: waarde A op element [LezingIdentiteit](#node-lezingidentiteit) voor typevanlezing en typevandrager, typevanlezing en typevandrager zijn veranderd van xs:int naar xs:string    |
+| 1.44 | Toevoeging: element derdebetaleremail op node uitgevoerdezorg    |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
@@ -364,6 +365,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **derdebetalercode** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). Voor patiëntfacturen staat hier de patientnummer(dit mag een interne id zijn, eigen nummering,…), voor andere staat hierin de id van de verzekering in het versturende systeem. Dit veld mag maximum 10 posities lang zijn.
 - **derdebetalernaam** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). Voor patiëntfacturen staat hier de naam van de patiënt, voor andere staat hier de naam van de verzekeringsinstelling.
 - **derdebetaleradres** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering medisch huis, ocmw, etc). Voor patiëntfacturen staat hier het adres van de patiënt, voor andere staat hier het adres van de verzekeringsinstelling.
+- **derdebetaleremail** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering medisch huis, ocmw, etc). Indien gewenst door de derde of de patiënt, kan hier het email adres meegegeven worden waarnaar de factuur verstuurd moet worden.
 - **polisnummer** (string): In geval van een arbeidsongeval staat hier het polisnummer.
 - **dossiernummer** (string): In geval van arbeidsongeval staat hier het dossiernummer.
 - **datumongeval** (dateTime): In geval van een arbeidsongeval staat hier de datum van het ongeval.
