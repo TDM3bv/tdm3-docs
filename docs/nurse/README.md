@@ -317,7 +317,7 @@ worden, zoals het verzorgingsadres.
 
 #### element adres op Node patientgegeven
 Standaard wordt het domicilie adres (officieel) meegegeven op patientgegeven niveau, de patiëntfactuur wordt dan naar dit adres verstuurd. 
-Wanneer het verzoringsadres verschilt van het domicilie adres, dan kan dit verzoringsadres meegegeven worden via het element adressen, naar bovenstaand voorbeeld.
+Wanneer het verzoringsadres verschilt van het domicilie adres, dan kan dit verzoringsadres meegegeven worden via het element adressen, naar onderstaand voorbeeld.
 Het element adressen kan een lijst van 1 of meerdere adressen bevatten.
 Elk adres heeft volgende eigenschappen
 - **type** (AdresType) : string enumeratie van volgende waarden: Verzoring, Domicilie
