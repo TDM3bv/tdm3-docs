@@ -51,6 +51,7 @@ p --> prof
 | 1.42 | Toevoeging: toevoeging 426576 bij pseudocodes die mag/moet meegegeven worden   |
 | 1.43 | Toevoeging: waarde A op element [LezingIdentiteit](#node-lezingidentiteit) voor typevanlezing en typevandrager, typevanlezing en typevandrager zijn veranderd van xs:int naar xs:string    |
 | 1.44 | Toevoeging: element derdebetaleremail op node uitgevoerdezorg    |
+| 1.45 | Toevoeging: [element adressen op node patientgegeven, verduidelijking](#element-adres-op-node-patientgegeven)    |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
@@ -265,11 +266,11 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 - **voornaam** (string): De voornaam van de patiënt.
 - **geslacht** (string): Het geslacht van de patiënt (mogelijke waardes: M, V).
 - **geboortedatum** (dateTime): De geboortedatum van de patiënt.
-- **straat** (string): De straat van de patiënt.
-- **huisnummer** (string): De huisnummer van de patiënt. (kan maximum 10 karakters bevatten).
-- **postcode** (string): De postcode van de patiënt.
-- **gemeente** (string): De gemeente van de patiënt.
-- **landcode** (string): De landcode van de patiënt (ISO)
+- **straat** (string): De straat van de patiënt. (domicilie adres)
+- **huisnummer** (string): De huisnummer van de patiënt. (kan maximum 10 karakters bevatten).  (domicilie adres)
+- **postcode** (string): De postcode van de patiënt.  (domicilie adres)
+- **gemeente** (string): De gemeente van de patiënt.  (domicilie adres)
+- **landcode** (string): De landcode van de patiënt (ISO)  (domicilie adres)
 - **ziekenfondscode** (string): Het ziekenfonds waar de patiënt is aangesloten.
 - **stamnummer**(string): Enkel voor buitenlanders en boorlingen,**voor alle andere  gevallen moet men het rijksregisternummer gebruiken.** Bij facturatie van zorgen buiten het ZIV (verzekering, ocmw, patient) en het rijksregisternummer of stamnummer is niet gekend, kan in dit veld een unieke identificatienummer meegegeven worden.
 - **risicocode1** (string): De risicocode 1 van de patiënt.
@@ -296,8 +297,8 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
   - indien patient, hier het insz nummer van de patient herhalen, indien bewindvoerder, de insz van de bewindvoerder plaatsen.
 - **identificatietypebestemmelingbewijsstuk** (int)
   - type identificatie eigenaar eBox, 1 = INSS , 2 = NIHII, 3 = CBE (organization)
-- **metadata**(type metadata, optioneel element)**:** een &quot;key-value&quot; pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven, die niet direct te maken heeft met de tarificatie van prestaties.
 
+- **metadata**(type metadata, optioneel element)**:** een &quot;key-value&quot; pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven, die niet direct te maken heeft met de tarificatie van prestaties.
 		Voorbeeld metadata item
 	```xml
 			<metadata>
@@ -311,8 +312,46 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 			</item>
 			</metadata>
 	```
+- **adressen**  (type collection adres, optioneel element). Standaard wordt het domicilie adres (officieel) meegegeven. Via het element adressen kunnen ook andere adressen meegeven
+worden, zoals het verzorgingsadres. 
 
-Voorbeeld patientgegeven
+#### element adres op Node patientgegeven
+Standaard wordt het domicilie adres (officieel) meegegeven op patientgegeven niveau, de patiëntfactuur wordt dan naar dit adres verstuurd. 
+Wanneer het verzoringsadres verschilt van het domicilie adres, dan kan dit verzoringsadres meegegeven worden via het element adressen, naar bovenstaand voorbeeld.
+
+Voorbeeld adressen
+	
+```xml
+		<patientgegevens>
+				<patientgegevens_id>…</patientgegevens_id>
+				<externeid>…</externeid>
+				<naam>…</naam>
+				<voornaam>…</voornaam>
+				<geslacht>…</geslacht>
+				<geboortedatum>…</geboortedatum>
+				<straat>Stationstraat</straat>
+				<huisnummer>15</huisnummer>
+				<postcode>9300</postcode>
+				<gemeente>Aalst</gemeente>
+				<landcode>…</landcode>
+				<ziekenfondscode>…</ziekenfondscode>
+				<adressen>
+					<adres>
+						<type>Verzorging</type>
+						<straat>Drie Sleutelstraat</straat>
+						<huisnummer>74</huisnummer>
+						<postcode>9300</postcode>
+						<gemeente>Aalst</gemeente>
+						<landcode>BE</landcode>
+						<ruraal>false</ruraal>
+						<email>example@email.be</email>
+					</adres>
+				</adressen>
+		</patientgegevens>
+```
+
+#### voorbeeld patientgegeven
+
 ```xml
 	<patientgegevens>
 		<patientgegevens_id>…</patientgegevens_id>
@@ -333,6 +372,9 @@ Voorbeeld patientgegeven
 		<ruraal>…</ruraal>
 		<startdatumpal>…</startdatumpal>
 		<rijksregisternummer>…</rijksregisternummer>
+		<adressen>
+			<adres>...</adres>
+		</adressen>
 	</patientgegevens>
 ```
 

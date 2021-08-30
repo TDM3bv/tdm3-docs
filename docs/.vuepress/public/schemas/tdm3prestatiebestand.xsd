@@ -12,6 +12,23 @@
       <xs:element name="waarde" type="xs:string" minOccurs="1" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="adres">
+    <xs:sequence>
+      <xs:element name="type" type="AdresType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="straat" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="huisnummer" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="postcode" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="gemeente" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="landcode" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ruraal" type="xs:boolean" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AdresType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Verzorging" />
+      <xs:enumeration value="Domicilie" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:element name="pakketgegevens" >
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -65,7 +82,7 @@
               <xs:element name="identificatietypebestemmelingbewijsstuk" type="xs:int" minOccurs="0" />
               <xs:element name="taalcodebewijsstuk " type="xs:string" minOccurs="0" />
               <xs:element name="metadata" type="metadata" minOccurs="0" />
-
+              <xs:element name="addressen" type="adres" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
