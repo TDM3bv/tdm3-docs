@@ -316,11 +316,11 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 worden, zoals het verzorgingsadres. 
 
 #### element adres op Node patientgegeven
-Standaard wordt het domicilie adres (officieel) meegegeven op patientgegeven niveau, de patiëntfactuur wordt dan naar dit adres verstuurd. 
+Standaard wordt het domicilie adres (officieel) meegegeven op patiëntgegeven niveau, de patiëntfactuur wordt dan naar dit adres verstuurd. 
 Wanneer het verzoringsadres verschilt van het domicilie adres, dan kan dit verzoringsadres meegegeven worden via het element adressen, naar onderstaand voorbeeld.
 Het element adressen kan een lijst van 1 of meerdere adressen bevatten.
 Elk adres heeft volgende eigenschappen
-- **type** (AdresType) : string enumeratie van volgende waarden: Verzoring, Domicilie
+- **type** (AdresType) : string enumeratie beperkt tot volgende waarden: Verzoring, Domicilie
 - **straat** (string): De straat van de patiënt voor dit type adres.
 - **huisnummer** (string): De huisnummer van de patiënt voor dit type adres. (kan maximum 10 karakters bevatten).
 - **postcode** (string): De postcode van de patiënt voor dit type adres.
