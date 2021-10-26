@@ -41,7 +41,7 @@ p --> prof
 | 1.43 | Toevoeging: waarde A op element [LezingIdentiteit](#node-lezingidentiteit) voor typevanlezing en typevandrager, typevanlezing en typevandrager zijn veranderd van xs:int naar xs:string    |
 | 1.44 | Toevoeging: element derdebetaleremail op node uitgevoerdezorg    |
 | 1.45 | Toevoeging: [element adressen op node patientgegeven, verduidelijking](#element-adres-op-node-patientgegeven)    |
-| 1.46 | [Verduidelijking samenvoegingen TDM3](#samenvoegen-van-verstrekkingen-binnen-éénzelfde-bezoek) |
+| 1.46 | [Verduidelijking samenvoegingen TDM3](#samenvoegen-van-verstrekkingen-binnen-eenzelfde-bezoek) |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
