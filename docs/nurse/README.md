@@ -33,17 +33,6 @@ p --> prof
 
 | Versie | Omschrijving                                                                                                                                                               |
 |--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.11   | Bijkomende uitleg: algemene opmerkingen                                                                                                                                    |
-| 1.12   | Toevoeging: waarde type facturering = 5 Toevoeging van locatie element op uitgevoerdezorg                                                                               |
-| 1.20   | Toevoeging: voor bewijsstuk aan de patiënt: keuze kanaal, keuze adres                                                                                                     |
-| 1.30   | Toevoeging: node “lezingenidentiteit”                                                                                                                                   |
-| 1.31   | Toevoeging: type “metadata” en “metadataitem” Toevoeging: optionele node “metadata” op node patientgegeven Toevoeging van typebezoek element op node uitgevoerdezorg |
-| 1.32   | Toevoeging: element “taalcodebewijsstuk”                                                                                                                                    |
-| 1.33   | Toevoeging: element kb90omschrijving                                                                                                                                        |
-| 1.34   | Toevoeging: element zorgminuten op node uitgevoerdezorg                                                                                                                     |
-| 1.35   | Verduidelijking doorgeven afscoring forfait                                                                                                                                |
-| 1.36   | Toevoeging: waarde eBox (3) bij kanaalbewijsstuk op node patientgegeven Verduidelijking startdatum profiel/akkoord vs palliatief akkoord                                    |
-| 1.37   | Toevoeging: element identificatiebestemmelingbewijsstuk op node patientgegeven Toevoeging element identificatietypebestemmelingbewijsstuk op node patientgegeven            |
 | 1.38	| Toevoeging: [facturatie wekelijks voorbereiding](#facturatie-424874-wekelijkse-voorbereiding-van-de-geneesmiddelen-per-os), [uitzondering dagelijks toilet bij een T2 profiel](#node-profielen) |
 | 1.39 |Fix- Verduidelijking oplijsting type bestemmeling op node uitgevoerdezorg (medisch huis = 5) |
 | 1.40 |Fix verduidelijking noodzaak derdebetalercode, -naam en -adres op node uitgevoerdezorg |
@@ -52,6 +41,7 @@ p --> prof
 | 1.43 | Toevoeging: waarde A op element [LezingIdentiteit](#node-lezingidentiteit) voor typevanlezing en typevandrager, typevanlezing en typevandrager zijn veranderd van xs:int naar xs:string    |
 | 1.44 | Toevoeging: element derdebetaleremail op node uitgevoerdezorg    |
 | 1.45 | Toevoeging: [element adressen op node patientgegeven, verduidelijking](#element-adres-op-node-patientgegeven)    |
+| 1.46 | [Verduidelijking samenvoegingen TDM3](#samenvoegen-van-verstrekkingen-binnen-éénzelfde-bezoek) |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
@@ -61,7 +51,7 @@ Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er norm
 De uitgevoerde zorgen (als nomenclatuurode) worden doorgegeven in het xml bestand. 
 TDM3 voegt zelf onderstaande zaken toe ikv tarificatie.
 -	Basisverstrekkingen (eerste, tweede,derde)
--	Forfait A, B, C, PA, PB, PC, PP
+-	Forfait A, B, C, PA, PB, PC, PP op basis van het doorgegeven profiel
 	-   De nomenclatuurcodes ikv zorgen worden dan vervangen door pseudocodes
 -	Supplementair forfait: PN
 -	Opvolgingshonorarium diabetes (op basis van waarde “insuline= true” op node uitgevoerde zorg)
@@ -77,10 +67,14 @@ Pseudocodes die een bijkomende noodzakelijke registratie betekenen en dus op zic
 
 Bijvoorbeeld: 
 
-- 426510:  	Thuiszorgen verpleegkunde, palliatieve patiënten : pseudocode te vermelden voor elk dringend bezoek overdag dat tijdens de verzorgingsdag is verleend voor              het forfait PA (427055 en 427136), voor het forfait PB (427033 en 427114), voor het forfait PC (427011 en 427092), voor het forfait PP (427173 en 427195)               en voor het forfait PN (427070 en 427151)
-- 426893: 	Thuiszorgen verpleegkunde, palliatieve patiënten : pseudocode te vermelden voor elk overlegvergadering met de huisarts dat tijdens de verzorgingsdag is                 verleend voor het forfait PA (427055 en 427136), voor het forfait PB (427033 en 427114), voor het forfait PC (427011 en 427092), voor het forfait PP                    (427173 en 427195) en voor het forfait PN (427070 en 427151)
-- 426576: Thuiszorgen verpleegkunde : pseudocode te vermelden voor elke voorbereiding medicatie dat tijdens de verzorgingsdag is verleend voor : a) niet-palliatieve patiënten : het forfait A (425272, 425670, 426075 en 429096), voor het forfait B (425294, 425692, 426090 en 429111) en voor het forfait C (425316, 425714, 426112 en 429133); b) palliatieve patiënten : het forfait PA (427055 en 427136), voor het forfait PB (427033 en 427114), voor het forfait PC (427011 en 427092) en voor het forfait PP (427173
+- **426510**:  	Thuiszorgen verpleegkunde, palliatieve patiënten : pseudocode te vermelden voor elk dringend bezoek overdag dat tijdens de verzorgingsdag is verleend voor              het forfait PA (427055 en 427136), voor het forfait PB (427033 en 427114), voor het forfait PC (427011 en 427092), voor het forfait PP (427173 en 427195)               en voor het forfait PN (427070 en 427151)
+- **426893**: 	Thuiszorgen verpleegkunde, palliatieve patiënten : pseudocode te vermelden voor elk overlegvergadering met de huisarts dat tijdens de verzorgingsdag is                 verleend voor het forfait PA (427055 en 427136), voor het forfait PB (427033 en 427114), voor het forfait PC (427011 en 427092), voor het forfait PP                    (427173 en 427195) en voor het forfait PN (427070 en 427151)
+- **426576**: Thuiszorgen verpleegkunde : pseudocode te vermelden voor elke voorbereiding medicatie dat tijdens de verzorgingsdag is verleend voor : a) niet-palliatieve patiënten : het forfait A (425272, 425670, 426075 en 429096), voor het forfait B (425294, 425692, 426090 en 429111) en voor het forfait C (425316, 425714, 426112 en 429133); b) palliatieve patiënten : het forfait PA (427055 en 427136), voor het forfait PB (427033 en 427114), voor het forfait PC (427011 en 427092) en voor het forfait PP (427173
+	- Indien de prestatie code **424874** meekomt, zal deze sowieso vervangen worden door de pseudocode **426576** wanneer het een forfait factuur betreft
 
+### samenvoegen van verstrekkingen binnen éénzelfde bezoek
+- wanneer er meer dan 1x een *eenvoudige wondzorg* (vb. 424336) wordt doorgegeven via de xml, zal TDM3 dit vervangen door 1x prestatiecode *complexe wondzorg* (vb. 424351).
+- wanneer er meer dan 1x *"Toedienen geneesmiddelen (IM, SC, HD)"* (vb 423076) wordt doorgegeven via de xml, zal TDM3 dit vervangen door 1x *"Toedienen geneesmiddelen (IM, SC, HD, IV) in verschillende injectieplaatsen"* (vb. 424351)
 
 ### Remgeld
 
