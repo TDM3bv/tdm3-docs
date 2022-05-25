@@ -42,6 +42,7 @@ p --> prof
 | 1.44 | Toevoeging: element derdebetaleremail op node uitgevoerdezorg    |
 | 1.45 | Toevoeging: [element adressen op node patientgegeven, verduidelijking](#element-adres-op-node-patientgegeven)    |
 | 1.46 | [Verduidelijking samenvoegingen TDM3](#samenvoegen-van-verstrekkingen-binnen-eenzelfde-bezoek) |
+| 1.47 | [Toevoeging Btw Percentage + specificatie Btw berekening + uitleg KB90 bedrag](#node-uitgevoerdezorg) |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
@@ -400,6 +401,8 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **nomenclatuurnummer** (string): De nomenclatuurnummer van de prestatie.
 - **pseudocodenummer** (string): De pseudocode voor de nomenclatuur. Moet enkel ingevuld worden indien er geen nomenclatuurnummer bestaat (palliatieve zorgen en niet vergoedbare zorgen). Dan moet de nomenclatuurnummer 000000 zijn. Indien geen pseudocode veld opvullen met 000000. 
 - **kb90bedrag** (double): Het bedrag van de uitgevoerde zorg die valt onder het KB van 1990. Voor deze zorg bestaat geen nomenclatuurnummer en moet 426856 als pseudocodenummer hebben.
+- **BtwPercentage** (int): Indien er voor de prestatie btw moet aangerekend worden, dient hier gespecifieerd te worden hoeveel het btw percentage is: 0, 6 of 21
+- **BedragInclusiefBtw** (boolean): Hiermee kan gespecifeerd worden hoe de btw berekening dient te gebeuren. Indien het kb90bedrag of de tariefberekening voor de nomenclatuurcode inclusief 21% btw is, dan moet waarde Ja (Boolean True) meegegeven worden. Indien TDM3 zelf btw bedrag dient te berekenen op het kb90 bedrag of het door TDM3 getarifieerde bedrag, dan moet hier waarde Nee (Boolean False) meegeven worden.
 - **kb90omschrijving:** een vrije omschrijving van de zorg die gefactureerd wordt onder de kb90 nomenclatuur.
   - Deze omschrijving zal verschijnen op het bewijsstuk naar de patiënt en op de factuur naar de patiënt of de verzekering
 - **ziekenfondscode** (string): Het ziekenfonds van de patiënt.
