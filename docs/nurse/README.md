@@ -183,9 +183,8 @@ Voorbeeld afscoring forfait/profiel van A naar T7
 	```
 ### Hervorming wondzorg nomenclatuur 2022
 De hervorming van de wondzorg nomenclatuur vereist op technisch vlak geen aanpassing van het xml-schema of nieuwe principes.
-Let op: wanneer er een **bijkomend honorarium complexe wondzorg** wordt doorgegeven in het xml-bestand, dient **datumvoorschrift** element ingevuld te worden met de datum van de kennisgeving, cfr de facturatie instructies (geldigheidstermijn, enz), andere kennisgevingen of een toilet-aanvraag
+Let op: wanneer er een **bijkomend honorarium complexe wondzorg** wordt doorgegeven in het xml-bestand, dient **datumvoorschrift** element ingevuld te worden met de datum van de kennisgeving, cfr de facturatie instructies (geldigheidstermijn, enz), andere kennisgevingen of een toilet-aanvraag.
 
-        Voorbeeld
 
 		```xml
 		<uitgevoerdezorg>
