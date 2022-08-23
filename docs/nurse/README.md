@@ -43,7 +43,7 @@ p --> prof
 | 1.45 | Toevoeging: [element adressen op node patientgegeven, verduidelijking](#element-adres-op-node-patientgegeven)    |
 | 1.46 | [Verduidelijking samenvoegingen TDM3](#samenvoegen-van-verstrekkingen-binnen-eenzelfde-bezoek) |
 | 1.47 | [Toevoeging Btw Percentage + specificatie Btw berekening + uitleg KB90 bedrag](#node-uitgevoerdezorg) |
-| 1.48 | Verduidelijking [Hervorming wondzorg nomenclatuur](#Hervorming-wondzorg-nomenclatuur-2022) |
+| 1.48 | Verduidelijking [Hervorming wondzorg nomenclatuur](#hervorming-wondzorg-nomenclatuur-2022) |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
