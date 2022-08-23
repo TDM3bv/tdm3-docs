@@ -17,11 +17,13 @@
   "dependencies": {
     "vuepress-bar": "^0.2.7",
     "vuepress-plugin-reading-progress": "^1.0.10",
-    "vuepress-theme-cool": "1.2.1"
+    "vuepress-theme-cool": "1.2.1",
+    "vue-template-compiler": "^2.0.0"    
   },
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.5.2",
-    "@vuepress/plugin-pwa": "^1.5.2"
+    "@vuepress/plugin-pwa": "^1.5.2",
+    "vue-template-compiler": "^2.0.0"
   },
   "devComments": {
     "vuepress": "Install vuepress to test run plugins. According to https://github.com/vuejs/vuepress/issues/1608"
