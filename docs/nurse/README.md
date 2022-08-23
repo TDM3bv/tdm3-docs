@@ -43,6 +43,7 @@ p --> prof
 | 1.45 | Toevoeging: [element adressen op node patientgegeven, verduidelijking](#element-adres-op-node-patientgegeven)    |
 | 1.46 | [Verduidelijking samenvoegingen TDM3](#samenvoegen-van-verstrekkingen-binnen-eenzelfde-bezoek) |
 | 1.47 | [Toevoeging Btw Percentage + specificatie Btw berekening + uitleg KB90 bedrag](#node-uitgevoerdezorg) |
+| 1.48 | Verduidelijking [Hervorming wondzorg nomenclatuur](#Hervorming-wondzorg-nomenclatuur-2022) |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
@@ -180,6 +181,41 @@ Voorbeeld afscoring forfait/profiel van A naar T7
 	         ...andere elementen...
 		</uitgevoerdezorg>
 	```
+### Hervorming wondzorg nomenclatuur 2022
+De hervorming van de wondzorg nomenclatuur vereist op technisch vlak geen aanpassing van het xml-schema of nieuwe principes.
+Let op: wanneer er een **bijkomend honorarium complexe wondzorg** wordt doorgegeven in het xml-bestand, dient **datumvoorschrift** element ingevuld te worden met de datum van de kennisgeving, cfr de facturatie instructies (geldigheidstermijn, enz), andere kennisgevingen of een toilet-aanvraag
+
+        Voorbeeld
+
+		```xml
+		<uitgevoerdezorg>
+			<input_uitgevoerdezorg_id>32145345</input_uitgevoerdezorg_id>
+			<externeid>6454</externeid>
+			<datumuitvoering>2022-12-28T10:08:00</datumuitvoering>
+			<datumvoorschrift>2022-12-10T00:00:00</datumvoorschrift>
+			<rizivnummervoorschrijver/>
+			<naamvoorschrijver/>
+			<remgeld>0</remgeld>
+			<nomenclatuurnummer>429295</nomenclatuurnummer>
+			<pseudocodenummer>000000</pseudocodenummer>
+			<kb90bedrag />
+			<rizivnummerverpleegkundige>146611468408</rizivnummerverpleegkundige>
+			<ziekenfondscode>120</ziekenfondscode>
+			<patientgegevens_id>45</patientgegevens_id>
+			<bezoeknummer>1</bezoeknummer>
+			<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+			<insuline>false</insuline>
+			<derdebetalercode />
+			<derdebetalernaam />
+			<derdebetaleradres />
+			<polisnummer />
+			<dossiernummer />
+			<datumongeval />
+			<werkgever />
+			<TypeFacturering>0</TypeFacturering>
+		</uitgevoerdezorg>
+		```
+
 
 ## XML Nodes
 ### Node Pakketgegevens
