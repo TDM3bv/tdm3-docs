@@ -181,27 +181,26 @@ Voorbeeld afscoring forfait/profiel van A naar T7
 	         ...andere elementen...
 		</uitgevoerdezorg>
 	```
-### Hervorming wondzorg nomenclatuur 2022
+### Hervorming wondzorg nomenclatuur decemberr 2022
 De hervorming van de wondzorg nomenclatuur vereist op technisch vlak geen aanpassing van het xml-schema of nieuwe principes.
-De wondzorgen, complexe wondzorggen zorgen, en eventueel bijkomende honorarium complexe wondzorg mogen en moeten meegegeven worden in het xml-prestatiebestand volgens standaard principes.
-TDM3 zal bij de verwerking de nodige controles doen.
+De wondzorgen, complexe wondzorgen, en eventueel bijkomende honorarium complexe wondzorg mogen en moeten meegegeven worden in het xml-prestatiebestand volgens de reeds gekende principes.
+TDM3 zal bij de verwerking tevens de nodige controles doen.
 
 
 
-		```xml
+	```xml
 		<uitgevoerdezorg>
-			<input_uitgevoerdezorg_id>32145345</input_uitgevoerdezorg_id>
+			<input_uitgevoerdezorg_id>32145344</input_uitgevoerdezorg_id>
 			<externeid>6454</externeid>
-			<datumuitvoering>2022-12-28T10:08:00</datumuitvoering>
+			<datumuitvoering>2022-12-28T09:08:00</datumuitvoering>
 			<datumvoorschrift/>
 			<rizivnummervoorschrijver/>
 			<naamvoorschrijver/>
 			<remgeld>0</remgeld>
-			<nomenclatuurnummer>429295</nomenclatuurnummer>
+			<nomenclatuurnummer>424351</nomenclatuurnummer>
 			<pseudocodenummer>000000</pseudocodenummer>
 			<kb90bedrag />
-			<rizivnummerverpleegkundige>146611468408</rizivnummerverpleegkundige>
-			<ziekenfondscode>120</ziekenfondscode>
+			<rizivnummerverpleegkundige>146611468408</rizivnummerverpleegkundige>		
 			<patientgegevens_id>45</patientgegevens_id>
 			<bezoeknummer>1</bezoeknummer>
 			<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
@@ -215,7 +214,32 @@ TDM3 zal bij de verwerking de nodige controles doen.
 			<werkgever />
 			<TypeFacturering>0</TypeFacturering>
 		</uitgevoerdezorg>
-		```
+		<uitgevoerdezorg>
+			<input_uitgevoerdezorg_id>32145345</input_uitgevoerdezorg_id>
+			<externeid>6454</externeid>
+			<datumuitvoering>2022-12-28T09:08:00</datumuitvoering>
+			<datumvoorschrift/>
+			<rizivnummervoorschrijver/>
+			<naamvoorschrijver/>
+			<remgeld>0</remgeld>
+			<nomenclatuurnummer>429295</nomenclatuurnummer>
+			<pseudocodenummer>000000</pseudocodenummer>
+			<kb90bedrag />
+			<rizivnummerverpleegkundige>146611468408</rizivnummerverpleegkundige>
+			<patientgegevens_id>45</patientgegevens_id>
+			<bezoeknummer>1</bezoeknummer>
+			<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+			<insuline>false</insuline>
+			<derdebetalercode />
+			<derdebetalernaam />
+			<derdebetaleradres />
+			<polisnummer />
+			<dossiernummer />
+			<datumongeval />
+			<werkgever />
+			<TypeFacturering>0</TypeFacturering>
+		</uitgevoerdezorg>
+	```
 
 
 ## XML Nodes
