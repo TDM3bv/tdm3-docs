@@ -43,7 +43,7 @@ p --> prof
 | 1.45 | Toevoeging: [element adressen op node patientgegeven, verduidelijking](#element-adres-op-node-patientgegeven)    |
 | 1.46 | [Verduidelijking samenvoegingen TDM3](#samenvoegen-van-verstrekkingen-binnen-eenzelfde-bezoek) |
 | 1.47 | [Toevoeging Btw Percentage + specificatie Btw berekening + uitleg KB90 bedrag](#node-uitgevoerdezorg) |
-| 1.48 | Verduidelijking [Hervorming wondzorg nomenclatuur](#hervorming-wondzorg-nomenclatuur-2022) |
+| 1.48 | Verduidelijking [Hervorming wondzorg nomenclatuur](#hervorming-wondzorg-nomenclatuur-december-2022) |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
@@ -181,7 +181,7 @@ Voorbeeld afscoring forfait/profiel van A naar T7
 	         ...andere elementen...
 		</uitgevoerdezorg>
 	```
-### Hervorming wondzorg nomenclatuur decemberr 2022
+### Hervorming wondzorg nomenclatuur december 2022
 De hervorming van de wondzorg nomenclatuur vereist op technisch vlak geen aanpassing van het xml-schema of nieuwe principes.
 De wondzorgen, complexe wondzorgen, en eventueel bijkomende honorarium complexe wondzorg mogen en moeten meegegeven worden in het xml-prestatiebestand volgens de reeds gekende principes.
 TDM3 zal bij de verwerking tevens de nodige controles doen.
