@@ -665,10 +665,12 @@ De volgende gegevens zijn vereist.
 * **patientgegevens_id** (int): De unieke nummer van de patiënt binnen dit bestand. Cfr de uitgevoerdezorg node 
 * **redenmanueleinvoering** (int):
     * Mogelijke waardes
-    1.  Niet van toepassing
+    1. Niet van toepassing
     2. Gebruik identiteitsdocument zonder chip
     3. Onbeschikbaarheid kaartlezer
-    4. Panne informaticasysteem 
+    4. Uitgestelde verificatie zonder panne, omdat de patiënt geen geldig identiteitsdocument kon voorleggen 
+	5. Uitgestelde verificatie zonder panne, omdat vergeten werd om het identiteitsdocument in te lezen
+	6. Gebrek aan interconnectiviteit tussen software
 * **datumuitvoering** (dateTime): de datum van het bezoek, cfr datumuitvoering veld in uitgevoerdezorg node
 * **bezoeknummer** (int): Nummer van het bezoek. Cfr node uitgevoerdezorg.
 * **datumlezingidentiteitsdocument** (dateTime): datum waarop het identiteitsdocument is ingelezen. Dit element moet steeds ingevuld worden, behalve indien “typevanlezingidentiteitsdocument” = 4 en redenmanueleinvoering = 3.
