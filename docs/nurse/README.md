@@ -13,6 +13,7 @@ node tar as "tarificatiedienst"
 node pr as "prijsberekening"
 node ver as "vereniging"
 node prof as "profielen"
+node wz as "kennisgevingwondzorg"
 node fac as "facturatieperiode"
 
 p --> s
@@ -24,7 +25,7 @@ p --> fac
 p --> pr
 p --> ver
 p --> prof
-
+p --> wz
 @enduml
 !!!
 
@@ -43,7 +44,7 @@ p --> prof
 | 1.45 | Toevoeging: [element adressen op node patientgegeven, verduidelijking](#element-adres-op-node-patientgegeven)    |
 | 1.46 | [Verduidelijking samenvoegingen TDM3](#samenvoegen-van-verstrekkingen-binnen-eenzelfde-bezoek) |
 | 1.47 | [Toevoeging Btw Percentage + specificatie Btw berekening + uitleg KB90 bedrag](#node-uitgevoerdezorg) |
-| 1.48 | Verduidelijking [Hervorming wondzorg nomenclatuur](#hervorming-wondzorg-nomenclatuur-december-2022) |
+| 1.48 | Toevoeging [node kennisgevingwondzorg](#node-kennsigevingwondzorg) en Verduidelijking [Hervorming wondzorg nomenclatuur](#hervorming-wondzorg-nomenclatuur-december-2022) |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
@@ -182,17 +183,27 @@ Voorbeeld afscoring forfait/profiel van A naar T7
 		</uitgevoerdezorg>
 	```
 ### Hervorming wondzorg nomenclatuur december 2022
-De hervorming van de wondzorg nomenclatuur vereist op technisch vlak geen aanpassing van het xml-schema of nieuwe principes.
-De wondzorgen, complexe wondzorgen, en eventueel bijkomende honorarium complexe wondzorg mogen en moeten meegegeven worden in het xml-prestatiebestand volgens de reeds gekende principes.
-TDM3 zal bij de verwerking tevens de nodige controles doen.
+De hervorming van de wondzorg nomenclatuur vereist enkele aanpassingen.
+	- Een kennisgevingwondzorg node
+	- de zorgduur van de complexe wondzorg bij uitgevoerdezorg node via uitgevoerdezorg.zorgminuten
 
-
+Op basis de zorgduurte van de complexe wondzorgen die dag en de aanwezige kennisgevingwondzorg, zal tdm3 voor een specifieke dag het correcte bijkomend honorarium complexe wondzorg factureren
+Indien het pakket rechtstreeks de nomenclatuur voor bijkomend honorarium complexe wondzorg meegeeft via de node uitgevoerde zorg, dan zal tdm3 dit niet dubbel toevoegen.
 
 	```xml
+		<kennisgevingwondzorg>
+				<externeid>198</externeid>
+				<patientgegevens_id>45</patientgegevens_id>
+				<identificatiepatient>20123112345</identificatiepatient>
+				<startdatum>2022-12-05T00:00:00</startdatum>
+				<einddatum>2023-03-05T00:00:00</einddatum>		
+				<typecomplexewondzorg>3</typecomplexewondzorg>
+		</kennisgevingwondzorg>
 		<uitgevoerdezorg>
 			<input_uitgevoerdezorg_id>32145344</input_uitgevoerdezorg_id>
 			<externeid>6454</externeid>
 			<datumuitvoering>2022-12-28T09:08:00</datumuitvoering>
+			<zorgminuten>45</zorgminuten>
 			<datumvoorschrift/>
 			<rizivnummervoorschrijver/>
 			<naamvoorschrijver/>
@@ -201,31 +212,6 @@ TDM3 zal bij de verwerking tevens de nodige controles doen.
 			<pseudocodenummer>000000</pseudocodenummer>
 			<kb90bedrag />
 			<rizivnummerverpleegkundige>146611468408</rizivnummerverpleegkundige>		
-			<patientgegevens_id>45</patientgegevens_id>
-			<bezoeknummer>1</bezoeknummer>
-			<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
-			<insuline>false</insuline>
-			<derdebetalercode />
-			<derdebetalernaam />
-			<derdebetaleradres />
-			<polisnummer />
-			<dossiernummer />
-			<datumongeval />
-			<werkgever />
-			<TypeFacturering>0</TypeFacturering>
-		</uitgevoerdezorg>
-		<uitgevoerdezorg>
-			<input_uitgevoerdezorg_id>32145345</input_uitgevoerdezorg_id>
-			<externeid>6454</externeid>
-			<datumuitvoering>2022-12-28T09:08:00</datumuitvoering>
-			<datumvoorschrift/>
-			<rizivnummervoorschrijver/>
-			<naamvoorschrijver/>
-			<remgeld>0</remgeld>
-			<nomenclatuurnummer>429295</nomenclatuurnummer>
-			<pseudocodenummer>000000</pseudocodenummer>
-			<kb90bedrag />
-			<rizivnummerverpleegkundige>146611468408</rizivnummerverpleegkundige>
 			<patientgegevens_id>45</patientgegevens_id>
 			<bezoeknummer>1</bezoeknummer>
 			<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
@@ -253,6 +239,7 @@ Deze node is de overkoepelende node waaronder alle andere nodes verzameld staan.
 - één vereniging-node
 - een aantal profielen-nodes
 - een aantal lezingidentiteit nodes
+- een aantal kennisgevingwondzorg nodes
 
 	```xml
 	<pakketgegevens>
@@ -289,6 +276,9 @@ Deze node is de overkoepelende node waaronder alle andere nodes verzameld staan.
 		<lezingidentiteit>
 		--
 		</lezingidentiteit>
+		<kennisgevingwondzorg>
+		--
+		</kennisgevingwondzorg>
 	</pakketgegevens>
 
 	```
@@ -708,6 +698,34 @@ De volgende gegevens zijn vereist.
 *	**rizivnummerverstrekker** (string): de rizivnummer van de verstrekker
 *	**serienummervandedrager** (string): Het serienummer van de drager (eID-kaart, …) moet in dit element vermeld worden. Deze zone moet steeds ingevuld worden, ook ingeval van manuele invoering, behalve indien typevandrageridentiteitsdocument  = 7, 8 of 9.
 *	**nummerbewijsstuk** (string): Het nummer van het bewijsstuk afgeleverd aan de patiënt moet in deze zone vermeld worden. Dit hoeft niet ingevuld te worden wanneer de TDM3 Facturatiedienst het bewijsstuk opmaak, dit is dus de standaard situatie!
+
+### Node kennsigevingwondzorg
+Op basis de zorgduurte van de complexe wondzorgen die dag en de aanwezige kennisgeving Wondzorg, kan tdm3 voor een specifieke dag het bijkomend honorarium complexe wondzorg toevoegen. Deze node volgt de mycarenet berichtgeving.
+
+- **externeid** (long): de patientid uit het versturende systeem refererend naar externid van patientgegevens.
+- **patientgegevens\_id** (long): De unieke nummer van de patiënt binnen dit bestand.
+- **identificatiepatient** (string): de rijksregisternr, insz van de rechthebbende, cfr patientgegeven node.
+- **startdatum** (dateTime): Startdatum van de mycarenet kennisgeving
+- **einddatum** (dateTime): Einddatum van de mycarenet kennisgeving
+- **typecomplexewondzorg** (int): Het type complexe wondzorg.
+	- 3 = wondzorg tussen 30 en 59 minuten, eerste kennisgeving voor een periode van maximum 3 maanden
+    - 4 = wondzorg tussen 60 en 89 minuten, eerste kennisgeving voor een periode van maximum 3 maanden
+    - 5 = wondzorg langer dan 89 minuten, eerste kennisgeving voor een periode van maximum 3 maanden
+    - 6 = wondzorg tussen 30 en 59 minuten, hernieuwing van kennisgeving voor een periode van maximum 3 maanden
+    - 7 = wondzorg tussen 60 en 89 minuten, hernieuwing van kennisgeving voor een periode van maximum 3 maanden
+    - 8 = wondzorg langer dan 89 minuten, hernieuwing van kennisgeving voor een periode van maximum 3 maanden
+
+```xml
+<kennisgevingwondzorg>
+		<externeid>198</externeid>
+		<patientgegevens_id>45</patientgegevens_id>
+		<identificatiepatient>20123112345</patientgegevens_id>
+		<startdatum>2022-12-05T00:00:00</startdatum>
+		<einddatum>2023-03-05T00:00:00</einddatum>		
+		<typecomplexewondzorg>3</typeComplexeWondzorg>
+</kennisgevingwondzorg>
+
+```
 
 ### Type “metadata” en optioneel element metadata op patientgegeven en uitgevoerdezorg
 **metadata** (type metadata, optioneel element): een “key-value” pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven. Dit laat toe om op een flexibel manier informatie mee te geven die niet direct te maken heeft met de tarificatie van prestaties, zonder steeds het XSD schema aan te passen.
