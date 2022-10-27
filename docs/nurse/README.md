@@ -59,6 +59,7 @@ TDM3 voegt zelf onderstaande zaken toe ikv tarificatie.
 -	Supplementair forfait: PN
 -	Opvolgingshonorarium diabetes (op basis van waarde “insuline= true” op node uitgevoerde zorg)
 -	Verplaatsingskosten (op basis van waarde “ruraal=true” op node patientgegeven)
+-   Bijkomend honorarium complexe wondzorg op [basis van kennisgeving wondzorg node en de uitgevoerdezorg.zorgminuten](#hervorming-wondzorg-nomenclatuur-december-2022)
 
 Dit betekent dat deze nomenclatuurcodes (basisverstrekking, forfaits, pseudocodes als vervanging van) niet meekomen in de xml. Een paliatief forfait wordt aangerekend op basis van 
 -	de startdatum “Paliatief” op node patientgegeven. 
@@ -187,7 +188,7 @@ De hervorming van de wondzorg nomenclatuur vereist enkele aanpassingen.
 - Een [kennisgevingwondzorg node](#node-kennsigevingwondzorg)
 - de zorgduur van de complexe wondzorg bij uitgevoerdezorg node via [uitgevoerdezorg.zorgminuten](#node-uitgevoerdezorg)
 
-Op basis de zorgduurte van de complexe wondzorgen die dag en de aanwezige kennisgevingwondzorg, zal tdm3 voor een specifieke dag het correcte bijkomend honorarium complexe wondzorg factureren
+Op basis de zorgduurte van de complexe wondzorgen die dag en de meeste recente aanwezige kennisgevingwondzorg, zal TDM3 voor een specifieke dag het correcte bijkomend honorarium complexe wondzorg factureren
 
 Indien het pakket rechtstreeks de nomenclatuurcode voor bijkomend honorarium complexe wondzorg meegeeft via een aparte [node uitgevoerde zorg](#node-uitgevoerdezorg), dan zal TDM3 dit niet dubbel toevoegen.
 
@@ -445,7 +446,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **input\_uitgevoerdezorg\_id** (int): De uitgevoerdezorgid van het versturende systeem.
 - **externeid** (int): Het patientid van het versturende systeem refererend naar externid van patientgegevens.
 - **datumuitvoering** (dateTime): De datum waarop de prestatie is uitgevoerd.
-- **zorgminuten:** (int): het aantal minuten de uitgevoerdezorg heeft geduurd.
+- **zorgminuten:** (int): het aantal minuten de uitgevoerdezorg heeft geduurd. Bvb ikv een complexe wondzorg.
 - **datumvoorschrift** (dateTime): De datum waarop de prestatie is voorgeschreven.
 - **rizivnummervoorschrijver** (string): De rizivnummer van de voorschrijvende geneesheer.
 - **naamvoorschrijver** (string): De naam van de voorschrijvende geneesheer.
