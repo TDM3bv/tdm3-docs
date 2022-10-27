@@ -188,7 +188,8 @@ De hervorming van de wondzorg nomenclatuur vereist enkele aanpassingen.
 - de zorgduur van de complexe wondzorg bij uitgevoerdezorg node via [uitgevoerdezorg.zorgminuten](#node-uitgevoerdezorg)
 
 Op basis de zorgduurte van de complexe wondzorgen die dag en de aanwezige kennisgevingwondzorg, zal tdm3 voor een specifieke dag het correcte bijkomend honorarium complexe wondzorg factureren
-Indien het pakket rechtstreeks de nomenclatuurcode voor bijkomend honorarium complexe wondzorg meegeeft via een aparte [node uitgevoerde zorg](#node-uitgevoerdezorg), dan zal tdm3 dit niet dubbel toevoegen.
+
+Indien het pakket rechtstreeks de nomenclatuurcode voor bijkomend honorarium complexe wondzorg meegeeft via een aparte [node uitgevoerde zorg](#node-uitgevoerdezorg), dan zal TDM3 dit niet dubbel toevoegen.
 
 	```xml
 		<kennisgevingwondzorg>
@@ -700,7 +701,7 @@ De volgende gegevens zijn vereist.
 *	**nummerbewijsstuk** (string): Het nummer van het bewijsstuk afgeleverd aan de patiënt moet in deze zone vermeld worden. Dit hoeft niet ingevuld te worden wanneer de TDM3 Facturatiedienst het bewijsstuk opmaak, dit is dus de standaard situatie!
 
 ### Node kennsigevingwondzorg
-Op basis de zorgduurte van de complexe wondzorgen (zie node [uitgevoerdezorg](#node-uitgevoerdezorg) 'zorgminuten' ) die dag en de aanwezige kennisgeving Wondzorg, kan tdm3 voor een specifieke dag het bijkomend honorarium complexe wondzorg toevoegen. Deze node volgt de mycarenet berichtgeving.
+Op basis de zorgduurte van de complexe wondzorgen (zie node [uitgevoerdezorg](#node-uitgevoerdezorg) 'zorgminuten' ) die dag en de aanwezige kennisgeving Wondzorg, kan TDM3 voor een specifieke dag het bijkomend honorarium complexe wondzorg toevoegen. Deze node volgt de mycarenet berichtgeving.
 
 - **externeid** (long): de patientid uit het versturende systeem refererend naar externid van patientgegevens.
 - **patientgegevens\_id** (long): De unieke nummer van de patiënt binnen dit bestand.
