@@ -702,7 +702,7 @@ De volgende gegevens zijn vereist.
 *	**nummerbewijsstuk** (string): Het nummer van het bewijsstuk afgeleverd aan de patiënt moet in deze zone vermeld worden. Dit hoeft niet ingevuld te worden wanneer de TDM3 Facturatiedienst het bewijsstuk opmaak, dit is dus de standaard situatie!
 
 ### Node kennsigevingwondzorg
-Op basis de zorgduurte van de complexe wondzorgen (zie node [uitgevoerdezorg](#node-uitgevoerdezorg) 'zorgminuten' ) die dag en de aanwezige kennisgeving Wondzorg, kan TDM3 voor een specifieke dag het bijkomend honorarium complexe wondzorg toevoegen. Deze node volgt de mycarenet berichtgeving.
+Op basis de zorgduurte van de complexe wondzorgen (zie node [uitgevoerdezorg](#node-uitgevoerdezorg) 'zorgminuten' ) die dag en de aanwezige kennisgeving Wondzorg, kan TDM3 voor een specifieke dag het bijkomend honorarium complexe wondzorg toevoegen. Deze node volgt de mycarenet berichtgeving. Zie ook [verduidelijking hervorming wondzorg december 2022](#hervorming-wondzorg-nomenclatuur-december-2022)
 
 - **externeid** (long): de patientid uit het versturende systeem refererend naar externid van patientgegevens.
 - **patientgegevens\_id** (long): De unieke nummer van de patiënt binnen dit bestand.
