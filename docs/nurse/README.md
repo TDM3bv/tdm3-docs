@@ -184,13 +184,14 @@ Voorbeeld afscoring forfait/profiel van A naar T7
 		</uitgevoerdezorg>
 	```
 ### Hervorming wondzorg nomenclatuur december 2022
-De hervorming van de wondzorg nomenclatuur vereist enkele aanpassingen.
-- Een [kennisgevingwondzorg node](#node-kennsigevingwondzorg)
-- de zorgduur van de complexe wondzorg bij uitgevoerdezorg node via [uitgevoerdezorg.zorgminuten](#node-uitgevoerdezorg)
+De hervorming van de wondzorg nomenclatuur vereist enkele aanpassingen en nieuwe gegevens, afhankelijk van de manier  waarop de info wordt doorgegeven.
 
-Op basis de zorgduurte van de complexe wondzorgen die dag en de meeste recente aanwezige kennisgevingwondzorg, zal TDM3 voor een specifieke dag het correcte bijkomend honorarium complexe wondzorg factureren
+A) Het pakket geeft rechtstreeks de nomenclatuurcode voor bijkomend honorarium complexe wondzorg via een aparte [node uitgevoerde zorg](#node-uitgevoerdezorg).  TDM3 zal dit dan  niet zelf toevoegen.
 
-Indien het pakket rechtstreeks de nomenclatuurcode voor bijkomend honorarium complexe wondzorg meegeeft via een aparte [node uitgevoerde zorg](#node-uitgevoerdezorg), dan zal TDM3 dit niet dubbel toevoegen.
+B) Het pakket geeft de kennisgeving wondzorg door en de zorgduur van  de complexe wondzorg
+ - Een [kennisgevingwondzorg node](#node-kennsigevingwondzorg)
+ - de zorgduur van de complexe wondzorg bij uitgevoerdezorg node via [uitgevoerdezorg.zorgminuten](#node-uitgevoerdezorg)
+Op basis de zorgduurte van de complexe wondzorgen die dag en de meeste recente aanwezige kennisgevingwondzorg, zal TDM3 voor een specifieke dag het correcte bijkomend honorarium complexe wondzorg factureren.
 
 	```xml
 		<kennisgevingwondzorg>
