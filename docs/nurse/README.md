@@ -720,14 +720,14 @@ Op basis de zorgduurte van de complexe wondzorgen (zie node [uitgevoerdezorg](#n
     - 8 = wondzorg langer dan 89 minuten, hernieuwing van kennisgeving voor een periode van maximum 3 maanden
 
 ```xml
-<kennisgevingwondzorg>
-		<externeid>198</externeid>
-		<patientgegevens_id>45</patientgegevens_id>
-		<identificatiepatient>20123112345</patientgegevens_id>
-		<startdatum>2022-12-05T00:00:00</startdatum>
-		<einddatum>2023-03-05T00:00:00</einddatum>		
-		<typecomplexewondzorg>3</typeComplexeWondzorg>
-</kennisgevingwondzorg>
+    <kennisgevingwondzorg>
+				<externeid>198</externeid>
+				<patientgegevens_id>45</patientgegevens_id>
+				<identificatiepatient>20123112345</identificatiepatient>
+				<startdatum>2022-12-05T00:00:00</startdatum>
+				<einddatum>2023-03-05T00:00:00</einddatum>		
+				<typecomplexewondzorg>3</typecomplexewondzorg>
+	</kennisgevingwondzorg>
 
 ```
 
