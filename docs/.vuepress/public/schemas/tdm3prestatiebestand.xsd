@@ -28,6 +28,7 @@
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="Verzorging" />
 			<xs:enumeration value="Domicilie" />
+			<xs:enumeration value="Factuur" />
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:element name="pakketgegevens" >
@@ -202,7 +203,7 @@
 						<xs:sequence>
 							<xs:element name="externeid" type="xs:long" minOccurs="1"/>
 							<xs:element name="patientgegevens_id" type="xs:long" minOccurs="1"/>
-              <xs:element name="identificatiepatient" type="xs:string" minOccurs="1" />
+							<xs:element name="identificatiepatient" type="xs:string" minOccurs="1" />
 							<xs:element name="startdatum" type="xs:dateTime" minOccurs="1"/>
 							<xs:element name="einddatum" type="xs:dateTime" minOccurs="0"/>
 							<xs:element name="typecomplexewondzorg" type="xs:int" minOccurs="1"/>
@@ -212,6 +213,34 @@
 			</xs:choice>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="account">
+			<xs:complexType>
+				<xs:sequence>
+						<xs:element name="externeid" type="xs:string" minOccurs="1" />
+						<xs:element name="type" type="xs:long" minOccurs="1" />
+						<xs:element name="referentienr" type="xs:string" minOccurs="1" />
+						<xs:element name="naam" type="xs:string" minOccurs="1" />
+						<xs:element name="voornaam" type="xs:string" minOccurs="1" />
+						<xs:element name="email" type="xs:string" minOccurs="0" />								
+						<xs:element name="taalcode" type="xs:string" minOccurs="0" />
+						<xs:element name="rijksregisternr" type="xs:string" minOccurs="0" />
+						<xs:element name="kbonr" type="xs:string" minOccurs="0" />
+						<xs:element name="rizivnr" type="xs:string" minOccurs="0" />
+						<xs:element name="facturatiekanaal" type="xs:long" minOccurs="0" />
+						<xs:element name="telefoon" type="xs:string" minOccurs="0" />
+						<xs:element name="uwreferentie" type="xs:string" minOccurs="0" />								
+						<xs:element name="terattentievan" type="xs:string" minOccurs="0" />								
+						<xs:element name="metadata" type="metadata" minOccurs="0" />
+						<xs:element name="adressen" nillable="true" >
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element type="adres" name="adres" minOccurs="1" maxOccurs="unbounded"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+			 </xs:complexType>
+			</xs:element>
 	<xs:simpleType name="emptyDateTime">
 		<xs:annotation>
 			<xs:documentation>Simple union for enabling null for date</xs:documentation>
