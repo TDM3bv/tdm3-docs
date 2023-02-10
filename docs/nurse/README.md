@@ -440,6 +440,33 @@ Voorbeeld adressen
 	</patientgegevens>
 ```
 
+### Node account (voorstel)
+Dit is een node die verwijst naar de derdebetalercode in de uitgevoerdezorg node.
+Per unieke derdebetalercode mag er max 1 account element meegegeven worden.
+Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefondsen (patienten, medische huizen, ziekenhuizen, verzekeringen, enz)
+- **externeid**: (long) Het externe id van het versturende systeem.
+- **type** (long): Indicator die aangeeft over welk soort account het gaat. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis, 6=ziekenhuis
+- **referentienr**: (string) komt overeen met *uitgevoerdezorg.derdebetalercode*.
+- **naam** (string): De naam van de organisatie of achernaam van de persoon.
+- **voornaam** (string): De voornaam van de persoon, leeg indien een organisatie.
+- **email**:  (string) email adres
+- **taalcode** (string): de ISO-639-1 taalcode waarin de factuur moet opgesteld worden.  [https://en.wikipedia.org/wiki/List\_of\_ISO\_639-1\_codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
+    - Nederlands = nl
+    - Frans = fr
+    - Tweetalig = nlfr
+    Indien geen taalcode wordt meegegeven of aangeduid, wordt de overeenkomstige taal van de postcode (Gewest) gebruikt.
+- **rijksregisternr**: (string) Indien persoon. INSZ, stamnummer of  bij facturatie van zorgen buiten het ZIV (verzekering, ocmw, patient) en het rijksregisternummer of stamnummer is niet gekend, kan in dit veld een unieke identificatienummer meegegeven worden.
+- **kbonr**: (string) indien facturatie aan een organisatie/bedrijf, kan een KboNr meegegeven worden zodat de factuur correct opgemaakt kan worden en aan de juiste entiteit kan bezorgd worden via een eventueel electronische kanalen
+- **rizivnr**: (string) indien facturatie aan een andere zorgorganisatie zoals een groepering, ziekenhuis of medisch huis kan hier de rizivnr van deze organisatie meegegeven worden.
+- **uwreferentie**: (string) polisnummer, dossiernummer, ordernummer of andere referentie die voor de partij op de factuur moet verschijnen zodat men efficënt de link kan leggen met het eigen dossierbeheer systeem
+- **telefoon**: (string) gsm of telefoonnummer van de "account" waarmee TDM3 contact kan opnemen ikv verdere opvolging van de factuur
+- **terattentievan**: (string) hiermee kan verder gespecifieerd worden aan wie of welke afdeling binnen een organisatie de factuur mag gericht worden
+- **facturatiekanaal**: (int) 0=POST, 1=EBOX, 2=EMAIL, 3=PEPPOL. Hier kan aangegeven worden via welk kanaal de factuur moet/mag verstuurd worden. Afhankelijk van he kanaal, worden bepaalde informatievelden verplicht. Bvb: indien PEPPOL of EBOX => KBONr verplicht.
+- **adressen**: (complexeType) minstens 1 adres van het [AdresType](#element-adres-op-node-patientgegeven) Factuur 
+- **metadata**: (complexeType) zie uitleg bij [metadata](#type-metadata-en-optioneel-element-metadata-op-patientgegeven-en-uitgevoerdezorg)  
+
+
+
 ### Node uitgevoerdezorg
 
 
@@ -518,27 +545,6 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 		<datumongeval>…</datumongeval>
 		<werkgever>…</werkgever>
 	</uitgevoerdezorg>
-	```
-
-#### facturatie 424874 - Wekelijkse voorbereiding van de geneesmiddelen per os
-- Voorafgaandelijk aan de facturatie van verstrekking **424874** moet er een verstrekking **424896** *"Verpleegkundig advies en overleg in functie van de wekelijkse voorbereiding van de geneesmiddelen per os met akkoord van de behandelend arts"* zijn gefactureerd. Deze verstrekking kan reeds gefactureerd zijn door een externe partij. Indien in het EMD gekend is wanneer deze verstrekkering 424896 is gefactureerd door deze externe partij, mag er een **metadata** item toegevoegd worden in de uitgevoerdezorg node van 424874, met volgende waarde
-    - **naam** : "externf424896"
-    - **waarde**: "datum" (geformateerd als yyyy-MM-dd)
-- Deze informatie laat de facturatiedienst toe een betere controle uit te voeren
-
-	```xml
-	<uitgevoerdezorg>
-		...
-		<nomenclatuurnummer>424874</nomenclatuurnummer>
-		<datumuitvoering>2019-10-18T01:00:00</datumuitvoering>
-		...
-		<metadata>
-		<item>
-			<naam>externf424896</naam>
-			<waarde>2019-05-18</waarde>
-		</item>
-		</metadata>
-	<uitgevoerdezorg>
 	```
  
 
