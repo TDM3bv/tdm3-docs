@@ -45,6 +45,7 @@ p --> wz
 | 1.46 | [Verduidelijking samenvoegingen TDM3](#samenvoegen-van-verstrekkingen-binnen-eenzelfde-bezoek) |
 | 1.47 | [Toevoeging Btw Percentage + specificatie Btw berekening + uitleg KB90 bedrag](#node-uitgevoerdezorg) |
 | 1.48 | Toevoeging [node kennisgevingwondzorg](#node-kennsigevingwondzorg) en Verduidelijking [Hervorming wondzorg nomenclatuur](#hervorming-wondzorg-nomenclatuur-december-2022) |
+| 1.44 | Toevoeging: element naamverpleegkundige op node uitgevoerdezorg    |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
@@ -491,6 +492,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **rizivnummerverpleegkundige** (string): De rizivnummer van de verpleegkundige. Deze moet voorafgaan door 0 of 1 :
     - 0 : niet geconventioneerd
     - 1 : wel geconventioneerd
+- **naamverpleegkundige** (string): de naam van  de verpleegkundige
 - **patientgegevens\_id** (int): De unieke nummer van de patiënt binnen dit bestand.
 - **bezoeknummer** (int): Nummer van het bezoek.
 - **rep\_typebestemmeling\_id** (int): Indicator die aangeeft voor wie de factuur is. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis,…
@@ -533,6 +535,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 		<kb90bedrag>…</kb90bedrag>
 		<ziekenfondscode>…</ziekenfondscode>
 		<rizivnummerverpleegkundige>…</rizivnummerverpleegkundige>
+		<naamverpleegkundige>…</naamverpleegkundige>
 		<patientgegevens_id>…</patientgegevens_id>
 		<bezoeknummer>…</bezoeknummer>
 		<rep_typebestemmeling_id>…</rep_typebestemmeling_id>

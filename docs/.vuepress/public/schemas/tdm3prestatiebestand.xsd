@@ -112,6 +112,7 @@
 							<xs:element name="rizivnummerzorgkundige" type="xs:string" minOccurs="0" />
 							<xs:element name="naamzorgkundige" type="xs:string" minOccurs="0" />
 							<xs:element name="rizivnummerverpleegkundige" type="xs:string" minOccurs="0" />
+							<xs:element name="naamverpleegkundige" type="xs:string" minOccurs="0" />							
 							<xs:element name="ziekenfondscode" type="xs:string" minOccurs="0" />
 							<xs:element name="patientgegevens_id" type="xs:long" minOccurs="1" />
 							<xs:element name="bezoeknummer" type="xs:long" minOccurs="0" />
