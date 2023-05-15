@@ -46,6 +46,7 @@ p --> wz
 | 1.47 | [Toevoeging Btw Percentage + specificatie Btw berekening + uitleg KB90 bedrag](#node-uitgevoerdezorg) |
 | 1.48 | Toevoeging [node kennisgevingwondzorg](#node-kennsigevingwondzorg) en Verduidelijking [Hervorming wondzorg nomenclatuur](#hervorming-wondzorg-nomenclatuur-december-2022) |
 | 1.44 | Toevoeging: element naamverpleegkundige op node uitgevoerdezorg    |
+| 1.44 | Wijziging: type externeid van xs:long naar xs:string zodat ook een UUID kan meegeven worden     |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
@@ -246,6 +247,8 @@ Deze node is de overkoepelende node waaronder alle andere nodes verzameld staan.
 - een aantal lezingidentiteit nodes
 - een aantal kennisgevingwondzorg nodes
 
+Tenzij anders vermeld, worden 
+
 	```xml
 	<pakketgegevens>
 		<softwarehuis>
@@ -312,7 +315,7 @@ Voorbeeld:
 Per patient is er één patientgegevens node met hierin de volgende gegevens (in volgorde zoals ze hieronder staan):
 
 - **patientgegevens\_id** (integer): Dit is een uniek nummer binnen dit bestand waarmee de &#39;uitgevoerdezorgen&#39;-nodes en &#39;profielen&#39;-nodes gelinkt kunnen worden aan de &#39;patiënt&#39;. Dit wil zeggen dat voor elk &#39;profielen&#39;-node en elke &#39;uitgevoerdezorg&#39;-node van de patiënt deze patientgegevens\_id gebruikt moet worden.
-- **externeid** (integer): De patientid van het versturende systeem; deze id wordt samen met de patientgegevens\_id gebruikt om de &#39;uitgevoerdezorgen&#39;-nodes en de &#39;profielen&#39;-nodes te linken aan de patiënt. Dit wil zeggen dat voor elke &#39;profielen&#39;-node en elke &#39;uitgevoerdezorg&#39;-node van de patiënt deze externeid gebruikt moet worden.
+- **externeid** (string): De patientid van het versturende systeem; deze id wordt samen met de patientgegevens\_id gebruikt om de &#39;uitgevoerdezorgen&#39;-nodes en de &#39;profielen&#39;-nodes te linken aan de patiënt. Dit wil zeggen dat voor elke &#39;profielen&#39;-node en elke &#39;uitgevoerdezorg&#39;-node van de patiënt deze externeid gebruikt moet worden.
 - **naam** (string): De naam van de patiënt.
 - **voornaam** (string): De voornaam van de patiënt.
 - **geslacht** (string): Het geslacht van de patiënt (mogelijke waardes: M, V).
@@ -445,7 +448,7 @@ Voorbeeld adressen
 Dit is een node die verwijst naar de derdebetalercode in de uitgevoerdezorg node.
 Per unieke derdebetalercode mag er max 1 account element meegegeven worden.
 Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefondsen (patienten, medische huizen, ziekenhuizen, verzekeringen, enz)
-- **externeid**: (long) Het externe id van het versturende systeem.
+- **externeid**: (string) Het externe id van het versturende systeem.
 - **type** (long): Indicator die aangeeft over welk soort account het gaat. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis, 6=ziekenhuis
 - **referentienr**: (string) komt overeen met *uitgevoerdezorg.derdebetalercode*.
 - **naam** (string): De naam van de organisatie of achernaam van de persoon.
@@ -470,11 +473,10 @@ Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefond
 
 ### Node uitgevoerdezorg
 
-
 Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegevens (in volgorde zoals ze hieronder staan):
 
 - **input\_uitgevoerdezorg\_id** (int): De uitgevoerdezorgid van het versturende systeem.
-- **externeid** (int): Het patientid van het versturende systeem refererend naar externid van patientgegevens.
+- **externeid** (string): Het patientid van het versturende systeem refererend naar externid van patientgegevens.
 - **datumuitvoering** (dateTime): De datum waarop de prestatie is uitgevoerd.
 - **zorgminuten:** (int): het aantal minuten de uitgevoerdezorg heeft geduurd. Bvb ikv een complexe wondzorg.
 - **datumvoorschrift** (dateTime): De datum waarop de prestatie is voorgeschreven.
@@ -664,7 +666,7 @@ Dit is enkel van toepassing bij facturatie via electronische derdebetaler! Maw, 
 
 De volgende gegevens zijn vereist.
 
-* **externeid** (int): de patientid uit het versturende systeem refererend naar externid van patientgegevens.	Cfr de uitgevoerdezorg node 
+* **externeid** (string): de patientid uit het versturende systeem refererend naar externid van patientgegevens.	Cfr de uitgevoerdezorg node 
 * **patientgegevens_id** (int): De unieke nummer van de patiënt binnen dit bestand. Cfr de uitgevoerdezorg node 
 * **redenmanueleinvoering** (int):
     * Mogelijke waardes
@@ -715,7 +717,7 @@ De volgende gegevens zijn vereist.
 ### Node kennsigevingwondzorg
 Op basis de zorgduurte van de complexe wondzorgen (zie node [uitgevoerdezorg](#node-uitgevoerdezorg) 'zorgminuten' ) die dag en de aanwezige kennisgeving Wondzorg, kan TDM3 voor een specifieke dag het bijkomend honorarium complexe wondzorg toevoegen. Deze node volgt de mycarenet berichtgeving. Zie ook [verduidelijking hervorming wondzorg december 2022](#hervorming-wondzorg-nomenclatuur-december-2022)
 
-- **externeid** (long): de patientid uit het versturende systeem refererend naar externid van patientgegevens.
+- **externeid** (string): de patientid uit het versturende systeem refererend naar externid van patientgegevens.
 - **patientgegevens\_id** (long): De unieke nummer van de patiënt binnen dit bestand.
 - **identificatiepatient** (string): de rijksregisternr, insz van de rechthebbende, cfr patientgegeven node.
 - **startdatum** (dateTime): Startdatum van de mycarenet kennisgeving

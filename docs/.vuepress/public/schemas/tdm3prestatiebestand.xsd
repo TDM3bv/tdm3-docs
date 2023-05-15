@@ -48,7 +48,7 @@
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="patientgegevens_id" type="xs:long" minOccurs="1" />
-							<xs:element name="externeid" type="xs:long" minOccurs="1" />
+							<xs:element name="externeid" type="xs:string" minOccurs="1" />
 							<xs:element name="naam" type="xs:string" minOccurs="1" />
 							<xs:element name="email" type="xs:string" minOccurs="0" />
 							<xs:element name="voornaam" type="xs:string" minOccurs="1" />
@@ -98,7 +98,7 @@
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="input_uitgevoerdezorg_id" type="xs:long" minOccurs="1" />
-							<xs:element name="externeid" type="xs:long" minOccurs="1" />
+							<xs:element name="externeid" type="xs:string" minOccurs="1" />
 							<xs:element name="datumuitvoering" type="xs:dateTime" minOccurs="0" />
 							<xs:element name="zorgminuten" type="xs:int" minOccurs="0" />
 							<xs:element name="datumvoorschrift"  type="emptyDateTime" minOccurs="0" />
@@ -169,7 +169,7 @@
 				<xs:element name="profielen">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="externeid" type="xs:long" minOccurs="1" />
+							<xs:element name="externeid" type="xs:string" minOccurs="1" />
 							<xs:element name="startdatum" type="xs:dateTime" minOccurs="0" />
 							<xs:element name="einddatum" type="xs:dateTime" minOccurs="0" />
 							<xs:element name="patientgegevens_id" type="xs:long" minOccurs="0" />
@@ -182,7 +182,7 @@
 				<xs:element name="lezingidentiteit">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="externeid" type="xs:long" minOccurs="1" />
+							<xs:element name="externeid" type="xs:string" minOccurs="1" />
 							<xs:element name="patientgegevens_id" type="xs:long" minOccurs="1" />
 							<xs:element name="redenmanueleinvoering" type="xs:int" minOccurs="1" />
 							<xs:element name="bezoeknummer" type="xs:long" minOccurs="1" />
@@ -202,7 +202,7 @@
 				<xs:element name="kennisgevingwondzorg">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="externeid" type="xs:long" minOccurs="1"/>
+							<xs:element name="externeid" type="xs:string" minOccurs="1"/>
 							<xs:element name="patientgegevens_id" type="xs:long" minOccurs="1"/>
 							<xs:element name="identificatiepatient" type="xs:string" minOccurs="1" />
 							<xs:element name="startdatum" type="xs:dateTime" minOccurs="1"/>
