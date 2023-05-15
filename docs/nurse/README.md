@@ -46,7 +46,7 @@ p --> wz
 | 1.47 | [Toevoeging Btw Percentage + specificatie Btw berekening + uitleg KB90 bedrag](#node-uitgevoerdezorg) |
 | 1.48 | Toevoeging [node kennisgevingwondzorg](#node-kennsigevingwondzorg) en Verduidelijking [Hervorming wondzorg nomenclatuur](#hervorming-wondzorg-nomenclatuur-december-2022) |
 | 1.44 | Toevoeging: element naamverpleegkundige op node uitgevoerdezorg    |
-| 1.44 | Wijziging: type externeid van xs:long naar xs:string zodat ook een UUID kan meegeven worden     |
+| 1.46 | Wijziging: type externeid van xs:long naar xs:string zodat ook een UUID kan meegeven worden     |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
