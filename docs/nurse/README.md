@@ -235,14 +235,14 @@ De hervorming van de wondzorg nomenclatuur vereist enkele aanpassingen en nieuwe
 	```
 
 ### Facturatie pseudocodes thuishospitalisatie juli 2023
-Het gaat om onderstaande pseudocodes.
+Het gaat om onderstaande pseudocodes, die mogen gefactureerd worden voor prestaties vanaf 1 juli 2023.
 | NomenclatuurCode | WWaarde | KorteOmschrijvingNL                                                     |
 | ---------------- | ------- | ----------------------------------------------------------------------- |
 | 418574           | NULL | Initiëren thuishospitalisatie: forfaitair honorarium voor thuisverpleegkundigen te factureren via derdebetalersregeling |
 | 418596           | NULL | Forfait honorarium per behandeldag zorgafstemming door de thuisverpleegkundige in de thuissituatie te factureren via derdebetalersregeling                |
 | 418611           | NULL | Forfaitair honorarium voor verpleegkundige bij toediening in de leefomgeving van de patiënt van antitumorale geneesmiddelen langs intramusculaire,subcutane of hypodermale toedieningsweg te factureren via derdebetalersregeling             |
 
-Deze pseudocode mogen en moeten meekomen via het xml-prestatiebestand als aparte uitgevoerde zorg volgens de gekende regels van de xml/RIZIV facturatie. 
+Deze pseudocodes mogen en moeten meekomen via het xml-prestatiebestand als aparte uitgevoerde zorg volgens de gekende regels van de xml/RIZIV facturatie. 
 Ze kunnen autonoom gefactureerd worden, vereisen een voorschrift, worden uitgevoerd door een verpleegkundige en vereisen een verificatie van de identiteit.
 
 ```xml
@@ -253,7 +253,7 @@ Ze kunnen autonoom gefactureerd worden, vereisen een voorschrift, worden uitgevo
 			<zorgminuten/>
 			<datumvoorschrift>2023-06-25<datumvoorschrift>
 			<rizivnummervoorschrijver>10828168004</rizivnummervoorschrijver>
-			<naamvoorschrijver>Peter Janssens</>
+			<naamvoorschrijver>Peter Janssens</naamvoorschrijver>
 			<remgeld>0</remgeld>
 			<nomenclatuurnummer>000000</nomenclatuurnummer>
 			<pseudocodenummer>418574</pseudocodenummer>
