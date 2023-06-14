@@ -47,6 +47,7 @@ p --> wz
 | 1.48 | Toevoeging [node kennisgevingwondzorg](#node-kennsigevingwondzorg) en Verduidelijking [Hervorming wondzorg nomenclatuur](#hervorming-wondzorg-nomenclatuur-december-2022) |
 | 1.44 | Toevoeging: element naamverpleegkundige op node uitgevoerdezorg    |
 | 1.46 | Wijziging: type externeid van xs:long naar xs:string zodat ook een UUID kan meegeven worden     |
+| 1.47 | [Uitleg facturatie pseudocodes thuishospitalisatie](#facturatie-pseudocodes-thuishospitalisatie-juli-2023)     |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
@@ -232,6 +233,46 @@ De hervorming van de wondzorg nomenclatuur vereist enkele aanpassingen en nieuwe
 			<TypeFacturering>0</TypeFacturering>
 		</uitgevoerdezorg>
 	```
+
+### Facturatie pseudocodes thuishospitalisatie juli 2023
+Het gaat om onderstaande pseudocodes.
+| NomenclatuurCode | WWaarde | KorteOmschrijvingNL                                                     |
+| ---------------- | ------- | ----------------------------------------------------------------------- |
+| 418574           | NULL | Initiëren thuishospitalisatie: forfaitair honorarium voor thuisverpleegkundigen te factureren via derdebetalersregeling |
+| 418596           | NULL | Forfait honorarium per behandeldag zorgafstemming door de thuisverpleegkundige in de thuissituatie te factureren via derdebetalersregeling                |
+| 418611           | NULL | Forfaitair honorarium voor verpleegkundige bij toediening in de leefomgeving van de patiënt van antitumorale geneesmiddelen langs intramusculaire,subcutane of hypodermale toedieningsweg te factureren via derdebetalersregeling             |
+
+Deze pseudocode mogen en moeten meekomen via het xml-prestatiebestand als aparte uitgevoerde zorg volgens de gekende regels van de xml/RIZIV facturatie. 
+Ze kunnen autonoom gefactureerd worden, vereisen een voorschrift, worden uitgevoerd door een verpleegkundige en vereisen een verificatie van de identiteit.
+
+```xml
+		<uitgevoerdezorg>
+			<input_uitgevoerdezorg_id>32145344</input_uitgevoerdezorg_id>
+			<externeid>6454</externeid>
+			<datumuitvoering>2023-07-01T09:08:00</datumuitvoering>
+			<zorgminuten/>
+			<datumvoorschrift>2023-06-25<datumvoorschrift>
+			<rizivnummervoorschrijver>10828168004</rizivnummervoorschrijver>
+			<naamvoorschrijver>Peter Janssens</>
+			<remgeld>0</remgeld>
+			<nomenclatuurnummer>000000</nomenclatuurnummer>
+			<pseudocodenummer>418574</pseudocodenummer>
+			<kb90bedrag />
+			<rizivnummerverpleegkundige>146611468408</rizivnummerverpleegkundige>		
+			<patientgegevens_id>45</patientgegevens_id>
+			<bezoeknummer>3</bezoeknummer>
+			<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+			<insuline>false</insuline>
+			<derdebetalercode />
+			<derdebetalernaam />
+			<derdebetaleradres />
+			<polisnummer />
+			<dossiernummer />
+			<datumongeval />
+			<werkgever />
+			<TypeFacturering>0</TypeFacturering>
+		</uitgevoerdezorg>
+```
 
 
 ## XML Nodes
