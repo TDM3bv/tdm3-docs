@@ -48,6 +48,7 @@ p --> wz
 | 1.44 | Toevoeging: element naamverpleegkundige op node uitgevoerdezorg    |
 | 1.46 | Wijziging: type externeid van xs:long naar xs:string zodat ook een UUID kan meegeven worden     |
 | 1.47 | [Uitleg facturatie pseudocodes thuishospitalisatie](#facturatie-pseudocodes-thuishospitalisatie-juli-2023)     |
+| 1.48 | Toevoeging: element busnr op node patientgegeven |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
@@ -363,6 +364,7 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 - **geboortedatum** (dateTime): De geboortedatum van de patiënt.
 - **straat** (string): De straat van de patiënt. (domicilie adres)
 - **huisnummer** (string): De huisnummer van de patiënt. (kan maximum 10 karakters bevatten).  (domicilie adres)
+- **busnr** (string): De busnnr van de patiënt. (kan maximum 10 karakters bevatten).  (domicilie adres)
 - **postcode** (string): De postcode van de patiënt.  (domicilie adres)
 - **gemeente** (string): De gemeente van de patiënt.  (domicilie adres)
 - **landcode** (string): De landcode van de patiënt (ISO)  (domicilie adres)

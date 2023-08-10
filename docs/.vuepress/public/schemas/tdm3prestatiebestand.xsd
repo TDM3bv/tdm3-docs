@@ -56,6 +56,7 @@
 							<xs:element name="geboortedatum" type="emptyDateTime" minOccurs="0" />
 							<xs:element name="straat" type="xs:string" minOccurs="0" />
 							<xs:element name="huisnummer" type="xs:string" minOccurs="0" />
+							<xs:element name="busnr" type="xs:string" minOccurs="0" />
 							<xs:element name="postcode" type="xs:string" minOccurs="0" />
 							<xs:element name="gemeente" type="xs:string" minOccurs="0" />
 							<xs:element name="landcode" type="xs:string" minOccurs="0" />
