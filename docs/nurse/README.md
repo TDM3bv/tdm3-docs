@@ -1,3 +1,6 @@
+---
+outline: deep
+---
 # Beschrijving batch XML
 
 !!! tip XSD Schema
