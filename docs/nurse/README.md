@@ -3,55 +3,31 @@ outline: deep
 ---
 # Beschrijving batch XML
 
-!!! tip XSD Schema
-[Download](../schemas/tdm3prestatiebestand.xsd)
+::: tip XSD Schema
+[Download](/schemas/tdm3prestatiebestand.xsd)
 
-@startuml
-node p as "pakketgegevens"
-node s as "softwarehuis"
-node pat as "patientgegevens"
-node zorg as "uitgevoerdezorg"
-node lez as "lezingidentiteit"
-node tar as "tarificatiedienst"
-node pr as "prijsberekening"
-node ver as "vereniging"
-node prof as "profielen"
-node wz as "kennisgevingwondzorg"
-node fac as "facturatieperiode"
-
-p --> s
-p --> pat
-p --> zorg
-p --> lez
-p --> tar
-p --> fac
-p --> pr
-p --> ver
-p --> prof
-p --> wz
-@enduml
-!!!
-
+![image](https://www.plantuml.com/plantuml/svg/NP5HRiCW44J_VGha_roXobLe6CZMBY30jkJJPupNITMl6UtpB0E-rsPBMtxd8IO7ausjPinscj020bR4EfweTbIJRvijU2voWMoRffeW_e_jgOIE5o5Q4uh3CLCyO--KAZ68um9faAQOvJgcYfV7SOBZ8VNY-SIvo4_zHi64o3KALvoKod7uW5oIrrpoWXbHmNQMuPOebMqPsL9qV_fw--YVKDjIZZuPHKZ6OSZcTlioLPNFeUw8g-KrrV56whZgYbmZDdwFabUxxSCTqV5VlG00)
+:::
 
 ## Belangrijkste wijzigingen
 
-| Versie | Omschrijving                                                                                                                                                               |
-|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.38	| Toevoeging: [facturatie wekelijks voorbereiding](#facturatie-424874-wekelijkse-voorbereiding-van-de-geneesmiddelen-per-os), [uitzondering dagelijks toilet bij een T2 profiel](#node-profielen) |
-| 1.39 |Fix- Verduidelijking oplijsting type bestemmeling op node uitgevoerdezorg (medisch huis = 5) |
-| 1.40 |Fix verduidelijking noodzaak derdebetalercode, -naam en -adres op node uitgevoerdezorg |
-| 1.41 | Toevoeging: [instructies diabeteseducatie via videoconsultatie tijdens COVID19-crisis](#covid19-crisis-instructies) |
-| 1.42 | Toevoeging: toevoeging 426576 bij pseudocodes die mag/moet meegegeven worden   |
-| 1.43 | Toevoeging: waarde A op element [LezingIdentiteit](#node-lezingidentiteit) voor typevanlezing en typevandrager, typevanlezing en typevandrager zijn veranderd van xs:int naar xs:string    |
-| 1.44 | Toevoeging: element derdebetaleremail op node uitgevoerdezorg    |
-| 1.45 | Toevoeging: [element adressen op node patientgegeven, verduidelijking](#element-adres-op-node-patientgegeven)    |
-| 1.46 | [Verduidelijking samenvoegingen TDM3](#samenvoegen-van-verstrekkingen-binnen-eenzelfde-bezoek) |
-| 1.47 | [Toevoeging Btw Percentage + specificatie Btw berekening + uitleg KB90 bedrag](#node-uitgevoerdezorg) |
-| 1.48 | Toevoeging [node kennisgevingwondzorg](#node-kennsigevingwondzorg) en Verduidelijking [Hervorming wondzorg nomenclatuur](#hervorming-wondzorg-nomenclatuur-december-2022) |
-| 1.44 | Toevoeging: element naamverpleegkundige op node uitgevoerdezorg    |
-| 1.46 | Wijziging: type externeid van xs:long naar xs:string zodat ook een UUID kan meegeven worden     |
-| 1.47 | [Uitleg facturatie pseudocodes thuishospitalisatie](#facturatie-pseudocodes-thuishospitalisatie-juli-2023)     |
-| 1.48 | Toevoeging: element busnr op node patientgegeven |
+| Versie | Omschrijving                                                                                                                                                                                    |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.38   | Toevoeging: [facturatie wekelijks voorbereiding](#facturatie-424874-wekelijkse-voorbereiding-van-de-geneesmiddelen-per-os), [uitzondering dagelijks toilet bij een T2 profiel](#node-profielen) |
+| 1.39   | Fix- Verduidelijking oplijsting type bestemmeling op node uitgevoerdezorg (medisch huis = 5)                                                                                                    |
+| 1.40   | Fix verduidelijking noodzaak derdebetalercode, -naam en -adres op node uitgevoerdezorg                                                                                                          |
+| 1.41   | Toevoeging: [instructies diabeteseducatie via videoconsultatie tijdens COVID19-crisis](#covid19-crisis-instructies)                                                                             |
+| 1.42   | Toevoeging: toevoeging 426576 bij pseudocodes die mag/moet meegegeven worden                                                                                                                    |
+| 1.43   | Toevoeging: waarde A op element [LezingIdentiteit](#node-lezingidentiteit) voor typevanlezing en typevandrager, typevanlezing en typevandrager zijn veranderd van xs:int naar xs:string         |
+| 1.44   | Toevoeging: element derdebetaleremail op node uitgevoerdezorg                                                                                                                                   |
+| 1.45   | Toevoeging: [element adressen op node patientgegeven, verduidelijking](#element-adres-op-node-patientgegeven)                                                                                   |
+| 1.46   | [Verduidelijking samenvoegingen TDM3](#samenvoegen-van-verstrekkingen-binnen-eenzelfde-bezoek)                                                                                                  |
+| 1.47   | [Toevoeging Btw Percentage + specificatie Btw berekening + uitleg KB90 bedrag](#node-uitgevoerdezorg)                                                                                           |
+| 1.48   | Toevoeging [node kennisgevingwondzorg](#node-kennsigevingwondzorg) en Verduidelijking [Hervorming wondzorg nomenclatuur](#hervorming-wondzorg-nomenclatuur-december-2022)                       |
+| 1.44   | Toevoeging: element naamverpleegkundige op node uitgevoerdezorg                                                                                                                                 |
+| 1.46   | Wijziging: type externeid van xs:long naar xs:string zodat ook een UUID kan meegeven worden                                                                                                     |
+| 1.47   | [Uitleg facturatie pseudocodes thuishospitalisatie](#facturatie-pseudocodes-thuishospitalisatie-juli-2023)                                                                                      |
+| 1.48   | Toevoeging: element busnr op node patientgegeven                                                                                                                                                |
 
 ## Algemene opmerkingen
 Per praktijk (unieke verenigingcode)  en per “facturatiemaand” wordt er normaal gezien 1 xml bestand aangemaakt.
@@ -182,14 +158,14 @@ Voorbeeld afscoring forfait/profiel van A naar T7
 #### Diabeteseducatie via videoconsultatie tijdens de COVID19-crisis
 - Als tijdelijke aanpassing mag een individuele sessie tijdens de duur van de maatregelen, door middel van videocommunicatie plaatsvinden.
 	Deze "locatie" kan via de xml aangeduid worden door de pseudocode **792433** te vermelden in het element **Locatie** ([Bron RIZIV](https://www.riziv.fgov.be/nl/covid19/Paginas/diabeteseducatie-1ste-lijn-videoconsultatie.aspx))
-	```xml
+```xml
 	    <uitgevoerdezorg>
 		     ...andere elementen...
 			<nomenclatuurnummer>794312 </nomenclatuurnummer>
 			<Locatie>792433</Locatie>
 	         ...andere elementen...
 		</uitgevoerdezorg>
-	```
+```
 ### Hervorming wondzorg nomenclatuur december 2022
 De hervorming van de wondzorg nomenclatuur vereist enkele aanpassingen en nieuwe gegevens, afhankelijk van de manier  waarop de info wordt doorgegeven.
 
@@ -201,7 +177,7 @@ De hervorming van de wondzorg nomenclatuur vereist enkele aanpassingen en nieuwe
  
  Op basis de zorgduurte van de complexe wondzorgen die dag en de meeste recente aanwezige kennisgevingwondzorg, zal TDM3 voor een specifieke dag het correcte bijkomend honorarium complexe wondzorg factureren.
 
-	```xml
+```xml
 		<kennisgevingwondzorg>
 				<externeid>198</externeid>
 				<patientgegevens_id>45</patientgegevens_id>
@@ -236,7 +212,7 @@ De hervorming van de wondzorg nomenclatuur vereist enkele aanpassingen en nieuwe
 			<werkgever />
 			<TypeFacturering>0</TypeFacturering>
 		</uitgevoerdezorg>
-	```
+```
 
 ### Facturatie pseudocodes thuishospitalisatie juli 2023
 Het gaat om onderstaande pseudocodes, die mogen gefactureerd worden voor prestaties vanaf 1 juli 2023.
@@ -294,7 +270,7 @@ Deze node is de overkoepelende node waaronder alle andere nodes verzameld staan.
 
 Tenzij anders vermeld, worden 
 
-	```xml
+```xml
 	<pakketgegevens>
 		<softwarehuis>
 			…
@@ -334,7 +310,7 @@ Tenzij anders vermeld, worden
 		</kennisgevingwondzorg>
 	</pakketgegevens>
 
-	```
+```
 
 ### Node softwarehuis
 Deze node bevat de gegevens van het softwarehuis
@@ -400,7 +376,7 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 
 - **metadata**(type metadata, optioneel element)**:** een &quot;key-value&quot; pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven, die niet direct te maken heeft met de tarificatie van prestaties.
 		Voorbeeld metadata item
-	```xml
+```xml
 			<metadata>
 			<item>
 				<naam>venootschap</naam>
@@ -411,7 +387,7 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 				<waarde>tour 1</waarde>
 			</item>
 			</metadata>
-	```
+```
 - **adressen**  (type collection adres, optioneel element). Standaard wordt het domicilie adres (officieel) meegegeven. Via het element adressen kunnen ook andere adressen meegeven
 worden, zoals het verzorgingsadres. 
 
@@ -569,7 +545,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
   - 5 - Dagverzorgings centrum
 - **metadata**(type metadata, optioneel element)**:** een &quot;key-value&quot; pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven, die niet direct te maken heeft met de tarificatie van prestaties.
 
-	```xml
+```xml
 	<uitgevoerdezorg>
 		<input_uitgevoerdezorg_id>…</input_uitgevoerdezorg_id>
 		<externeid>…</externeid>
@@ -596,7 +572,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 		<datumongeval>…</datumongeval>
 		<werkgever>…</werkgever>
 	</uitgevoerdezorg>
-	```
+```
  
 
 ### Node tarificatiedienst

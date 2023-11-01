@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "TDM3 Docs"
   text: "documentatie van publieke TDM3 API's"
-  tagline: My great project tagline
+  tagline: voor huisartsen en thuisverpleging
   actions:
     - theme: brand
       text: Thuisverpleging
