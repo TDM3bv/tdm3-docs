@@ -4,7 +4,7 @@ import imsize_plugin from 'markdown-it-imsize';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "TDM3 Docs",
-  base: "/tdm3-docs/",
+  base: "/",
   description: "documentatie van publieke TDM3 API's",
   lastUpdated: true,
   cleanUrls: true,
