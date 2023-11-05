@@ -8,22 +8,32 @@ export default defineConfig({
   description: "documentatie van publieke TDM3 API's",
   lastUpdated: true,
   cleanUrls: true,
+  lang: 'nl-BE',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Thuisverpleging', link: '/nurse/README.html' },
-      { text: 'Huisartsen', link: '/doctor/README.html' }
+      { text: 'Thuisverpleging', link: '/nurse/' },
+      { text: 'Huisartsen', link: '/doctor/' }
     ],
-    sidebar: [
+    sidebar: {
+      '/nurse/': [
       {
-        text: "API's",
-        items: [
-          { text: 'Thuisverpleging', link: '/nurse/README.html' },
-          { text: 'Huisartsen', link: '/doctor/README.html' }
-        ]
-      }
-    ],
+        text: "Nurse-XML",
+        items: [          
+          { text: 'Algemeen', link: '/nurse/' },
+          { text: 'Nodes', link: '/nurse/nodes' },
+          { text: 'Changelog', link: '/nurse/Changelog' }
+        ]        
+      }],
+      '/doctor/': [
+      {
+        text: "Doctor",
+        items: [    
+          { text: 'Huisartsen', link: '/doctor/' }
+        ]        
+      }]
+    },
     editLink: {
       pattern: 'https://github.com/tdm3cvba/tdm3-docs/edit/vitepress/docs/:path',
       text: 'Edit this page on GitHub'

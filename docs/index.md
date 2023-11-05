@@ -9,14 +9,16 @@ hero:
   actions:
     - theme: brand
       text: Thuisverpleging
-      link: /nurse/README.html
+      link: /nurse/
     - theme: alt
       text: Huisartsen
-      link: /doctor/README.html
+      link: /doctor/
 features:
   - title: Thuisverpleging
     details: Batch XML,..
+    link: /nurse/
   - title: Huisartsen
     details: Doctar API
+    link: /doctor/
 ---
 
