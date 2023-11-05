@@ -1,31 +1,13 @@
 {
-  "name": "vuepress-theme-cool-starter",
-  "version": "2.0.0",
-  "main": "index.js",
-  "description": "A cool theme that has integrated some vue components, charts via charts, and markdown based diagrams plantuml and mermaid.",
-  "repository": "https://github.com/FriendlyUser/vuepress-theme-cool-starter",
-  "author": "FriendlyUser <davidli012345@gmail.com>",
-  "license": "ISC",
+  "devDependencies": {
+    "vitepress": "^1.0.0-rc.24"
+  },
   "scripts": {
-    "docs:dev": "npx vuepress dev docs",
-    "docs:build": "set VUEPRESS_BASE=/tdm3-docs/ && npx vuepress build docs",
-    "docs:build:netlify": "npx vuepress build docs",
-    "dev": "set VUEPRESS_BASE=/tdm3-docs/ && npx vuepress dev docs",
-    "dev:netlify": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "vuepress-bar": "^0.2.7",
-    "vuepress-plugin-reading-progress": "^1.0.10",
-    "vuepress-theme-cool": "1.2.1",
-    "vue-template-compiler": "^2.0.0"    
-  },
-  "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.5.2",
-    "@vuepress/plugin-pwa": "^1.5.2",
-    "vue-template-compiler": "^2.0.0"
-  },
-  "devComments": {
-    "vuepress": "Install vuepress to test run plugins. According to https://github.com/vuejs/vuepress/issues/1608"
+    "markdown-it-imsize": "^2.0.1"
   }
 }

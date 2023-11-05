@@ -1,3 +1,6 @@
+---
+outline: deep
+---
 # Doctar transaction request API
 ## General remarks
 - The API has one endpoint and allows for an **easy** integration between EMD and Doctar with the purpose of **easy** entry of performances by a general practitioner.
