@@ -23,7 +23,7 @@ export default defineConfig({
         items: [          
           { text: 'Algemeen', link: '/nurse/' },
           { text: 'Nodes', link: '/nurse/nodes' },
-          { text: 'Changelog', link: '/nurse/Changelog' }
+          { text: 'Changelog', link: '/nurse/CHANGELOG' }
         ]        
       }],
       '/doctor/': [
