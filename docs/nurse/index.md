@@ -248,3 +248,5 @@ Deze waardes zijn:
 - **2 = ontslag in ziekenhuis**
 - **3 = opname in andere verzorgingsinstelling**
 - **4 = ontslag in andere verzorgingsinstelling**
+
+Bij waarde 1 zal TDM3 de pseudocode [426613](https://webappsa.riziv-inami.fgov.be/Nomen/nl/426613) toevoegen in facturatie. De andere waardes zijn van belang m.b.t. het correct factureren van palliatieve zorgen of een forfait PC/C (uitzonderingsituaties)

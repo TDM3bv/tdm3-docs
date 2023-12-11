@@ -289,7 +289,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
   - 5 = correctiefactuur voor forfaits verpleegkundige zorgen wegens declassering na bezoek adviserend geneesheer
 - **rizivnummerzorgkundige** (string): De rizivnummer van de zorgkundige
 - **naamzorgkundige** (string): De naam van de zorgkundige
-- **ZHOpname (int):** optioneel veld om aan te duiden of er die dag een opname/ontslag is in een ziekenhuis of andere zorginstelling.
+- **ZHOpname (int):**  veld om aan te duiden of er die dag een opname/ontslag is in een ziekenhuis of andere zorginstelling. Bij waarde 1 zal TDM3 de pseudocode [426613](https://webappsa.riziv-inami.fgov.be/Nomen/nl/426613) toevoegen in facturatie. De andere waardes zijn van belang m.b.t. het correct factureren van palliatieve zorgen of een forfait PC/C (uitzonderingsituaties)
     - 0 = geen opname
 	- 1 = opname in ziekenhuis 
     - 2 = ontslag in ziekenhuis
