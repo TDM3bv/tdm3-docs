@@ -2,7 +2,7 @@
 
 | Versie | Omschrijving                                                                                                                                                                                    |
 | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1.38   | Toevoeging: [facturatie wekelijks voorbereiding](/#facturatie-424874-wekelijkse-voorbereiding-van-de-geneesmiddelen-per-os), [uitzondering dagelijks toilet bij een T2 profiel](nodes#node-profielen) |
+| 1.38   | Toevoeging: [facturatie wekelijks voorbereiding](/nurse/#facturatie-424874-wekelijkse-voorbereiding-van-de-geneesmiddelen-per-os), [uitzondering dagelijks toilet bij een T2 profiel](nodes#node-profielen) |
 | 1.39   | Fix- Verduidelijking oplijsting type bestemmeling op node uitgevoerdezorg (medisch huis = 5)                                                                                                    |
 | 1.40   | Fix verduidelijking noodzaak derdebetalercode, -naam en -adres op node uitgevoerdezorg                                                                                                          |
 | 1.41   | Toevoeging: [instructies diabeteseducatie via videoconsultatie tijdens COVID19-crisis](nodes#covid19-crisis-instructies)                                                                             |
@@ -17,3 +17,4 @@
 | 1.46   | Wijziging: type externeid van xs:long naar xs:string zodat ook een UUID kan meegeven worden                                                                                                     |
 | 1.47   | [Uitleg facturatie pseudocodes thuishospitalisatie](nodes#facturatie-pseudocodes-thuishospitalisatie-juli-2023)                                                                                      |
 | 1.48   | Toevoeging: element busnr op node patientgegeven                                                                                                                                                |
+| 1.49   | Toevoeging: [extra waardes ZHOpname bij uitgevoerdezorg](nodes#node-uitgevoerdezorg) - Uitleg [wijziging inzetbaarheid zorgkundigen 01/2024](/nurse/#wijziging-inzetbaarheid-zorgkundigen-01-2024)      |

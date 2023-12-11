@@ -235,3 +235,16 @@ Ze kunnen autonoom gefactureerd worden, vereisen een voorschrift, worden uitgevo
 			<TypeFacturering>0</TypeFacturering>
 		</uitgevoerdezorg>
 ```
+
+
+## Wijziging inzetbaarheid zorgkundigen 01/2024
+Vanaf prestatiedatum 01/01/2024 mogen zorgkundigen ook ingezet worden bij de uitvoering van palliatieve zorgen, op voorwaarde dat een zitting door een verpleegkundige is uitgevoerd.
+Hier zijn enkele uitzonderingen voor: wanneer de patiënt komt te overlijden, of bij een opname of ontslag in een zorginstelling. Dan kan de verpleegassistent, verpleegkundige of zorgkundige de engiste zijn, of kan een forfait C/PC gefactureerd worden wanneer er maar 1 zitting heeft plaatsgevonden.
+
+Daarom wordt de betekenis van het veld [uitgevoerdezorg.ZHOpname](/nurse/nodes#node-uitgevoerdezorg) (int) wordt verder uitgebreid met extra waardes: 2,3 en 4.
+Deze waardes zijn:
+- 0 = geen opname
+- 1 = opname in ziekenhuis 
+- **2 = ontslag in ziekenhuis**
+- **3 = opname in andere verzorgingsinstelling**
+- **4 = ontslag in andere verzorgingsinstelling**

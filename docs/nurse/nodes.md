@@ -289,7 +289,12 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
   - 5 = correctiefactuur voor forfaits verpleegkundige zorgen wegens declassering na bezoek adviserend geneesheer
 - **rizivnummerzorgkundige** (string): De rizivnummer van de zorgkundige
 - **naamzorgkundige** (string): De naam van de zorgkundige
-- **ZHOpname (int):** optioneel veld om aan te duiden of het over een ziekenhuisopname gaat of niet (0 of 1).
+- **ZHOpname (int):** optioneel veld om aan te duiden of er die dag een opname/ontslag is in een ziekenhuis of andere zorginstelling.
+    - 0 = geen opname
+	- 1 = opname in ziekenhuis 
+    - 2 = ontslag in ziekenhuis
+	- 3 = opname in andere verzorgingsinstelling
+	- 4 = ontslag in andere verzorgingsinstelling
 - **Locatie:** Ikv Verordening van 28 juli 2003 bijlage 85, wordt hier de overeenkomstige pseudocode meegegeven die moeten vermeld worden bij de verstrekkingen van art. 8, §1, 3° van de nomenclatuur (&quot;verstrekkingen verleend hetzij in de praktijkkamer van de beoefenaar van de verpleegkunde, hetzij in een hersteloord&quot;). Deze pseudo-codes geven de plaats van verstrekking weer. Wordt ook gebruikt ikv diabeteseducatie via videoconsultatie tijdens COVID19-crisis. De betrekkelijke verstrekking wordt dan in dit element ingevuld.
 - **typebezoek (int) – **optioneel om mee te geven. Laat toe om presaties zoals** 424874** ( _wekelijkse voorbereiding van geneesmiddelen per os_) die zijn uitgevoerd in een locatie waar geen vergoeding voor bestaat (&#39;instelling/ hersteloord/praktijkkamer&#39;) toch tegen te houden
   - 1 - aan huis van de patiënt op weekdag
