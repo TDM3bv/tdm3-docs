@@ -47,7 +47,7 @@ Bijvoorbeeld:
 
 ## Remgeld
 
-Indien er gefactureerd wordt aan een verzekeringsinstelling (type bestemmeling = 2) of OCMW (type bestemmeling = 4), dan mag bij remgeld niets ingevuld worden.Remgeld is het deel dat aan de patient wordt gevraagd en dus niet door het RIZIV (medisch huis, ziekenfonds) wordt terugbetaald. 
+Indien er gefactureerd wordt aan een verzekeringsinstelling (type bestemmeling = 2) of OCMW (type bestemmeling = 4), dan mag bij remgeld niets ingevuld worden. Remgeld is het deel dat aan de patient wordt gevraagd en dus niet door het RIZIV (medisch huis, ziekenfonds) wordt terugbetaald. 
 Als dit veld is ingevuld bij facturatie aan OCMW of verzekeringsinstelling dan zal TDM3 dit negeren.
 
 
