@@ -35,11 +35,11 @@ export default defineConfig({
       }]
     },
     editLink: {
-      pattern: 'https://github.com/tdm3cvba/tdm3-docs/edit/vitepress/docs/:path',
+      pattern: 'https://github.com/tdm3bv/tdm3-docs/edit/vitepress/docs/:path',
       text: 'Edit this page on GitHub'
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/tdm3cvba/tdm3-docs' }
+      { icon: 'github', link: 'https://github.com/tdm3bv/tdm3-docs' }
     ],
     search: {
       provider: 'local'
