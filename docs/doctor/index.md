@@ -8,7 +8,7 @@ outline: deep
 - The API is a REST API, based on [Open API 3.0](https://swagger.io/specification/).
   - The specification format allows for generation of client-side code in all common languages.
 - The specification (QUA environment) can be found [here](https://qua-doctarwebtool.azurewebsites.net/Mederi/Doctar.Api/swagger/index.html?urls.primaryName=Public%2FV1)
-- [Demo app](https://launch.smarthealthit.org/ehr.html?app=https%3A%2F%2Ftdm3cvba.github.io%2Fbb-clear-smart-fhir%2Flaunch.html%3Flaunch%3DeyJhIjoiMSIsImYiOiIxIn0%26iss%3Dhttps%253A%252F%252Flaunch.smarthealthit.org%252Fv%252Fr4%252Ffhir&user=)
+- [Demo app](https://launch.smarthealthit.org/ehr.html?app=https%3A%2F%2Ftdm3bv.github.io%2Fbb-clear-smart-fhir%2Flaunch.html%3Flaunch%3DeyJhIjoiMSIsImYiOiIxIn0%26iss%3Dhttps%253A%252F%252Flaunch.smarthealthit.org%252Fv%252Fr4%252Ffhir&user=)
 
 ## Sequence
 <!-- <mermaid>
@@ -35,7 +35,7 @@ sequenceDiagram
 5. User completes + confirms the transaction form
 
 You can see this flow in the gif below. The user has already authenticated.
-![Demo](https://github.com/TDM3cvba/bb-clear-smart-fhir/raw/master/bb-clear-smart-fhir-demo.gif)
+![Demo](https://github.com/tdm3bv/bb-clear-smart-fhir/raw/master/bb-clear-smart-fhir-demo.gif)
 
 The current use case of the Doctar transaction request API assumes no delegated authorization flow between clientapp (server) and the Doctar API. The JWT token is to track, identify and authorize the vendor. The user is authenticated and authorized when he/she gets forwarded to the webclient.
 There are other (security) scenarios possible, but this is the easiest and simplest one.
@@ -230,15 +230,15 @@ If the X-Validate header is set, the following error response is returned
 ```
 
 ## Demo App
-To demonstrate the API we developed a demo app. This demo app is forked from [stfnh/bb-clear-smart-fhir](https://github.com/stfnh/bb-clear-smart-fhir) repo. Its purpose is to demonstrate the flow described above. The modified source code can be found on [TDM3cvba/bb-clear-smart-fhir](https://github.com/TDM3cvba/bb-clear-smart-fhir)
+To demonstrate the API we developed a demo app. This demo app is forked from [stfnh/bb-clear-smart-fhir](https://github.com/stfnh/bb-clear-smart-fhir) repo. Its purpose is to demonstrate the flow described above. The modified source code can be found on [TDM3bv/bb-clear-smart-fhir](https://github.com/tdm3bv/bb-clear-smart-fhir)
 
 The app runs using SMART App Launcher
 
-Click [here](http://launch.smarthealthit.org/ehr.html?app=https%3A%2F%2Ftdm3cvba.github.io%2Fbb-clear-smart-fhir%2Flaunch.html%3Flaunch%3DeyJhIjoiMSIsImYiOiIxIn0%26iss%3Dhttps%253A%252F%252Flaunch.smarthealthit.org%252Fv%252Fr4%252Ffhir&user=) for a direct link or follow the steps below
+Click [here](http://launch.smarthealthit.org/ehr.html?app=https%3A%2F%2Ftdm3bv.github.io%2Fbb-clear-smart-fhir%2Flaunch.html%3Flaunch%3DeyJhIjoiMSIsImYiOiIxIn0%26iss%3Dhttps%253A%252F%252Flaunch.smarthealthit.org%252Fv%252Fr4%252Ffhir&user=) for a direct link or follow the steps below
 
 1. Go to [http://launch.smarthealthit.org/](http://launch.smarthealthit.org/)
 2. Leave all settings as they are (FHIR Version R4).
-3. At the bottom of the page, set the App Launch Url to: `https://tdm3cvba.github.io/bb-clear-smart-fhir/launch.html`
+3. At the bottom of the page, set the App Launch Url to: `https://tdm3bv.github.io/bb-clear-smart-fhir/launch.html`
 4. Click `Launch App`
 5. Login as practitioner
 6. Select a patient
