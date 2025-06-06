@@ -214,7 +214,7 @@ Ze kunnen autonoom gefactureerd worden, vereisen een voorschrift, worden uitgevo
 			<externeid>6454</externeid>
 			<datumuitvoering>2023-07-01T09:08:00</datumuitvoering>
 			<zorgminuten/>
-			<datumvoorschrift>2023-06-25<datumvoorschrift>
+			<datumvoorschrift>2023-06-25</datumvoorschrift>
 			<rizivnummervoorschrijver>10828168004</rizivnummervoorschrijver>
 			<naamvoorschrijver>Peter Janssens</naamvoorschrijver>
 			<remgeld>0</remgeld>
