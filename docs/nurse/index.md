@@ -251,3 +251,36 @@ Deze waardes zijn:
 - **4 = ontslag in andere verzorgingsinstelling**
 
 Bij waarde 1 en 2 zal TDM3 de pseudocode [426613](https://webappsa.riziv-inami.fgov.be/Nomen/nl/426613) toevoegen in facturatie. Tevens zijn de waardes van belang m.b.t. het correct factureren van palliatieve forfaits, een forfait PC/C (uitzonderingsituaties)
+
+## Referentienummer digitaal verwijsvoorschrift
+Voor prestaties waarbij een digitaal verwijsvoorschrift werd gebruikt, moet het referentienummer (shortcode) meegegeven worden in het prestatiebestand. Dit nummer bestaat uit 6 alfanumerieke karakters. 
+[uitgevoerdezorg.referentieverwijsvoorschrift](/nurse/nodes#node-uitgevoerdezorg)
+```xml
+		<uitgevoerdezorg>
+			<input_uitgevoerdezorg_id>32145344</input_uitgevoerdezorg_id>
+			<externeid>6454</externeid>
+			<datumuitvoering>2023-07-01T09:08:00</datumuitvoering>
+			<zorgminuten/>
+			<datumvoorschrift>2023-06-25<datumvoorschrift>
+			<rizivnummervoorschrijver>10828168004</rizivnummervoorschrijver>
+			<naamvoorschrijver>Peter Janssens</naamvoorschrijver>
+			<referentieverwijsvoorschrift>A1B2C3</referentieverwijsvoorschrift>
+			<remgeld>0</remgeld>
+			<nomenclatuurnummer>000000</nomenclatuurnummer>
+			<pseudocodenummer>418574</pseudocodenummer>
+			<kb90bedrag />
+			<rizivnummerverpleegkundige>146611468408</rizivnummerverpleegkundige>		
+			<patientgegevens_id>45</patientgegevens_id>
+			<bezoeknummer>3</bezoeknummer>
+			<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+			<insuline>false</insuline>
+			<derdebetalercode />
+			<derdebetalernaam />
+			<derdebetaleradres />
+			<polisnummer />
+			<dossiernummer />
+			<datumongeval />
+			<werkgever />
+			<TypeFacturering>0</TypeFacturering>
+		</uitgevoerdezorg>
+```

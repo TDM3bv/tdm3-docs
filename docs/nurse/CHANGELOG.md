@@ -18,3 +18,4 @@
 | 1.47   | [Uitleg facturatie pseudocodes thuishospitalisatie](/nurse/#facturatie-pseudocodes-thuishospitalisatie-juli-2023)                                                                                   |
 | 1.48   | Toevoeging: element busnr op node patientgegeven                                                                                                                                                |
 | 1.49   | Toevoeging: [extra waardes ZHOpname bij uitgevoerdezorg](nodes#node-uitgevoerdezorg) - Uitleg [wijziging inzetbaarheid zorgkundigen 01/2024](/nurse/#wijziging-inzetbaarheid-zorgkundigen-01-2024)      |
+| 1.50   | Toevoeging: element referentieverwijsvoorschrift op node [uitgevoerdezorg](nodes#node-uitgevoerdezorg). [Meer  uitleg](/nurse/#referentienummer-digitaal-verwijsvoorschrift)                                                     |
