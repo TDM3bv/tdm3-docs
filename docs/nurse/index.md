@@ -261,7 +261,7 @@ Voor prestaties waarbij een digitaal verwijsvoorschrift werd gebruikt, moet het 
 			<externeid>6454</externeid>
 			<datumuitvoering>2023-07-01T09:08:00</datumuitvoering>
 			<zorgminuten/>
-			<datumvoorschrift>2023-06-25<datumvoorschrift>
+			<datumvoorschrift>2023-06-25</datumvoorschrift>
 			<rizivnummervoorschrijver>10828168004</rizivnummervoorschrijver>
 			<naamvoorschrijver>Peter Janssens</naamvoorschrijver>
 			<referentieverwijsvoorschrift>A1B2C3</referentieverwijsvoorschrift>
