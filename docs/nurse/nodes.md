@@ -673,8 +673,8 @@ Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. D
 		<datumvoorschrift>2006-04-25T00:00:00</datumvoorschrift>
 		<rizivnummervoorschrijver>10765119340</rizivnummervoorschrijver>
 		<naamvoorschrijver>WITTERS KATRIJN</naamvoorschrijver>
-		<referentieverwijsvoorschrift/>
-		<flagverwijsvoorschrift/>
+		<referentieverwijsvoorschrift>A1B2C3</referentieverwijsvoorschrift>
+		<flagverwijsvoorschrift>1</flagverwijsvoorschrift>
 		<remgeld/>
 		<nomenclatuurnummer>423275</nomenclatuurnummer>
 		<pseudocodenummer>000000</pseudocodenummer>
@@ -701,7 +701,7 @@ Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. D
 		<rizivnummervoorschrijver>17264911340</rizivnummervoorschrijver>
 		<naamvoorschrijver>VOSSEN C</naamvoorschrijver>
 		<referentieverwijsvoorschrift/>
-		<flagverwijsvoorschrift/>
+		<flagverwijsvoorschrift>0</flagverwijsvoorschrift>
 		<remgeld/>
 		<nomenclatuurnummer>423275</nomenclatuurnummer>
 		<pseudocodenummer>000000</pseudocodenummer>
