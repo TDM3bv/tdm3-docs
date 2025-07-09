@@ -51,7 +51,6 @@ Tenzij anders vermeld, worden alle elementen als verplicht beschouwd.
 		<uitgevoerdezorg>
 			…
 		</uitgevoerdezorg>
-	
 		<profielen>
 			…
 		</profielen>
@@ -71,10 +70,10 @@ Tenzij anders vermeld, worden alle elementen als verplicht beschouwd.
 ## Node softwarehuis
 Deze node bevat de gegevens van het softwarehuis
 
--	Code (string): Dit is een code toegekend door TDM3.
--	Naam (string): De naam van het softwarehuis
--	Telefoonnummer (string): Het telefoonnummer van het softwarehuis
--	Email (string): Het emailadres van het softwarehuis
+- **code** (string): Dit is een code toegekend door TDM3.
+- **naam** (string): De naam van het softwarehuis
+- **telefoonnummer** (string): Het telefoonnummer van het softwarehuis
+- **email** (string): Het emailadres van het softwarehuis
 
 
 Voorbeeld:
@@ -105,17 +104,17 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 - **gemeente** (string): De gemeente van de patiënt.  (domicilie adres)
 - **landcode** (string): De landcode van de patiënt (ISO)  (domicilie adres)
 - **ziekenfondscode** (string): Het ziekenfonds waar de patiënt is aangesloten.
-- **stamnummer**(string): Enkel voor buitenlanders en boorlingen,**voor alle andere  gevallen moet men het rijksregisternummer gebruiken.** Bij facturatie van zorgen buiten het ZIV (verzekering, ocmw, patient) en het rijksregisternummer of stamnummer is niet gekend, kan in dit veld een unieke identificatienummer meegegeven worden.
+- **stamnummer** (string): Enkel voor buitenlanders en boorlingen, **voor alle andere gevallen moet men het rijksregisternummer gebruiken.** Bij facturatie van zorgen buiten het ZIV (verzekering, ocmw, patient) en het rijksregisternummer of stamnummer is niet gekend, kan in dit veld een unieke identificatienummer meegegeven worden.
 - **hoedanigheid** (string): De hoedanigheid van de patiënt (optioneel). (deprecated)
-- **geldigvan** (dateTime): Geldigheidsperiode van - datum (optioneel).(deprecated)
-- **geldigtot** (dateTime): Geldigheidsperiode tot datum (optioneel).(deprecated)
+- **geldigvan** (dateTime): Geldigheidsperiode van - datum (optioneel). (deprecated)
+- **geldigtot** (dateTime): Geldigheidsperiode tot datum (optioneel). (deprecated)
 - **risicocode1** (string): De risicocode 1 van de patiënt.
 - **risicocode2** (string): De risicocode 2 van de patiënt.
 - **ruraal** (string): Als dit veld `true` is dan wordt er voor elke uitgevoerde zorg een prestatie met nomenclatuur 418913, verplaatsingskosten, aangemaakt.
-- **startdatumpal (dateTime):** De startdatum paliatieve verzorging, van het palliatief akkoord
+- **startdatumpal** (dateTime): De startdatum paliatieve verzorging, van het palliatief akkoord.
 - **rijksregisternummer** (string): Het rijksregisternummer van de patiënt.
-- **kanaalbewijsstuk** (integer) 1= Per post, 2=per e-mail, 3 = eBox
-- **bestemmelingbewijsstuk** (integer)1=patiënt, 2=vertegenwoordiger van de patiënt of bewindvoerder
+- **kanaalbewijsstuk** (integer): 1 = Per post, 2 = per e-mail, 3 = eBox
+- **bestemmelingbewijsstuk** (integer): 1 = patiënt, 2 = vertegenwoordiger van de patiënt of bewindvoerder
 - **naambestemmelingbewijsstuk** (string): De naam van de bestemmelingbewijsstuk (zelfs als dit de patiënt is)
 - **voornaambestemmelingbewijsstuk** (string): De voornaam van de bestemmelingbewijsstuk (zelfs als dit de patiënt is)
 - **straatbestemmelingbewijsstuk** (string): De straat van bestemmelingbewijsstuk (zelfs als dit de patiënt is)
@@ -282,7 +281,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **input\_uitgevoerdezorg\_id** (long): De uitgevoerdezorgid van het versturende systeem.
 - **externeid** (string): Het patientid van het versturende systeem refererend naar externid van patientgegevens.
 - **datumuitvoering** (dateTime): De datum waarop de prestatie is uitgevoerd.
-- **zorgminuten:** (int): het aantal minuten de uitgevoerdezorg heeft geduurd. Bvb ikv een complexe wondzorg.
+- **zorgminuten** (int): Het aantal minuten de uitgevoerdezorg heeft geduurd. Bijvoorbeeld in het kader van een complexe wondzorg.
 - **datumvoorschrift** (dateTime): De datum waarop de prestatie is voorgeschreven.
 - **rizivnummervoorschrijver** (string): De rizivnummer van de voorschrijvende geneesheer.
 - **naamvoorschrijver** (string): De naam van de voorschrijvende geneesheer.
@@ -294,10 +293,9 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **nomenclatuurnummer** (string): De nomenclatuurnummer van de prestatie.
 - **pseudocodenummer** (string): De pseudocode voor de nomenclatuur. Moet enkel ingevuld worden indien er geen nomenclatuurnummer bestaat (palliatieve zorgen en niet vergoedbare zorgen). Dan moet de nomenclatuurnummer 000000 zijn. Indien geen pseudocode veld opvullen met 000000. 
 - **kb90bedrag** (string): Het bedrag van de uitgevoerde zorg die valt onder het KB van 1990. Voor deze zorg bestaat geen nomenclatuurnummer en moet 426856 als pseudocodenummer hebben.
-- **kb90omschrijving:** een vrije omschrijving van de zorg die gefactureerd wordt onder de kb90 nomenclatuur.
+- **kb90omschrijving** (string): Een vrije omschrijving van de zorg die gefactureerd wordt onder de kb90 nomenclatuur.
 - **BtwPercentage** (int): Indien er voor de prestatie btw moet aangerekend worden, dient hier gespecifieerd te worden hoeveel het btw percentage is: 0, 6 of 21
 - **BedragInclusiefBtw** (boolean): Hiermee kan gespecifeerd worden hoe de btw berekening dient te gebeuren. Indien het kb90bedrag of de tariefberekening voor de nomenclatuurcode inclusief 21% btw is, dan moet waarde Ja (Boolean True) meegegeven worden. Indien TDM3 zelf btw bedrag dient te berekenen op het kb90 bedrag of het door TDM3 getarifieerde bedrag, dan moet hier waarde Nee (Boolean False) meegeven worden.
-  - Deze omschrijving zal verschijnen op het bewijsstuk naar de patiënt en op de factuur naar de patiënt of de verzekering
 - **ziekenfondscode** (string): Het ziekenfonds van de patiënt.
 - **rizivnummerverpleegkundige** (string): De rizivnummer van de verpleegkundige. Deze moet voorafgaan door 0 of 1 :
     - 0 : niet geconventioneerd
@@ -321,7 +319,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
   - 5 = correctiefactuur voor forfaits verpleegkundige zorgen wegens declassering na bezoek adviserend geneesheer
 - **rizivnummerzorgkundige** (string): De rizivnummer van de zorgkundige
 - **naamzorgkundige** (string): De naam van de zorgkundige
-- **ZHOpname (int):**  veld om aan te duiden of er die dag een opname/ontslag is in een ziekenhuis of andere zorginstelling. Bij waarde 1 en 2 zal TDM3 de pseudocode [426613](https://webappsa.riziv-inami.fgov.be/Nomen/nl/426613) toevoegen in facturatie. Tevens zijn de waardes van belang m.b.t. het correct factureren van palliatieve forfaits, een forfait PC/C (uitzonderingsituaties).
+- **ZHOpname (string):**  veld om aan te duiden of er die dag een opname/ontslag is in een ziekenhuis of andere zorginstelling. Bij waarde 1 en 2 zal TDM3 de pseudocode [426613](https://webappsa.riziv-inami.fgov.be/Nomen/nl/426613) toevoegen in facturatie. Tevens zijn de waardes van belang m.b.t. het correct factureren van palliatieve forfaits, een forfait PC/C (uitzonderingsituaties).
     - 0 = geen opname
 	- 1 = opname in ziekenhuis 
     - 2 = ontslag in ziekenhuis
@@ -404,8 +402,8 @@ Voorbeeld:
 
 Deze node bevat het jaar en de maand van de verwerking van de prestaties.
 
-- **jaar** (int): Het jaar van de verwerking van de prestaties.
-- **maand** (int): De maand van de verwerking van de prestaties.
+- **jaar** (long): Het jaar van de verwerking van de prestaties.
+- **maand** (long): De maand van de verwerking van de prestaties.
 
 **Voorbeeld:**
 
@@ -481,7 +479,7 @@ Mogelijke waardes zijn :
 	<externeid>…</externeid>
 	<startdatum>…</startdatum>
 	<einddatum>…</einddatum>
-	<patientgegevens_id>…<patientgegevens_id>
+	<patientgegevens_id>…</patientgegevens_id>
 	<profiel>…</profiel>
 </profielen>
 ```
