@@ -68,7 +68,6 @@
 							<xs:element name="geldigvan"   type="xs:dateTime" minOccurs="0" />
 							<xs:element name="geldigtot"   type="emptyDateTime" minOccurs="0" />
 							<xs:element name="ruraal" type="xs:string" minOccurs="0" />
-							<xs:element name="factuurnummer" type="xs:string" minOccurs="0" />
 							<xs:element name="startdatumpal"  type="emptyDateTime" minOccurs="0" />
 							<xs:element name="rijksregisternummer" type="xs:string" minOccurs="0" />
 							<xs:element name="kanaalbewijsstuk " type="xs:int" minOccurs="0" />
@@ -105,6 +104,8 @@
 							<xs:element name="datumvoorschrift"  type="emptyDateTime" minOccurs="0" />
 							<xs:element name="rizivnummervoorschrijver" type="xs:string" minOccurs="0" />
 							<xs:element name="naamvoorschrijver" type="xs:string" minOccurs="0" />
+							<xs:element name="referentieverwijsvoorschrift" type="xs:string" minOccurs="0" />
+							<xs:element name="flagverwijsvoorschrift" type="xs:int" minOccurs="0" />
 							<xs:element name="remgeld" type="xs:string" minOccurs="0" />
 							<xs:element name="nomenclatuurnummer" type="xs:string" minOccurs="0" />
 							<xs:element name="pseudocodenummer" type="xs:string" minOccurs="0" />
