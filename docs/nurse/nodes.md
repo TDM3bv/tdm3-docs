@@ -13,43 +13,45 @@ outline: deep
 ## Node Pakketgegevens
 Deze node is de overkoepelende node waaronder alle andere nodes verzameld staan.
 
-- Ze bevat een aantal patientgegevens-node
-- een aantal uitgevoerdezorg-nodes
 - één tarificatiedienst-node
+- één softwarehuis-node
 - één facturatieperiode-node
 - één vereniging-node
+- een aantal patientgegevens-node
+- een aantal uitgevoerdezorg-nodes
 - een aantal profielen-nodes
 - een aantal lezingidentiteit nodes
 - een aantal kennisgevingwondzorg nodes
 
-Tenzij anders vermeld, worden 
+Tenzij anders vermeld, worden alle elementen als verplicht beschouwd. 
 
 ```xml
 	<pakketgegevens>
-		<softwarehuis>
-			…
-		</softwarehuis >
-		<patientgegevens>
-			…
-		</patientgegevens>
-		<patientgegevens>
-			…
-		</patientgegevens>
-		<uitgevoerdezorg>
-			…
-		</uitgevoerdezorg>
-		<uitgevoerdezorg>
-			…
-		</uitgevoerdezorg>
 		<tarificatiedienst>
 			…
-		</tarificatiedienst>
+		</tarificatiedienst>		
+		<softwarehuis>
+			…
+		</softwarehuis>
 		<facturatieperiode>
 			…
 		</facturatieperiode>
-	<vereniging>
-		…
-	</vereniging>
+		<vereniging>
+			…
+		</vereniging>
+		<patientgegevens>
+			…
+		</patientgegevens>
+		<patientgegevens>
+			…
+		</patientgegevens>
+		<uitgevoerdezorg>
+			…
+		</uitgevoerdezorg>
+		<uitgevoerdezorg>
+			…
+		</uitgevoerdezorg>
+	
 		<profielen>
 			…
 		</profielen>
@@ -57,10 +59,10 @@ Tenzij anders vermeld, worden
 			…
 		</profielen>
 		<lezingidentiteit>
-		--
+			…
 		</lezingidentiteit>
 		<kennisgevingwondzorg>
-		--
+			…
 		</kennisgevingwondzorg>
 	</pakketgegevens>
 
@@ -89,9 +91,10 @@ Voorbeeld:
 
 Per patient is er één patientgegevens node met hierin de volgende gegevens (in volgorde zoals ze hieronder staan):
 
-- **patientgegevens\_id** (integer): Dit is een uniek nummer binnen dit bestand waarmee de &#39;uitgevoerdezorgen&#39;-nodes en &#39;profielen&#39;-nodes gelinkt kunnen worden aan de &#39;patiënt&#39;. Dit wil zeggen dat voor elk &#39;profielen&#39;-node en elke &#39;uitgevoerdezorg&#39;-node van de patiënt deze patientgegevens\_id gebruikt moet worden.
+- **patientgegevens\_id** (long): Dit is een uniek nummer binnen dit bestand waarmee de &#39;uitgevoerdezorgen&#39;-nodes en &#39;profielen&#39;-nodes gelinkt kunnen worden aan de &#39;patiënt&#39;. Dit wil zeggen dat voor elk &#39;profielen&#39;-node en elke &#39;uitgevoerdezorg&#39;-node van de patiënt deze patientgegevens\_id gebruikt moet worden.
 - **externeid** (string): De patientid van het versturende systeem; deze id wordt samen met de patientgegevens\_id gebruikt om de &#39;uitgevoerdezorgen&#39;-nodes en de &#39;profielen&#39;-nodes te linken aan de patiënt. Dit wil zeggen dat voor elke &#39;profielen&#39;-node en elke &#39;uitgevoerdezorg&#39;-node van de patiënt deze externeid gebruikt moet worden.
 - **naam** (string): De naam van de patiënt.
+- **email** (string): Het emailadres van de patiënt (optioneel).
 - **voornaam** (string): De voornaam van de patiënt.
 - **geslacht** (string): Het geslacht van de patiënt (mogelijke waardes: M, V).
 - **geboortedatum** (dateTime): De geboortedatum van de patiënt.
@@ -103,20 +106,23 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 - **landcode** (string): De landcode van de patiënt (ISO)  (domicilie adres)
 - **ziekenfondscode** (string): Het ziekenfonds waar de patiënt is aangesloten.
 - **stamnummer**(string): Enkel voor buitenlanders en boorlingen,**voor alle andere  gevallen moet men het rijksregisternummer gebruiken.** Bij facturatie van zorgen buiten het ZIV (verzekering, ocmw, patient) en het rijksregisternummer of stamnummer is niet gekend, kan in dit veld een unieke identificatienummer meegegeven worden.
+- **hoedanigheid** (string): De hoedanigheid van de patiënt (optioneel). (deprecated)
+- **geldigvan** (dateTime): Geldigheidsperiode van - datum (optioneel).(deprecated)
+- **geldigtot** (dateTime): Geldigheidsperiode tot datum (optioneel).(deprecated)
 - **risicocode1** (string): De risicocode 1 van de patiënt.
 - **risicocode2** (string): De risicocode 2 van de patiënt.
-- **ruraal** (boolean): Als dit veld true is dan wordt er voor elke uitgevoerde zorg een prestatie met nomenclatuur 418913, verplaatsingskosten, aangemaakt.
+- **ruraal** (string): Als dit veld `true` is dan wordt er voor elke uitgevoerde zorg een prestatie met nomenclatuur 418913, verplaatsingskosten, aangemaakt.
 - **startdatumpal (dateTime):** De startdatum paliatieve verzorging, van het palliatief akkoord
 - **rijksregisternummer** (string): Het rijksregisternummer van de patiënt.
-- **kanaalBewijsstuk** (integer) 1= Per post, 2=per e-mail, 3 = eBox
-- **bestemmelingBewijsstuk** (integer)1=patiënt, 2=vertegenwoordiger van de patiënt of bewindvoerder
-- **naamBestemmelingBewijsstuk** (string): De naam van de bestemmelingbewijsstuk (zelfs als dit de patiënt is)
-- **voornaamBestemmelingBewijsstuk** (string): De voornaam van de bestemmelingbewijsstuk (zelfs als dit de patiënt is)
-- **straatBestemmelingBewijsstuk** (string): De straat van bestemmelingbewijsstuk (zelfs als dit de patiënt is)
-- **huisnummerBestemmelingBewijsstuk** (string): De huisnummer van bestemmelingbewijsstuk (zelfs als dit de patiënt is). (kan maximum 10 karakters bevatten)
-- **postcodeBestemmelingBewijsstuk** (string): De postcode van bestemmelingbewijsstuk (zelfs als dit de patiënt is).
-- **gemeenteBestemmelingBewijsstuk** (string): De gemeente van van bestemmelingbewijsstuk (zelfs als dit de patiënt is)..
-- **emailBestemmelingBewijsstuk** (string): e-mailadres van bestemmelingbewijsstuk (zelfs als dit de patiënt is).
+- **kanaalbewijsstuk** (integer) 1= Per post, 2=per e-mail, 3 = eBox
+- **bestemmelingbewijsstuk** (integer)1=patiënt, 2=vertegenwoordiger van de patiënt of bewindvoerder
+- **naambestemmelingbewijsstuk** (string): De naam van de bestemmelingbewijsstuk (zelfs als dit de patiënt is)
+- **voornaambestemmelingbewijsstuk** (string): De voornaam van de bestemmelingbewijsstuk (zelfs als dit de patiënt is)
+- **straatbestemmelingbewijsstuk** (string): De straat van bestemmelingbewijsstuk (zelfs als dit de patiënt is)
+- **huisnummerbestemmelingbewijsstuk** (string): De huisnummer van bestemmelingbewijsstuk (zelfs als dit de patiënt is). (kan maximum 10 karakters bevatten)
+- **postcodebestemmelingbewijsstuk** (string): De postcode van bestemmelingbewijsstuk (zelfs als dit de patiënt is).
+- **gemeentebestemmelingbewijsstuk** (string): De gemeente van van bestemmelingbewijsstuk (zelfs als dit de patiënt is).
+- **emailbestemmelingbewijsstuk** (string): e-mailadres van bestemmelingbewijsstuk (zelfs als dit de patiënt is).
 - **taalcodebewijsstuk** (string): de ISO-639-1 taalcode waarin het bewijsstuk moet opgesteld worden.  [https://en.wikipedia.org/wiki/List\_of\_ISO\_639-1\_codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
     - Nederlands = nl
     - Frans = fr
@@ -127,6 +133,7 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
   - indien patient, hier het insz nummer van de patient herhalen, indien bewindvoerder, de insz van de bewindvoerder plaatsen.
 - **identificatietypebestemmelingbewijsstuk** (int)
   - type identificatie eigenaar eBox, 1 = INSS , 2 = NIHII, 3 = CBE (organization)
+- **landcodebestemmelingbewijsstuk** (string): De landcode van bestemmelingbewijsstuk (zelfs als dit de patiënt is).
 
 - **metadata**(type metadata, optioneel element)**:** een &quot;key-value&quot; pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven, die niet direct te maken heeft met de tarificatie van prestaties.
 		Voorbeeld metadata item
@@ -199,11 +206,13 @@ Voorbeeld adressen
 		<patientgegevens_id>…</patientgegevens_id>
 		<externeid>…</externeid>
 		<naam>…</naam>
+		<email>…</email>
 		<voornaam>…</voornaam>
 		<geslacht>…</geslacht>
 		<geboortedatum>…</geboortedatum>
 		<straat>…</straat>
 		<huisnummer>…</huisnummer>
+		<busnr>…</busnr>
 		<postcode>…</postcode>
 		<gemeente>…</gemeente>
 		<landcode>…</landcode>
@@ -214,6 +223,25 @@ Voorbeeld adressen
 		<ruraal>…</ruraal>
 		<startdatumpal>…</startdatumpal>
 		<rijksregisternummer>…</rijksregisternummer>
+		<kanaalbewijsstuk>…</kanaalbewijsstuk>
+		<bestemmelingbewijsstuk>…</bestemmelingbewijsstuk>
+		<naambestemmelingbewijsstuk>…</naambestemmelingbewijsstuk>
+		<voornaambestemmelingbewijsstuk>…</voornaambestemmelingbewijsstuk>
+		<straatbestemmelingbewijsstuk>…</straatbestemmelingbewijsstuk>
+		<huisnummerbestemmelingbewijsstuk>…</huisnummerbestemmelingbewijsstuk>
+		<postcodebestemmelingbewijsstuk>…</postcodebestemmelingbewijsstuk>
+		<gemeentebestemmelingbewijsstuk>…</gemeentebestemmelingbewijsstuk>
+		<emailbestemmelingbewijsstuk>…</emailbestemmelingbewijsstuk>
+		<identificatiebestemmelingbewijsstuk>…</identificatiebestemmelingbewijsstuk>
+		<identificatietypebestemmelingbewijsstuk>…</identificatietypebestemmelingbewijsstuk>
+		<landcodebestemmelingbewijsstuk>…</landcodebestemmelingbewijsstuk>
+		<taalcodebewijsstuk>…</taalcodebewijsstuk>
+		<metadata>
+			<item>
+				<naam>…</naam>
+				<waarde>…</waarde>
+			</item>
+		</metadata>
 		<adressen>
 			<adres>...</adres>
 		</adressen>
@@ -251,7 +279,7 @@ Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefond
 
 Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegevens (in volgorde zoals ze hieronder staan):
 
-- **input\_uitgevoerdezorg\_id** (int): De uitgevoerdezorgid van het versturende systeem.
+- **input\_uitgevoerdezorg\_id** (long): De uitgevoerdezorgid van het versturende systeem.
 - **externeid** (string): Het patientid van het versturende systeem refererend naar externid van patientgegevens.
 - **datumuitvoering** (dateTime): De datum waarop de prestatie is uitgevoerd.
 - **zorgminuten:** (int): het aantal minuten de uitgevoerdezorg heeft geduurd. Bvb ikv een complexe wondzorg.
@@ -262,22 +290,22 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
     - 1 : Er is een digitaal verwijsvoorschrift voor de betreffende verstrekking.
     - 0 : Alle andere gevallen (geen voorschrift, papieren verwijsvoorschrift of mondeling, verwijsvoorschrift).
 - **referentieverwijsvoorschrift** (string): referentienummer (Short RefID) (Short Code) van het digitaal verwijsvoorschrift. Dit nummer bestaat uit 6 alfanumerieke karakters. Moet ingevuld worden wanneer voor de verstrekking  een digitaal verwijsvoorschrift werd gebruikt (`flagverwijsvoorschrift` = 1).
-- **remgeld** (int): uitgedrukt als percentage van het persoonlijk aandeel dat wordt gevraagd, van 0 tem 100. 0 is geen remgeld tellen, 100 = het volledige persoonlijk aandeel wordt gevraagd.
+- **remgeld** (string): uitgedrukt als percentage van het persoonlijk aandeel dat wordt gevraagd, van 0 tem 100. 0 is geen remgeld tellen, 100 = het volledige persoonlijk aandeel wordt gevraagd.
 - **nomenclatuurnummer** (string): De nomenclatuurnummer van de prestatie.
 - **pseudocodenummer** (string): De pseudocode voor de nomenclatuur. Moet enkel ingevuld worden indien er geen nomenclatuurnummer bestaat (palliatieve zorgen en niet vergoedbare zorgen). Dan moet de nomenclatuurnummer 000000 zijn. Indien geen pseudocode veld opvullen met 000000. 
-- **kb90bedrag** (double): Het bedrag van de uitgevoerde zorg die valt onder het KB van 1990. Voor deze zorg bestaat geen nomenclatuurnummer en moet 426856 als pseudocodenummer hebben.
+- **kb90bedrag** (string): Het bedrag van de uitgevoerde zorg die valt onder het KB van 1990. Voor deze zorg bestaat geen nomenclatuurnummer en moet 426856 als pseudocodenummer hebben.
+- **kb90omschrijving:** een vrije omschrijving van de zorg die gefactureerd wordt onder de kb90 nomenclatuur.
 - **BtwPercentage** (int): Indien er voor de prestatie btw moet aangerekend worden, dient hier gespecifieerd te worden hoeveel het btw percentage is: 0, 6 of 21
 - **BedragInclusiefBtw** (boolean): Hiermee kan gespecifeerd worden hoe de btw berekening dient te gebeuren. Indien het kb90bedrag of de tariefberekening voor de nomenclatuurcode inclusief 21% btw is, dan moet waarde Ja (Boolean True) meegegeven worden. Indien TDM3 zelf btw bedrag dient te berekenen op het kb90 bedrag of het door TDM3 getarifieerde bedrag, dan moet hier waarde Nee (Boolean False) meegeven worden.
-- **kb90omschrijving:** een vrije omschrijving van de zorg die gefactureerd wordt onder de kb90 nomenclatuur.
   - Deze omschrijving zal verschijnen op het bewijsstuk naar de patiënt en op de factuur naar de patiënt of de verzekering
 - **ziekenfondscode** (string): Het ziekenfonds van de patiënt.
 - **rizivnummerverpleegkundige** (string): De rizivnummer van de verpleegkundige. Deze moet voorafgaan door 0 of 1 :
     - 0 : niet geconventioneerd
     - 1 : wel geconventioneerd
 - **naamverpleegkundige** (string): de naam van  de verpleegkundige
-- **patientgegevens\_id** (int): De unieke nummer van de patiënt binnen dit bestand.
-- **bezoeknummer** (int): Nummer van het bezoek.
-- **rep\_typebestemmeling\_id** (int): Indicator die aangeeft voor wie de factuur is. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis,…
+- **patientgegevens\_id** (long): De unieke nummer van de patiënt binnen dit bestand.
+- **bezoeknummer** (long): Nummer van het bezoek.
+- **rep\_typebestemmeling\_id** (long): Indicator die aangeeft voor wie de factuur is. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis,…
 - **insuline** (boolean): Dit zou op &#39;True&#39; moeten staan wanneer de verpleegkundige een dossier bijhoudt van een diabetes patiënt en de verpleegkundige insuline inspuitingen geeft.  De verpleegkundige krijgt dan een forfait honoraria (423231,423334).  Dit forfait wordt dan door TDM3 toegevoegd.
 - **derdebetalercode** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). Voor patiëntfacturen staat hier de patientnummer(dit mag een interne id zijn, eigen nummering,…), voor andere staat hierin de id van de verzekering in het versturende systeem. Dit veld mag maximum 10 posities lang zijn.
 - **derdebetalernaam** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). Voor patiëntfacturen staat hier de naam van de patiënt, voor andere staat hier de naam van de verzekeringsinstelling.
@@ -313,18 +341,22 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 		<input_uitgevoerdezorg_id>…</input_uitgevoerdezorg_id>
 		<externeid>…</externeid>
 		<datumuitvoering>…</datumuitvoering>
+		<zorgminuten>…</zorgminuten>
 		<datumvoorschrift>…</datumvoorschrift>
 		<rizivnummervoorschrijver>…</rizivnummervoorschrijver>
 		<naamvoorschrijver>…</naamvoorschrijver>
-		<flagverwijsvoorschrift>…</flagverwijsvoorschrift>
 		<referentieverwijsvoorschrift>…</referentieverwijsvoorschrift>
+		<flagverwijsvoorschrift>…</flagverwijsvoorschrift>
 		<remgeld>…</remgeld>
 		<nomenclatuurnummer>…</nomenclatuurnummer>
 		<pseudocodenummer>…</pseudocodenummer>
 		<kb90bedrag>…</kb90bedrag>
-		<ziekenfondscode>…</ziekenfondscode>
+		<kb90omschrijving>…</kb90omschrijving>
+		<rizivnummerzorgkundige>…</rizivnummerzorgkundige>
+		<naamzorgkundige>…</naamzorgkundige>
 		<rizivnummerverpleegkundige>…</rizivnummerverpleegkundige>
 		<naamverpleegkundige>…</naamverpleegkundige>
+		<ziekenfondscode>…</ziekenfondscode>
 		<patientgegevens_id>…</patientgegevens_id>
 		<bezoeknummer>…</bezoeknummer>
 		<rep_typebestemmeling_id>…</rep_typebestemmeling_id>
@@ -332,10 +364,22 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 		<derdebetalercode>…</derdebetalercode>
 		<derdebetalernaam>…</derdebetalernaam>
 		<derdebetaleradres>…</derdebetaleradres>
+		<derdebetaleremail>…</derdebetaleremail>
 		<polisnummer>…</polisnummer>
 		<dossiernummer>…</dossiernummer>
 		<datumongeval>…</datumongeval>
 		<werkgever>…</werkgever>
+		<ZHOpname>…</ZHOpname>
+		<Locatie>…</Locatie>
+		<TypeFacturering>…</TypeFacturering>
+		<metadata>
+			<item>
+				<naam>…</naam>
+				<waarde>…</waarde>
+			</item>
+		</metadata>
+		<BtwPercentage>…</BtwPercentage>
+		<BedragInclusiefBtw>…</BedragInclusiefBtw>
 	</uitgevoerdezorg>
 ```
  
@@ -404,10 +448,10 @@ Deze node bevat een indicator die aangeeft of de prijsberekening een tijdelijke 
 Per patientprofiel is er een profielen-node met daarin volgende gegevens (in volgorde zoals ze hieronder staan).
 De startdatum van het palliatief akkoord wordt op patientgegeven node meegegeven, in het veld &quot;startdatumpal&quot;.
 
-- **externeid** (int): de patientid uit het versturende systeem refererend naar externid van patientgegevens.
+- **externeid** (string): de patientid uit het versturende systeem refererend naar externid van patientgegevens.
 - **startdatum** (dateTime): Startdatum van het mycarenet akkoord/profiel
 - **einddatum** (dateTime): Einddatum van het mycarenet akkoord/profiel
-- **patientgegevens\_id** (int): De unieke nummer van de patiënt binnen dit bestand.
+- **patientgegevens\_id** (long): De unieke nummer van de patiënt binnen dit bestand.
 - **profiel** (string): Het type profiel van de patiënt.
 - **toiletten** (int): aantal toilletten *
   - wordt standaard niet ingevuld
@@ -504,7 +548,7 @@ De volgende gegevens zijn vereist.
 *	**serienummervandedrager** (string): Het serienummer van de drager (eID-kaart, …) moet in dit element vermeld worden. Deze zone moet steeds ingevuld worden, ook ingeval van manuele invoering, behalve indien typevandrageridentiteitsdocument  = 7, 8 of 9.
 *	**nummerbewijsstuk** (string): Het nummer van het bewijsstuk afgeleverd aan de patiënt moet in deze zone vermeld worden. Dit hoeft niet ingevuld te worden wanneer de TDM3 Facturatiedienst het bewijsstuk opmaak, dit is dus de standaard situatie!
 
-## Node kennsigevingwondzorg
+## Node kennisgevingwondzorg
 Op basis de zorgduurte van de complexe wondzorgen (zie node [uitgevoerdezorg](#node-uitgevoerdezorg) 'zorgminuten' ) die dag en de aanwezige kennisgeving Wondzorg, kan TDM3 voor een specifieke dag het bijkomend honorarium complexe wondzorg toevoegen. Deze node volgt de mycarenet berichtgeving. Zie ook [verduidelijking hervorming wondzorg december 2022](#hervorming-wondzorg-nomenclatuur-december-2022)
 
 - **externeid** (string): de patientid uit het versturende systeem refererend naar externid van patientgegevens.
@@ -590,7 +634,7 @@ Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. D
 		<naam>PEETERS</naam>
 		<voornaam>PETER</voornaam>
 		<geslacht>M</geslacht>
-		<geboortedatum>1920-12-31T00:00:00           </geboortedatum>
+		<geboortedatum>1920-12-31T00:00:00</geboortedatum>
 		<straat>Kerkstraat</straat>
 		<huisnummer>1</huisnummer>
 		<postcode>9000</postcode>
@@ -631,19 +675,18 @@ Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. D
 		<datumvoorschrift>2006-04-25T00:00:00</datumvoorschrift>
 		<rizivnummervoorschrijver>10765119340</rizivnummervoorschrijver>
 		<naamvoorschrijver>WITTERS KATRIJN</naamvoorschrijver>
-		<flagverwijsvoorschrift/>
 		<referentieverwijsvoorschrift/>
+		<flagverwijsvoorschrift/>
 		<remgeld/>
 		<nomenclatuurnummer>423275</nomenclatuurnummer>
 		<pseudocodenummer>000000</pseudocodenummer>
 		<kb90bedrag/>
-		<ziekenfondscode/>
 		<rizivnummerverpleegkundige>148594426401</rizivnummerverpleegkundige>
+		<ziekenfondscode/>
 		<patientgegevens_id>1</patientgegevens_id>
 		<bezoeknummer>1</bezoeknummer>
 		<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
 		<insuline>false</insuline>
-		<vorige_factuur_id/>
 		<derdebetalercode/>
 		<derdebetalernaam/>
 		<derdebetaleradres/>
@@ -651,8 +694,6 @@ Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. D
 		<dossiernummer/>
 		<datumongeval/>
 		<werkgever/>
-		<naamverwijzing/>
-		<datumverwijzing/>
 	</uitgevoerdezorg>
 	<uitgevoerdezorg>
 		<input_uitgevoerdezorg_id>37400</input_uitgevoerdezorg_id>
@@ -661,19 +702,18 @@ Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. D
 		<datumvoorschrift>2006-05-24T00:00:00</datumvoorschrift>
 		<rizivnummervoorschrijver>17264911340</rizivnummervoorschrijver>
 		<naamvoorschrijver>VOSSEN C</naamvoorschrijver>
-		<flagverwijsvoorschrift/>
 		<referentieverwijsvoorschrift/>
+		<flagverwijsvoorschrift/>
 		<remgeld/>
 		<nomenclatuurnummer>423275</nomenclatuurnummer>
 		<pseudocodenummer>000000</pseudocodenummer>
 		<kb90bedrag/>
-		<ziekenfondscode/>
 		<rizivnummerverpleegkundige>148946002401</rizivnummerverpleegkundige>
+		<ziekenfondscode/>
 		<patientgegevens_id>2</patientgegevens_id>
 		<bezoeknummer>1</bezoeknummer>
 		<rep_typebestemmeling_id>2</rep_typebestemmeling_id>
 		<insuline>false</insuline>
-		<vorige_factuur_id/>
 		<derdebetalercode>6</derdebetalercode>
 		<derdebetalernaam>Fortis AG</derdebetalernaam>
 		<derdebetaleradres>E.Jacqmainlaan</derdebetaleradres>
@@ -681,8 +721,6 @@ Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. D
 		<dossiernummer/>
 		<datumongeval/>
 		<werkgever/>
-		<naamverwijzing/>
-		<datumverwijzing/>
 	</uitgevoerdezorg>
 	<tarificatiedienst>
 		<code>TDM3</code>
@@ -701,15 +739,15 @@ Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. D
 	</prijsberekening>
 	<profielen>
 		<externeid>23123</externeid>
-		<startdatum>2006-01-01T00:00:00           </startdatum>
-		<einddatum>2006-12-31T00:00:00           </einddatum>
+		<startdatum>2006-01-01T00:00:00</startdatum>
+		<einddatum>2006-12-31T00:00:00</einddatum>
 		<patientgegevens_id>1</patientgegevens_id>
 		<profiel>A</profiel>
 	</profielen>
 	<profielen>
 		<externeid>23045</externeid>
-		<startdatum>2006-04-12T00:00:00           </startdatum>
-		<einddatum>2007-04-11T00:00:00           </einddatum>
+		<startdatum>2006-04-12T00:00:00</startdatum>
+		<einddatum>2007-04-11T00:00:00</einddatum>
 		<patientgegevens_id>2</patientgegevens_id>
 		<profiel>T7</profiel>
 	</profielen>

@@ -68,7 +68,6 @@
 							<xs:element name="geldigvan"   type="xs:dateTime" minOccurs="0" />
 							<xs:element name="geldigtot"   type="emptyDateTime" minOccurs="0" />
 							<xs:element name="ruraal" type="xs:string" minOccurs="0" />
-							<xs:element name="factuurnummer" type="xs:string" minOccurs="0" />
 							<xs:element name="startdatumpal"  type="emptyDateTime" minOccurs="0" />
 							<xs:element name="rijksregisternummer" type="xs:string" minOccurs="0" />
 							<xs:element name="kanaalbewijsstuk " type="xs:int" minOccurs="0" />
