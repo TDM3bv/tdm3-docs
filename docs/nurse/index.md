@@ -253,7 +253,7 @@ Deze waardes zijn:
 Bij waarde 1 en 2 zal TDM3 de pseudocode [426613](https://webappsa.riziv-inami.fgov.be/Nomen/nl/426613) toevoegen in facturatie. Tevens zijn de waardes van belang m.b.t. het correct factureren van palliatieve forfaits, een forfait PC/C (uitzonderingsituaties)
 
 ## Referentienummer digitaal verwijsvoorschrift
-Voor prestaties waarbij een digitaal verwijsvoorschrift werd gebruikt, moeten twee elementen meegegeven worden in het prestatiebestand:
+Voor prestaties waarbij een digitaal verwijsvoorschrift werd gebruikt, moeten twee elementen meegegeven worden in het prestatiebestand naar analogie met de facturatie instructies:
 
 - **[flagverwijsvoorschrift](/nurse/nodes#node-uitgevoerdezorg)** (int): Indicator voor het type verwijsvoorschrift
   - 1: Er is een digitaal verwijsvoorschrift voor de betreffende verstrekking
