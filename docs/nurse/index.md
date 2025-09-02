@@ -61,7 +61,6 @@ Voor niet-ziekenfonds facturen (verzekering, medisch huis, OCMW, etc.) kan het `
 
 Het `derdebetaleremail` veld is optioneel en wordt enkel gebruikt wanneer:
 - De factuur niet naar een ziekenfonds of patiënt gaat (rep_typebestemmeling_id ≠ 1 && rep_typebestemmeling_id ≠ 3)
-- Het EVD beschikt over de email van de specifieke derdebetaler
 
 ## Remgeld
 
