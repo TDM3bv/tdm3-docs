@@ -95,8 +95,7 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 - **naam** (string): De naam van de patiënt.
 - **email** (string): Het emailadres van de patiënt (optioneel).
 - **kanaalfactuurpatient** (integer): Het kanaal waarlangs de patiëntfactuur moet verstuurd worden (optioneel). Mogelijke waardes:
-   - 1 = Per post, 
-   -  2 = Per e-mail. De praktijk beschikt dan over een toestemming van de patiënt dat de factuur per e-mail mag verstuurd worden.
+   - 2 = Per e-mail. De praktijk beschikt dan over een toestemming van de patiënt dat de factuur per e-mail mag verstuurd worden.
 - **emailfactuurpatient** (string): Het e-mailadres waarnaartoe de patiëntfactuur moet verstuurd worden wanneer kanaalfactuurpatient = 2.
 - **voornaam** (string): De voornaam van de patiënt.
 - **geslacht** (string): Het geslacht van de patiënt (mogelijke waardes: M, V).
