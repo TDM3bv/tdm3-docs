@@ -57,7 +57,7 @@ Wanneer gekozen wordt voor e-mail verzending (kanaalfactuurpatient = 2), moet he
 
 ### Factuur aan derdebetaler
 
-Voor niet-ziekenfonds facturen (verzekering, medisch huis, OCMW, etc.) kan het `derdebetaleremail` veld gebruikt worden op de uitgevoerdezorg node om het e-mail adres van de derdebetaler mee te geven en kan gebruik worden voor het versturen van de factuur per e-mail.
+Voor niet-ziekenfonds facturen (verzekering, medisch huis, OCMW, etc.) kan het `derdebetaleremail` veld gebruikt worden op de uitgevoerdezorg node om het e-mail adres van de derdebetaler mee te geven dat kan/mag gebruik worden voor het versturen van de factuur per e-mail.
 
 Het `derdebetaleremail` veld is optioneel en wordt enkel gebruikt wanneer:
 - De factuur niet naar een ziekenfonds of patiënt gaat (rep_typebestemmeling_id ≠ 1 && rep_typebestemmeling_id ≠ 3)
