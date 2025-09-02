@@ -45,6 +45,24 @@ Bijvoorbeeld:
 - wanneer er meer dan 1x een *eenvoudige wondzorg* (vb. 424336) wordt doorgegeven via de xml, zal TDM3 dit vervangen door 1x prestatiecode *complexe wondzorg* (vb. 424351).
 - wanneer er meer dan 1x *"Toedienen geneesmiddelen (IM, SC, HD)"* (vb 423076) wordt doorgegeven via de xml, zal TDM3 dit vervangen door 1x *"Toedienen geneesmiddelen (IM, SC, HD, IV) in verschillende injectieplaatsen"* (vb. 424351)
 
+## Email
+### Factuur aan patiënt
+
+Voor facturen gericht aan de patiënt zelf (bij remgeld factuur of patiënt factuur) worden twee leveringskanalen ondersteund:
+
+- **Post** (kanaalfactuurpatient = 1): Traditionele verzending per post naar het adres van de patiënt
+- **E-mail** (kanaalfactuurpatient = 2): Digitale verzending naar het opgegeven e-mailadres, via tijdelijke en beveiligde link.
+
+Wanneer gekozen wordt voor e-mail verzending (kanaalfactuurpatient = 2), moet het veld `emailfactuurpatient` ingevuld worden met het e-mailadres waarnaartoe de factuur moet verzonden worden. Deze velden zijn terug te vinden op de patientgegeven node
+
+### Factuur aan derdebetaler
+
+Voor niet-ziekenfonds facturen (verzekering, medisch huis, OCMW, etc.) kan het `derdebetaleremail` veld gebruikt worden op de uitgevoerdezorg node om het e-mail adres van de derdebetaler mee te geven en kan gebruik worden voor het versturen van de factuur per e-mail.
+
+Het `derdebetaleremail` veld is optioneel en wordt enkel gebruikt wanneer:
+- De factuur niet naar een ziekenfonds of patiënt gaat (rep_typebestemmeling_id ≠ 1 && rep_typebestemmeling_id ≠ 3)
+- Het EVD beschikt over de email van de specifieke derdebetaler
+
 ## Remgeld
 
 Indien er gefactureerd wordt aan een verzekeringsinstelling (type bestemmeling = 2) of OCMW (type bestemmeling = 4), dan mag bij remgeld niets ingevuld worden. Remgeld is het deel van het honorarium dat aan de patient wordt gevraagd en dus niet door het RIZIV (medisch huis, ziekenfonds) wordt terugbetaald. 

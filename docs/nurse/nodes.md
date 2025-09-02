@@ -94,6 +94,10 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 - **externeid** (string): De patientid van het versturende systeem; deze id wordt samen met de patientgegevens\_id gebruikt om de &#39;uitgevoerdezorgen&#39;-nodes en de &#39;profielen&#39;-nodes te linken aan de patiënt. Dit wil zeggen dat voor elke &#39;profielen&#39;-node en elke &#39;uitgevoerdezorg&#39;-node van de patiënt deze externeid gebruikt moet worden.
 - **naam** (string): De naam van de patiënt.
 - **email** (string): Het emailadres van de patiënt (optioneel).
+- **kanaalfactuurpatient** (integer): Het kanaal waarlangs de patiëntfactuur moet verstuurd worden (optioneel). Mogelijke waardes:
+   - 1 = Per post, 
+   -  2 = Per e-mail. De praktijk beschikt dan over een toestemming van de patiënt dat de factuur per e-mail mag verstuurd worden.
+- **emailfactuurpatient** (string): Het e-mailadres waarnaartoe de patiëntfactuur moet verstuurd worden wanneer kanaalfactuurpatient = 2.
 - **voornaam** (string): De voornaam van de patiënt.
 - **geslacht** (string): Het geslacht van de patiënt (mogelijke waardes: M, V).
 - **geboortedatum** (dateTime): De geboortedatum van de patiënt.
@@ -206,6 +210,8 @@ Voorbeeld adressen
 		<externeid>…</externeid>
 		<naam>…</naam>
 		<email>…</email>
+		<kanaalfactuurpatient>…</kanaalfactuurpatient>
+		<emailfactuurpatient>…</emailfactuurpatient>
 		<voornaam>…</voornaam>
 		<geslacht>…</geslacht>
 		<geboortedatum>…</geboortedatum>
