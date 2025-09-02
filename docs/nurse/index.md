@@ -53,7 +53,7 @@ Voor facturen gericht aan de patiënt zelf (bij remgeld factuur of patiënt fact
 - **Post** (kanaalfactuurpatient = 1): Traditionele verzending per post naar het adres van de patiënt
 - **E-mail** (kanaalfactuurpatient = 2): Digitale verzending naar het opgegeven e-mailadres, via tijdelijke en beveiligde link.
 
-Wanneer gekozen wordt voor e-mail verzending (kanaalfactuurpatient = 2), moet het veld `emailfactuurpatient` ingevuld worden met het e-mailadres waarnaartoe de factuur moet verzonden worden. Deze velden zijn terug te vinden op de patientgegeven node
+Wanneer gekozen wordt voor e-mail verzending (kanaalfactuurpatient = 2), moet het veld `emailfactuurpatient` ingevuld worden met het e-mailadres waarnaartoe de factuur moet verzonden worden. Deze velden zijn terug te vinden op de patientgegevens node
 
 ### Factuur aan derdebetaler
 
