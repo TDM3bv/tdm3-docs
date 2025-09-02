@@ -72,6 +72,7 @@
 							<xs:element name="rijksregisternummer" type="xs:string" minOccurs="0" />
 							<xs:element name="kanaalfactuurpatient" type="xs:int" minOccurs="0" />
 							<xs:element name="emailfactuurpatient" type="xs:string" minOccurs="0" />
+							<xs:element name="kanaalbewijsstuk " type="xs:int" minOccurs="0" />
 							<xs:element name="bestemmelingbewijsstuk" type="xs:int" minOccurs="0" />
 							<xs:element name="naambestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
 							<xs:element name="voornaambestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
