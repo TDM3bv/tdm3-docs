@@ -291,10 +291,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **datumvoorschrift** (dateTime): De datum waarop de prestatie is voorgeschreven.
 - **rizivnummervoorschrijver** (string): De rizivnummer van de voorschrijvende geneesheer.
 - **naamvoorschrijver** (string): De naam van de voorschrijvende geneesheer.
-- **flagverwijsvoorschrift** (int) 
-    - 1 : Er is een digitaal verwijsvoorschrift voor de betreffende verstrekking.
-    - 0 : Alle andere gevallen (geen voorschrift, papieren verwijsvoorschrift of mondeling, verwijsvoorschrift).
-- **referentieverwijsvoorschrift** (string): referentienummer (Short RefID) (Short Code) van het digitaal verwijsvoorschrift. Dit nummer bestaat uit 6 alfanumerieke karakters. Moet ingevuld worden wanneer voor de verstrekking  een digitaal verwijsvoorschrift werd gebruikt (`flagverwijsvoorschrift` = 1).
+- **referentieverwijsvoorschrift** (string): referentienummer (Short RefID) (Short Code) van het digitaal verwijsvoorschrift. Dit nummer bestaat uit 6 alfanumerieke karakters. Moet ingevuld worden wanneer voor de verstrekking  een digitaal verwijsvoorschrift werd gebruikt.
 - **remgeld** (string): uitgedrukt als percentage van het persoonlijk aandeel dat wordt gevraagd, van 0 tem 100. 0 is geen remgeld tellen, 100 = het volledige persoonlijk aandeel wordt gevraagd.
 - **nomenclatuurnummer** (string): De nomenclatuurnummer van de prestatie.
 - **pseudocodenummer** (string): De pseudocode voor de nomenclatuur. Moet enkel ingevuld worden indien er geen nomenclatuurnummer bestaat (palliatieve zorgen en niet vergoedbare zorgen). Dan moet de nomenclatuurnummer 000000 zijn. Indien geen pseudocode veld opvullen met 000000. 
@@ -350,7 +347,6 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 		<rizivnummervoorschrijver>…</rizivnummervoorschrijver>
 		<naamvoorschrijver>…</naamvoorschrijver>
 		<referentieverwijsvoorschrift>…</referentieverwijsvoorschrift>
-		<flagverwijsvoorschrift>…</flagverwijsvoorschrift>
 		<remgeld>…</remgeld>
 		<nomenclatuurnummer>…</nomenclatuurnummer>
 		<pseudocodenummer>…</pseudocodenummer>
@@ -680,7 +676,6 @@ Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. D
 		<rizivnummervoorschrijver>10765119340</rizivnummervoorschrijver>
 		<naamvoorschrijver>WITTERS KATRIJN</naamvoorschrijver>
 		<referentieverwijsvoorschrift>A1B2C3</referentieverwijsvoorschrift>
-		<flagverwijsvoorschrift>1</flagverwijsvoorschrift>
 		<remgeld/>
 		<nomenclatuurnummer>423275</nomenclatuurnummer>
 		<pseudocodenummer>000000</pseudocodenummer>
@@ -707,7 +702,6 @@ Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. D
 		<rizivnummervoorschrijver>17264911340</rizivnummervoorschrijver>
 		<naamvoorschrijver>VOSSEN C</naamvoorschrijver>
 		<referentieverwijsvoorschrift/>
-		<flagverwijsvoorschrift>0</flagverwijsvoorschrift>
 		<remgeld/>
 		<nomenclatuurnummer>423275</nomenclatuurnummer>
 		<pseudocodenummer>000000</pseudocodenummer>

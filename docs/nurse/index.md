@@ -270,13 +270,9 @@ Deze waardes zijn:
 Bij waarde 1 en 2 zal TDM3 de pseudocode [426613](https://webappsa.riziv-inami.fgov.be/Nomen/nl/426613) toevoegen in facturatie. Tevens zijn de waardes van belang m.b.t. het correct factureren van palliatieve forfaits, een forfait PC/C (uitzonderingsituaties)
 
 ## Referentienummer digitaal verwijsvoorschrift
-Voor prestaties waarbij een digitaal verwijsvoorschrift werd gebruikt, moeten twee elementen meegegeven worden in het prestatiebestand naar analogie met de facturatie instructies:
+Voor prestaties waarbij een digitaal verwijsvoorschrift werd gebruikt, moet het referentienummer meegegeven worden in het prestatiebestand naar analogie met de facturatie instructies:
 
-- **[flagverwijsvoorschrift](/nurse/nodes#node-uitgevoerdezorg)** (int): Indicator voor het type verwijsvoorschrift
-  - 1: Er is een digitaal verwijsvoorschrift voor de betreffende verstrekking
-  - 0: Alle andere gevallen (geen voorschrift, papieren verwijsvoorschrift of mondeling verwijsvoorschrift)
-
-- **[referentieverwijsvoorschrift](/nurse/nodes#node-uitgevoerdezorg)** (string): Het referentienummer (shortcode) van het digitaal verwijsvoorschrift. Dit nummer bestaat uit 6 alfanumerieke karakters. Moet ingevuld worden wanneer `flagverwijsvoorschrift` = 1.
+- **[referentieverwijsvoorschrift](/nurse/nodes#node-uitgevoerdezorg)** (string): Het referentienummer (shortcode) van het digitaal verwijsvoorschrift. Dit nummer bestaat uit 6 alfanumerieke karakters. Moet ingevuld worden wanneer electronisch verwijsvoorschrift werd gebruikt.
 ```xml
 		<uitgevoerdezorg>
 			<input_uitgevoerdezorg_id>32145344</input_uitgevoerdezorg_id>
@@ -286,7 +282,6 @@ Voor prestaties waarbij een digitaal verwijsvoorschrift werd gebruikt, moeten tw
 			<datumvoorschrift>2023-06-25</datumvoorschrift>
 			<rizivnummervoorschrijver>10828168004</rizivnummervoorschrijver>
 			<naamvoorschrijver>Peter Janssens</naamvoorschrijver>
-			<flagverwijsvoorschrift>1</flagverwijsvoorschrift>
 			<referentieverwijsvoorschrift>A1B2C3</referentieverwijsvoorschrift>
 			<remgeld>0</remgeld>
 			<nomenclatuurnummer>000000</nomenclatuurnummer>
