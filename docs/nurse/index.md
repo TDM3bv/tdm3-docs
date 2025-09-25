@@ -74,7 +74,46 @@ Aangezien de facturen en afrekeningenen worden opgemaakt ter hoogte van TDM3, ku
 
 ## Zorgen zonder riziv-nomenclatuur
 Deze kunnen en mogen in de xml meegaan en worden gefactureerd onder de KB90 nomenclatuurnr. In het veld KB90Bedrag wordt dan het te factureren bedrag aangeduid.
+Optioneel kan via `uitgevoerdezorg.metadata` de prestatiecode meegegeven worden.
 
+```xml
+	<uitgevoerdezorg>
+		<input_uitgevoerdezorg_id>7007</input_uitgevoerdezorg_id>
+		<externeid>423</externeid>
+		<datumuitvoering>2025-04-28T11:00:00</datumuitvoering>
+		<datumvoorschrift>2025-04-01T00:00:00</datumvoorschrift>
+		<rizivnummervoorschrijver/>
+		<naamvoorschrijver> </naamvoorschrijver>
+		<remgeld>0</remgeld>
+		<nomenclatuurnummer>000000</nomenclatuurnummer>
+		<pseudocodenummer>426856</pseudocodenummer>
+		<kb90bedrag>6.25</kb90bedrag>
+		<kb90omschrijving>Avondzorg; aan/uitkleden,pants...,tanden poetsen</kb90omschrijving>
+		<rizivnummerzorgkundige/>
+		<naamzorgkundige/>
+		<rizivnummerverpleegkundige>149488014401</rizivnummerverpleegkundige>
+		<patientgegevens_id>341</patientgegevens_id>
+		<bezoeknummer>1</bezoeknummer>
+		<rep_typebestemmeling_id>3</rep_typebestemmeling_id>
+		<insuline>false</insuline>
+		<derdebetalercode/>
+		<derdebetalernaam/>
+		<derdebetaleradres/>
+		<polisnummer/>
+		<dossiernummer/>
+		<datumongeval/>
+		<werkgever/>
+		<ZHOpname/>
+		<Locatie/>
+		<TypeFacturering>0</TypeFacturering>
+		<metadata>
+			<item>
+				<naam>prestatiecode</naam>
+				<waarde>AV0154</waarde>
+			</item>
+		</metadata>
+	</uitgevoerdezorg>
+```
 
 ## Locatie veld bij node uitgevoerde zorg
 De nomenclatuur specifieert enkel “praktijkkamer OF hersteloord”. Vanaf prestatiedatum 1 april 2016 kan men voor deze nomenclatuurnrs geen bedrag meer factureren, tenzij deze is uitgevoerd in een hersteloord. Om dit onderscheid te kunnen maken wordt de locatie gespescifieerd via een pseudocode (zie onderstaande tabel).
