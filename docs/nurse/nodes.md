@@ -329,12 +329,6 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 	- 3 = opname in andere verzorgingsinstelling
 	- 4 = ontslag in andere verzorgingsinstelling
 - **Locatie:** Ikv Verordening van 28 juli 2003 bijlage 85, wordt hier de overeenkomstige pseudocode meegegeven die moeten vermeld worden bij de verstrekkingen van art. 8, §1, 3° van de nomenclatuur (&quot;verstrekkingen verleend hetzij in de praktijkkamer van de beoefenaar van de verpleegkunde, hetzij in een hersteloord&quot;). Deze pseudo-codes geven de plaats van verstrekking weer. Wordt ook gebruikt ikv diabeteseducatie via videoconsultatie tijdens COVID19-crisis. De betrekkelijke verstrekking wordt dan in dit element ingevuld.
-- **typebezoek (int) – **optioneel om mee te geven. Laat toe om presaties zoals** 424874** ( _wekelijkse voorbereiding van geneesmiddelen per os_) die zijn uitgevoerd in een locatie waar geen vergoeding voor bestaat (&#39;instelling/ hersteloord/praktijkkamer&#39;) toch tegen te houden
-  - 1 - aan huis van de patiënt op weekdag
-  - 2 - aan huis van de patiënt in weekend en op feestdagen
-  - 3 - Praktijkkamer van de verpleegkundige
-  - 4 - Homes minder validen
-  - 5 - Dagverzorgings centrum
 - **metadata**(type metadata, optioneel element)**:** een &quot;key-value&quot; pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven, die niet direct te maken heeft met de tarificatie van prestaties.
 
 ```xml
@@ -453,28 +447,23 @@ De startdatum van het palliatief akkoord wordt op patientgegeven node meegegeven
 - **einddatum** (dateTime): Einddatum van het mycarenet akkoord/profiel
 - **patientgegevens\_id** (long): De unieke nummer van de patiënt binnen dit bestand.
 - **profiel** (string): Het type profiel van de patiënt.
-- **toiletten** (int): aantal toilletten *
-  - wordt standaard niet ingevuld
-  - wordt ingevuld met waarde '7' nav een van de uitzonderingen bij een T2 profiel, waardoor er wel een dagelijks toilet mag uitgevoerd worden
-     - ‘desoriëntatie’, Matig / ernstig  
-     - ‘nachtelijke incontinentie’ vanaf een bepaalde score
 
 
 Mogelijke waardes zijn :
-| **profiel** | Omschrijving       | Aantal toilleten |
-| ----------- | ------------------ | ---------------- |
-| A           | Profiel A          | 7                |
-| B           | Profiel B          | 7                |
-| C           | Profiel C          | 7                |
-| P2          | Palliatief Profiel | 2 (7*)           |
-| P7          | Palliatief Profiel | 7                |
-| PA          | Forfait PA         | 7                |
-| PB          | Forfait PB         | 7                |
-| PC          | Forfait PC         | 7                |
-| PN          | Forfait PN         | 7                |
-| PP          | Forfait PP         | 7                |
-| T2          | Profiel N          | 2 (7*)           |
-| T7          | Profiel N          | 7                |
+| **profiel** | Omschrijving       |
+| ----------- | ------------------ |
+| A           | Profiel A          |
+| B           | Profiel B          |
+| C           | Profiel C          |
+| P2          | Palliatief Profiel |
+| P7          | Palliatief Profiel |
+| PA          | Forfait PA         |
+| PB          | Forfait PB         |
+| PC          | Forfait PC         |
+| PN          | Forfait PN         |
+| PP          | Forfait PP         |
+| T2          | Profiel N          |
+| T7          | Profiel N          |
 
 ```xml
 <profielen>
