@@ -20,3 +20,4 @@
 | 1.49   | Toevoeging: [extra waardes ZHOpname bij uitgevoerdezorg](nodes#node-uitgevoerdezorg) - Uitleg [wijziging inzetbaarheid zorgkundigen 01/2024](/nurse/#wijziging-inzetbaarheid-zorgkundigen-01-2024)      |
 | 1.50   | Toevoeging: element referentieverwijsvoorschrift op node [uitgevoerdezorg](nodes#node-uitgevoerdezorg). [Meer uitleg](/nurse/#referentienummer-digitaal-verwijsvoorschrift)                                                     |
 | 1.51   | Toevoeging: elementen kanaalfactuurpatient en emailfactuurpatient op node [patientgegevens](nodes#node-patiëntgegevens) voor e-mail verzending van patiëntfacturen. [Meer uitleg](/nurse/#email)                                                   |
+| 1.52   | Toevoeging: busnr veld toegevoegd aan [adres complexType](nodes#element-adres-op-node-patientgegeven) en busnrbestemmelingbewijsstuk op node [patientgegevens](nodes#node-patiëntgegevens) |

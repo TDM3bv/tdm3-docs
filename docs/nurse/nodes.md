@@ -123,6 +123,7 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 - **voornaambestemmelingbewijsstuk** (string): De voornaam van de bestemmelingbewijsstuk (zelfs als dit de patiënt is)
 - **straatbestemmelingbewijsstuk** (string): De straat van bestemmelingbewijsstuk (zelfs als dit de patiënt is)
 - **huisnummerbestemmelingbewijsstuk** (string): De huisnummer van bestemmelingbewijsstuk (zelfs als dit de patiënt is). (kan maximum 10 karakters bevatten)
+- **busnrbestemmelingbewijsstuk** (string): De busnummer van bestemmelingbewijsstuk (zelfs als dit de patiënt is). (kan maximum 10 karakters bevatten)
 - **postcodebestemmelingbewijsstuk** (string): De postcode van bestemmelingbewijsstuk (zelfs als dit de patiënt is).
 - **gemeentebestemmelingbewijsstuk** (string): De gemeente van van bestemmelingbewijsstuk (zelfs als dit de patiënt is).
 - **emailbestemmelingbewijsstuk** (string): e-mailadres van bestemmelingbewijsstuk (zelfs als dit de patiënt is).
@@ -165,6 +166,7 @@ Elk adres heeft volgende eigenschappen
 - **type** (AdresType) : string enumeratie beperkt tot volgende waarden: Verzorging, Domicilie
 - **straat** (string): De straat van de patiënt voor dit type adres.
 - **huisnummer** (string): De huisnummer van de patiënt voor dit type adres. (kan maximum 10 karakters bevatten).
+- **busnr** (string): De busnummer van de patiënt voor dit type adres. (kan maximum 10 karakters bevatten, optioneel).
 - **postcode** (string): De postcode van de patiënt voor dit type adres.
 - **gemeente** (string): De gemeente van de patiënt voor dit type adres.
 - **landcode** (string): De landcode van de patiënt (ISO) voor dit type adres. 
@@ -192,6 +194,7 @@ Voorbeeld adressen
 						<type>Verzorging</type>
 						<straat>Drie Sleutelstraat</straat>
 						<huisnummer>74</huisnummer>
+						<busnr>A</busnr>
 						<postcode>9300</postcode>
 						<gemeente>Aalst</gemeente>
 						<landcode>BE</landcode>
@@ -234,6 +237,7 @@ Voorbeeld adressen
 		<voornaambestemmelingbewijsstuk>…</voornaambestemmelingbewijsstuk>
 		<straatbestemmelingbewijsstuk>…</straatbestemmelingbewijsstuk>
 		<huisnummerbestemmelingbewijsstuk>…</huisnummerbestemmelingbewijsstuk>
+		<busnrbestemmelingbewijsstuk>…</busnrbestemmelingbewijsstuk>
 		<postcodebestemmelingbewijsstuk>…</postcodebestemmelingbewijsstuk>
 		<gemeentebestemmelingbewijsstuk>…</gemeentebestemmelingbewijsstuk>
 		<emailbestemmelingbewijsstuk>…</emailbestemmelingbewijsstuk>
@@ -626,6 +630,7 @@ Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. D
 		<geboortedatum>1920-12-31T00:00:00</geboortedatum>
 		<straat>Kerkstraat</straat>
 		<huisnummer>1</huisnummer>
+		<busnr>B</busnr>
 		<postcode>9000</postcode>
 		<gemeente>Gent</gemeente>
 		<landcode>BE</landcode>
