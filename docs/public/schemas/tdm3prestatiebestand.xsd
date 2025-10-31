@@ -79,7 +79,7 @@
 							<xs:element name="voornaambestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
 							<xs:element name="straatbestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
 							<xs:element name="huisnummerbestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
-							<xs:element name="busnrbestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
+							<xs:element name="busbestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
 							<xs:element name="postcodebestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
 							<xs:element name="gemeentebestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
 							<xs:element name="landcodebestemmelingbewijsstuk" type="xs:string" minOccurs="0" />

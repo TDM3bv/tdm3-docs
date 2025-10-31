@@ -123,7 +123,7 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 - **voornaambestemmelingbewijsstuk** (string): De voornaam van de bestemmelingbewijsstuk (zelfs als dit de patiënt is)
 - **straatbestemmelingbewijsstuk** (string): De straat van bestemmelingbewijsstuk (zelfs als dit de patiënt is)
 - **huisnummerbestemmelingbewijsstuk** (string): De huisnummer van bestemmelingbewijsstuk (zelfs als dit de patiënt is). (kan maximum 10 karakters bevatten)
-- **busnrbestemmelingbewijsstuk** (string): De busnummer van bestemmelingbewijsstuk (zelfs als dit de patiënt is). (kan maximum 10 karakters bevatten)
+- **busbestemmelingbewijsstuk** (string): De busnummer van bestemmelingbewijsstuk (zelfs als dit de patiënt is). (kan maximum 10 karakters bevatten)
 - **postcodebestemmelingbewijsstuk** (string): De postcode van bestemmelingbewijsstuk (zelfs als dit de patiënt is).
 - **gemeentebestemmelingbewijsstuk** (string): De gemeente van van bestemmelingbewijsstuk (zelfs als dit de patiënt is).
 - **emailbestemmelingbewijsstuk** (string): e-mailadres van bestemmelingbewijsstuk (zelfs als dit de patiënt is).
@@ -237,7 +237,7 @@ Voorbeeld adressen
 		<voornaambestemmelingbewijsstuk>…</voornaambestemmelingbewijsstuk>
 		<straatbestemmelingbewijsstuk>…</straatbestemmelingbewijsstuk>
 		<huisnummerbestemmelingbewijsstuk>…</huisnummerbestemmelingbewijsstuk>
-		<busnrbestemmelingbewijsstuk>…</busnrbestemmelingbewijsstuk>
+		<busbestemmelingbewijsstuk>…</busbestemmelingbewijsstuk>
 		<postcodebestemmelingbewijsstuk>…</postcodebestemmelingbewijsstuk>
 		<gemeentebestemmelingbewijsstuk>…</gemeentebestemmelingbewijsstuk>
 		<emailbestemmelingbewijsstuk>…</emailbestemmelingbewijsstuk>

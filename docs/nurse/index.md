@@ -347,7 +347,7 @@ Voor prestaties waarbij een digitaal verwijsvoorschrift werd gebruikt, moet het 
 Voor een correcte adressering is het belangrijk dat het busnummer (bus, appartement) wordt meegegeven via een apart veld i.p.v. in het huisnummer veld. Het busnummer veld is beschikbaar op verschillende plaatsen in de XML structuur:
 
 - **post-adres patiëntfactuur op [patientgegevens node](nodes#node-patiëntgegevens)**: Het `busnr` veld op de patientgegevens node voor het adres waarnaar de 'factuur aan de patiënt' mag verstuurd worden. Wordt door TDM3 gebruikt voor afdruk, en voor verzending van de factuur wanneer kanaalfactuurpatient=1 is of niet gespecifieerd.
-- **Bewijsstuk bestemmeling op [patientgegevens node](nodes#node-patiëntgegevens)**: Het `busnrbestemmelingbewijsstuk` veld op de patientgegevens node voor het adres van de ontvanger van het bewijsstuk (patiënt of vertegenwoordiger)
+- **Bewijsstuk bestemmeling op [patientgegevens node](nodes#node-patiëntgegevens)**: Het `busbestemmelingbewijsstuk` veld op de patientgegevens node voor het adres van de ontvanger van het bewijsstuk (patiënt of vertegenwoordiger)
 
 Het busnummer wordt aangeraden in te vullen wanneer het adres een busnummer vereist en dit in het EVD eveneens in een apart veld beschikbaar is. Dit om ervoor te zorgen dat facturen en bewijsstukken op het correcte adres aankomen.
 
@@ -389,7 +389,7 @@ Het busnummer wordt aangeraden in te vullen wanneer het adres een busnummer vere
     <voornaambestemmelingbewijsstuk>Maria</voornaambestemmelingbewijsstuk>
     <straatbestemmelingbewijsstuk>Dorpstraat</straatbestemmelingbewijsstuk>
     <huisnummerbestemmelingbewijsstuk>42</huisnummerbestemmelingbewijsstuk>
-    <busnrbestemmelingbewijsstuk>A12</busnrbestemmelingbewijsstuk>
+    <busbestemmelingbewijsstuk>A12</busbestemmelingbewijsstuk>
     <postcodebestemmelingbewijsstuk>2000</postcodebestemmelingbewijsstuk>
     <gemeentebestemmelingbewijsstuk>Antwerpen</gemeentebestemmelingbewijsstuk>
     <landcodebestemmelingbewijsstuk>BE</landcodebestemmelingbewijsstuk>
@@ -420,7 +420,7 @@ Het busnummer wordt aangeraden in te vullen wanneer het adres een busnummer vere
     <voornaambestemmelingbewijsstuk>Tom</voornaambestemmelingbewijsstuk>
     <straatbestemmelingbewijsstuk>Dorpstraat</straatbestemmelingbewijsstuk>
     <huisnummerbestemmelingbewijsstuk>42</huisnummerbestemmelingbewijsstuk>
-    <busnrbestemmelingbewijsstuk>A12</busnrbestemmelingbewijsstuk>
+    <busbestemmelingbewijsstuk>A12</busbestemmelingbewijsstuk>
     <postcodebestemmelingbewijsstuk>2000</postcodebestemmelingbewijsstuk>
     <gemeentebestemmelingbewijsstuk>Antwerpen</gemeentebestemmelingbewijsstuk>
     <landcodebestemmelingbewijsstuk>BE</landcodebestemmelingbewijsstuk>
