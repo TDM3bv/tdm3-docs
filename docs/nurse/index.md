@@ -341,3 +341,87 @@ Voor prestaties waarbij een digitaal verwijsvoorschrift werd gebruikt, moet het 
 			<TypeFacturering>0</TypeFacturering>
 		</uitgevoerdezorg>
 ```
+
+## Adressering - busnummers - factuur aan patiënt en bewijsstuk
+
+Voor een correcte adressering is het belangrijk dat het busnummer (bus, appartement) wordt meegegeven via een apart veld i.p.v. in het huisnummer veld. Het busnummer veld is beschikbaar op verschillende plaatsen in de XML structuur:
+
+- **post-adres patiëntfactuur op [patientgegevens node](nodes#node-patiëntgegevens)**: Het `busnr` veld op de patientgegevens node voor het adres waarnaar de 'factuur aan de patiënt' mag verstuurd worden. Wordt door TDM3 gebruikt voor afdruk, en voor verzending van de factuur wanneer kanaalfactuurpatient=1 is of niet gespecifieerd.
+- **Bewijsstuk bestemmeling op [patientgegevens node](nodes#node-patiëntgegevens)**: Het `busnrbestemmelingbewijsstuk` veld op de patientgegevens node voor het adres van de ontvanger van het bewijsstuk (patiënt of vertegenwoordiger)
+
+Het busnummer wordt aangeraden in te vullen wanneer het adres een busnummer vereist en dit in het EVD eveneens in een apart veld beschikbaar is. Dit om ervoor te zorgen dat facturen en bewijsstukken op het correcte adres aankomen.
+
+### Voorbeeld 1: Post-adres patiëntfactuur met busnummer
+```xml
+<patientgegevens>
+    <patientgegevens_id>341</patientgegevens_id>
+    <externeid>1341</externeid>
+    <naam>PEETERS</naam>
+    <voornaam>PETER</voornaam>
+    <straat>Kerkstraat</straat>
+    <huisnummer>15</huisnummer>
+    <busnr>3B</busnr>
+    <postcode>1000</postcode>
+    <gemeente>Brussel</gemeente>
+    <landcode>BE</landcode>
+    <rijksregisternummer>70051512345</rijksregisternummer>
+    <kanaalfactuurpatient>1</kanaalfactuurpatient>
+</patientgegevens>
+```
+
+### Voorbeeld 2: Bewijsstuk bestemmeling met busnummer
+```xml
+<patientgegevens>
+    <patientgegevens_id>342</patientgegevens_id>
+    <externeid>3442</externeid>
+    <naam>JANSSEN</naam>
+    <voornaam>JAN</voornaam>
+    <straat>Stationstraat</straat>
+    <huisnummer>25</huisnummer>
+    <postcode>9000</postcode>
+    <gemeente>Gent</gemeente>
+    <landcode>BE</landcode>
+    <rijksregisternummer>85032012345</rijksregisternummer>
+    <!-- Bewijsstuk bestemmeling adres met busnummer (vertegenwoordiger) -->
+    <kanaalbewijsstuk>1</kanaalbewijsstuk>
+    <bestemmelingbewijsstuk>2</bestemmelingbewijsstuk>
+    <naambestemmelingbewijsstuk>JANSSEN</naambestemmelingbewijsstuk>
+    <voornaambestemmelingbewijsstuk>Maria</voornaambestemmelingbewijsstuk>
+    <straatbestemmelingbewijsstuk>Dorpstraat</straatbestemmelingbewijsstuk>
+    <huisnummerbestemmelingbewijsstuk>42</huisnummerbestemmelingbewijsstuk>
+    <busnrbestemmelingbewijsstuk>A12</busnrbestemmelingbewijsstuk>
+    <postcodebestemmelingbewijsstuk>2000</postcodebestemmelingbewijsstuk>
+    <gemeentebestemmelingbewijsstuk>Antwerpen</gemeentebestemmelingbewijsstuk>
+    <landcodebestemmelingbewijsstuk>BE</landcodebestemmelingbewijsstuk>
+</patientgegevens>
+```
+
+### Voorbeeld 3: Gecombineerd - beide adressen met busnummer
+```xml
+<patientgegevens>
+    <patientgegevens_id>343</patientgegevens_id>
+    <externeid>343</externeid>
+    <naam>VERMEULEN</naam>
+    <voornaam>Sophie</voornaam>
+    <rijksregisternummer>55110812345</rijksregisternummer>
+    <!-- Post-adres patiëntfactuur met busnummer -->
+    <straat>Kerkstraat</straat>
+    <huisnummer>15</huisnummer>
+    <busnr>3B</busnr>
+    <postcode>1000</postcode>
+    <gemeente>Brussel</gemeente>
+    <landcode>BE</landcode>
+    <ziekenfondscode>200</ziekenfondscode>
+    <kanaalfactuurpatient>1</kanaalfactuurpatient>
+    <!-- Bewijsstuk bestemmeling adres met busnummer (vertegenwoordiger) -->
+    <kanaalbewijsstuk>1</kanaalbewijsstuk>
+    <bestemmelingbewijsstuk>2</bestemmelingbewijsstuk>
+    <naambestemmelingbewijsstuk>VERMEULEN</naambestemmelingbewijsstuk>
+    <voornaambestemmelingbewijsstuk>Tom</voornaambestemmelingbewijsstuk>
+    <straatbestemmelingbewijsstuk>Dorpstraat</straatbestemmelingbewijsstuk>
+    <huisnummerbestemmelingbewijsstuk>42</huisnummerbestemmelingbewijsstuk>
+    <busnrbestemmelingbewijsstuk>A12</busnrbestemmelingbewijsstuk>
+    <postcodebestemmelingbewijsstuk>2000</postcodebestemmelingbewijsstuk>
+    <gemeentebestemmelingbewijsstuk>Antwerpen</gemeentebestemmelingbewijsstuk>
+    <landcodebestemmelingbewijsstuk>BE</landcodebestemmelingbewijsstuk>
+</patientgegevens>
