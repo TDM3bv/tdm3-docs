@@ -208,11 +208,11 @@ Voorbeeld afscoring forfait/profiel van A naar T7
 ## Hervorming wondzorg nomenclatuur december 2022
 De hervorming van de wondzorg nomenclatuur vereist enkele aanpassingen en nieuwe gegevens, afhankelijk van de manier  waarop de info wordt doorgegeven.
 
-**Optie A**: Het pakket geeft rechtstreeks de overeenkomstige nomenclatuurcode voor bijkomend honorarium complexe wondzorg via een aparte [node uitgevoerde zorg](nodes#node-uitgevoerdezorg).  TDM3 zal dit dan  niet zelf toevoegen.
+**Optie A**: Het pakket geeft rechtstreeks de overeenkomstige nomenclatuurcode voor bijkomend honorarium complexe wondzorg via een aparte [node uitgevoerde zorg](/nurse/nodes#node-uitgevoerdezorg).  TDM3 zal dit dan  niet zelf toevoegen.
 
 **Optie B**: Het pakket geeft de kennisgeving wondzorg door en de zorgduur van de complexe wondzorg
- - Kennisgegving: Een [kennisgevingwondzorg node](nodes#node-kennsigevingwondzorg)
- - Zorgduur: de zorgduur van de complexe wondzorg bij uitgevoerdezorg node via [uitgevoerdezorg.zorgminuten](nodes#node-uitgevoerdezorg)
+ - Kennisgegving: Een [kennisgevingwondzorg node](/nurse/nodes#node-kennsigevingwondzorg)
+ - Zorgduur: de zorgduur van de complexe wondzorg bij uitgevoerdezorg node via [uitgevoerdezorg.zorgminuten](/nurse/nodes#node-uitgevoerdezorg)
  
  Op basis de zorgduurte van de complexe wondzorgen die dag en de meeste recente aanwezige kennisgevingwondzorg, zal TDM3 voor een specifieke dag het correcte bijkomend honorarium complexe wondzorg factureren.
 
@@ -346,8 +346,8 @@ Voor prestaties waarbij een digitaal verwijsvoorschrift werd gebruikt, moet het 
 
 Voor een correcte adressering is het belangrijk dat het busnummer (bus, appartement) wordt meegegeven via een apart veld i.p.v. in het huisnummer veld. Het busnummer veld is beschikbaar op verschillende plaatsen in de XML structuur:
 
-- **post-adres patiëntfactuur op [patientgegevens node](nodes#node-patiëntgegevens)**: Het `busnr` veld op de patientgegevens node voor het adres waarnaar de 'factuur aan de patiënt' mag verstuurd worden. Wordt door TDM3 gebruikt voor afdruk, en voor verzending van de factuur wanneer kanaalfactuurpatient=1 is of niet gespecifieerd.
-- **Bewijsstuk bestemmeling op [patientgegevens node](nodes#node-patiëntgegevens)**: Het `busbestemmelingbewijsstuk` veld op de patientgegevens node voor het adres van de ontvanger van het bewijsstuk (patiënt of vertegenwoordiger)
+- **post-adres patiëntfactuur op [patientgegevens node](/nurse/nodes#node-patiëntgegevens)**: Het `busnr` veld op de patientgegevens node voor het adres waarnaar de 'factuur aan de patiënt' mag verstuurd worden. Wordt door TDM3 gebruikt voor afdruk, en voor verzending van de factuur wanneer kanaalfactuurpatient=1 is of niet gespecifieerd.
+- **Bewijsstuk bestemmeling op [patientgegevens node](/nurse/nodes#node-patiëntgegevens)**: Het `busbestemmelingbewijsstuk` veld op de patientgegevens node voor het adres van de ontvanger van het bewijsstuk (patiënt of vertegenwoordiger)
 
 Het busnummer wordt aangeraden in te vullen wanneer het adres een busnummer vereist en dit in het EVD eveneens in een apart veld beschikbaar is. Dit om ervoor te zorgen dat facturen en bewijsstukken op het correcte adres aankomen.
 
