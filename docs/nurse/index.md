@@ -349,7 +349,7 @@ Voor een correcte adressering is het belangrijk dat het busnummer (bus, appartem
 - **post-adres patiëntfactuur op [patientgegevens node](nodes#node-patiëntgegevens)**: Het `busnr` veld op de patientgegevens node voor het adres waarnaar de 'factuur aan de patiënt' mag verstuurd worden. Wordt door TDM3 gebruikt voor afdruk, en voor verzending van de factuur wanneer kanaalfactuurpatient=1 is of niet gespecifieerd.
 - **Bewijsstuk bestemmeling op [patientgegevens node](nodes#node-patiëntgegevens)**: Het `busnrbestemmelingbewijsstuk` veld op de patientgegevens node voor het adres van de ontvanger van het bewijsstuk (patiënt of vertegenwoordiger)
 
-Het busnummer wordt aangeraden in te vullen wanneer het adres een busnummer vereist en dit in het EVD eveneens in een apart veld beschikbaar is. Dit om ervoor te zorgen dat facturen en bewijsstukken op het correcte adres toekomen.
+Het busnummer wordt aangeraden in te vullen wanneer het adres een busnummer vereist en dit in het EVD eveneens in een apart veld beschikbaar is. Dit om ervoor te zorgen dat facturen en bewijsstukken op het correcte adres aankomen.
 
 ### Voorbeeld 1: Post-adres patiëntfactuur met busnummer
 ```xml
