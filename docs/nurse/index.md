@@ -393,7 +393,6 @@ Het busnummer wordt aangeraden in te vullen wanneer het adres een busnummer vere
     <postcodebestemmelingbewijsstuk>2000</postcodebestemmelingbewijsstuk>
     <gemeentebestemmelingbewijsstuk>Antwerpen</gemeentebestemmelingbewijsstuk>
     <landcodebestemmelingbewijsstuk>BE</landcodebestemmelingbewijsstuk>
-
 </patientgegevens>
 ```
 
