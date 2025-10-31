@@ -103,7 +103,7 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 - **geboortedatum** (dateTime): De geboortedatum van de patiënt.
 - **straat** (string): De straat van de patiënt. (domicilie adres)
 - **huisnummer** (string): De huisnummer van de patiënt. (kan maximum 10 karakters bevatten).  (domicilie adres)
-- **busnr** (string): De busnnr van de patiënt. (kan maximum 10 karakters bevatten).  (domicilie adres)
+- **busnr** (string): De busnr van de patiënt. (kan maximum 10 karakters bevatten).  (domicilie adres)
 - **postcode** (string): De postcode van de patiënt.  (domicilie adres)
 - **gemeente** (string): De gemeente van de patiënt.  (domicilie adres)
 - **landcode** (string): De landcode van de patiënt (ISO)  (domicilie adres)

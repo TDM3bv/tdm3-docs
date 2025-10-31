@@ -342,7 +342,7 @@ Voor prestaties waarbij een digitaal verwijsvoorschrift werd gebruikt, moet het 
 		</uitgevoerdezorg>
 ```
 
-## Adressering - busnr - factuur aan patiënt en bewijsstuk
+## Adressering - busnummers - factuur aan patiënt en bewijsstuk
 
 Voor een correcte adressering is het belangrijk dat het busnummer (bus, appartement) wordt meegegeven via een apart veld i.p.v. in het huisnummer veld. Het busnummer veld is beschikbaar op verschillende plaatsen in de XML structuur:
 
