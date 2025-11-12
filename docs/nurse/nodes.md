@@ -313,9 +313,9 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **rep\_typebestemmeling\_id** (long): Indicator die aangeeft voor wie de factuur is. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis,…
 - **insuline** (boolean): Dit zou op &#39;True&#39; moeten staan wanneer de verpleegkundige een dossier bijhoudt van een diabetes patiënt en de verpleegkundige insuline inspuitingen geeft.  De verpleegkundige krijgt dan een forfait honoraria (423231,423334).  Dit forfait wordt dan door TDM3 toegevoegd.
 - **derdebetalercode** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). Voor patiëntfacturen staat hier de patientnummer(dit mag een interne id zijn, eigen nummering,…), voor andere staat hierin de id van de verzekering in het versturende systeem. Dit veld mag maximum 10 posities lang zijn.
-- **derdebetalernaam** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). Voor patiëntfacturen staat hier de naam van de patiënt, voor andere staat hier de naam van de verzekeringsinstelling.
-- **derdebetaleradres** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering medisch huis, ocmw, etc). Voor patiëntfacturen staat hier het adres van de patiënt, voor andere staat hier het adres van de verzekeringsinstelling.
-- **derdebetaleremail** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering medisch huis, ocmw, etc). Indien gewenst door de derde of de patiënt, kan hier het email adres meegegeven worden waarnaar de factuur verstuurd moet worden.
+- **derdebetalernaam** (string): Enkel voor niet-ziekenfonds facturen (verzekering, medisch huis, ocmw, etc). Naam van de verzekeringsinstelling.
+- **derdebetaleradres** (string): Enkel voor niet-ziekenfonds facturen (verzekering medisch huis, ocmw, etc). Het adres van de verzekeringsinstelling.
+- **derdebetaleremail** (string): Enkel voor niet-ziekenfonds facturen (verzekering medisch huis, ocmw, etc). Indien gewenst door de derd kan hier het email adres meegegeven worden waarnaar de factuur verstuurd moet worden.
 - **polisnummer** (string): In geval van facturatie aan verzekering staat hier het eventuele polisnummer.
 - **dossiernummer** (string): In geval van facturatie aan verzekering staat hier het eventuele dossiernummer.
 - **datumongeval** (dateTime): In geval van een arbeidsongeval staat hier de datum van het ongeval.
