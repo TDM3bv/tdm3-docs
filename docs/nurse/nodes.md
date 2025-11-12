@@ -316,8 +316,8 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **derdebetalernaam** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). Voor patiëntfacturen staat hier de naam van de patiënt, voor andere staat hier de naam van de verzekeringsinstelling.
 - **derdebetaleradres** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering medisch huis, ocmw, etc). Voor patiëntfacturen staat hier het adres van de patiënt, voor andere staat hier het adres van de verzekeringsinstelling.
 - **derdebetaleremail** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering medisch huis, ocmw, etc). Indien gewenst door de derde of de patiënt, kan hier het email adres meegegeven worden waarnaar de factuur verstuurd moet worden.
-- **polisnummer** (string): In geval van een arbeidsongeval staat hier het polisnummer.
-- **dossiernummer** (string): In geval van arbeidsongeval staat hier het dossiernummer.
+- **polisnummer** (string): In geval van facturatie aan verzekering staat hier het eventuele polisnummer.
+- **dossiernummer** (string): In geval van facturatie aan verzekering staat hier het eventuele dossiernummer.
 - **datumongeval** (dateTime): In geval van een arbeidsongeval staat hier de datum van het ongeval.
 - **werkgever** (string): In geval van een arbeidsongeval staat hier de naam van de werkgever.
 - **TypeFacturering** (string)
