@@ -451,23 +451,27 @@ De startdatum van het palliatief akkoord wordt op patientgegeven node meegegeven
 - **einddatum** (dateTime): Einddatum van het mycarenet akkoord/profiel
 - **patientgegevens\_id** (long): De unieke nummer van de patiënt binnen dit bestand.
 - **profiel** (string): Het type profiel van de patiënt.
-
+- **toiletten** (int): aantal toilletten *
+  - wordt standaard niet ingevuld
+  - wordt ingevuld met waarde '7' nav een van de uitzonderingen bij een T2 profiel, waardoor er wel een dagelijks toilet mag uitgevoerd worden
+     - ‘desoriëntatie’, Matig / ernstig  
+     - ‘nachtelijke incontinentie’ vanaf een bepaalde score
 
 Mogelijke waardes zijn :
-| **profiel** | Omschrijving       |
-| ----------- | ------------------ |
-| A           | Profiel A          |
-| B           | Profiel B          |
-| C           | Profiel C          |
-| P2          | Palliatief Profiel |
-| P7          | Palliatief Profiel |
-| PA          | Forfait PA         |
-| PB          | Forfait PB         |
-| PC          | Forfait PC         |
-| PN          | Forfait PN         |
-| PP          | Forfait PP         |
-| T2          | Profiel N          |
-| T7          | Profiel N          |
+| **profiel** | Omschrijving       | Aantal toilleten |
+| ----------- | ------------------ | ---------------- |
+| A           | Profiel A          | 7                |
+| B           | Profiel B          | 7                |
+| C           | Profiel C          | 7                |
+| P2          | Palliatief Profiel | 2 (7*)           |
+| P7          | Palliatief Profiel | 7                |
+| PA          | Forfait PA         | 7                |
+| PB          | Forfait PB         | 7                |
+| PC          | Forfait PC         | 7                |
+| PN          | Forfait PN         | 7                |
+| PP          | Forfait PP         | 7                |
+| T2          | Profiel N          | 2 (7*)           |
+| T7          | Profiel N          | 7                |
 
 ```xml
 <profielen>
