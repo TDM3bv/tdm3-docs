@@ -101,12 +101,12 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens (in
 - **voornaam** (string): De voornaam van de patiënt.
 - **geslacht** (string): Het geslacht van de patiënt (mogelijke waardes: M, V).
 - **geboortedatum** (dateTime): De geboortedatum van de patiënt.
-- **straat** (string): De straat van de patiënt. (domicilie adres)
+- **straat** (string): De straat van de patiënt. (domicilie/factuur adres)
 - **huisnummer** (string): De huisnummer van de patiënt. (kan maximum 10 karakters bevatten).  (domicilie adres)
-- **busnr** (string): De busnr van de patiënt. (kan maximum 10 karakters bevatten).  (domicilie adres)
-- **postcode** (string): De postcode van de patiënt.  (domicilie adres)
-- **gemeente** (string): De gemeente van de patiënt.  (domicilie adres)
-- **landcode** (string): De landcode van de patiënt (ISO)  (domicilie adres)
+- **busnr** (string): De busnr van de patiënt. (kan maximum 10 karakters bevatten).  (domicilie/factuur adres)
+- **postcode** (string): De postcode van de patiënt.  (domicilie/factuur adres)
+- **gemeente** (string): De gemeente van de patiënt.  (domicilie/factuur adres)
+- **landcode** (string): De landcode van de patiënt (ISO)  (domicilie/factuur adres)
 - **ziekenfondscode** (string): Het ziekenfonds waar de patiënt is aangesloten.
 - **stamnummer** (string): Enkel voor buitenlanders en boorlingen, **voor alle andere gevallen moet men het rijksregisternummer gebruiken.** Bij facturatie van zorgen buiten het ZIV (verzekering, ocmw, patient) en het rijksregisternummer of stamnummer is niet gekend, kan in dit veld een unieke identificatienummer meegegeven worden.
 - **hoedanigheid** (string): De hoedanigheid van de patiënt (optioneel). (deprecated)
@@ -300,7 +300,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **nomenclatuurnummer** (string): De nomenclatuurnummer van de prestatie.
 - **pseudocodenummer** (string): De pseudocode voor de nomenclatuur. Moet enkel ingevuld worden indien er geen nomenclatuurnummer bestaat (palliatieve zorgen en niet vergoedbare zorgen). Dan moet de nomenclatuurnummer 000000 zijn. Indien geen pseudocode veld opvullen met 000000. 
 - **kb90bedrag** (string): Het bedrag van de uitgevoerde zorg die valt onder het KB van 1990. Voor deze zorg bestaat geen nomenclatuurnummer en moet 426856 als pseudocodenummer hebben.
-- **kb90omschrijving** (string): Een vrije omschrijving van de zorg die gefactureerd wordt onder de kb90 nomenclatuur.
+- **kb90omschrijving** (string): Een vrije omschrijving van de zorg die gefactureerd wordt onder de kb90 nomenclatuur. Verschijnt op de factuur en het bewijsstuk.
 - **BtwPercentage** (int): Indien er voor de prestatie btw moet aangerekend worden, dient hier gespecifieerd te worden hoeveel het btw percentage is: 0, 6 of 21
 - **BedragInclusiefBtw** (boolean): Hiermee kan gespecifeerd worden hoe de btw berekening dient te gebeuren. Indien het kb90bedrag of de tariefberekening voor de nomenclatuurcode inclusief 21% btw is, dan moet waarde Ja (Boolean True) meegegeven worden. Indien TDM3 zelf btw bedrag dient te berekenen op het kb90 bedrag of het door TDM3 getarifieerde bedrag, dan moet hier waarde Nee (Boolean False) meegeven worden.
 - **ziekenfondscode** (string): Het ziekenfonds van de patiënt.
@@ -315,7 +315,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **derdebetalercode** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). Voor patiëntfacturen staat hier de patientnummer(dit mag een interne id zijn, eigen nummering,…), voor andere staat hierin de id van de verzekering in het versturende systeem. Dit veld mag maximum 10 posities lang zijn.
 - **derdebetalernaam** (string): Enkel voor niet-ziekenfonds facturen (verzekering, medisch huis, ocmw, etc). Naam van de verzekeringsinstelling.
 - **derdebetaleradres** (string): Enkel voor niet-ziekenfonds facturen (verzekering medisch huis, ocmw, etc). Het adres van de verzekeringsinstelling.
-- **derdebetaleremail** (string): Enkel voor niet-ziekenfonds facturen (verzekering medisch huis, ocmw, etc). Indien gewenst door de derd kan hier het email adres meegegeven worden waarnaar de factuur verstuurd moet worden.
+- **derdebetaleremail** (string): Enkel voor niet-ziekenfonds facturen (verzekering medisch huis, ocmw, etc). Indien gewenst door de derde kan hier het email adres meegegeven worden waarnaar de factuur verstuurd moet worden.
 - **polisnummer** (string): In geval van facturatie aan verzekering staat hier het eventuele polisnummer.
 - **dossiernummer** (string): In geval van facturatie aan verzekering staat hier het eventuele dossiernummer.
 - **datumongeval** (dateTime): In geval van een arbeidsongeval staat hier de datum van het ongeval.
