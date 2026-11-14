@@ -322,11 +322,19 @@ Een zorgkundige voert het toilet uit. In de `uitgevoerdezorg` staan zowel de zor
 
 ### Voorbeeld 6: palliatieve patiënt met een dringend bezoek
 
-Een palliatieve patiënt (profiel PB) krijgt 's ochtends een toilet. 's Middags volgt een dringend bezoek, aangeduid met pseudocode 426510. De startdatum van het palliatief statuut staat op node patientgegevens:
+Een palliatieve patiënt (profiel PB) krijgt 's ochtends een toilet. 's Middags volgt een dringend bezoek, aangeduid met pseudocode 426510. De startdatum van het palliatief statuut staat in `startdatumpal` op node patientgegevens.
 
 ```xml
-<!-- Fragment van node patientgegevens: startdatum palliatief statuut -->
-<startdatumpal>2026-01-15T00:00:00</startdatumpal>
+<!-- Patientgegevens met de startdatum van het palliatief statuut (andere optionele elementen weggelaten) -->
+<patientgegevens>
+	<patientgegevens_id>1</patientgegevens_id>
+	<externeid>100</externeid>
+	<naam>PATIENT</naam>
+	<voornaam>VOORBEELD</voornaam>
+	<ruraal>false</ruraal>
+	<startdatumpal>2026-01-15T00:00:00</startdatumpal>
+	<rijksregisternummer>85010100123</rijksregisternummer>
+</patientgegevens>
 
 <!-- Profiel PB vanaf de startdatum palliatief -->
 <profielen>
