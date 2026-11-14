@@ -303,7 +303,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **referentieverwijsvoorschrift** (string): referentienummer (Short RefID) (Short Code) van het digitaal verwijsvoorschrift. Dit nummer bestaat uit 6 alfanumerieke karakters. Moet ingevuld worden wanneer voor de verstrekking  een digitaal verwijsvoorschrift werd gebruikt.
 - **remgeld** (string): uitgedrukt als percentage van het persoonlijk aandeel dat wordt gevraagd, van 0 tem 100. 0 is geen remgeld tellen, 100 = het volledige persoonlijk aandeel wordt gevraagd.
 - **nomenclatuurnummer** (string): De nomenclatuurnummer van de prestatie.
-- **pseudocodenummer** (string): De pseudocode voor de nomenclatuur. Moet enkel ingevuld worden indien er geen nomenclatuurnummer bestaat (palliatieve zorgen en niet vergoedbare zorgen). Dan moet de nomenclatuurnummer 000000 zijn. Indien geen pseudocode veld opvullen met 000000. 
+- **pseudocodenummer** (string): De pseudocode voor de nomenclatuur. Moet enkel ingevuld worden indien er geen nomenclatuurnummer bestaat (palliatieve zorgen en niet vergoedbare zorgen). Dan moet de nomenclatuurnummer 000000 zijn. Indien geen pseudocode veld opvullen met 000000. TDM3 verwerkt `nomenclatuurnummer` en `pseudocodenummer` op dezelfde manier: een code mag in een van beide velden staan, maar per uitgevoerdezorg wordt maar één code meegegeven. Het andere veld wordt weggelaten of met 000000 opgevuld. Uitzondering: bij een kb90bedrag staat de code 426856 altijd in `pseudocodenummer`. 
 - **kb90bedrag** (string): Het bedrag van de uitgevoerde zorg die valt onder het KB van 1990. Voor deze zorg bestaat geen nomenclatuurnummer en moet 426856 als pseudocodenummer hebben.
 - **kb90omschrijving** (string): Een vrije omschrijving van de zorg die gefactureerd wordt onder de kb90 nomenclatuur. Verschijnt op de factuur en het bewijsstuk.
 - **BtwPercentage** (int): Indien er voor de prestatie btw moet aangerekend worden, dient hier gespecifieerd te worden hoeveel het btw percentage is: 0, 6 of 21
@@ -337,7 +337,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
     - 2 = ontslag in ziekenhuis
 	- 3 = opname in andere verzorgingsinstelling
 	- 4 = ontslag in andere verzorgingsinstelling
-- **Locatie:** Ikv Verordening van 28 juli 2003 bijlage 85, wordt hier de overeenkomstige pseudocode meegegeven die moeten vermeld worden bij de verstrekkingen van art. 8, §1, 3° van de nomenclatuur (&quot;verstrekkingen verleend hetzij in de praktijkkamer van de beoefenaar van de verpleegkunde, hetzij in een hersteloord&quot;). Deze pseudo-codes geven de plaats van verstrekking weer. Wordt ook gebruikt ikv diabeteseducatie via videoconsultatie tijdens COVID19-crisis. De betrekkelijke verstrekking wordt dan in dit element ingevuld.
+- **Locatie:** Ikv Verordening van 28 juli 2003 bijlage 85, wordt hier de overeenkomstige pseudocode meegegeven die moeten vermeld worden bij de verstrekkingen van art. 8, §1, 3° van de nomenclatuur (&quot;verstrekkingen verleend hetzij in de praktijkkamer van de beoefenaar van de verpleegkunde, hetzij in een hersteloord&quot;). Deze pseudo-codes geven de plaats van verstrekking weer. Wordt ook gebruikt ikv diabeteseducatie via videoconsultatie tijdens COVID19-crisis. De betrekkelijke verstrekking wordt dan in dit element ingevuld. Voor het pilootproject artikel 56 bevat dit element de locatiecode van de directe zorg, zie [Pilootproject artikel 56](/nurse/artikel56#betrekkelijke-verstrekking-locatie).
 - **metadata**(type metadata, optioneel element)**:** een &quot;key-value&quot; pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven, die niet direct te maken heeft met de tarificatie van prestaties.
 
 ```xml
@@ -502,14 +502,15 @@ De volgende gegevens zijn vereist.
 * **externeid** (string): de patientid uit het versturende systeem refererend naar externid van patientgegevens.	Cfr de uitgevoerdezorg node 
 * **patientgegevens_id** (int): De unieke nummer van de patiënt binnen dit bestand. Cfr de uitgevoerdezorg node 
 * **redenmanueleinvoering** (int):
-    * Mogelijke waardes
-    1. Niet van toepassing
-    2. Gebruik identiteitsdocument zonder chip
-    3. Onbeschikbaarheid kaartlezer
-    4. Uitgestelde verificatie zonder panne, omdat de patiënt geen geldig identiteitsdocument kon voorleggen 
-	5. Uitgestelde verificatie zonder panne, omdat vergeten werd om het identiteitsdocument in te lezen
-	6. Gebrek aan interconnectiviteit tussen software
-	7. Rechthebbende bezig geen identiteitsdocument (zoals bedoeld in artikel 3 van het KB 18/09/2015)
+    * Mogelijke waardes:
+        - 0 = Niet van toepassing
+        - 1 = Gebruik identiteitsdocument zonder chip
+        - 2 = Onbeschikbaarheid kaartlezer
+        - 3 = Panne van het informaticasysteem
+        - 4 = Uitgestelde verificatie zonder panne, omdat de patiënt geen geldig identiteitsdocument kon voorleggen
+        - 5 = Uitgestelde verificatie zonder panne, omdat vergeten werd om het identiteitsdocument in te lezen
+        - 6 = Gebrek aan interconnectiviteit tussen software
+        - 7 = Rechthebbende bezig geen identiteitsdocument (zoals bedoeld in artikel 3 van het KB 18/09/2015)
 * **datumuitvoering** (dateTime): de datum van het bezoek, cfr datumuitvoering veld in uitgevoerdezorg node
 * **bezoeknummer** (int): Nummer van het bezoek. Cfr node uitgevoerdezorg.
 * **datumlezingidentiteitsdocument** (dateTime): datum waarop het identiteitsdocument is ingelezen. Dit element moet steeds ingevuld worden, behalve indien “typevanlezingidentiteitsdocument” = 4 en redenmanueleinvoering = 3.
@@ -539,10 +540,10 @@ De volgende gegevens zijn vereist.
      - A: Elektronische invoering (itsme®)
 
 *	**redengebruikvignet** (int):
-    -	Mogelijke waardes
-    1. Niet van toepassing
-    2. Rechthebbende niet aanwezig tijdens verstrekking en gelijktijdige aanwezigheid van rechthebbende en zorgverlener niet reglementair vereist
-    3. Rechthebbende bezit geen identiteitsdocument
+    - Mogelijke waardes:
+        - 0 = Niet van toepassing
+        - 1 = Rechthebbende niet aanwezig tijdens verstrekking en gelijktijdige aanwezigheid van rechthebbende en zorgverlener niet reglementair vereist
+        - 2 = Rechthebbende bezit geen identiteitsdocument
 *	**uurvanlezingidentiteitsdocument** (string): formaat HHmm
     -  Voorbeeld: 1510, 0109, 1305, etc
     -  dit element moet steeds ingevuld worden, behalve indien **“typevanlezingidentiteitsdocument”** = 4 en **“redenmanueleinvoering”** = 3
