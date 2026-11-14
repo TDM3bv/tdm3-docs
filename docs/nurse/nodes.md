@@ -331,7 +331,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
   - 5 = correctiefactuur voor forfaits verpleegkundige zorgen wegens declassering na bezoek adviserend geneesheer
 - **rizivnummerzorgkundige** (string): De rizivnummer van de zorgkundige
 - **naamzorgkundige** (string): De naam van de zorgkundige
-- **ZHOpname (string):**  veld om aan te duiden of er die dag een opname/ontslag is in een ziekenhuis of andere zorginstelling. Bij waarde 1 en 2 zal TDM3 de pseudocode [426613](https://webappsa.riziv-inami.fgov.be/Nomen/nl/426613) toevoegen in facturatie. Tevens zijn de waardes van belang m.b.t. het correct factureren van palliatieve forfaits, een forfait PC/C (uitzonderingsituaties).
+- **ZHOpname (string):**  veld om aan te duiden of er die dag een opname/ontslag is in een ziekenhuis of andere zorginstelling. Bij waarde 1 en 2 vermeldt TDM3 de pseudocode [426613](https://webappsa.riziv-inami.fgov.be/Nomen/nl/426613) als betrekkelijke verstrekking in de facturatie. Tevens zijn de waardes van belang m.b.t. het correct factureren van palliatieve forfaits, een forfait PC/C (uitzonderingsituaties).
     - 0 = geen opname
 	- 1 = opname in ziekenhuis 
     - 2 = ontslag in ziekenhuis
@@ -456,11 +456,6 @@ De startdatum van het palliatief akkoord wordt op patientgegeven node meegegeven
 - **einddatum** (dateTime): Einddatum van het mycarenet akkoord/profiel
 - **patientgegevens\_id** (long): De unieke nummer van de patiënt binnen dit bestand.
 - **profiel** (string): Het type profiel van de patiënt.
-- **toiletten** (int): aantal toilletten *
-  - wordt standaard niet ingevuld
-  - wordt ingevuld met waarde '7' nav een van de uitzonderingen bij een T2 profiel, waardoor er wel een dagelijks toilet mag uitgevoerd worden
-     - ‘desoriëntatie’, Matig / ernstig  
-     - ‘nachtelijke incontinentie’ vanaf een bepaalde score
 
 Mogelijke waardes zijn :
 | **profiel** | Omschrijving       | Aantal toilleten |
@@ -468,14 +463,14 @@ Mogelijke waardes zijn :
 | A           | Profiel A          | 7                |
 | B           | Profiel B          | 7                |
 | C           | Profiel C          | 7                |
-| P2          | Palliatief Profiel | 2 (7*)           |
+| P2          | Palliatief Profiel | 2                |
 | P7          | Palliatief Profiel | 7                |
 | PA          | Forfait PA         | 7                |
 | PB          | Forfait PB         | 7                |
 | PC          | Forfait PC         | 7                |
 | PN          | Forfait PN         | 7                |
 | PP          | Forfait PP         | 7                |
-| T2          | Profiel N          | 2 (7*)           |
+| T2          | Profiel N          | 2                |
 | T7          | Profiel N          | 7                |
 
 ```xml
@@ -741,8 +736,8 @@ Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. D
 	</prijsberekening>
 	<profielen>
 		<externeid>23123</externeid>
-		<startdatum>2006-01-01T00:00:00</startdatum>
-		<einddatum>2006-12-31T00:00:00</einddatum>
+		<startdatum>2006-04-01T00:00:00</startdatum>
+		<einddatum>2006-06-30T00:00:00</einddatum>
 		<patientgegevens_id>1</patientgegevens_id>
 		<profiel>A</profiel>
 	</profielen>
@@ -753,6 +748,21 @@ Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. D
 		<patientgegevens_id>2</patientgegevens_id>
 		<profiel>T7</profiel>
 	</profielen>
+	<lezingidentiteit>
+		<externeid>23123</externeid>
+		<patientgegevens_id>1</patientgegevens_id>
+		<redenmanueleinvoering>0</redenmanueleinvoering>
+		<bezoeknummer>1</bezoeknummer>
+		<datumuitvoering>2006-05-01T17:00:00</datumuitvoering>
+		<datumlezingidentiteitsdocument>2006-05-01T17:00:00</datumlezingidentiteitsdocument>
+		<identificatiepatient>20123112345</identificatiepatient>
+		<typevanlezingidentiteitsdocument>1</typevanlezingidentiteitsdocument>
+		<typevandrageridentiteitsdocument>1</typevandrageridentiteitsdocument>
+		<redengebruikvignet>0</redengebruikvignet>
+		<uurvanlezingidentiteitsdocument>1700</uurvanlezingidentiteitsdocument>
+		<rizivnummerverstrekker>48594426401</rizivnummerverstrekker>
+		<serienummervandedrager>590000000001</serienummervandedrager>
+	</lezingidentiteit>
 </pakketgegevens>
 
 ```

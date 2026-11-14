@@ -195,6 +195,9 @@ Voorbeeld afscoring forfait/profiel van A naar T7
 ```
 ## COVID19-crisis instructies
 ### Diabeteseducatie via videoconsultatie tijdens de COVID19-crisis
+::: warning Niet meer van toepassing
+Deze tijdelijke maatregel is niet meer van toepassing. TDM3 verwerkt het element Locatie niet meer bij diabeteseducatie.
+:::
 - Als tijdelijke aanpassing mag een individuele sessie tijdens de duur van de maatregelen, door middel van videocommunicatie plaatsvinden.
 	Deze "locatie" kan via de xml aangeduid worden door de pseudocode **792433** te vermelden in het element **Locatie** ([Bron RIZIV](https://www.riziv.fgov.be/nl/covid19/Paginas/diabeteseducatie-1ste-lijn-videoconsultatie.aspx))
 ```xml
@@ -208,7 +211,7 @@ Voorbeeld afscoring forfait/profiel van A naar T7
 ## Hervorming wondzorg nomenclatuur december 2022
 De hervorming van de wondzorg nomenclatuur vereist enkele aanpassingen en nieuwe gegevens, afhankelijk van de manier  waarop de info wordt doorgegeven.
 
-**Optie A**: Het pakket geeft rechtstreeks de overeenkomstige nomenclatuurcode voor bijkomend honorarium complexe wondzorg via een aparte [node uitgevoerde zorg](/nurse/nodes#node-uitgevoerdezorg).  TDM3 zal dit dan  niet zelf toevoegen.
+**Optie A**: Het pakket geeft rechtstreeks de overeenkomstige nomenclatuurcode voor bijkomend honorarium complexe wondzorg via een aparte [node uitgevoerde zorg](/nurse/nodes#node-uitgevoerdezorg).  Geef niet beide opties tegelijk door: TDM3 houdt per dag maar één bijkomend honorarium complexe wondzorg over.
 
 **Optie B**: Het pakket geeft de kennisgeving wondzorg door en de zorgduur van de complexe wondzorg
  - Kennisgegving: Een [kennisgevingwondzorg node](/nurse/nodes#node-kennsigevingwondzorg)
@@ -306,7 +309,7 @@ Deze waardes zijn:
 - **3 = opname in andere verzorgingsinstelling**
 - **4 = ontslag in andere verzorgingsinstelling**
 
-Bij waarde 1 en 2 zal TDM3 de pseudocode [426613](https://webappsa.riziv-inami.fgov.be/Nomen/nl/426613) toevoegen in facturatie. Tevens zijn de waardes van belang m.b.t. het correct factureren van palliatieve forfaits, een forfait PC/C (uitzonderingsituaties)
+Bij waarde 1 en 2 vermeldt TDM3 de pseudocode [426613](https://webappsa.riziv-inami.fgov.be/Nomen/nl/426613) als betrekkelijke verstrekking in de facturatie. Tevens zijn de waardes van belang m.b.t. het correct factureren van palliatieve forfaits, een forfait PC/C (uitzonderingsituaties)
 
 ## Referentienummer digitaal verwijsvoorschrift
 Voor prestaties waarbij een digitaal verwijsvoorschrift werd gebruikt, moet het referentienummer meegegeven worden in het prestatiebestand naar analogie met de facturatie instructies:
