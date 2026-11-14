@@ -81,7 +81,7 @@ Sommige prestaties worden gefinancierd buiten artikel 8, via de klassieke nomenc
 
 - Een [lezingidentiteit](/nurse/nodes#node-lezingidentiteit) komt mee voor elk contact directe zorg bij de patiënt, zoals vandaag.
 - `typevandrageridentiteitsdocument` = 0 mag enkel samen met `redenmanueleinvoering` = 7.
-- Bij directe zorg **op afstand** (locatie 421396) mag de lezingidentiteit meekomen, maar dat hoeft niet: TDM3 voegt die zelf toe. Deze regeling geldt tot 01/2027.
+- Bij directe zorg **op afstand** (locatie 421396) is geen vignet vereist: TDM3 voegt de lezingidentiteit zelf toe.
 
 ## Voorschrift en patiëntprofiel
 
