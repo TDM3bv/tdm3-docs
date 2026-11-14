@@ -86,9 +86,9 @@
 							<xs:element name="emailbestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
 							<xs:element name="identificatiebestemmelingbewijsstuk" type="xs:string" minOccurs="0" />
 							<xs:element name="identificatietypebestemmelingbewijsstuk" type="xs:int" minOccurs="0" />
-							<xs:element name="taalcodebewijsstuk " type="xs:string" minOccurs="0" />
+							<xs:element name="taalcodebewijsstuk" type="xs:string" minOccurs="0" />
 							<xs:element name="metadata" type="metadata" minOccurs="0" />
-							<xs:element name="adressen" nillable="true" >
+							<xs:element name="adressen" nillable="true" minOccurs="0">
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element type="adres" name="adres" minOccurs="0" maxOccurs="unbounded"/>
@@ -218,7 +218,7 @@
 			</xs:choice>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="account">
+	<xs:element name="betaler">
 			<xs:complexType>
 				<xs:sequence>
 						<xs:element name="externeid" type="xs:string" minOccurs="1" />

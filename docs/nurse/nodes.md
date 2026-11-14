@@ -88,7 +88,7 @@ Voorbeeld:
 
 ## Node patiëntgegevens
 
-Per patient is er één patientgegevens node met hierin de volgende gegevens (in volgorde zoals ze hieronder staan):
+Per patient is er één patientgegevens node met hierin de volgende gegevens. De volgorde van de elementen in de XML volgt het [XSD-schema](/schemas/tdm3prestatiebestand.xsd); de oplijsting hieronder kan daarvan afwijken.
 
 - **patientgegevens\_id** (long): Dit is een uniek nummer binnen dit bestand waarmee de &#39;uitgevoerdezorgen&#39;-nodes en &#39;profielen&#39;-nodes gelinkt kunnen worden aan de &#39;patiënt&#39;. Dit wil zeggen dat voor elk &#39;profielen&#39;-node en elke &#39;uitgevoerdezorg&#39;-node van de patiënt deze patientgegevens\_id gebruikt moet worden.
 - **externeid** (string): De patientid van het versturende systeem; deze id wordt samen met de patientgegevens\_id gebruikt om de &#39;uitgevoerdezorgen&#39;-nodes en de &#39;profielen&#39;-nodes te linken aan de patiënt. Dit wil zeggen dat voor elke &#39;profielen&#39;-node en elke &#39;uitgevoerdezorg&#39;-node van de patiënt deze externeid gebruikt moet worden.
@@ -257,12 +257,17 @@ Voorbeeld adressen
 	</patientgegevens>
 ```
 
-## Node account (voorstel)
+## Node betaler (voorstel)
+
+::: warning Nog niet ondersteund
+De node betaler is een voorstel. De import van TDM3 verwerkt deze node momenteel niet.
+:::
+
 Dit is een node die verwijst naar de derdebetalercode in de uitgevoerdezorg node.
-Per unieke derdebetalercode mag er max 1 account element meegegeven worden.
+Per unieke derdebetalercode mag er max 1 betaler element meegegeven worden.
 Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefondsen (patienten, medische huizen, ziekenhuizen, verzekeringen, enz)
 - **externeid**: (string) Het externe id van het versturende systeem.
-- **type** (long): Indicator die aangeeft over welk soort account het gaat. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis, 6=ziekenhuis
+- **type** (long): Indicator die aangeeft over welk soort betaler het gaat. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis, 6=ziekenhuis
 - **referentienr**: (string) komt overeen met *uitgevoerdezorg.derdebetalercode*.
 - **naam** (string): De naam van de organisatie of achernaam van de persoon.
 - **voornaam** (string): De voornaam van de persoon, leeg indien een organisatie.
@@ -276,7 +281,7 @@ Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefond
 - **kbonr**: (string) indien facturatie aan een organisatie/bedrijf, kan een KboNr meegegeven worden zodat de factuur correct opgemaakt kan worden en aan de juiste entiteit kan bezorgd worden via een eventueel electronische kanalen
 - **rizivnr**: (string) indien facturatie aan een andere zorgorganisatie zoals een groepering, ziekenhuis of medisch huis kan hier de rizivnr van deze organisatie meegegeven worden.
 - **uwreferentie**: (string) polisnummer, dossiernummer, ordernummer of andere referentie die voor de partij op de factuur moet verschijnen zodat men efficënt de link kan leggen met het eigen dossierbeheer systeem
-- **telefoon**: (string) gsm of telefoonnummer van de "account" waarmee TDM3 contact kan opnemen ikv verdere opvolging van de factuur
+- **telefoon**: (string) gsm of telefoonnummer van de betaler waarmee TDM3 contact kan opnemen ikv verdere opvolging van de factuur
 - **terattentievan**: (string) hiermee kan verder gespecifieerd worden aan wie of welke afdeling binnen een organisatie de factuur mag gericht worden
 - **facturatiekanaal**: (int) 0=POST, 1=EBOX, 2=EMAIL, 3=PEPPOL. Hier kan aangegeven worden via welk kanaal de factuur moet/mag verstuurd worden. Afhankelijk van he kanaal, worden bepaalde informatievelden verplicht. Bvb: indien PEPPOL of EBOX => KBONr verplicht.
 - **adressen**: (complexeType) minstens 1 adres van het [AdresType](#element-adres-op-node-patientgegeven) Factuur 
@@ -286,7 +291,7 @@ Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefond
 
 ## Node uitgevoerdezorg
 
-Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegevens (in volgorde zoals ze hieronder staan):
+Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegevens. De volgorde van de elementen in de XML volgt het [XSD-schema](/schemas/tdm3prestatiebestand.xsd); de oplijsting hieronder kan daarvan afwijken.
 
 - **input\_uitgevoerdezorg\_id** (long): De uitgevoerdezorgid van het versturende systeem.
 - **externeid** (string): Het patientid van het versturende systeem refererend naar externid van patientgegevens.
