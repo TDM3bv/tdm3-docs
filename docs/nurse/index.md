@@ -425,3 +425,7 @@ Het busnummer wordt aangeraden in te vullen wanneer het adres een busnummer vere
     <gemeentebestemmelingbewijsstuk>Antwerpen</gemeentebestemmelingbewijsstuk>
     <landcodebestemmelingbewijsstuk>BE</landcodebestemmelingbewijsstuk>
 </patientgegevens>
+```
+
+## Pilootproject artikel 56
+Voor praktijken die deelnemen aan het pilootproject nieuwe praktijkfinanciering (artikel 56) gelden bijkomende instructies voor het prestatiebestand: de pseudocodes voor directe en indirecte zorg, verplaatsingstijd, locatiecodes en interventiecodes. Zie [Pilootproject artikel 56](/nurse/artikel56).
