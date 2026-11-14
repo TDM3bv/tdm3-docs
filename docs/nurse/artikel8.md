@@ -16,6 +16,9 @@ De gegevens in de voorbeelden zijn fictief. De combinaties van codes, de tijdsti
 - Een `datumvoorschrift` komt altijd samen met `rizivnummervoorschrijver`.
 - Basisverstrekkingen, forfaits, het supplement PN, het opvolgingshonorarium diabetes en de verplaatsingskosten (ruraal) worden niet meegegeven: TDM3 voegt die zelf toe, zie [Toevoegingen door TDM3](/nurse/#toevoegingen-door-tdm3).
 
+- Elk voorbeeld staat op zichzelf. Een volledig bestand bevat altijd ook de nodes `patientgegevens`, `vereniging`, `facturatieperiode` en `tarificatiedienst`; die zijn in de voorbeelden weggelaten, behalve waar ze voor de situatie van belang zijn.
+- De RIZIV- en rijksregisternummers in de voorbeelden zijn bewust ongeldig. Gebruik voor een testbestand eigen geldige testnummers.
+
 ## Voorbeelden
 
 ### Voorbeeld 1: forfaitpatiënt, toilet op een weekdag
@@ -157,7 +160,7 @@ Een patiënt met profiel T7 krijgt 's ochtends een toilet en 's avonds een subcu
 
 ### Voorbeeld 3: compressiekousen en toilet in één bezoek
 
-Een patiënt met profiel T7 krijgt in één bezoek een toilet en het aandoen van compressiekousen op voorschrift (424933).
+Een patiënt met profiel T7 krijgt in één bezoek een toilet en het aandoen van compressiekousen op voorschrift (424933). Dit voorbeeld toont wat er gebeurt als die twee verstrekkingen in dezelfde zitting worden geregistreerd.
 
 ```xml
 <!-- Profiel T7, geldig op de zorgdag -->
@@ -221,6 +224,11 @@ Een patiënt met profiel T7 krijgt in één bezoek een toilet en het aandoen van
 	<serienummervandedrager>590000000001</serienummervandedrager>
 </lezingidentiteit>
 ```
+
+**Wat TDM3 doet**
+
+- Compressietherapie mag in dezelfde zitting niet samen met een andere verstrekking geattesteerd worden, behalve met een basisverstrekking (nomenclatuur, sinds 1 juli 2024). TDM3 maakt daarom een van beide verstrekkingen niet attesteerbaar.
+- Worden het toilet en de compressietherapie in afzonderlijke zittingen uitgevoerd, geef ze dan elk met een eigen bezoeknummer en een eigen lezingidentiteit mee.
 
 ### Voorbeeld 4: toilet in het weekend
 
@@ -416,7 +424,7 @@ Een palliatieve patiënt (profiel PB) krijgt 's ochtends een toilet. 's Middags 
 **Wat TDM3 doet**
 
 - TDM3 bepaalt het palliatief statuut op basis van `startdatumpal`, en voegt het forfait PB toe.
-- Een palliatief profiel zonder `startdatumpal` wordt niet als palliatief behandeld.
+- Een palliatief profiel zonder `startdatumpal` geeft een validatiefout.
 
 ### Voorbeeld 7: complexe wondzorg met kennisgeving
 
@@ -588,6 +596,10 @@ Bij een patiënt met profiel A worden tijdens het bezoek een toilet en de wekeli
 </lezingidentiteit>
 ```
 
+**Wat TDM3 doet**
+
+- Op een forfaitfactuur vervangt TDM3 424874 door de pseudocode 426576, zie [pseudocodes die wel kunnen meegegeven worden](/nurse/#pseudocodes-die-wel-kunnen-meegegeven-worden-in-het-xml-bestand).
+
 ### Voorbeeld 10: zorg zonder RIZIV-nomenclatuur (KB90) aan de patiënt
 
 's Ochtends krijgt de patiënt een toilet, gefactureerd aan het ziekenfonds. 's Avonds volgt een avondzorg zonder RIZIV-nomenclatuur, gefactureerd aan de patiënt via pseudocode 426856 en een `kb90bedrag`. Zie ook [Zorgen zonder riziv-nomenclatuur](/nurse/#zorgen-zonder-riziv-nomenclatuur).
@@ -707,12 +719,12 @@ Een patiënt krijgt 's ochtends een toilet en wordt die dag opgenomen in het zie
 
 **Wat TDM3 doet**
 
-- TDM3 vermeldt de opname in het facturatiebestand met pseudocode 426613.
+- Bij `ZHOpname` 1 (opname) of 2 (ontslag) vermeldt TDM3 de pseudocode 426613 als betrekkelijke verstrekking in het facturatiebestand.
 - De waarde is ook van belang voor de palliatieve forfaits en voor een forfait C/PC in uitzonderingssituaties.
 
 ### Voorbeeld 12: correctieforfait na afscoring van het profiel
 
-Na een bezoek van de adviserend geneesheer wordt het profiel van de patiënt afgescoord van A naar T7. Het oorspronkelijke forfait en de oorspronkelijke zorgen worden niet opnieuw doorgegeven. De praktijk geeft de zorgen van de betrokken dagen en het nieuwe profiel door, met `TypeFacturering` = 5 bij de zorgen.
+Na een bezoek van de adviserend geneesheer wordt het profiel van de patiënt afgescoord van A naar T7. Het oorspronkelijke forfait wordt niet doorgegeven. De praktijk geeft de zorgen van de betrokken dagen opnieuw door, met `TypeFacturering` = 5, samen met het nieuwe profiel.
 
 ```xml
 <!-- Nieuw profiel na de afscoring -->
