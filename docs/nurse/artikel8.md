@@ -12,7 +12,7 @@ De gegevens in de voorbeelden zijn fictief. De combinaties van codes, de tijdsti
 - Elke verstrekking is een aparte `uitgevoerdezorg`. Een nomenclatuurcode staat in `nomenclatuurnummer`. Een pseudocode staat in `pseudocodenummer`, met `nomenclatuurnummer` 000000.
 - De zorgen van eenzelfde bezoek hebben hetzelfde `bezoeknummer`. Per dag krijgt elk bezoek een eigen bezoeknummer (1, 2, 3, ...).
 - Elk bezoek met zorg die aan het ziekenfonds gefactureerd wordt, heeft een `lezingidentiteit` met hetzelfde bezoeknummer.
-- Een toilet vereist een profiel (of een voorschrift). Een profiel geldt op een zorgdag als de zorgdag tussen `startdatum` en `einddatum` ligt en de `startdatum` hoogstens 3 maanden vóór de zorgdag ligt.
+- Een toilet vereist een profiel. Een profiel geldt op een zorgdag als de zorgdag tussen `startdatum` en `einddatum` ligt en de `startdatum` hoogstens 3 maanden vóór de zorgdag ligt.
 - Een `datumvoorschrift` komt altijd samen met `rizivnummervoorschrijver`.
 - Basisverstrekkingen, forfaits, het supplement PN, het opvolgingshonorarium diabetes en de verplaatsingskosten (ruraal) worden niet meegegeven: TDM3 voegt die zelf toe, zie [Toevoegingen door TDM3](/nurse/#toevoegingen-door-tdm3).
 
@@ -155,11 +155,6 @@ Een patiënt met profiel T7 krijgt 's ochtends een toilet en 's avonds een subcu
 </lezingidentiteit>
 ```
 
-**Wat TDM3 doet**
-
-- TDM3 voegt per bezoek met een technische verpleegkundige verstrekking een basisverstrekking toe: de eerste voor het bezoek van 's ochtends, de tweede voor dat van 's avonds.
-- De volgorde van de basisverstrekkingen volgt het tijdstip (`datumuitvoering`), niet het bezoeknummer.
-
 ### Voorbeeld 3: compressiekousen en toilet in één bezoek
 
 Een patiënt met profiel T7 krijgt in één bezoek een toilet en het aandoen van compressiekousen op voorschrift (424933).
@@ -227,10 +222,6 @@ Een patiënt met profiel T7 krijgt in één bezoek een toilet en het aandoen van
 </lezingidentiteit>
 ```
 
-**Wat TDM3 doet**
-
-- Profiel T7 geeft geen forfait: TDM3 factureert de verstrekkingen per prestatie en voegt de basisverstrekking toe.
-
 ### Voorbeeld 4: toilet in het weekend
 
 Op zaterdag krijgt een patiënt met profiel T7 een toilet. In het weekend en op feestdagen wordt de weekendcode gebruikt (425515 in plaats van 425110).
@@ -278,10 +269,6 @@ Op zaterdag krijgt een patiënt met profiel T7 een toilet. In het weekend en op 
 	<serienummervandedrager>590000000001</serienummervandedrager>
 </lezingidentiteit>
 ```
-
-**Wat TDM3 doet**
-
-- Wordt een weekend- of feestdagcode op een weekdag meegegeven, dan factureert TDM3 de weekcode.
 
 ### Voorbeeld 5: toilet door een zorgkundige
 
@@ -332,11 +319,6 @@ Een zorgkundige voert het toilet uit. In de `uitgevoerdezorg` staan zowel de zor
 	<serienummervandedrager>590000000001</serienummervandedrager>
 </lezingidentiteit>
 ```
-
-**Wat TDM3 doet**
-
-- TDM3 beschouwt de zorgkundige als uitvoerder en de verpleegkundige als toezichthouder.
-- Een verstrekking die een zorgkundige niet mag uitvoeren, geeft een fout.
 
 ### Voorbeeld 6: palliatieve patiënt met een dringend bezoek
 
@@ -487,7 +469,7 @@ Een patiënt krijgt op een weekdag complexe wondzorg (424351) van 35 minuten. Er
 
 ### Voorbeeld 8: toilet in een hersteloord
 
-Een toilet in een hersteloord heeft een eigen code (425913). De plaats wordt aangeduid met de locatiecode 421212 in het element `Locatie`.
+Een toilet in een hersteloord heeft een eigen code (425913). De plaats wordt aangeduid met de locatiecode 421212 in het element `Locatie`, zie [Locatie veld bij node uitgevoerde zorg](/nurse/#locatie-veld-bij-node-uitgevoerde-zorg).
 
 ```xml
 <!-- Profiel T7, geldig op de zorgdag -->
@@ -533,11 +515,6 @@ Een toilet in een hersteloord heeft een eigen code (425913). De plaats wordt aan
 	<serienummervandedrager>590000000001</serienummervandedrager>
 </lezingidentiteit>
 ```
-
-**Wat TDM3 doet**
-
-- TDM3 neemt de locatie over voor alle zorgen van hetzelfde bezoek.
-- Zonder locatiecode bij een code voor praktijkkamer of hersteloord geeft TDM3 een fout. Zie ook [Locatie veld bij node uitgevoerde zorg](/nurse/#locatie-veld-bij-node-uitgevoerde-zorg).
 
 ### Voorbeeld 9: wekelijkse voorbereiding van medicatie op een forfaitdag
 
@@ -603,13 +580,9 @@ Bij een patiënt met profiel A worden tijdens het bezoek een toilet en de wekeli
 </lezingidentiteit>
 ```
 
-**Wat TDM3 doet**
-
-- Op een forfaitdag vervangt TDM3 424874 door de pseudocode 426576.
-
 ### Voorbeeld 10: zorg zonder RIZIV-nomenclatuur (KB90) aan de patiënt
 
-'s Ochtends krijgt de patiënt een toilet, gefactureerd aan het ziekenfonds. 's Avonds volgt een avondzorg zonder RIZIV-nomenclatuur, gefactureerd aan de patiënt via pseudocode 426856 en een `kb90bedrag`. Bij facturatie aan de patiënt (bestemmeling 3) is `derdebetalercode` verplicht.
+'s Ochtends krijgt de patiënt een toilet, gefactureerd aan het ziekenfonds. 's Avonds volgt een avondzorg zonder RIZIV-nomenclatuur, gefactureerd aan de patiënt via pseudocode 426856 en een `kb90bedrag`. Zie ook [Zorgen zonder riziv-nomenclatuur](/nurse/#zorgen-zonder-riziv-nomenclatuur).
 
 ```xml
 <!-- Profiel T7, geldig op de zorgdag -->
@@ -675,11 +648,6 @@ Bij een patiënt met profiel A worden tijdens het bezoek een toilet en de wekeli
 </uitgevoerdezorg>
 ```
 
-**Wat TDM3 doet**
-
-- TDM3 factureert het `kb90bedrag` aan de patiënt. Het bedrag gebruikt een punt als decimaalteken.
-- Zie ook [Zorgen zonder riziv-nomenclatuur](/nurse/#zorgen-zonder-riziv-nomenclatuur).
-
 ### Voorbeeld 11: dag van een ziekenhuisopname
 
 Een patiënt krijgt 's ochtends een toilet en wordt die dag opgenomen in het ziekenhuis. Dat wordt aangeduid met `ZHOpname` = 1.
@@ -734,18 +702,18 @@ Een patiënt krijgt 's ochtends een toilet en wordt die dag opgenomen in het zie
 - TDM3 vermeldt de opname in het facturatiebestand met pseudocode 426613.
 - De waarde is ook van belang voor de palliatieve forfaits en voor een forfait C/PC in uitzonderingssituaties.
 
-### Voorbeeld 12: correctieforfait na declassering
+### Voorbeeld 12: correctieforfait na afscoring van het profiel
 
-Na een bezoek van de adviserend geneesheer wordt het forfait van de patiënt gedeclasseerd. De praktijk geeft de zorgen van de betrokken dagen opnieuw mee met `TypeFacturering` = 5.
+Na een bezoek van de adviserend geneesheer wordt het profiel van de patiënt afgescoord van A naar T7. Het oorspronkelijke forfait en de oorspronkelijke zorgen worden niet opnieuw doorgegeven. De praktijk geeft de zorgen van de betrokken dagen en het nieuwe profiel door, met `TypeFacturering` = 5 bij de zorgen.
 
 ```xml
-<!-- Profiel na de declassering -->
+<!-- Nieuw profiel na de afscoring -->
 <profielen>
 	<externeid>100</externeid>
 	<startdatum>2026-01-01T00:00:00</startdatum>
 	<einddatum>2026-03-31T00:00:00</einddatum>
 	<patientgegevens_id>1</patientgegevens_id>
-	<profiel>A</profiel>
+	<profiel>T7</profiel>
 </profielen>
 
 <!-- Toilet weekdag (425110), correctieforfait -->
@@ -784,5 +752,6 @@ Na een bezoek van de adviserend geneesheer wordt het forfait van de patiënt ged
 
 **Wat TDM3 doet**
 
-- TDM3 maakt een correctiefactuur voor het forfait.
+- TDM3 maakt een correctiefactuur voor het forfait: de oorspronkelijke factuurlijnen worden in min gezet en de nieuwe factuurlijnen in plus.
+- Zie ook [het doorgeven van een afscoring forfait](/nurse/#het-doorgeven-van-een-afscoring-forfait).
 - Een correctieforfait is enkel mogelijk bij een profiel dat forfaitdagen draagt (A, B, C, PA, PB, PC, PP) of bij T7 en P7. Anders geeft TDM3 een fout.
