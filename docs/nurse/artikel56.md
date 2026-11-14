@@ -78,12 +78,13 @@ Sommige prestaties worden gefinancierd buiten artikel 8, via de klassieke nomenc
 - Alle interventiecodes van het bezoek worden geregistreerd.
 - Het aantal minuten van de pseudocode directe zorg wordt verminderd met de waarde van die prestaties, volgens de omzettingstabel van het RIZIV.
 - De pseudocodes van die prestaties worden meegegeven in het bestand, met hetzelfde `bezoeknummer` als de bijhorende interventiecode (niet bezoeknummer 0).
+- Na de omzetting kan het aantal minuten van de directe zorg 0 zijn. De pseudocode directe zorg komt dan toch mee, met `zorgminuten` = 0.
 - Deze omzetting gebeurt in de software van de praktijk. TDM3 voert die omzetting niet opnieuw uit.
 
 ## Lezing identiteit
 
 - Een [lezingidentiteit](/nurse/nodes#node-lezingidentiteit) komt mee voor elk contact directe zorg bij de patiënt, zoals vandaag.
-- Bij een lezing van de chipkaart zijn `redenmanueleinvoering` en `redengebruikvignet` 0 (niet van toepassing).
+- Bij een lezing van de chipkaart zijn `redenmanueleinvoering` en `redengebruikvignet` 0 (niet van toepassing) of worden ze weggelaten.
 - `redengebruikvignet` wordt enkel ingevuld bij `typevandrageridentiteitsdocument` = 7 (vignet).
 - `typevandrageridentiteitsdocument` = 0 mag enkel samen met `redenmanueleinvoering` = 7.
 - Bij directe zorg **op afstand** (locatie 421396) is geen vignet vereist: TDM3 voegt de lezingidentiteit zelf toe.
@@ -97,7 +98,7 @@ Sommige prestaties worden gefinancierd buiten artikel 8, via de klassieke nomenc
 
 ## Codeveld en input_uitgevoerdezorg_id
 
-- Een code mag meegegeven worden in `nomenclatuurnummer` of in `pseudocodenummer`: TDM3 verwerkt beide velden op dezelfde manier. Per uitgevoerdezorg wordt maar **één** code meegegeven; het andere veld wordt weggelaten of met 000000 opgevuld. Uitzondering: bij een `kb90bedrag` staat de code altijd in `pseudocodenummer`. De voorbeelden hieronder gebruiken `nomenclatuurnummer`.
+- Een code mag meegegeven worden in `nomenclatuurnummer` of in `pseudocodenummer`: TDM3 verwerkt beide velden op dezelfde manier. Per uitgevoerdezorg wordt maar **één** code meegegeven; het andere veld wordt weggelaten of met 000000 opgevuld. Uitzondering: bij een `kb90bedrag` staat de code altijd in `pseudocodenummer`. De voorbeelden hieronder gebruiken `pseudocodenummer`, met `nomenclatuurnummer` 000000.
 - Elke uitgevoerdezorg krijgt een eigen, uniek `input_uitgevoerdezorg_id`, ook die van de pseudocodes (directe en indirecte zorg, verplaatsingstijd, palliatief forfait). Dit id hoeft niet te verwijzen naar een andere uitgevoerdezorg.
 
 ## Voorbeelden
@@ -115,7 +116,8 @@ Een verpleegkundige bezoekt een patiënt thuis op een weekdag. Het bezoek duurt 
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-16T09:00:00</datumuitvoering>
 	<zorgminuten>45</zorgminuten>
-	<nomenclatuurnummer>423872</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>423872</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -130,7 +132,8 @@ Een verpleegkundige bezoekt een patiënt thuis op een weekdag. Het bezoek duurt 
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-16T09:00:00</datumuitvoering>
 	<zorgminuten>15</zorgminuten>
-	<nomenclatuurnummer>423953</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>423953</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -144,7 +147,8 @@ Een verpleegkundige bezoekt een patiënt thuis op een weekdag. Het bezoek duurt 
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-16T09:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
-	<nomenclatuurnummer>438174</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438174</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -158,7 +162,8 @@ Een verpleegkundige bezoekt een patiënt thuis op een weekdag. Het bezoek duurt 
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-16T09:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
-	<nomenclatuurnummer>438793</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438793</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -172,7 +177,8 @@ Een verpleegkundige bezoekt een patiënt thuis op een weekdag. Het bezoek duurt 
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-16T09:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
-	<nomenclatuurnummer>438491</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438491</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -209,7 +215,8 @@ Indirecte zorg op een weekdag. De verpleegkundige besteedt 20 minuten aan het (h
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-17T14:00:00</datumuitvoering>
 	<zorgminuten>20</zorgminuten>
-	<nomenclatuurnummer>423894</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>423894</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -223,7 +230,8 @@ Indirecte zorg op een weekdag. De verpleegkundige besteedt 20 minuten aan het (h
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-17T14:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
-	<nomenclatuurnummer>439795</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>439795</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -237,7 +245,8 @@ Indirecte zorg op een weekdag. De verpleegkundige besteedt 20 minuten aan het (h
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-17T14:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
-	<nomenclatuurnummer>439950</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>439950</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -257,7 +266,8 @@ Een palliatieve patiënt wordt in het weekend verzorgd in de verpleegpost. De ve
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-15T10:00:00</datumuitvoering>
 	<zorgminuten>30</zorgminuten>
-	<nomenclatuurnummer>423916</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>423916</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -272,7 +282,8 @@ Een palliatieve patiënt wordt in het weekend verzorgd in de verpleegpost. De ve
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-15T10:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
-	<nomenclatuurnummer>423975</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>423975</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -289,7 +300,8 @@ Een palliatieve patiënt wordt in het weekend verzorgd in de verpleegpost. De ve
 	<datumvoorschrift>2026-02-10T00:00:00</datumvoorschrift>
 	<rizivnummervoorschrijver>12345678901</rizivnummervoorschrijver>
 	<naamvoorschrijver>ARTS VOORBEELD</naamvoorschrijver>
-	<nomenclatuurnummer>438653</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438653</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -303,7 +315,8 @@ Een palliatieve patiënt wordt in het weekend verzorgd in de verpleegpost. De ve
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-15T10:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
-	<nomenclatuurnummer>438491</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438491</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -340,7 +353,8 @@ Een verpleegkundige voert op een weekdag directe zorg op afstand uit: ze neemt p
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-18T11:00:00</datumuitvoering>
 	<zorgminuten>15</zorgminuten>
-	<nomenclatuurnummer>423872</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>423872</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -355,7 +369,8 @@ Een verpleegkundige voert op een weekdag directe zorg op afstand uit: ze neemt p
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-18T11:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
-	<nomenclatuurnummer>438491</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438491</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -369,7 +384,8 @@ Een verpleegkundige voert op een weekdag directe zorg op afstand uit: ze neemt p
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-18T11:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
-	<nomenclatuurnummer>438594</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438594</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -389,7 +405,8 @@ Bij een zware transfer komt een tweede verpleegkundige ter plaatse om de eerste 
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-19T09:00:00</datumuitvoering>
 	<zorgminuten>40</zorgminuten>
-	<nomenclatuurnummer>423872</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>423872</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -404,7 +421,8 @@ Bij een zware transfer komt een tweede verpleegkundige ter plaatse om de eerste 
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-19T09:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
-	<nomenclatuurnummer>438174</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438174</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -418,7 +436,8 @@ Bij een zware transfer komt een tweede verpleegkundige ter plaatse om de eerste 
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-19T09:00:00</datumuitvoering>
 	<zorgminuten>40</zorgminuten>
-	<nomenclatuurnummer>423872</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>423872</pseudocodenummer>
 	<rizivnummerverpleegkundige>198765432101</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE TWEE</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -433,7 +452,8 @@ Bij een zware transfer komt een tweede verpleegkundige ter plaatse om de eerste 
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-19T09:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
-	<nomenclatuurnummer>438410</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438410</pseudocodenummer>
 	<rizivnummerverpleegkundige>198765432101</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE TWEE</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -447,7 +467,8 @@ Bij een zware transfer komt een tweede verpleegkundige ter plaatse om de eerste 
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-19T09:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
-	<nomenclatuurnummer>439633</nomenclatuurnummer>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>439633</pseudocodenummer>
 	<rizivnummerverpleegkundige>198765432101</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE TWEE</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
