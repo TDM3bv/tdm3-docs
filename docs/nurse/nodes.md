@@ -502,14 +502,15 @@ De volgende gegevens zijn vereist.
 * **externeid** (string): de patientid uit het versturende systeem refererend naar externid van patientgegevens.	Cfr de uitgevoerdezorg node 
 * **patientgegevens_id** (int): De unieke nummer van de patiënt binnen dit bestand. Cfr de uitgevoerdezorg node 
 * **redenmanueleinvoering** (int):
-    * Mogelijke waardes
-    1. Niet van toepassing
-    2. Gebruik identiteitsdocument zonder chip
-    3. Onbeschikbaarheid kaartlezer
-    4. Uitgestelde verificatie zonder panne, omdat de patiënt geen geldig identiteitsdocument kon voorleggen 
-	5. Uitgestelde verificatie zonder panne, omdat vergeten werd om het identiteitsdocument in te lezen
-	6. Gebrek aan interconnectiviteit tussen software
-	7. Rechthebbende bezig geen identiteitsdocument (zoals bedoeld in artikel 3 van het KB 18/09/2015)
+    * Mogelijke waardes:
+        - 0 = Niet van toepassing
+        - 1 = Gebruik identiteitsdocument zonder chip
+        - 2 = Onbeschikbaarheid kaartlezer
+        - 3 = Panne van het informaticasysteem
+        - 4 = Uitgestelde verificatie zonder panne, omdat de patiënt geen geldig identiteitsdocument kon voorleggen
+        - 5 = Uitgestelde verificatie zonder panne, omdat vergeten werd om het identiteitsdocument in te lezen
+        - 6 = Gebrek aan interconnectiviteit tussen software
+        - 7 = Rechthebbende bezig geen identiteitsdocument (zoals bedoeld in artikel 3 van het KB 18/09/2015)
 * **datumuitvoering** (dateTime): de datum van het bezoek, cfr datumuitvoering veld in uitgevoerdezorg node
 * **bezoeknummer** (int): Nummer van het bezoek. Cfr node uitgevoerdezorg.
 * **datumlezingidentiteitsdocument** (dateTime): datum waarop het identiteitsdocument is ingelezen. Dit element moet steeds ingevuld worden, behalve indien “typevanlezingidentiteitsdocument” = 4 en redenmanueleinvoering = 3.
@@ -539,10 +540,10 @@ De volgende gegevens zijn vereist.
      - A: Elektronische invoering (itsme®)
 
 *	**redengebruikvignet** (int):
-    -	Mogelijke waardes
-    1. Niet van toepassing
-    2. Rechthebbende niet aanwezig tijdens verstrekking en gelijktijdige aanwezigheid van rechthebbende en zorgverlener niet reglementair vereist
-    3. Rechthebbende bezit geen identiteitsdocument
+    - Mogelijke waardes:
+        - 0 = Niet van toepassing
+        - 1 = Rechthebbende niet aanwezig tijdens verstrekking en gelijktijdige aanwezigheid van rechthebbende en zorgverlener niet reglementair vereist
+        - 2 = Rechthebbende bezit geen identiteitsdocument
 *	**uurvanlezingidentiteitsdocument** (string): formaat HHmm
     -  Voorbeeld: 1510, 0109, 1305, etc
     -  dit element moet steeds ingevuld worden, behalve indien **“typevanlezingidentiteitsdocument”** = 4 en **“redenmanueleinvoering”** = 3
