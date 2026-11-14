@@ -427,5 +427,8 @@ Het busnummer wordt aangeraden in te vullen wanneer het adres een busnummer vere
 </patientgegevens>
 ```
 
+## Voorbeelden artikel 8
+Uitgewerkte voorbeelden van het prestatiebestand voor de facturatie volgens artikel 8 (forfaitpatiënt, meerdere bezoeken per dag, zorgkundige, palliatieve patiënt, complexe wondzorg, KB90, correctieforfait, ...) staan op [Voorbeelden artikel 8](/nurse/artikel8).
+
 ## Pilootproject artikel 56
 Voor praktijken die deelnemen aan het pilootproject nieuwe praktijkfinanciering (artikel 56) gelden bijkomende instructies voor het prestatiebestand: de pseudocodes voor directe en indirecte zorg, verplaatsingstijd, locatiecodes en interventiecodes. Zie [Pilootproject artikel 56](/nurse/artikel56).

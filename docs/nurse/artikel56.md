@@ -105,6 +105,8 @@ Sommige prestaties worden gefinancierd buiten artikel 8, via de klassieke nomenc
 
 Elke pseudocode en elke interventiecode is een aparte `uitgevoerdezorg`, gelinkt via hetzelfde `bezoeknummer`. De gegevens in de voorbeelden zijn fictief; de minuten en de interventiecodes zijn representatief voor de bestanden die in het pilootproject worden aangeleverd.
 
+De RIZIV- en rijksregisternummers in de voorbeelden zijn bewust ongeldig. Gebruik voor een testbestand eigen geldige testnummers.
+
 In de `lezingidentiteit` staat het RIZIV-nummer van de verstrekker zonder het conventiecijfer vooraan (11 cijfers), in de `uitgevoerdezorg` met het conventiecijfer (12 cijfers).
 
 ### Voorbeeld 1: directe zorg weekdag thuis, met verplaatsingstijd
