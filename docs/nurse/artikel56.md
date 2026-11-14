@@ -8,7 +8,7 @@ Deze pagina beschrijft hoe het prestatiebestand (nurse-xml) wordt ingevuld voor 
 Wat hier niet beschreven staat, volgt de [algemene instructies](/nurse/) en de beschrijving van de [nodes](/nurse/nodes).
 
 ::: info Pilootproject
-Deze instructies gelden enkel voor de praktijken die deelnemen aan het pilootproject. Ze kunnen nog wijzigen in de loop van het project; zie ook [Nog te bepalen](#nog-te-bepalen).
+Deze instructies gelden enkel voor de praktijken die deelnemen aan het pilootproject. Ze kunnen nog wijzigen in de loop van het project.
 :::
 
 ## Pseudocodes waarmee wordt aangerekend
@@ -36,34 +36,43 @@ De plaats van de directe zorg wordt meegegeven in het bestaande element `Locatie
 ## Directe en indirecte zorg
 
 - De pseudocode voor directe of indirecte zorg wordt meegegeven als een **aparte uitgevoerdezorg**.
-- De zorgtijd wordt meegegeven in `zorgminuten`, **enkel** op de uitgevoerdezorg van de pseudocode directe of indirecte zorg.
+- De zorgtijd wordt meegegeven in `zorgminuten`, **enkel** op de uitgevoerdezorg van de pseudocode directe of indirecte zorg. TDM3 topt een directe zorg af op 180 minuten per lijn.
 - Elke interventiecode is een aparte uitgevoerdezorg met `zorgminuten` = 0.
-- De interventiecodes die bij een directe of indirecte zorg horen, krijgen hetzelfde `bezoeknummer` als die pseudocode. Dit is het gewone bezoeknummer van dat bezoek; een fictief bezoeknummer is niet nodig.
-- Per bezoeknummer, datum en verstrekker komt er precies **één** pseudocode directe zorg (423872 of 423916) **of** **één** pseudocode indirecte zorg (423894 of 423931).
-- Elke directe zorg wordt vergezeld van minstens één interventiecode.
+- De interventiecodes die bij een directe of indirecte zorg horen, krijgen hetzelfde `bezoeknummer` als die pseudocode. Dit is het gewone bezoeknummer van dat bezoek; een fictief bezoeknummer is niet nodig. Het bezoeknummer ligt tussen 1 en 10.
+- Per bezoek en per uitvoerder komt er precies **één** pseudocode directe zorg (423872 of 423916) **of** **één** pseudocode indirecte zorg (423894 of 423931). De uitvoerder is de zorgkundige als `rizivnummerzorgkundige` ingevuld is, anders de verpleegkundige.
+- Op zaterdag, zondag en feestdagen wordt de weekendvariant gebruikt (423916 en 423931), op andere dagen de weekvariant (423872 en 423894).
+- Directe zorg wordt vergezeld van minstens één interventiecode directe zorg (groep A van de lijst interventiecodes).
+- Indirecte zorg wordt vergezeld van minstens één interventiecode indirecte zorg (groep B). Interventiecodes directe zorg (groep A) zijn bij indirecte zorg niet toegelaten.
+- Bij directe zorg op afstand (locatie 421396) moeten alle interventiecodes directe zorg op afstand uitvoerbaar zijn.
 - Afzonderlijke bezoeken krijgen elk een eigen bezoeknummer, ook wanneer ze door verschillende verstrekkers worden uitgevoerd.
 
 ## Verplaatsingstijd
 
 - De verplaatsingstijd wordt meegegeven als een aparte uitgevoerdezorg met pseudocode **423953**.
-- De verplaatsingstijd in minuten staat in `zorgminuten`.
-- Het `bezoeknummer` is dat van de bijhorende directe zorg en interventiecodes.
+- De verplaatsingstijd in minuten staat in `zorgminuten`. TDM3 topt af op 60 minuten per lijn.
+- De verplaatsingstijd hoort bij een directe zorg van dezelfde uitvoerder in hetzelfde bezoek, en krijgt het `bezoeknummer` van die directe zorg. Per bezoek en per uitvoerder komt er maximaal één verplaatsingstijd.
+- Woon-werkverkeer wordt niet meegegeven in het prestatiebestand.
 
 ## Palliatief forfait
 
 - Het palliatief forfait **423975** wordt meegegeven als een aparte uitgevoerdezorg, met het bezoeknummer van de bijhorende directe zorg.
-- Zoals in de [algemene instructies](/nurse/#toevoegingen-door-tdm3) kijkt TDM3 naar de startdatum palliatief op node patientgegevens om te bepalen of een patiënt palliatief is.
+- Zoals in de [algemene instructies](/nurse/#toevoegingen-door-tdm3) kijkt TDM3 naar de startdatum palliatief op node patientgegevens om te bepalen of een patiënt palliatief is. Het forfait wordt enkel aanvaard op een dag waarop de patiënt palliatief is.
+- TDM3 rekent het forfait aan op naam van de verpleegkundige van de eerste directe zorg van de dag.
 
 ## Rurale vergoeding
 
-- De rurale vergoeding hoeft niet meegegeven te worden. TDM3 voegt die zelf toe bij elke directe zorg wanneer `isruraal` = true op node patientgegevens.
-- Komt de rurale vergoeding toch mee in het bestand, dan filtert TDM3 die weg.
+- De rurale vergoeding hoeft niet meegegeven te worden. TDM3 voegt die zelf toe, één keer per bezoek met directe zorg, wanneer het element `ruraal` = true op node patientgegevens.
+- Komt de rurale vergoeding (418913) toch mee in een bezoek, dan rekent TDM3 die aan en voegt TDM3 er voor dat bezoek geen tweede toe.
+
+## Combinatie met artikel 8
+
+- Voor eenzelfde patiënt en dag wordt niet zowel zorg van artikel 56 als een forfait van artikel 8 aangerekend. Is er voor die dag al een forfait gefactureerd, dan wordt de zorg van artikel 56 van die dag niet meer aangerekend, en omgekeerd.
 
 ## Twee verstrekkers in hetzelfde bezoek
 
 - Wanneer een tweede verstrekker bij de patiënt aanwezig is (bijvoorbeeld bij een zware transfer), registreert elke verstrekker de eigen directe zorg en interventiecodes onder **hetzelfde** `bezoeknummer`, elk met het eigen `rizivnummerverpleegkundige`.
 - Bij directe zorg is dan interventiecode **439633** (aanwezigheid tweede verstrekker) verplicht, op minstens één uitgevoerdezorg binnen dat bezoek. In het voorbeeld geeft de tweede verstrekker deze code mee.
-- Bij indirecte zorg is interventiecode 439633 niet nodig: de code gaat over de aanwezigheid bij de patiënt.
+- Bij indirecte zorg wordt interventiecode 439633 niet meegegeven: de code gaat over de aanwezigheid bij de patiënt en is een interventiecode directe zorg (groep A).
 - Elke verstrekker die de patiënt ziet, doet een eigen lezing van het identiteitsdocument.
 
 Zie [voorbeeld 5](#voorbeeld-5-twee-verstrekkers-binnen-hetzelfde-bezoek).
@@ -74,12 +83,15 @@ Sommige prestaties worden gefinancierd buiten artikel 8, via de klassieke nomenc
 
 - Alle interventiecodes van het bezoek worden geregistreerd.
 - Het aantal minuten van de pseudocode directe zorg wordt verminderd met de waarde van die prestaties, volgens de omzettingstabel van het RIZIV.
-- De pseudocodes van die prestaties worden meegegeven in het bestand.
+- De pseudocodes van die prestaties worden meegegeven in het bestand, met hetzelfde `bezoeknummer` als de bijhorende interventiecode (niet bezoeknummer 0).
 - Deze omzetting gebeurt in de software van de praktijk. TDM3 voert die omzetting niet opnieuw uit.
 
 ## Lezing identiteit
 
 - Een [lezingidentiteit](/nurse/nodes#node-lezingidentiteit) komt mee voor elk contact directe zorg bij de patiënt, zoals vandaag.
+- De lezing staat op naam van de verpleegkundige die de zorg attesteert. Bij zorg door een zorgkundige is dat de verpleegkundige die het toezicht heeft.
+- Bij een lezing van de chipkaart zijn `redenmanueleinvoering` en `redengebruikvignet` 0 (niet van toepassing).
+- `redengebruikvignet` wordt enkel ingevuld bij `typevandrageridentiteitsdocument` = 7 (vignet).
 - `typevandrageridentiteitsdocument` = 0 mag enkel samen met `redenmanueleinvoering` = 7.
 - Bij directe zorg **op afstand** (locatie 421396) is geen vignet vereist: TDM3 voegt de lezingidentiteit zelf toe.
 
@@ -88,11 +100,11 @@ Sommige prestaties worden gefinancierd buiten artikel 8, via de klassieke nomenc
 - Bij een interventiecode waarvoor een voorschrift **verplicht** is, worden `datumvoorschrift` en `rizivnummervoorschrijver` meegegeven.
 - Bij een interventiecode waarvoor een voorschrift **optioneel** is, wordt het voorschrift enkel meegegeven als er een voorschrift gebruikt werd.
 - TDM3 neemt het voorschrift in de juiste situaties op in het facturatiebestand.
-- Het patiëntprofiel mag steeds meegegeven worden, maar TDM3 gebruikt het niet voor de tarificatie van artikel 56.
+- Het patiëntprofiel mag meegegeven worden, maar TDM3 gebruikt het niet voor de tarificatie van artikel 56. Een palliatief profiel moet wel overeenstemmen met de startdatum palliatief op node patientgegevens.
 
 ## Codeveld en input_uitgevoerdezorg_id
 
-- Een code mag meegegeven worden in `nomenclatuurnummer` of in `pseudocodenummer`: TDM3 verwerkt beide velden op dezelfde manier. Per uitgevoerdezorg wordt maar **één** code meegegeven; het andere veld wordt weggelaten of met 000000 opgevuld. De voorbeelden hieronder gebruiken `nomenclatuurnummer`.
+- Een code mag meegegeven worden in `nomenclatuurnummer` of in `pseudocodenummer`: TDM3 verwerkt beide velden op dezelfde manier. Per uitgevoerdezorg wordt maar **één** code meegegeven; het andere veld wordt weggelaten of met 000000 opgevuld. Uitzondering: bij een `kb90bedrag` staat de code altijd in `pseudocodenummer`. De voorbeelden hieronder gebruiken `nomenclatuurnummer`.
 - Elke uitgevoerdezorg krijgt een eigen, uniek `input_uitgevoerdezorg_id`, ook die van de pseudocodes (directe en indirecte zorg, verplaatsingstijd, palliatief forfait). Dit id hoeft niet te verwijzen naar een andere uitgevoerdezorg.
 
 ## Voorbeelden
@@ -179,14 +191,14 @@ Een verpleegkundige bezoekt een patiënt thuis op een weekdag. Het bezoek duurt 
 <lezingidentiteit>
 	<externeid>100</externeid>
 	<patientgegevens_id>1</patientgegevens_id>
-	<redenmanueleinvoering>1</redenmanueleinvoering>
+	<redenmanueleinvoering>0</redenmanueleinvoering>
 	<bezoeknummer>1</bezoeknummer>
 	<datumuitvoering>2026-02-16T09:00:00</datumuitvoering>
 	<datumlezingidentiteitsdocument>2026-02-16T09:00:00</datumlezingidentiteitsdocument>
 	<identificatiepatient>85010100123</identificatiepatient>
 	<typevanlezingidentiteitsdocument>1</typevanlezingidentiteitsdocument>
 	<typevandrageridentiteitsdocument>1</typevandrageridentiteitsdocument>
-	<redengebruikvignet>1</redengebruikvignet>
+	<redengebruikvignet>0</redengebruikvignet>
 	<uurvanlezingidentiteitsdocument>0900</uurvanlezingidentiteitsdocument>
 	<rizivnummerverstrekker>112345678901</rizivnummerverstrekker>
 	<serienummervandedrager>590000000001</serienummervandedrager>
@@ -310,14 +322,14 @@ Een palliatieve patiënt wordt in het weekend verzorgd in de verpleegpost. De ve
 <lezingidentiteit>
 	<externeid>100</externeid>
 	<patientgegevens_id>1</patientgegevens_id>
-	<redenmanueleinvoering>1</redenmanueleinvoering>
+	<redenmanueleinvoering>0</redenmanueleinvoering>
 	<bezoeknummer>1</bezoeknummer>
 	<datumuitvoering>2026-02-15T10:00:00</datumuitvoering>
 	<datumlezingidentiteitsdocument>2026-02-15T10:00:00</datumlezingidentiteitsdocument>
 	<identificatiepatient>85010100123</identificatiepatient>
 	<typevanlezingidentiteitsdocument>1</typevanlezingidentiteitsdocument>
 	<typevandrageridentiteitsdocument>1</typevandrageridentiteitsdocument>
-	<redengebruikvignet>1</redengebruikvignet>
+	<redengebruikvignet>0</redengebruikvignet>
 	<uurvanlezingidentiteitsdocument>1000</uurvanlezingidentiteitsdocument>
 	<rizivnummerverstrekker>112345678901</rizivnummerverstrekker>
 	<serienummervandedrager>590000000001</serienummervandedrager>
@@ -450,11 +462,3 @@ Bij een zware transfer komt een tweede verpleegkundige ter plaatse om de eerste 
 	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
 </uitgevoerdezorg>
 ```
-
-## Nog te bepalen
-
-Onderstaande punten zijn nog niet beslist en kunnen deze instructies nog aanvullen:
-
-- **Woon-werkverkeer**: eventueel een aparte aanduiding op de uitgevoerdezorg van de verplaatsingstijd, om woon-werkverkeer te onderscheiden. Dit is niet nodig voor de facturatie.
-- **Bezoeknummer bij pseudocodes buiten artikel 56**: deze pseudocodes krijgen bij voorkeur het bezoeknummer van de bijhorende interventiecode, in plaats van bezoeknummer 0.
-- **Zorgkundigen**: welke interventiecodes door een zorgkundige mogen uitgevoerd worden.
