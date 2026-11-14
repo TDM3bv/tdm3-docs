@@ -62,7 +62,7 @@ De plaats van de directe zorg wordt meegegeven in het bestaande element `Locatie
 ## Twee verstrekkers in hetzelfde bezoek
 
 - Wanneer een tweede verstrekker bij de patiënt aanwezig is (bijvoorbeeld bij een zware transfer), registreert elke verstrekker de eigen directe zorg en interventiecodes onder **hetzelfde** `bezoeknummer`, elk met het eigen `rizivnummerverpleegkundige`.
-- Bij directe zorg is dan interventiecode **439633** (aanwezigheid tweede verstrekker) verplicht. Die wordt meegegeven bij de tweede verstrekker.
+- Bij directe zorg is dan interventiecode **439633** (aanwezigheid tweede verstrekker) verplicht, op minstens één uitgevoerdezorg binnen dat bezoek. In het voorbeeld geeft de tweede verstrekker deze code mee.
 - Bij indirecte zorg is interventiecode 439633 niet nodig: de code gaat over de aanwezigheid bij de patiënt.
 - Elke verstrekker die de patiënt ziet, doet een eigen lezing van het identiteitsdocument.
 
@@ -92,7 +92,7 @@ Sommige prestaties worden gefinancierd buiten artikel 8, via de klassieke nomenc
 
 ## Codeveld en input_uitgevoerdezorg_id
 
-- Een code mag meegegeven worden in `nomenclatuurnummer` of in `pseudocodenummer`: TDM3 verwerkt beide velden op dezelfde manier. Vul per uitgevoerdezorg maar **één** van beide in. De voorbeelden hieronder gebruiken `nomenclatuurnummer`.
+- Een code mag meegegeven worden in `nomenclatuurnummer` of in `pseudocodenummer`: TDM3 verwerkt beide velden op dezelfde manier. Per uitgevoerdezorg wordt maar **één** code meegegeven; het andere veld wordt weggelaten of met 000000 opgevuld. De voorbeelden hieronder gebruiken `nomenclatuurnummer`.
 - Elke uitgevoerdezorg krijgt een eigen, uniek `input_uitgevoerdezorg_id`, ook die van de pseudocodes (directe en indirecte zorg, verplaatsingstijd, palliatief forfait). Dit id hoeft niet te verwijzen naar een andere uitgevoerdezorg.
 
 ## Voorbeelden
