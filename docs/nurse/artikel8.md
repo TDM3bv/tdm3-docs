@@ -12,7 +12,6 @@ De gegevens in de voorbeelden zijn fictief. De combinaties van codes, de tijdsti
 - Elke verstrekking is een aparte `uitgevoerdezorg`. Een nomenclatuurcode staat in `nomenclatuurnummer`. Een pseudocode staat in `pseudocodenummer`, met `nomenclatuurnummer` 000000.
 - De zorgen van eenzelfde bezoek hebben hetzelfde `bezoeknummer`. Per dag krijgt elk bezoek een eigen bezoeknummer (1, 2, 3, ...).
 - Elk bezoek met zorg die aan het ziekenfonds gefactureerd wordt, heeft een `lezingidentiteit` met hetzelfde bezoeknummer.
-- Een toilet vereist een profiel. Een profiel geldt op een zorgdag als de zorgdag tussen `startdatum` en `einddatum` ligt en de `startdatum` hoogstens 3 maanden vóór de zorgdag ligt.
 - Een `datumvoorschrift` komt altijd samen met `rizivnummervoorschrijver`.
 - Basisverstrekkingen, forfaits, het supplement PN, het opvolgingshonorarium diabetes en de verplaatsingskosten (ruraal) worden niet meegegeven: TDM3 voegt die zelf toe, zie [Toevoegingen door TDM3](/nurse/#toevoegingen-door-tdm3).
 
