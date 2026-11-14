@@ -103,19 +103,21 @@ Sommige prestaties worden gefinancierd buiten artikel 8, via de klassieke nomenc
 
 ## Voorbeelden
 
-Elke pseudocode en elke interventiecode is een aparte `uitgevoerdezorg`, gelinkt via hetzelfde `bezoeknummer`. De gegevens in de voorbeelden zijn fictief.
+Elke pseudocode en elke interventiecode is een aparte `uitgevoerdezorg`, gelinkt via hetzelfde `bezoeknummer`. De gegevens in de voorbeelden zijn fictief; de minuten en de interventiecodes zijn representatief voor de bestanden die in het pilootproject worden aangeleverd.
+
+In de `lezingidentiteit` staat het RIZIV-nummer van de verstrekker zonder het conventiecijfer vooraan (11 cijfers), in de `uitgevoerdezorg` met het conventiecijfer (12 cijfers).
 
 ### Voorbeeld 1: directe zorg weekdag thuis, met verplaatsingstijd
 
-Een verpleegkundige bezoekt een patiënt thuis op een weekdag. Het bezoek duurt 45 minuten en omvat hygiënische zorg, eenvoudige wondzorg en het opnemen van parameters. De verplaatsingstijd bedraagt 15 minuten.
+Een verpleegkundige bezoekt een patiënt thuis op een weekdag. De directe zorg duurt 20 minuten en omvat hygiënische zorg, huidverzorging, mondzorg en opvolging. De verplaatsingstijd bedraagt 5 minuten.
 
 ```xml
-<!-- Pseudocode directe zorg weekdag (423872), locatie thuis (421330), 45 min -->
+<!-- Pseudocode directe zorg weekdag (423872), locatie thuis (421330), 20 min -->
 <uitgevoerdezorg>
 	<input_uitgevoerdezorg_id>1001</input_uitgevoerdezorg_id>
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-16T09:00:00</datumuitvoering>
-	<zorgminuten>45</zorgminuten>
+	<zorgminuten>20</zorgminuten>
 	<nomenclatuurnummer>000000</nomenclatuurnummer>
 	<pseudocodenummer>423872</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
@@ -126,12 +128,12 @@ Een verpleegkundige bezoekt een patiënt thuis op een weekdag. Het bezoek duurt 
 	<Locatie>421330</Locatie>
 </uitgevoerdezorg>
 
-<!-- Verplaatsingstijd (423953), 15 min, zelfde bezoeknummer -->
+<!-- Verplaatsingstijd (423953), 5 min, zelfde bezoeknummer -->
 <uitgevoerdezorg>
 	<input_uitgevoerdezorg_id>1002</input_uitgevoerdezorg_id>
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-16T09:00:00</datumuitvoering>
-	<zorgminuten>15</zorgminuten>
+	<zorgminuten>5</zorgminuten>
 	<nomenclatuurnummer>000000</nomenclatuurnummer>
 	<pseudocodenummer>423953</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
@@ -156,14 +158,14 @@ Een verpleegkundige bezoekt een patiënt thuis op een weekdag. Het bezoek duurt 
 	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
 </uitgevoerdezorg>
 
-<!-- Interventiecode A.4.8 eenvoudige wondzorg (438793), zelfde bezoeknummer -->
+<!-- Interventiecode A.1.7 hydrateren en bescherming van de huid (438292), zelfde bezoeknummer -->
 <uitgevoerdezorg>
 	<input_uitgevoerdezorg_id>1004</input_uitgevoerdezorg_id>
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-16T09:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
 	<nomenclatuurnummer>000000</nomenclatuurnummer>
-	<pseudocodenummer>438793</pseudocodenummer>
+	<pseudocodenummer>438292</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -171,14 +173,29 @@ Een verpleegkundige bezoekt een patiënt thuis op een weekdag. Het bezoek duurt 
 	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
 </uitgevoerdezorg>
 
-<!-- Interventiecode A.3.2 opnemen parameters (438491), zelfde bezoeknummer -->
+<!-- Interventiecode A.1.8 dagelijkse mondzorg (438314), zelfde bezoeknummer -->
 <uitgevoerdezorg>
 	<input_uitgevoerdezorg_id>1005</input_uitgevoerdezorg_id>
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-16T09:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
 	<nomenclatuurnummer>000000</nomenclatuurnummer>
-	<pseudocodenummer>438491</pseudocodenummer>
+	<pseudocodenummer>438314</pseudocodenummer>
+	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+</uitgevoerdezorg>
+
+<!-- Interventiecode A.3.4 opvolging en begeleiding (438550), zelfde bezoeknummer -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>1006</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-16T09:00:00</datumuitvoering>
+	<zorgminuten>0</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438550</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -199,22 +216,22 @@ Een verpleegkundige bezoekt een patiënt thuis op een weekdag. Het bezoek duurt 
 	<typevandrageridentiteitsdocument>1</typevandrageridentiteitsdocument>
 	<redengebruikvignet>0</redengebruikvignet>
 	<uurvanlezingidentiteitsdocument>0900</uurvanlezingidentiteitsdocument>
-	<rizivnummerverstrekker>112345678901</rizivnummerverstrekker>
+	<rizivnummerverstrekker>12345678901</rizivnummerverstrekker>
 	<serienummervandedrager>590000000001</serienummervandedrager>
 </lezingidentiteit>
 ```
 
 ### Voorbeeld 2: indirecte zorg weekdag
 
-Indirecte zorg op een weekdag. De verpleegkundige besteedt 20 minuten aan het (her)evalueren van de zorgbehoefte (KATZ) en een patiëntenbespreking binnen het team. De interventiecodes hebben hetzelfde bezoeknummer als de pseudocode indirecte zorg.
+Indirecte zorg op een weekdag: de verpleegkundige besteedt 10 minuten aan de (digitale) opvolging van de patiënt. De interventiecode heeft hetzelfde bezoeknummer als de pseudocode indirecte zorg.
 
 ```xml
-<!-- Pseudocode indirecte zorg weekdag (423894), 20 min -->
+<!-- Pseudocode indirecte zorg weekdag (423894), 10 min -->
 <uitgevoerdezorg>
 	<input_uitgevoerdezorg_id>2001</input_uitgevoerdezorg_id>
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-17T14:00:00</datumuitvoering>
-	<zorgminuten>20</zorgminuten>
+	<zorgminuten>10</zorgminuten>
 	<nomenclatuurnummer>000000</nomenclatuurnummer>
 	<pseudocodenummer>423894</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
@@ -224,29 +241,14 @@ Indirecte zorg op een weekdag. De verpleegkundige besteedt 20 minuten aan het (h
 	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
 </uitgevoerdezorg>
 
-<!-- Interventiecode B.1.4 (her)evalueren zorgbehoefte KATZ (439795), zelfde bezoeknummer -->
+<!-- Interventiecode B.2.1 (digitale) opvolging (439891), zelfde bezoeknummer -->
 <uitgevoerdezorg>
 	<input_uitgevoerdezorg_id>2002</input_uitgevoerdezorg_id>
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-17T14:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
 	<nomenclatuurnummer>000000</nomenclatuurnummer>
-	<pseudocodenummer>439795</pseudocodenummer>
-	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
-	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
-	<patientgegevens_id>1</patientgegevens_id>
-	<bezoeknummer>1</bezoeknummer>
-	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
-</uitgevoerdezorg>
-
-<!-- Interventiecode B.3.1 patiëntenbespreking binnen team (439950), zelfde bezoeknummer -->
-<uitgevoerdezorg>
-	<input_uitgevoerdezorg_id>2003</input_uitgevoerdezorg_id>
-	<externeid>100</externeid>
-	<datumuitvoering>2026-02-17T14:00:00</datumuitvoering>
-	<zorgminuten>0</zorgminuten>
-	<nomenclatuurnummer>000000</nomenclatuurnummer>
-	<pseudocodenummer>439950</pseudocodenummer>
+	<pseudocodenummer>439891</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
 	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
 	<patientgegevens_id>1</patientgegevens_id>
@@ -260,12 +262,12 @@ Indirecte zorg op een weekdag. De verpleegkundige besteedt 20 minuten aan het (h
 Een palliatieve patiënt wordt in het weekend verzorgd in de verpleegpost. De verpleegkundige dient een subcutane inspuiting toe, op voorschrift, en neemt parameters op. Daarnaast wordt het palliatief forfait aangerekend.
 
 ```xml
-<!-- Pseudocode directe zorg weekend (423916), locatie verpleegpost (421352), 30 min -->
+<!-- Pseudocode directe zorg weekend (423916), locatie verpleegpost (421352), 20 min -->
 <uitgevoerdezorg>
 	<input_uitgevoerdezorg_id>3001</input_uitgevoerdezorg_id>
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-15T10:00:00</datumuitvoering>
-	<zorgminuten>30</zorgminuten>
+	<zorgminuten>20</zorgminuten>
 	<nomenclatuurnummer>000000</nomenclatuurnummer>
 	<pseudocodenummer>423916</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
@@ -298,7 +300,7 @@ Een palliatieve patiënt wordt in het weekend verzorgd in de verpleegpost. De ve
 	<datumuitvoering>2026-02-15T10:00:00</datumuitvoering>
 	<zorgminuten>0</zorgminuten>
 	<datumvoorschrift>2026-02-10T00:00:00</datumvoorschrift>
-	<rizivnummervoorschrijver>12345678901</rizivnummervoorschrijver>
+	<rizivnummervoorschrijver>19999999901</rizivnummervoorschrijver>
 	<naamvoorschrijver>ARTS VOORBEELD</naamvoorschrijver>
 	<nomenclatuurnummer>000000</nomenclatuurnummer>
 	<pseudocodenummer>438653</pseudocodenummer>
@@ -337,7 +339,7 @@ Een palliatieve patiënt wordt in het weekend verzorgd in de verpleegpost. De ve
 	<typevandrageridentiteitsdocument>1</typevandrageridentiteitsdocument>
 	<redengebruikvignet>0</redengebruikvignet>
 	<uurvanlezingidentiteitsdocument>1000</uurvanlezingidentiteitsdocument>
-	<rizivnummerverstrekker>112345678901</rizivnummerverstrekker>
+	<rizivnummerverstrekker>12345678901</rizivnummerverstrekker>
 	<serienummervandedrager>590000000001</serienummervandedrager>
 </lezingidentiteit>
 ```
@@ -347,12 +349,12 @@ Een palliatieve patiënt wordt in het weekend verzorgd in de verpleegpost. De ve
 Een verpleegkundige voert op een weekdag directe zorg op afstand uit: ze neemt parameters op via digitale monitoring en koppelt terug naar de patiënt. Een lezingidentiteit hoeft hier niet mee te komen, zie [Lezing identiteit](#lezing-identiteit).
 
 ```xml
-<!-- Pseudocode directe zorg weekdag (423872), locatie op afstand (421396), 15 min -->
+<!-- Pseudocode directe zorg weekdag (423872), locatie op afstand (421396), 10 min -->
 <uitgevoerdezorg>
 	<input_uitgevoerdezorg_id>4001</input_uitgevoerdezorg_id>
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-18T11:00:00</datumuitvoering>
-	<zorgminuten>15</zorgminuten>
+	<zorgminuten>10</zorgminuten>
 	<nomenclatuurnummer>000000</nomenclatuurnummer>
 	<pseudocodenummer>423872</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
@@ -396,15 +398,15 @@ Een verpleegkundige voert op een weekdag directe zorg op afstand uit: ze neemt p
 
 ### Voorbeeld 5: twee verstrekkers binnen hetzelfde bezoek
 
-Bij een zware transfer komt een tweede verpleegkundige ter plaatse om de eerste verpleegkundige te ondersteunen. Beide registreren hun directe zorg en interventiecodes onder hetzelfde bezoeknummer. De tweede verpleegkundige geeft interventiecode 439633 (aanwezigheid tweede verstrekker) mee. Elke verpleegkundige doet een eigen lezing van het identiteitsdocument; die lezingen zijn hier weggelaten.
+Bij een zware transfer komt een tweede verpleegkundige ter plaatse om de eerste verpleegkundige te ondersteunen. Beide registreren hun directe zorg en interventiecodes onder hetzelfde bezoeknummer. De tweede verpleegkundige geeft interventiecode 439633 (aanwezigheid tweede verstrekker) mee. Elke verpleegkundige doet een eigen lezing van het identiteitsdocument.
 
 ```xml
-<!-- Verpleegkundige 1: directe zorg weekdag (423872), 40 min, locatie thuis -->
+<!-- Verpleegkundige 1: directe zorg weekdag (423872), 25 min, locatie thuis -->
 <uitgevoerdezorg>
 	<input_uitgevoerdezorg_id>5001</input_uitgevoerdezorg_id>
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-19T09:00:00</datumuitvoering>
-	<zorgminuten>40</zorgminuten>
+	<zorgminuten>25</zorgminuten>
 	<nomenclatuurnummer>000000</nomenclatuurnummer>
 	<pseudocodenummer>423872</pseudocodenummer>
 	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
@@ -415,7 +417,7 @@ Bij een zware transfer komt een tweede verpleegkundige ter plaatse om de eerste 
 	<Locatie>421330</Locatie>
 </uitgevoerdezorg>
 
-<!-- Verpleegkundige 1: interventiecode volledige hygiënische zorg (438174), zelfde bezoeknummer -->
+<!-- Verpleegkundige 1: interventiecode A.1.1 volledige hygiënische zorg (438174), zelfde bezoeknummer -->
 <uitgevoerdezorg>
 	<input_uitgevoerdezorg_id>5002</input_uitgevoerdezorg_id>
 	<externeid>100</externeid>
@@ -430,12 +432,12 @@ Bij een zware transfer komt een tweede verpleegkundige ter plaatse om de eerste 
 	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
 </uitgevoerdezorg>
 
-<!-- Verpleegkundige 2: directe zorg weekdag (423872), 40 min, eigen rizivnummer, zelfde bezoeknummer -->
+<!-- Verpleegkundige 2: directe zorg weekdag (423872), 25 min, eigen rizivnummer, zelfde bezoeknummer -->
 <uitgevoerdezorg>
 	<input_uitgevoerdezorg_id>5003</input_uitgevoerdezorg_id>
 	<externeid>100</externeid>
 	<datumuitvoering>2026-02-19T09:00:00</datumuitvoering>
-	<zorgminuten>40</zorgminuten>
+	<zorgminuten>25</zorgminuten>
 	<nomenclatuurnummer>000000</nomenclatuurnummer>
 	<pseudocodenummer>423872</pseudocodenummer>
 	<rizivnummerverpleegkundige>198765432101</rizivnummerverpleegkundige>
@@ -446,7 +448,7 @@ Bij een zware transfer komt een tweede verpleegkundige ter plaatse om de eerste 
 	<Locatie>421330</Locatie>
 </uitgevoerdezorg>
 
-<!-- Verpleegkundige 2: interventiecode transfer met hulpmiddel (438410), zelfde bezoeknummer -->
+<!-- Verpleegkundige 2: interventiecode A.2.1 transfer met hulpmiddel (438410), zelfde bezoeknummer -->
 <uitgevoerdezorg>
 	<input_uitgevoerdezorg_id>5004</input_uitgevoerdezorg_id>
 	<externeid>100</externeid>
@@ -475,4 +477,309 @@ Bij een zware transfer komt een tweede verpleegkundige ter plaatse om de eerste 
 	<bezoeknummer>1</bezoeknummer>
 	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
 </uitgevoerdezorg>
+
+<!-- Lezingidentiteit verpleegkundige 1, zelfde bezoeknummer -->
+<lezingidentiteit>
+	<externeid>100</externeid>
+	<patientgegevens_id>1</patientgegevens_id>
+	<redenmanueleinvoering>0</redenmanueleinvoering>
+	<bezoeknummer>1</bezoeknummer>
+	<datumuitvoering>2026-02-19T09:00:00</datumuitvoering>
+	<datumlezingidentiteitsdocument>2026-02-19T09:00:00</datumlezingidentiteitsdocument>
+	<identificatiepatient>85010100123</identificatiepatient>
+	<typevanlezingidentiteitsdocument>1</typevanlezingidentiteitsdocument>
+	<typevandrageridentiteitsdocument>1</typevandrageridentiteitsdocument>
+	<redengebruikvignet>0</redengebruikvignet>
+	<uurvanlezingidentiteitsdocument>0900</uurvanlezingidentiteitsdocument>
+	<rizivnummerverstrekker>12345678901</rizivnummerverstrekker>
+	<serienummervandedrager>590000000001</serienummervandedrager>
+</lezingidentiteit>
+
+<!-- Lezingidentiteit verpleegkundige 2, zelfde bezoeknummer -->
+<lezingidentiteit>
+	<externeid>100</externeid>
+	<patientgegevens_id>1</patientgegevens_id>
+	<redenmanueleinvoering>0</redenmanueleinvoering>
+	<bezoeknummer>1</bezoeknummer>
+	<datumuitvoering>2026-02-19T09:00:00</datumuitvoering>
+	<datumlezingidentiteitsdocument>2026-02-19T09:00:00</datumlezingidentiteitsdocument>
+	<identificatiepatient>85010100123</identificatiepatient>
+	<typevanlezingidentiteitsdocument>1</typevanlezingidentiteitsdocument>
+	<typevandrageridentiteitsdocument>1</typevandrageridentiteitsdocument>
+	<redengebruikvignet>0</redengebruikvignet>
+	<uurvanlezingidentiteitsdocument>0900</uurvanlezingidentiteitsdocument>
+	<rizivnummerverstrekker>98765432101</rizivnummerverstrekker>
+	<serienummervandedrager>590000000001</serienummervandedrager>
+</lezingidentiteit>
+```
+
+### Voorbeeld 6: directe zorg door een zorgkundige in een instelling
+
+Een zorgkundige verzorgt een patiënt in een instelling op een weekdag. In de `uitgevoerdezorg` staan zowel de zorgkundige (`rizivnummerzorgkundige`) als de verpleegkundige die het toezicht heeft (`rizivnummerverpleegkundige`). De lezingidentiteit staat op naam van die verpleegkundige.
+
+```xml
+<!-- Pseudocode directe zorg weekdag (423872) door zorgkundige, locatie instelling (421374), 20 min -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>6001</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-20T08:00:00</datumuitvoering>
+	<zorgminuten>20</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>423872</pseudocodenummer>
+	<rizivnummerzorgkundige>133333333301</rizivnummerzorgkundige>
+	<naamzorgkundige>ZORGKUNDIGE EEN</naamzorgkundige>
+	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+	<Locatie>421374</Locatie>
+</uitgevoerdezorg>
+
+<!-- Interventiecode A.1.2 volledige hygiënische zorg, wassen (438196), zelfde bezoeknummer -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>6002</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-20T08:00:00</datumuitvoering>
+	<zorgminuten>0</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438196</pseudocodenummer>
+	<rizivnummerzorgkundige>133333333301</rizivnummerzorgkundige>
+	<naamzorgkundige>ZORGKUNDIGE EEN</naamzorgkundige>
+	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+</uitgevoerdezorg>
+
+<!-- Interventiecode A.1.5 aan- en/of uitkleden (438255), zelfde bezoeknummer -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>6003</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-20T08:00:00</datumuitvoering>
+	<zorgminuten>0</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438255</pseudocodenummer>
+	<rizivnummerzorgkundige>133333333301</rizivnummerzorgkundige>
+	<naamzorgkundige>ZORGKUNDIGE EEN</naamzorgkundige>
+	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+</uitgevoerdezorg>
+
+<!-- Interventiecode A.1.8 dagelijkse mondzorg (438314), zelfde bezoeknummer -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>6004</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-20T08:00:00</datumuitvoering>
+	<zorgminuten>0</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438314</pseudocodenummer>
+	<rizivnummerzorgkundige>133333333301</rizivnummerzorgkundige>
+	<naamzorgkundige>ZORGKUNDIGE EEN</naamzorgkundige>
+	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+</uitgevoerdezorg>
+
+<!-- Lezingidentiteit op naam van de toezichthoudende verpleegkundige, zelfde bezoeknummer -->
+<lezingidentiteit>
+	<externeid>100</externeid>
+	<patientgegevens_id>1</patientgegevens_id>
+	<redenmanueleinvoering>0</redenmanueleinvoering>
+	<bezoeknummer>1</bezoeknummer>
+	<datumuitvoering>2026-02-20T08:00:00</datumuitvoering>
+	<datumlezingidentiteitsdocument>2026-02-20T08:00:00</datumlezingidentiteitsdocument>
+	<identificatiepatient>85010100123</identificatiepatient>
+	<typevanlezingidentiteitsdocument>1</typevanlezingidentiteitsdocument>
+	<typevandrageridentiteitsdocument>1</typevandrageridentiteitsdocument>
+	<redengebruikvignet>0</redengebruikvignet>
+	<uurvanlezingidentiteitsdocument>0800</uurvanlezingidentiteitsdocument>
+	<rizivnummerverstrekker>12345678901</rizivnummerverstrekker>
+	<serienummervandedrager>590000000001</serienummervandedrager>
+</lezingidentiteit>
+```
+
+### Voorbeeld 7: indirecte zorg door meerdere verstrekkers (patiëntenbespreking)
+
+Drie verpleegkundigen bespreken de patiënt binnen het team. Elke verpleegkundige registreert een eigen pseudocode indirecte zorg met interventiecode 439950, onder hetzelfde bezoeknummer. Interventiecode 439633 wordt hier niet meegegeven: het gaat om indirecte zorg.
+
+```xml
+<!-- Verpleegkundige Een: pseudocode indirecte zorg weekdag (423894), 10 min -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>7001</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-17T13:00:00</datumuitvoering>
+	<zorgminuten>10</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>423894</pseudocodenummer>
+	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+</uitgevoerdezorg>
+
+<!-- Verpleegkundige Een: interventiecode B.3.1 patiëntenbespreking binnen het team (439950), zelfde bezoeknummer -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>7002</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-17T13:00:00</datumuitvoering>
+	<zorgminuten>0</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>439950</pseudocodenummer>
+	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+</uitgevoerdezorg>
+
+<!-- Verpleegkundige Twee: pseudocode indirecte zorg weekdag (423894), 10 min -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>7003</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-17T13:00:00</datumuitvoering>
+	<zorgminuten>10</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>423894</pseudocodenummer>
+	<rizivnummerverpleegkundige>198765432101</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE TWEE</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+</uitgevoerdezorg>
+
+<!-- Verpleegkundige Twee: interventiecode B.3.1 patiëntenbespreking binnen het team (439950), zelfde bezoeknummer -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>7004</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-17T13:00:00</datumuitvoering>
+	<zorgminuten>0</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>439950</pseudocodenummer>
+	<rizivnummerverpleegkundige>198765432101</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE TWEE</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+</uitgevoerdezorg>
+
+<!-- Verpleegkundige Drie: pseudocode indirecte zorg weekdag (423894), 10 min -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>7005</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-17T13:00:00</datumuitvoering>
+	<zorgminuten>10</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>423894</pseudocodenummer>
+	<rizivnummerverpleegkundige>155555555501</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE DRIE</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+</uitgevoerdezorg>
+
+<!-- Verpleegkundige Drie: interventiecode B.3.1 patiëntenbespreking binnen het team (439950), zelfde bezoeknummer -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>7006</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-17T13:00:00</datumuitvoering>
+	<zorgminuten>0</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>439950</pseudocodenummer>
+	<rizivnummerverpleegkundige>155555555501</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE DRIE</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+</uitgevoerdezorg>
+```
+
+### Voorbeeld 8: directe zorg met een griepvaccin
+
+Tijdens een bezoek thuis dient de verpleegkundige een griepvaccin toe. Het vaccin wordt gefinancierd buiten artikel 8, via het forfaitair honorarium 419974. De registratie van het vaccin (interventiecode 439250) blijft behouden, maar de minuten van de directe zorg worden verminderd volgens de omzettingstabel, zie [Prestaties gefinancierd buiten artikel 8](#prestaties-gefinancierd-buiten-artikel-8). Het forfait krijgt hetzelfde bezoeknummer.
+
+```xml
+<!-- Pseudocode directe zorg weekdag (423872), locatie thuis (421330), minuten na omzetting -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>8001</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-18T09:00:00</datumuitvoering>
+	<zorgminuten>5</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>423872</pseudocodenummer>
+	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+	<Locatie>421330</Locatie>
+</uitgevoerdezorg>
+
+<!-- Interventiecode A.5.11 toediening covid- of griepvaccin (439250), zelfde bezoeknummer -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>8002</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-18T09:00:00</datumuitvoering>
+	<zorgminuten>0</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>439250</pseudocodenummer>
+	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+</uitgevoerdezorg>
+
+<!-- Interventiecode A.3.2 opnemen parameters (438491), zelfde bezoeknummer -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>8003</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-18T09:00:00</datumuitvoering>
+	<zorgminuten>0</zorgminuten>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>438491</pseudocodenummer>
+	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+</uitgevoerdezorg>
+
+<!-- Forfaitair honorarium toediening griepvaccin (419974), buiten artikel 8, zelfde bezoeknummer -->
+<uitgevoerdezorg>
+	<input_uitgevoerdezorg_id>8004</input_uitgevoerdezorg_id>
+	<externeid>100</externeid>
+	<datumuitvoering>2026-02-18T09:00:00</datumuitvoering>
+	<nomenclatuurnummer>000000</nomenclatuurnummer>
+	<pseudocodenummer>419974</pseudocodenummer>
+	<rizivnummerverpleegkundige>112345678901</rizivnummerverpleegkundige>
+	<naamverpleegkundige>VERPLEEGKUNDIGE EEN</naamverpleegkundige>
+	<patientgegevens_id>1</patientgegevens_id>
+	<bezoeknummer>1</bezoeknummer>
+	<rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+</uitgevoerdezorg>
+
+<!-- Lezingidentiteit bij directe zorg, zelfde bezoeknummer -->
+<lezingidentiteit>
+	<externeid>100</externeid>
+	<patientgegevens_id>1</patientgegevens_id>
+	<redenmanueleinvoering>0</redenmanueleinvoering>
+	<bezoeknummer>1</bezoeknummer>
+	<datumuitvoering>2026-02-18T09:00:00</datumuitvoering>
+	<datumlezingidentiteitsdocument>2026-02-18T09:00:00</datumlezingidentiteitsdocument>
+	<identificatiepatient>85010100123</identificatiepatient>
+	<typevanlezingidentiteitsdocument>1</typevanlezingidentiteitsdocument>
+	<typevandrageridentiteitsdocument>1</typevandrageridentiteitsdocument>
+	<redengebruikvignet>0</redengebruikvignet>
+	<uurvanlezingidentiteitsdocument>0900</uurvanlezingidentiteitsdocument>
+	<rizivnummerverstrekker>12345678901</rizivnummerverstrekker>
+	<serienummervandedrager>590000000001</serienummervandedrager>
+</lezingidentiteit>
 ```
