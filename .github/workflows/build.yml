@@ -1,0 +1,27 @@
+# Bouwt de site bij elke PR naar de deploybranch, zodat een upgrade of fout niet pas bij de deploy opvalt.
+name: Build VitePress site
+
+on:
+  pull_request:
+    branches: [vitepress]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build with VitePress
+        run: npm run docs:build
