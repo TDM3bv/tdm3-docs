@@ -21,6 +21,6 @@ npm run docs:dev
 
 ## Upgrades
 
-- Dependabot opent PR's voor npm-packages (wekelijks) en GitHub Actions (maandelijks). Minor- en patchversies komen gebundeld, een major komt als aparte PR.
+- Upgrade op een eigen branch: `npm outdated` toont wat verouderd is, `npm update` haalt minor- en patchversies binnen. Een major (bv. VitePress 2) pas je aan in `package.json`.
 - Een upgrade-PR is klaar als de build slaagt. Kijk bij een major ook de pagina's lokaal na.
 - Een nieuwe Node-versie: pas `.nvmrc` aan. Beide workflows lezen dat bestand.
