@@ -8,6 +8,8 @@ export default defineConfig({
   description: "documentatie van publieke TDM3 API's",
   lastUpdated: true,
   cleanUrls: true,
+  // Het XSD staat in docs/public; de dead-link-check herkent die extensie niet als bestand.
+  ignoreDeadLinks: [/^\/schemas\/.+\.xsd$/],
   lang: 'nl-BE',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

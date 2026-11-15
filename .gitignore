@@ -3,4 +3,3 @@ yarn-error.lock
 *.zip
 docs/.vitepress/dist
 docs/.vitepress/cache
-```

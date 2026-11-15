@@ -1,6 +1,8 @@
 {
+  "name": "tdm3-docs",
+  "private": true,
   "devDependencies": {
-    "vitepress": "^1.0.0-rc.24"
+    "vitepress": "^1.6.4"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
