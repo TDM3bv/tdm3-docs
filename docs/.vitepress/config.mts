@@ -1,6 +1,12 @@
 import { defineConfig } from 'vitepress'
 import imsize_plugin from 'markdown-it-imsize';
 
+// VitePress behandelt een link naar een extensie die het niet kent als een pagina van de site:
+// de router vangt de klik op en toont een 404, en de dead-link-check zoekt een .md.
+// Met xsd in VITE_EXTRA_EXTENSIONS gaat de link naar het bestand in docs/public.
+// Vite geeft VITE_*-variabelen uit process.env door aan de client-build.
+process.env.VITE_EXTRA_EXTENSIONS = 'xsd'
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "TDM3 Docs",
@@ -8,8 +14,6 @@ export default defineConfig({
   description: "documentatie van publieke TDM3 API's",
   lastUpdated: true,
   cleanUrls: true,
-  // Het XSD staat in docs/public; de dead-link-check herkent die extensie niet als bestand.
-  ignoreDeadLinks: [/^\/schemas\/.+\.xsd$/],
   lang: 'nl-BE',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
