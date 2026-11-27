@@ -93,7 +93,7 @@ Voorbeeld:
 Per patiënt is er normaal één patientgegevens-node met hierin de volgende gegevens. Meerdere nodes voor dezelfde patiënt mogen, bijvoorbeeld bij een gewijzigd adres of ziekenfonds: TDM3 ontdubbelt ze, zie [Wat het pakket aanlevert](/nurse/wat#wat-het-pakket-aanlevert). De volgorde van de elementen in de XML volgt het [XSD-schema](/schemas/tdm3prestatiebestand.xsd); de oplijsting hieronder kan daarvan afwijken.
 
 - **patientgegevens\_id** (long): Dit is een uniek nummer binnen dit bestand waarmee de &#39;uitgevoerdezorgen&#39;-nodes en &#39;profielen&#39;-nodes gelinkt kunnen worden aan de &#39;patiënt&#39;. Dit wil zeggen dat voor elk &#39;profielen&#39;-node en elke &#39;uitgevoerdezorg&#39;-node van de patiënt deze patientgegevens\_id gebruikt moet worden.
-- **externeid** (string): De patientid van het versturende systeem; deze id wordt samen met de patientgegevens\_id gebruikt om de &#39;uitgevoerdezorgen&#39;-nodes en de &#39;profielen&#39;-nodes te linken aan de patiënt. Dit wil zeggen dat voor elke &#39;profielen&#39;-node en elke &#39;uitgevoerdezorg&#39;-node van de patiënt deze externeid gebruikt moet worden.
+- **externeid** (string): De patientid van het versturende systeem. De koppeling met de 'uitgevoerdezorgen'-nodes en de 'profielen'-nodes loopt via patientgegevens\_id; externeid dient ter informatie. Het element is wel verplicht op die nodes.
 - **naam** (string): De naam van de patiënt.
 - **email** (string): Het emailadres van de patiënt (optioneel).
 - **kanaalfactuurpatient** (integer): Het kanaal waarlangs de patiëntfactuur moet verstuurd worden (optioneel). Mogelijke waardes:
@@ -320,9 +320,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **BtwPercentage** (int): Indien er voor de prestatie btw moet aangerekend worden, dient hier gespecifieerd te worden hoeveel het btw percentage is: 0, 6 of 21
 - **BedragInclusiefBtw** (boolean): Hiermee kan gespecifeerd worden hoe de btw berekening dient te gebeuren. Indien het kb90bedrag of de tariefberekening voor de nomenclatuurcode inclusief 21% btw is, dan moet waarde Ja (Boolean True) meegegeven worden. Indien TDM3 zelf btw bedrag dient te berekenen op het kb90 bedrag of het door TDM3 getarifieerde bedrag, dan moet hier waarde Nee (Boolean False) meegeven worden.
 - **ziekenfondscode** (string): Het ziekenfonds van de patiënt.
-- **rizivnummerverpleegkundige** (string): De rizivnummer van de verpleegkundige. Deze moet voorafgaan door 0 of 1 :
-    - 0 : niet geconventioneerd
-    - 1 : wel geconventioneerd
+- **rizivnummerverpleegkundige** (string): De rizivnummer van de verpleegkundige, voorafgegaan door 0 of 1. TDM3 bepaalt de conventiestatus zelf en neemt dat cijfer niet over uit het bestand.
 - **naamverpleegkundige** (string): de naam van  de verpleegkundige
 - **patientgegevens\_id** (long): De unieke nummer van de patiënt binnen dit bestand.
 - **bezoeknummer** (long): Het volgnummer van het bezoek bij de patiënt op die dag, van 1 tot en met 10. Het is geen uniek id in het bestand. Alle zorgen van hetzelfde bezoek hebben hetzelfde nummer. De [lezingidentiteit](#node-lezingidentiteit) wordt gekoppeld op patiënt, datum en bezoeknummer.
@@ -338,7 +336,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **werkgever** (string): In geval van een arbeidsongeval staat hier de naam van de werkgever.
 - **TypeFacturering** (int)
   - 0 = standaard factuur
-  - 1 = herindiening, enkel in afspraak met TDM3. Vul in de gewone situatie 0 in, zie [Herindieningen](/nurse/hoe#herindieningen)
+  - 1 = herindiening. TDM3 behandelt deze waarde als 0 en bepaalt zelf of het om een herindiening gaat, zie [Herindieningen](/nurse/hoe#herindieningen)
   - 3 = kredietnota
   - 5 = correctiefactuur voor forfaits verpleegkundige zorgen wegens declassering na bezoek adviserend geneesheer
 - **rizivnummerzorgkundige** (string): De rizivnummer van de zorgkundige
@@ -637,12 +635,12 @@ Het veld `ruraal` is in het XSD een string op patientgegevens en een boolean op 
 Aangezien XML case-sensitive is moeten alle veldnamen in de juiste case staan zoals in de xsd! De opgegeven benamingen moeten dus letterlijk gebruikt worden.
 
 ### Het veld patientgegevens_id
-Per patientgegeven-node bestaat er een unieke patientgegevens_id. Deze id moet op elke uitgevoerdezorg-node en op elk profielen-node van de patiënt ingevuld worden. Op basis van dit veld, samen met het veld ‘externeid’, worden dan de uitgevoerde zorgen en profielen gelinkt aan de patiënt. 
+Per patientgegeven-node bestaat er een unieke patientgegevens_id. Deze id moet op elke uitgevoerdezorg-node en op elk profielen-node van de patiënt ingevuld worden. Op basis van dit veld worden de uitgevoerde zorgen en profielen gelinkt aan de patiënt.
 
 In elk XML-bestand wordt er begonnen met patientgegevens_id 1 voor de eerste patiënt.
 
 ### Het veld externeid
-Per patientgegeven-node bestaat er een unieke externeid, afkomstig uit het versturende systeem. Deze id moet op elke uitgevoerdezorg-node en op elke profielen-node van de patiënt ingevuld worden. Op basis van dit veld, samen met het veld ‘patientgegevens_id’, worden dan de uitgevoerde zorgen en profielen gelinkt aan de patiënt.
+Per patientgegeven-node bestaat er een externeid: de id van de patiënt in het versturende systeem. Het veld wordt ook ingevuld op elke uitgevoerdezorg-node en op elke profielen-node van de patiënt. De koppeling met de patiënt loopt via patientgegevens_id; externeid dient ter informatie.
 
 
 ## Volledig voorbeeld

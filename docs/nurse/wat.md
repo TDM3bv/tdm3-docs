@@ -46,6 +46,8 @@ Een palliatief forfait wordt aangerekend op basis van:
 
 Ook al zou er in de node [profielen](/nurse/nodes#node-profielen) een palliatief profiel staan, TDM3 kijkt altijd naar `startdatumpal` om te bepalen of een patiënt palliatief is.
 
+Het profiel en `startdatumpal` moeten overeenkomen. Een palliatief profiel zonder `startdatumpal`, of een niet-palliatief profiel bij een actieve `startdatumpal`, geeft een fout.
+
 ### PN en PP
 
 Voor een palliatieve patiënt zonder forfait A, B of C hangt de facturatie af van het dagplafond:
@@ -127,8 +129,7 @@ Pseudocodes die een bijkomende, noodzakelijke registratie zijn en op zichzelf no
 
 ## Samenvoegen binnen eenzelfde bezoek
 
-- Komt er meer dan één *eenvoudige wondzorg* (bijvoorbeeld 424336) mee in hetzelfde bezoek, dan vervangt TDM3 die door één *complexe wondzorg* (bijvoorbeeld 424351).
-- Komt er meer dan één *Toedienen geneesmiddelen (IM, SC, HD)* (bijvoorbeeld 423076) mee in hetzelfde bezoek, dan vervangt TDM3 die door één *Toedienen geneesmiddelen (IM, SC, HD, IV) in verschillende injectieplaatsen* (bijvoorbeeld 423091).
+Komt er meer dan één *Toedienen geneesmiddelen (IM, SC, HD)* (bijvoorbeeld 423076) mee in hetzelfde bezoek, dan vervangt TDM3 die door één *Toedienen geneesmiddelen (IM, SC, HD, IV) in verschillende injectieplaatsen* (bijvoorbeeld 423091).
 
 ## Betrekkelijke verstrekking: locatie
 
@@ -152,7 +153,7 @@ Uit de pseudocode is niet af te leiden welke betalende nomenclatuurcode TDM3 moe
 
 | Nomenclatuurcode | W-waarde | Omschrijving |
 | --- | --- | --- |
-| 429251 | 2.94600 | vervangen suprapubische sonde met ballon / verblijfplaats mindervaliden |
+| 429251 | 2.94600 | toezicht/opvolging pompsystemen catheter / verblijfplaats mindervaliden |
 | 427571 | 2.94600 | toezicht/opvolging pompsystemen catheter / praktijkkamer |
 | 427534 | 2.94600 | toezicht/opvolging pompsystemen catheter / weekdag aan huis |
 | 427556 | 4.50400 | toezicht/opvolging pompsystemen catheter / weekend/feestdag aan huis |
@@ -404,6 +405,14 @@ Het bedrag van 12,50 euro bevat al 21% btw. Er is geen voorschrift.
 ```
 
 ## Niet meer van toepassing
+
+### Samenvoegen van eenvoudige wondzorg
+
+::: warning Niet meer van toepassing
+Deze regel gold voor zorgdagen tot en met 30 november 2022. Sinds de [hervorming van de wondzorg](#complexe-wondzorg) voegt TDM3 eenvoudige wondzorgen niet meer samen.
+:::
+
+Komt er meer dan één *eenvoudige wondzorg* (bijvoorbeeld 424336) mee in hetzelfde bezoek, dan vervangt TDM3 die door één *complexe wondzorg* (bijvoorbeeld 424351).
 
 ### Diabeteseducatie via videoconsultatie (COVID19)
 

@@ -12,7 +12,7 @@ Het veld `TypeFacturering` op [uitgevoerdezorg](/nurse/nodes#node-uitgevoerdezor
 | Code | Betekenis |
 | --- | --- |
 | 0 | Standaard. Dit is de gebruikelijke waarde. |
-| 1 | Herindiening. Enkel in uitzonderingen, zie [Herindieningen](#herindieningen). |
+| 1 | Herindiening. TDM3 behandelt deze waarde als 0, zie [Herindieningen](#herindieningen). |
 | 3 | Creditering (kredietnota) |
 | 5 | Correctie forfait: enkel de zorgen met het nieuwe profiel, zie [Correctie forfait](#correctie-forfait-afscoring) |
 
@@ -29,7 +29,7 @@ TDM3 verwerkt allerhande regularisaties en afscoringen, en houdt dubbele factura
 
 Vul in de gewone situatie altijd `TypeFacturering` = 0 in, ook bij een herindiening. TDM3 verstuurt de factuur en rekent ze af, en bepaalt dus zelf op basis van de facturatiehistoriek of het om een herindiening gaat. TDM3 vult de gegevens aan waarover het pakket niet beschikt.
 
-De waarde 1 is enkel voor uitzonderingen waarbij TDM3 de facturatiehistoriek niet heeft, en gebeurt in afspraak met TDM3.
+De waarde 1 mag meekomen, maar TDM3 behandelt ze als 0.
 
 ## Creditering
 

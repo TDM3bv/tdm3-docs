@@ -19,7 +19,7 @@ Het prestatiebestand is niet het facturatiebestand voor het ziekenfonds. Het pak
 
 Op elke [uitgevoerdezorg](/nurse/nodes#node-uitgevoerdezorg) staat de zorgverlener die de zorg effectief uitvoerde.
 
-- **rizivnummerverpleegkundige**: het RIZIV-nummer van de verpleegkundige, voorafgegaan door 0 (niet geconventioneerd) of 1 (geconventioneerd).
+- **rizivnummerverpleegkundige**: het RIZIV-nummer van de verpleegkundige, voorafgegaan door 0 of 1. TDM3 bepaalt de conventiestatus zelf en neemt dat cijfer niet over uit het bestand.
 - **naamverpleegkundige**: de naam van de verpleegkundige.
 - **rizivnummerzorgkundige** en **naamzorgkundige**: het RIZIV-nummer en de naam van de zorgkundige, wanneer een zorgkundige de zorg uitvoerde.
 
