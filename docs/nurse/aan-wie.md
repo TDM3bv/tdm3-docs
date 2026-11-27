@@ -57,6 +57,13 @@ Het remgeld gaat altijd naar de patiënt, en enkel bij zorg die aan het ziekenfo
 - Bij facturatie aan een verzekering (type bestemmeling 2) of een OCMW (type bestemmeling 4) blijft `remgeld` leeg. Is het toch ingevuld, dan negeert TDM3 het.
 - Bij facturatie aan de patiënt (type bestemmeling 3) gaat de volledige zorg naar de patiënt.
 
+### De remgeldfactuur bij een andere partij
+
+De remgeldfactuur staat altijd op naam van de patiënt. Moet ze bij een andere partij terechtkomen, bijvoorbeeld een familielid of een bewindvoerder, dan regel je dat via de verzending van de patiëntfactuur:
+
+- **Via patientgegevens**: `kanaalfactuurpatient` met `emailfactuurpatient`, of het postadres van de patiëntfactuur. Zie [Factuur aan de patiënt](#factuur-aan-de-patient).
+- **Via een betaler-node** (voorstel): een `betaler` met het rijksregisternummer van de patiënt. Daarmee geef je de verzendwijze gedetailleerder mee. Zie [Remgeld via de betaler-node](#remgeld-via-de-betaler-node).
+
 ## Wie betaalt wat
 
 Elke verstrekking is één `uitgevoerdezorg`-node, en elke node heeft één type bestemmeling. Daaruit volgt:
@@ -77,9 +84,9 @@ In de tabel staat "bestemmeling" voor het veld `rep_typebestemmeling_id`, en "co
 | 4. Patiënt betaalt alles. | bestemmeling 3<br>code | bestemmeling 3<br>code | Patiënt: de volledige verstrekking en de extra dienst. |
 | 5. Een andere partij betaalt alles. | bestemmeling 2 of 4<br>code<br>remgeld leeg | bestemmeling 2 of 4<br>code | Andere partij: de verstrekking en de extra dienst.<br>Er is geen remgeld. |
 
-Twee combinaties kent het bestand niet:
+Bij deze situaties hoort nog:
 
-- Het remgeld kan niet naar een andere partij dan de patiënt gaan.
+- Het remgeld wordt altijd aan de patiënt gefactureerd. De factuur zelf kan wel bij een andere partij terechtkomen, zie [De remgeldfactuur bij een andere partij](#de-remgeldfactuur-bij-een-andere-partij).
 - Bij een andere betaler dan het ziekenfonds (situatie 5) is er geen onderscheid met of zonder remgeld.
 
 ### Voorbeeld: ziekenfonds, remgeld en een extra dienst voor de patiënt
@@ -160,13 +167,47 @@ De derdebetalervelden op uitgevoerdezorg bevatten weinig gegevens: een code, een
 
 | Type bestemmeling | Betaler-node | Gegevens die de node toevoegt |
 | --- | --- | --- |
-| 1. Ziekenfonds | geen | - |
+| 1. Ziekenfonds | geen voor het ziekenfonds zelf. Wel mogelijk voor het remgeld: `type` = 3, gekoppeld via `rijksregisternr` | de verzendwijze van de remgeldfactuur |
 | 2. Verzekering | `type` = 2 | `naam`, `kbonr`, `uwreferentie` (polis- of dossiernummer), `terattentievan`, `facturatiekanaal`, factuuradres |
 | 3. Patiënt | `type` = 3 | `naam` en `voornaam`, `rijksregisternr`, `taalcode`, `facturatiekanaal`, factuuradres |
 | 4. OCMW | `type` = 4 | `naam`, `kbonr`, `uwreferentie`, `terattentievan`, `facturatiekanaal`, factuuradres |
 | 5. Medisch huis | `type` = 5 | `naam`, `rizivnr`, `kbonr`, `facturatiekanaal`, factuuradres |
 
 Alle velden van de node staan op [Nodes](/nurse/nodes#node-betaler-voorstel).
+
+### Remgeld via de betaler-node
+
+Bij zorg voor het ziekenfonds (type bestemmeling 1) staat er geen `derdebetalercode` op de zorg. Een `betaler` voor het remgeld wordt daarom aan de patiënt gekoppeld via het rijksregisternummer: `betaler.rijksregisternr` is gelijk aan `rijksregisternummer` op [patientgegevens](/nurse/nodes#node-patientgegevens).
+
+Met die node bepaal je waar en hoe de remgeldfactuur van de patiënt toekomt: het kanaal (`facturatiekanaal`), het factuuradres, het e-mailadres en `terattentievan`. Dat gaat verder dan `kanaalfactuurpatient` op patientgegevens.
+
+In dit voorbeeld gaat de remgeldfactuur per e-mail naar de dochter van de patiënt:
+
+```xml
+<betaler>
+    <externeid>341</externeid>
+    <type>3</type>
+    <referentienr>341</referentienr>
+    <naam>PEETERS</naam>
+    <voornaam>PETER</voornaam>
+    <email>dochter.peeters@voorbeeld.example</email>
+    <taalcode>nl</taalcode>
+    <rijksregisternr>85010100123</rijksregisternr>
+    <facturatiekanaal>2</facturatiekanaal>
+    <terattentievan>Mevrouw An Peeters</terattentievan>
+    <adressen>
+        <adres>
+            <type>Factuur</type>
+            <straat>Kerkstraat</straat>
+            <huisnummer>15</huisnummer>
+            <busnr>3B</busnr>
+            <postcode>1000</postcode>
+            <gemeente>Brussel</gemeente>
+            <landcode>BE</landcode>
+        </adres>
+    </adressen>
+</betaler>
+```
 
 ### Voorbeeld: verzekering met factuur via Peppol
 
