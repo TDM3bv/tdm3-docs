@@ -7,10 +7,14 @@ import imsize_plugin from 'markdown-it-imsize';
 // Vite geeft VITE_*-variabelen uit process.env door aan de client-build.
 process.env.VITE_EXTRA_EXTENSIONS = 'xsd'
 
+// De site staat op de root van docs.tdm3.be. Een PR-preview staat in een submap
+// (/pr-preview/pr-<nummer>/); de preview-workflow geeft dat pad door via DOCS_BASE.
+const base = process.env.DOCS_BASE || '/'
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "TDM3 Docs",
-  base: "/",
+  base,
   description: "documentatie van publieke TDM3 API's",
   lastUpdated: true,
   cleanUrls: true,
