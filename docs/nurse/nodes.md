@@ -160,13 +160,17 @@ worden, zoals het verzorgingsadres.
 
 ### Element adres op node patientgegevens
 Standaard wordt het domicilie adres (officieel) meegegeven op patiëntgegeven niveau, de patiëntfactuur wordt dan naar dit adres verstuurd. 
-Wanneer het verzorgingsadres verschilt van het domicilie adres, dan kan dit verzorgingsadres meegegeven worden via het element adressen, naar onderstaand voorbeeld.
-Staat op patiëntgegeven niveau een ander postadres voor de patiëntfactuur dan het domicilie adres, dan kan het domicilie adres meegegeven worden als adres van het type Domicilie, zie [De remgeldfactuur bij een andere partij](/nurse/aan-wie#de-remgeldfactuur-bij-een-andere-partij).
-Het element adressen kan een lijst van 1 of meerdere adressen bevatten.
+Andere adressen komen mee via het element adressen. Het element kan een lijst van 1 of meerdere adressen bevatten, elk met een type:
+
+| Type | Betekenis |
+| --- | --- |
+| Verzorging | Het adres waar de patiënt verzorgd wordt, wanneer dat verschilt van het domicilie adres. `ruraal` op dit adres heeft voorrang op `ruraal` van patientgegevens, zie [Voorrang van het verzorgingsadres](/nurse/wat#voorrang-van-het-verzorgingsadres). |
+| Factuur | Het adres waar de patiëntfactuur naartoe gaat, wanneer dat verschilt van het domicilie adres. Is er een adres van dit type, dan gaat de patiëntfactuur naar dit adres en niet naar het adres op patiëntgegeven niveau. Zie [De remgeldfactuur bij een andere partij](/nurse/aan-wie#de-remgeldfactuur-bij-een-andere-partij). |
+| Domicilie | Het officiële adres, wanneer op patiëntgegeven niveau een ander adres staat. |
 
 
 Elk adres heeft volgende eigenschappen
-- **type** (AdresType) : string enumeratie beperkt tot volgende waarden: Verzorging, Domicilie
+- **type** (AdresType) : string enumeratie beperkt tot volgende waarden: Verzorging, Factuur, Domicilie
 - **straat** (string): De straat van de patiënt voor dit type adres.
 - **huisnummer** (string): De huisnummer van de patiënt voor dit type adres. (kan maximum 10 karakters bevatten).
 - **busnr** (string): De busnummer van de patiënt voor dit type adres. (kan maximum 10 karakters bevatten, optioneel).

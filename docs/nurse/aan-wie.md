@@ -61,7 +61,8 @@ Het remgeld gaat altijd naar de patiënt, en enkel bij zorg die aan het ziekenfo
 
 De remgeldfactuur staat altijd op naam van de patiënt. Moet ze bij een andere partij terechtkomen, bijvoorbeeld een familielid of een bewindvoerder, dan regel je dat via de verzending van de patiëntfactuur:
 
-- **Via patientgegevens**: `kanaalfactuurpatient` met `emailfactuurpatient`, of het postadres van de patiëntfactuur in de adresvelden van patientgegevens. Wijkt dat postadres af van het domicilieadres, dan komt het domicilieadres mee in het element [adressen](/nurse/nodes#element-adres-op-node-patientgegevens), als een adres van het type `Domicilie`. Zie ook [Factuur aan de patiënt](#factuur-aan-de-patient).
+- **Via patientgegevens, per e-mail**: `kanaalfactuurpatient` = 2 met het e-mailadres van die partij in `emailfactuurpatient`. Zie [Factuur aan de patiënt](#factuur-aan-de-patient).
+- **Via patientgegevens, per post**: een adres van het type `Factuur` in het element [adressen](/nurse/nodes#element-adres-op-node-patientgegevens). De adresvelden van patientgegevens blijven dan het domicilieadres. Zie [voorbeeld 4](#voorbeeld-4-factuuradres-als-adres-van-het-type-factuur). Staat het postadres toch in de adresvelden van patientgegevens zelf, dan komt het domicilieadres mee als adres van het type `Domicilie`.
 - **Via een betaler-node** (voorstel): een `betaler` met het rijksregisternummer van de patiënt. Daarmee geef je de verzendwijze gedetailleerder mee, onder meer met `terattentievan` (ter attentie van). Zie [Remgeld via de betaler-node](#remgeld-via-de-betaler-node).
 
 ## Wie betaalt wat
@@ -273,7 +274,7 @@ Voor een correcte adressering komt het busnummer (bus, appartement) in een apart
 
 Vul het busnummer in wanneer het adres er een vereist en het pakket het in een apart veld bijhoudt. Zo komen facturen en bewijsstukken op het juiste adres aan.
 
-Wanneer het verzorgingsadres verschilt van het domicilieadres, kan het verzorgingsadres meekomen via het element [adressen](/nurse/nodes#element-adres-op-node-patientgegevens).
+Andere adressen dan het domicilieadres komen mee via het element [adressen](/nurse/nodes#element-adres-op-node-patientgegevens): het verzorgingsadres als type `Verzorging`, het adres voor de patiëntfactuur als type `Factuur`.
 
 ### Voorbeeld 1: postadres van de patiëntfactuur met busnummer
 
@@ -351,5 +352,37 @@ Wanneer het verzorgingsadres verschilt van het domicilieadres, kan het verzorgin
     <postcodebestemmelingbewijsstuk>2000</postcodebestemmelingbewijsstuk>
     <gemeentebestemmelingbewijsstuk>Antwerpen</gemeentebestemmelingbewijsstuk>
     <landcodebestemmelingbewijsstuk>BE</landcodebestemmelingbewijsstuk>
+</patientgegevens>
+```
+
+### Voorbeeld 4: factuuradres als adres van het type Factuur
+
+De patiënt woont in Brussel. De patiëntfactuur gaat per post naar een ander adres. De adresvelden van patientgegevens bevatten het domicilieadres; het factuuradres staat in `adressen`.
+
+```xml
+<patientgegevens>
+    <patientgegevens_id>344</patientgegevens_id>
+    <externeid>344</externeid>
+    <naam>PEETERS</naam>
+    <voornaam>PETER</voornaam>
+    <straat>Kerkstraat</straat>
+    <huisnummer>15</huisnummer>
+    <busnr>3B</busnr>
+    <postcode>1000</postcode>
+    <gemeente>Brussel</gemeente>
+    <landcode>BE</landcode>
+    <rijksregisternummer>85010100123</rijksregisternummer>
+    <kanaalfactuurpatient>1</kanaalfactuurpatient>
+    <adressen>
+        <adres>
+            <type>Factuur</type>
+            <straat>Dorpstraat</straat>
+            <huisnummer>42</huisnummer>
+            <busnr>A12</busnr>
+            <postcode>2000</postcode>
+            <gemeente>Antwerpen</gemeente>
+            <landcode>BE</landcode>
+        </adres>
+    </adressen>
 </patientgegevens>
 ```
