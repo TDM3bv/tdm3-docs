@@ -61,8 +61,8 @@ Het remgeld gaat altijd naar de patiënt, en enkel bij zorg die aan het ziekenfo
 
 De remgeldfactuur staat altijd op naam van de patiënt. Moet ze bij een andere partij terechtkomen, bijvoorbeeld een familielid of een bewindvoerder, dan regel je dat via de verzending van de patiëntfactuur:
 
-- **Via patientgegevens**: `kanaalfactuurpatient` met `emailfactuurpatient`, of het postadres van de patiëntfactuur. Zie [Factuur aan de patiënt](#factuur-aan-de-patient).
-- **Via een betaler-node** (voorstel): een `betaler` met het rijksregisternummer van de patiënt. Daarmee geef je de verzendwijze gedetailleerder mee. Zie [Remgeld via de betaler-node](#remgeld-via-de-betaler-node).
+- **Via patientgegevens**: `kanaalfactuurpatient` met `emailfactuurpatient`, of het postadres van de patiëntfactuur in de adresvelden van patientgegevens. Wijkt dat postadres af van het domicilieadres, dan komt het domicilieadres mee in het element [adressen](/nurse/nodes#element-adres-op-node-patientgegevens), als een adres van het type `Domicilie`. Zie ook [Factuur aan de patiënt](#factuur-aan-de-patient).
+- **Via een betaler-node** (voorstel): een `betaler` met het rijksregisternummer van de patiënt. Daarmee geef je de verzendwijze gedetailleerder mee, onder meer met `terattentievan` (ter attentie van). Zie [Remgeld via de betaler-node](#remgeld-via-de-betaler-node).
 
 ## Wie betaalt wat
 

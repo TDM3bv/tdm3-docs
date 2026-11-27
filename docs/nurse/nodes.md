@@ -160,7 +160,8 @@ worden, zoals het verzorgingsadres.
 
 ### Element adres op node patientgegevens
 Standaard wordt het domicilie adres (officieel) meegegeven op patiëntgegeven niveau, de patiëntfactuur wordt dan naar dit adres verstuurd. 
-Wanneer het verzoringsadres verschilt van het domicilie adres, dan kan dit verzorgingsadres meegegeven worden via het element adressen, naar onderstaand voorbeeld.
+Wanneer het verzorgingsadres verschilt van het domicilie adres, dan kan dit verzorgingsadres meegegeven worden via het element adressen, naar onderstaand voorbeeld.
+Staat op patiëntgegeven niveau een ander postadres voor de patiëntfactuur dan het domicilie adres, dan kan het domicilie adres meegegeven worden als adres van het type Domicilie, zie [De remgeldfactuur bij een andere partij](/nurse/aan-wie#de-remgeldfactuur-bij-een-andere-partij).
 Het element adressen kan een lijst van 1 of meerdere adressen bevatten.
 
 
