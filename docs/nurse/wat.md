@@ -412,7 +412,7 @@ Het bedrag van 12,50 euro bevat al 21% btw. Er is geen voorschrift.
 Deze regel gold voor zorgdagen tot en met 30 november 2022. Sinds de [hervorming van de wondzorg](#complexe-wondzorg) voegt TDM3 eenvoudige wondzorgen niet meer samen.
 :::
 
-Komt er meer dan één *eenvoudige wondzorg* (bijvoorbeeld 424336) mee in hetzelfde bezoek, dan vervangt TDM3 die door één *complexe wondzorg* (bijvoorbeeld 424351).
+Kwam er meer dan één *eenvoudige wondzorg* (bijvoorbeeld 424336) mee in hetzelfde bezoek, dan verving TDM3 die door één *complexe wondzorg* (bijvoorbeeld 424351).
 
 ### Diabeteseducatie via videoconsultatie (COVID19)
 
