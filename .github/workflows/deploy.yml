@@ -42,6 +42,9 @@ jobs:
         run: |
           npm run docs:build
           touch docs/.vitepress/dist/.nojekyll
+          # Het domein van de site. Het staat niet in docs/public: dan zou het ook in elke
+          # PR-preview zitten, en de opruiming van een preview laat een CNAME-bestand staan.
+          echo "docs.tdm3.be" > docs/.vitepress/dist/CNAME
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:

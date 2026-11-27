@@ -53,3 +53,9 @@ jobs:
           source-dir: docs/.vitepress/dist
           preview-branch: gh-pages
           umbrella-dir: pr-preview
+          # Expliciet deploy of remove: in de stand auto doet de actie niets bij een heropende PR.
+          action: ${{ github.event.action == 'closed' && 'remove' || 'deploy' }}
+          # De link in het PR-commentaar wijst naar het eigen domein.
+          pages-base-url: docs.tdm3.be
+          # Geen QR-code: die wordt bij een externe dienst opgehaald, die zo het preview-adres ziet.
+          qr-code: "false"
