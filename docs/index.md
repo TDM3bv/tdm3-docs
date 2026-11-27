@@ -15,10 +15,10 @@ hero:
       link: /doctor/
 features:
   - title: Thuisverpleging
-    details: Batch XML,..
+    details: Het prestatiebestand (nurse-xml) waarmee een softwarepakket de zorg aan TDM3 bezorgt voor facturatie.
     link: /nurse/
   - title: Huisartsen
-    details: Doctar API
+    details: De Doctar API om prestaties van een huisarts vanuit het EMD in Doctar te registreren.
     link: /doctor/
 ---
 

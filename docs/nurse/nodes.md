@@ -1,16 +1,17 @@
 ---
 outline: deep
 ---
-# Beschrijving batch XML
+# Nodes
 
-::: tip XSD Schema
+Deze pagina beschrijft alle nodes en elementen van het prestatiebestand. Voor de betekenis in de facturatie, zie [Wie](/nurse/wie), [Wat](/nurse/wat), [Aan wie](/nurse/aan-wie) en [Hoe](/nurse/hoe).
+
+::: tip XSD-schema
 [Download](/schemas/tdm3prestatiebestand.xsd)
 
 ![image](https://www.plantuml.com/plantuml/svg/NP5HRiCW44J_VGha_roXobLe6CZMBY30jkJJPupNITMl6UtpB0E-rsPBMtxd8IO7ausjPinscj020bR4EfweTbIJRvijU2voWMoRffeW_e_jgOIE5o5Q4uh3CLCyO--KAZ68um9faAQOvJgcYfV7SOBZ8VNY-SIvo4_zHi64o3KALvoKod7uW5oIrrpoWXbHmNQMuPOebMqPsL9qV_fw--YVKDjIZZuPHKZ6OSZcTlioLPNFeUw8g-KrrV56whZgYbmZDdwFabUxxSCTqV5VlG00)
 :::
 
-# XML Nodes
-## Node Pakketgegevens
+## Node pakketgegevens
 Deze node is de overkoepelende node waaronder alle andere nodes verzameld staan.
 
 - één tarificatiedienst-node
@@ -22,6 +23,7 @@ Deze node is de overkoepelende node waaronder alle andere nodes verzameld staan.
 - een aantal profielen-nodes
 - een aantal lezingidentiteit nodes
 - een aantal kennisgevingwondzorg nodes
+- een aantal betaler-nodes ([voorstel](#node-betaler-voorstel), nog niet verwerkt)
 
 Tenzij anders vermeld, worden alle elementen als verplicht beschouwd. 
 
@@ -86,9 +88,9 @@ Voorbeeld:
 	</softwarehuis>
 ```
 
-## Node patiëntgegevens
+## Node patientgegevens
 
-Per patient is er één patientgegevens node met hierin de volgende gegevens. De volgorde van de elementen in de XML volgt het [XSD-schema](/schemas/tdm3prestatiebestand.xsd); de oplijsting hieronder kan daarvan afwijken.
+Per patiënt is er normaal één patientgegevens-node met hierin de volgende gegevens. Meerdere nodes voor dezelfde patiënt mogen, bijvoorbeeld bij een gewijzigd adres of ziekenfonds: TDM3 ontdubbelt ze, zie [Wat het pakket aanlevert](/nurse/wat#wat-het-pakket-aanlevert). De volgorde van de elementen in de XML volgt het [XSD-schema](/schemas/tdm3prestatiebestand.xsd); de oplijsting hieronder kan daarvan afwijken.
 
 - **patientgegevens\_id** (long): Dit is een uniek nummer binnen dit bestand waarmee de &#39;uitgevoerdezorgen&#39;-nodes en &#39;profielen&#39;-nodes gelinkt kunnen worden aan de &#39;patiënt&#39;. Dit wil zeggen dat voor elk &#39;profielen&#39;-node en elke &#39;uitgevoerdezorg&#39;-node van de patiënt deze patientgegevens\_id gebruikt moet worden.
 - **externeid** (string): De patientid van het versturende systeem; deze id wordt samen met de patientgegevens\_id gebruikt om de &#39;uitgevoerdezorgen&#39;-nodes en de &#39;profielen&#39;-nodes te linken aan de patiënt. Dit wil zeggen dat voor elke &#39;profielen&#39;-node en elke &#39;uitgevoerdezorg&#39;-node van de patiënt deze externeid gebruikt moet worden.
@@ -107,14 +109,14 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens. De
 - **postcode** (string): De postcode van de patiënt.  (domicilie/factuur adres)
 - **gemeente** (string): De gemeente van de patiënt.  (domicilie/factuur adres)
 - **landcode** (string): De landcode van de patiënt (ISO)  (domicilie/factuur adres)
-- **ziekenfondscode** (string): Het ziekenfonds waar de patiënt is aangesloten.
+- **ziekenfondscode** (string): Het ziekenfonds waar de patiënt is aangesloten. TDM3 gebruikt de gegevens van MyCareNet wanneer die beschikbaar zijn, anders deze waarde.
 - **stamnummer** (string): Enkel voor buitenlanders en boorlingen, **voor alle andere gevallen moet men het rijksregisternummer gebruiken.** Bij facturatie van zorgen buiten het ZIV (verzekering, ocmw, patient) en het rijksregisternummer of stamnummer is niet gekend, kan in dit veld een unieke identificatienummer meegegeven worden.
 - **hoedanigheid** (string): De hoedanigheid van de patiënt (optioneel). (deprecated)
 - **geldigvan** (dateTime): Geldigheidsperiode van - datum (optioneel). (deprecated)
 - **geldigtot** (dateTime): Geldigheidsperiode tot datum (optioneel). (deprecated)
-- **risicocode1** (string): De risicocode 1 van de patiënt.
-- **risicocode2** (string): De risicocode 2 van de patiënt.
-- **ruraal** (string): Als dit veld `true` is dan wordt er voor elke uitgevoerde zorg een prestatie met nomenclatuur 418913, verplaatsingskosten, aangemaakt.
+- **risicocode1** (string): De risicocode 1 (CG1) van de patiënt. TDM3 gebruikt de gegevens van MyCareNet wanneer die beschikbaar zijn, anders deze waarde.
+- **risicocode2** (string): De risicocode 2 (CG2) van de patiënt. TDM3 gebruikt de gegevens van MyCareNet wanneer die beschikbaar zijn, anders deze waarde.
+- **ruraal** (string): `true` wanneer het adres in een rurale zone ligt, anders `false`. Bij `true` voegt TDM3 de verplaatsingskosten (418913) toe bij zorg die thuis wordt verleend, zie [Rurale zone en verplaatsingskosten](/nurse/wat#rurale-zone-en-verplaatsingskosten).
 - **startdatumpal** (dateTime): De startdatum paliatieve verzorging, van het palliatief akkoord.
 - **rijksregisternummer** (string): Het rijksregisternummer van de patiënt.
 - **kanaalbewijsstuk** (integer): 1 = Per post, 2 = per e-mail, 3 = eBox
@@ -156,7 +158,7 @@ Per patient is er één patientgegevens node met hierin de volgende gegevens. De
 - **adressen**  (type collection adres, optioneel element). Standaard wordt het domicilie adres (officieel) meegegeven. Via het element adressen kunnen ook andere adressen meegeven
 worden, zoals het verzorgingsadres. 
 
-### element adres op Node patientgegeven
+### Element adres op node patientgegevens
 Standaard wordt het domicilie adres (officieel) meegegeven op patiëntgegeven niveau, de patiëntfactuur wordt dan naar dit adres verstuurd. 
 Wanneer het verzoringsadres verschilt van het domicilie adres, dan kan dit verzorgingsadres meegegeven worden via het element adressen, naar onderstaand voorbeeld.
 Het element adressen kan een lijst van 1 of meerdere adressen bevatten.
@@ -170,7 +172,7 @@ Elk adres heeft volgende eigenschappen
 - **postcode** (string): De postcode van de patiënt voor dit type adres.
 - **gemeente** (string): De gemeente van de patiënt voor dit type adres.
 - **landcode** (string): De landcode van de patiënt (ISO) voor dit type adres. 
-- **ruraal** (boolean): Indien type = Verzorging en dit veld op true, wordt er voor elke uitgevoerde zorg een prestatie met nomenclatuur 418913, verplaatsingskosten, aangemaakt.
+- **ruraal** (boolean): `true` of `false`. Bij een adres van het type Verzorging heeft dit veld voorrang op `ruraal` van patientgegevens, zie [Voorrang van het verzorgingsadres](/nurse/wat#voorrang-van-het-verzorgingsadres).
 - **email** (string): optioneel email adres. 
 
 Voorbeeld adressen
@@ -205,7 +207,7 @@ Voorbeeld adressen
 		</patientgegevens>
 ```
 
-### voorbeeld patientgegeven
+### Voorbeeld patientgegevens
 
 ```xml
 	<patientgegevens>
@@ -263,7 +265,7 @@ Voorbeeld adressen
 De node betaler is een voorstel. De import van TDM3 verwerkt deze node momenteel niet.
 :::
 
-Dit is een node die verwijst naar de derdebetalercode in de uitgevoerdezorg node.
+Dit is een node binnen [pakketgegevens](#node-pakketgegevens) die verwijst naar de derdebetalercode in de uitgevoerdezorg node.
 Per unieke derdebetalercode mag er max 1 betaler element meegegeven worden.
 Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefondsen (patienten, medische huizen, ziekenhuizen, verzekeringen, enz)
 - **externeid**: (string) Het externe id van het versturende systeem.
@@ -284,8 +286,8 @@ Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefond
 - **telefoon**: (string) gsm of telefoonnummer van de betaler waarmee TDM3 contact kan opnemen ikv verdere opvolging van de factuur
 - **terattentievan**: (string) hiermee kan verder gespecifieerd worden aan wie of welke afdeling binnen een organisatie de factuur mag gericht worden
 - **facturatiekanaal**: (int) 0=POST, 1=EBOX, 2=EMAIL, 3=PEPPOL. Hier kan aangegeven worden via welk kanaal de factuur moet/mag verstuurd worden. Afhankelijk van he kanaal, worden bepaalde informatievelden verplicht. Bvb: indien PEPPOL of EBOX => KBONr verplicht.
-- **adressen**: (complexeType) minstens 1 adres van het [AdresType](#element-adres-op-node-patientgegeven) Factuur 
-- **metadata**: (complexeType) zie uitleg bij [metadata](#type-metadata-en-optioneel-element-metadata-op-patientgegeven-en-uitgevoerdezorg)  
+- **adressen**: (complexeType) minstens 1 adres van het [AdresType](#element-adres-op-node-patientgegevens) Factuur 
+- **metadata**: (complexeType) zie uitleg bij [metadata](#type-metadata)  
 
 
 
@@ -297,14 +299,14 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **externeid** (string): Het patientid van het versturende systeem refererend naar externid van patientgegevens.
 - **datumuitvoering** (dateTime): De datum waarop de prestatie is uitgevoerd.
 - **zorgminuten** (int): Het aantal minuten de uitgevoerdezorg heeft geduurd. Bijvoorbeeld in het kader van een complexe wondzorg.
-- **datumvoorschrift** (dateTime): De datum waarop de prestatie is voorgeschreven.
+- **datumvoorschrift** (dateTime): De datum waarop de prestatie is voorgeschreven. Enkel bij een verstrekking met een voorschrift, en altijd samen met rizivnummervoorschrijver, zie [Voorschrift: datum en voorschrijver](/nurse/wat#voorschrift-datum-en-voorschrijver).
 - **rizivnummervoorschrijver** (string): De rizivnummer van de voorschrijvende geneesheer.
-- **naamvoorschrijver** (string): De naam van de voorschrijvende geneesheer.
+- **naamvoorschrijver** (string): De naam van de voorschrijvende geneesheer (optioneel).
 - **referentieverwijsvoorschrift** (string): referentienummer (Short RefID) (Short Code) van het digitaal verwijsvoorschrift. Dit nummer bestaat uit 6 alfanumerieke karakters. Moet ingevuld worden wanneer voor de verstrekking  een digitaal verwijsvoorschrift werd gebruikt.
 - **remgeld** (string): uitgedrukt als percentage van het persoonlijk aandeel dat wordt gevraagd, van 0 tem 100. 0 is geen remgeld tellen, 100 = het volledige persoonlijk aandeel wordt gevraagd.
 - **nomenclatuurnummer** (string): De nomenclatuurnummer van de prestatie.
 - **pseudocodenummer** (string): De pseudocode voor de nomenclatuur. Moet enkel ingevuld worden indien er geen nomenclatuurnummer bestaat (palliatieve zorgen en niet vergoedbare zorgen). Dan moet de nomenclatuurnummer 000000 zijn. Indien geen pseudocode veld opvullen met 000000. TDM3 verwerkt `nomenclatuurnummer` en `pseudocodenummer` op dezelfde manier: een code mag in een van beide velden staan, maar per uitgevoerdezorg wordt maar één code meegegeven. Het andere veld wordt weggelaten of met 000000 opgevuld. Uitzondering: bij een kb90bedrag staat de code 426856 altijd in `pseudocodenummer`. 
-- **kb90bedrag** (string): Het bedrag van de uitgevoerde zorg die valt onder het KB van 1990. Voor deze zorg bestaat geen nomenclatuurnummer en moet 426856 als pseudocodenummer hebben.
+- **kb90bedrag** (string): Het te factureren bedrag van zorg buiten de RIZIV-nomenclatuur, aan de patiënt of een andere betaler dan het ziekenfonds. Deze zorg heeft 426856 als pseudocodenummer. Bij KB90 in strikte zin (een vermelding voor het ziekenfonds) blijft dit veld weg, zie [Zorg zonder RIZIV-nomenclatuur](/nurse/wat#zorg-zonder-riziv-nomenclatuur-kb90).
 - **kb90omschrijving** (string): Een vrije omschrijving van de zorg die gefactureerd wordt onder de kb90 nomenclatuur. Verschijnt op de factuur en het bewijsstuk.
 - **BtwPercentage** (int): Indien er voor de prestatie btw moet aangerekend worden, dient hier gespecifieerd te worden hoeveel het btw percentage is: 0, 6 of 21
 - **BedragInclusiefBtw** (boolean): Hiermee kan gespecifeerd worden hoe de btw berekening dient te gebeuren. Indien het kb90bedrag of de tariefberekening voor de nomenclatuurcode inclusief 21% btw is, dan moet waarde Ja (Boolean True) meegegeven worden. Indien TDM3 zelf btw bedrag dient te berekenen op het kb90 bedrag of het door TDM3 getarifieerde bedrag, dan moet hier waarde Nee (Boolean False) meegeven worden.
@@ -314,10 +316,10 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
     - 1 : wel geconventioneerd
 - **naamverpleegkundige** (string): de naam van  de verpleegkundige
 - **patientgegevens\_id** (long): De unieke nummer van de patiënt binnen dit bestand.
-- **bezoeknummer** (long): Nummer van het bezoek.
+- **bezoeknummer** (long): Het volgnummer van het bezoek bij de patiënt op die dag, van 1 tot en met 10. Het is geen uniek id in het bestand. Alle zorgen van hetzelfde bezoek hebben hetzelfde nummer. De [lezingidentiteit](#node-lezingidentiteit) wordt gekoppeld op patiënt, datum en bezoeknummer.
 - **rep\_typebestemmeling\_id** (long): Indicator die aangeeft voor wie de factuur is. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis,…
 - **insuline** (boolean): Dit zou op &#39;True&#39; moeten staan wanneer de verpleegkundige een dossier bijhoudt van een diabetes patiënt en de verpleegkundige insuline inspuitingen geeft.  De verpleegkundige krijgt dan een forfait honoraria (423231,423334).  Dit forfait wordt dan door TDM3 toegevoegd.
-- **derdebetalercode** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). Voor patiëntfacturen staat hier de patientnummer(dit mag een interne id zijn, eigen nummering,…), voor andere staat hierin de id van de verzekering in het versturende systeem. Dit veld mag maximum 10 posities lang zijn.
+- **derdebetalercode** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). Bij deze facturen is derdebetalercode of derdebetalernaam verplicht, zie [Derdebetalergegevens](/nurse/aan-wie#derdebetalergegevens). Voor patiëntfacturen staat hier de patientnummer(dit mag een interne id zijn, eigen nummering,…), voor andere staat hierin de id van de verzekering in het versturende systeem. Dit veld mag maximum 10 posities lang zijn.
 - **derdebetalernaam** (string): Enkel voor niet-ziekenfonds facturen (verzekering, medisch huis, ocmw, etc). Naam van de verzekeringsinstelling.
 - **derdebetaleradres** (string): Enkel voor niet-ziekenfonds facturen (verzekering medisch huis, ocmw, etc). Het adres van de verzekeringsinstelling.
 - **derdebetaleremail** (string): Enkel voor niet-ziekenfonds facturen (verzekering medisch huis, ocmw, etc). Indien gewenst door de derde kan hier het email adres meegegeven worden waarnaar de factuur verstuurd moet worden.
@@ -326,8 +328,9 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **datumongeval** (dateTime): In geval van een arbeidsongeval staat hier de datum van het ongeval.
 - **werkgever** (string): In geval van een arbeidsongeval staat hier de naam van de werkgever.
 - **TypeFacturering** (string)
-  - 0 = standaard factuur,
-  - 3  = kredietnota
+  - 0 = standaard factuur
+  - 1 = herindiening, enkel in afspraak met TDM3. Vul in de gewone situatie 0 in, zie [Herindieningen](/nurse/hoe#herindieningen)
+  - 3 = kredietnota
   - 5 = correctiefactuur voor forfaits verpleegkundige zorgen wegens declassering na bezoek adviserend geneesheer
 - **rizivnummerzorgkundige** (string): De rizivnummer van de zorgkundige
 - **naamzorgkundige** (string): De naam van de zorgkundige
@@ -337,7 +340,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
     - 2 = ontslag in ziekenhuis
 	- 3 = opname in andere verzorgingsinstelling
 	- 4 = ontslag in andere verzorgingsinstelling
-- **Locatie:** Ikv Verordening van 28 juli 2003 bijlage 85, wordt hier de overeenkomstige pseudocode meegegeven die moeten vermeld worden bij de verstrekkingen van art. 8, §1, 3° van de nomenclatuur (&quot;verstrekkingen verleend hetzij in de praktijkkamer van de beoefenaar van de verpleegkunde, hetzij in een hersteloord&quot;). Deze pseudo-codes geven de plaats van verstrekking weer. Wordt ook gebruikt ikv diabeteseducatie via videoconsultatie tijdens COVID19-crisis. De betrekkelijke verstrekking wordt dan in dit element ingevuld. Voor het pilootproject artikel 56 bevat dit element de locatiecode van de directe zorg, zie [Pilootproject artikel 56](/nurse/artikel56#betrekkelijke-verstrekking-locatie).
+- **Locatie:** Ikv Verordening van 28 juli 2003 bijlage 85, wordt hier de overeenkomstige pseudocode meegegeven die moeten vermeld worden bij de verstrekkingen van art. 8, §1, 3° van de nomenclatuur (&quot;verstrekkingen verleend hetzij in de praktijkkamer van de beoefenaar van de verpleegkunde, hetzij in een hersteloord&quot;). Deze pseudocodes geven de plaats van verstrekking weer, zie [Betrekkelijke verstrekking: locatie](/nurse/wat#betrekkelijke-verstrekking-locatie). Voor het pilootproject artikel 56 bevat dit element de locatiecode van de directe zorg, zie [Pilootproject artikel 56](/nurse/artikel56#betrekkelijke-verstrekking-locatie).
 - **metadata**(type metadata, optioneel element)**:** een &quot;key-value&quot; pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven, die niet direct te maken heeft met de tarificatie van prestaties.
 
 ```xml
@@ -420,7 +423,6 @@ Deze node bevat het jaar en de maand van de verwerking van de prestaties.
 ```
 
 ## Node vereniging
-Node vereniging
 
 Deze node bevat de code en naam van de vereniging waar de prestaties vandaan komen.
 
@@ -469,9 +471,10 @@ Mogelijke waardes zijn :
 | PB          | Forfait PB         | 7                |
 | PC          | Forfait PC         | 7                |
 | PN          | Forfait PN         | 7                |
-| PP          | Forfait PP         | 7                |
 | T2          | Profiel N          | 2                |
 | T7          | Profiel N          | 7                |
+
+Het profiel PP wordt niet meegegeven. Het pakket geeft PN door en TDM3 schaalt zelf op naar PP op de dagen waarop het dagplafond bereikt is, zie [PN en PP](/nurse/wat#pn-en-pp).
 
 ```xml
 <profielen>
@@ -547,7 +550,7 @@ De volgende gegevens zijn vereist.
 *	**nummerbewijsstuk** (string): Het nummer van het bewijsstuk afgeleverd aan de patiënt moet in deze zone vermeld worden. Dit hoeft niet ingevuld te worden wanneer de TDM3 Facturatiedienst het bewijsstuk opmaak, dit is dus de standaard situatie!
 
 ## Node kennisgevingwondzorg
-Op basis de zorgduurte van de complexe wondzorgen (zie node [uitgevoerdezorg](#node-uitgevoerdezorg) 'zorgminuten' ) die dag en de aanwezige kennisgeving Wondzorg, kan TDM3 voor een specifieke dag het bijkomend honorarium complexe wondzorg toevoegen. Deze node volgt de mycarenet berichtgeving. Zie ook [verduidelijking hervorming wondzorg december 2022](#hervorming-wondzorg-nomenclatuur-december-2022)
+Op basis de zorgduurte van de complexe wondzorgen (zie node [uitgevoerdezorg](#node-uitgevoerdezorg) 'zorgminuten' ) die dag en de aanwezige kennisgeving Wondzorg, kan TDM3 voor een specifieke dag het bijkomend honorarium complexe wondzorg toevoegen. Deze node volgt de mycarenet berichtgeving. Zie ook [Complexe wondzorg](/nurse/wat#complexe-wondzorg).
 
 - **externeid** (string): de patientid uit het versturende systeem refererend naar externid van patientgegevens.
 - **patientgegevens\_id** (long): De unieke nummer van de patiënt binnen dit bestand.
@@ -574,7 +577,10 @@ Op basis de zorgduurte van de complexe wondzorgen (zie node [uitgevoerdezorg](#n
 
 ```
 
-## Type “metadata” en optioneel element metadata op patientgegeven en uitgevoerdezorg
+## Type metadata
+
+Het optionele element metadata bestaat op [patientgegevens](#node-patientgegevens) en [uitgevoerdezorg](#node-uitgevoerdezorg).
+
 **metadata** (type metadata, optioneel element): een “key-value” pair  (naam-waarde) van items waarbij optioneel meta informatie kan meegegeven. Dit laat toe om op een flexibel manier informatie mee te geven die niet direct te maken heeft met de tarificatie van prestaties, zonder steeds het XSD schema aan te passen.
 Het metadata is volledig optioneel voor de software ontwikkelaar van het END. Welke informatie die wordt meegegeven is, zoals steeds, nav concrete afspraken.
 Zowel **naam** als **waarde** zijn van type “string”.
@@ -592,8 +598,8 @@ Zowel **naam** als **waarde** zijn van type “string”.
     </metadata>
 ```
 
-# Opmerkingen
-## Het dateTime formaat
+## Algemene regels
+### Het dateTime-formaat
 Dit formaat wordt als volgt gedefinëerd: JJJJ-MM-DDTHH:MM:SS.
 - JJJJ: jaar (4 posities)
 - MM: maand (2 posities)
@@ -603,19 +609,32 @@ Dit formaat wordt als volgt gedefinëerd: JJJJ-MM-DDTHH:MM:SS.
 - MM: minuten (2 posities)
 - SS: seconden (2 posities)
 
-## Benaming van de velden
+### Toegestane waarden
+
+| Veld | Toegestane waarden |
+| --- | --- |
+| `ruraal` | `true` of `false`. De waarden `1`, `0` of een leeg veld worden gelezen als `false`. |
+| `remgeld` | Een geheel getal van 0 tot en met 100, zonder decimalen. Leeg is 0. |
+| `TypeFacturering` | 0, 1, 3 of 5. Leeg is 0. Zie [Type facturering](/nurse/hoe#type-facturering). |
+| `rep_typebestemmeling_id` | 1 tot en met 5. Leeg of 0 is het ziekenfonds. Zie [Type bestemmeling](/nurse/aan-wie#type-bestemmeling). |
+| `bezoeknummer` | 1 tot en met 10. |
+| `kb90bedrag` | Een bedrag met een punt als decimaalteken, bijvoorbeeld 6.25. |
+
+Het veld `ruraal` is in het XSD een string op patientgegevens en een boolean op adres. Dat is historisch zo gegroeid. Vul op beide plaatsen `true` of `false` in.
+
+### Benaming van de velden
 Aangezien XML case-sensitive is moeten alle veldnamen in de juiste case staan zoals in de xsd! De opgegeven benamingen moeten dus letterlijk gebruikt worden.
 
-## Het veld patientgegevens_id
+### Het veld patientgegevens_id
 Per patientgegeven-node bestaat er een unieke patientgegevens_id. Deze id moet op elke uitgevoerdezorg-node en op elk profielen-node van de patiënt ingevuld worden. Op basis van dit veld, samen met het veld ‘externeid’, worden dan de uitgevoerde zorgen en profielen gelinkt aan de patiënt. 
 
 In elk XML-bestand wordt er begonnen met patientgegevens_id 1 voor de eerste patiënt.
 
-## Het veld externeid
+### Het veld externeid
 Per patientgegeven-node bestaat er een unieke externeid, afkomstig uit het versturende systeem. Deze id moet op elke uitgevoerdezorg-node en op elke profielen-node van de patiënt ingevuld worden. Op basis van dit veld, samen met het veld ‘patientgegevens_id’, worden dan de uitgevoerde zorgen en profielen gelinkt aan de patiënt.
 
 
-# Volledig voorbeeld
+## Volledig voorbeeld
 Deze XML heeft 2 patiënten, met per patiënt 1 uitgevoerde zorg en 1 profiel. De eerste patiënt is een patiënt die aangesloten is bij een ziekenfonds, de tweede patiënt is verzekerd bij Fortis AG.
 
 ```xml

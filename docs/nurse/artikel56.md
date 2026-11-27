@@ -55,7 +55,7 @@ De plaats van de directe zorg wordt meegegeven in het bestaande element `Locatie
 ## Palliatief forfait
 
 - Het palliatief forfait **423975** wordt meegegeven als een aparte uitgevoerdezorg, met het bezoeknummer van de bijhorende directe zorg.
-- Zoals in de [algemene instructies](/nurse/#toevoegingen-door-tdm3) kijkt TDM3 naar de startdatum palliatief op node patientgegevens om te bepalen of een patiënt palliatief is.
+- Zoals bij [palliatieve patiënten](/nurse/wat#palliatieve-patienten) kijkt TDM3 naar de startdatum palliatief op node patientgegevens om te bepalen of een patiënt palliatief is.
 
 ## Rurale vergoeding
 
