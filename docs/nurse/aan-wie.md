@@ -37,7 +37,7 @@ TDM3 koppelt de code per praktijk aan de eigen stamgegevens:
 - Bij de patiënt (3) worden de naam en het adres de naam en het adres op de factuur.
 
 ::: info Node betaler
-De node [betaler](/nurse/nodes#node-betaler-voorstel) is een voorstel om meer gegevens over niet-ziekenfondsbetalers mee te geven. De import van TDM3 verwerkt deze node nog niet.
+De node `betaler` is een voorstel om meer gegevens over een betaler mee te geven. Zie [De node betaler](#de-node-betaler-voorstel).
 :::
 
 ## Remgeld
@@ -59,16 +59,69 @@ Het remgeld gaat altijd naar de patiënt, en enkel bij zorg die aan het ziekenfo
 
 ## Wie betaalt wat
 
-Deze tabel toont per situatie wat het pakket invult op [uitgevoerdezorg](/nurse/nodes#node-uitgevoerdezorg). Zorg uit de nomenclatuur en [vrije nomenclatuur](/nurse/wat#zorg-zonder-riziv-nomenclatuur-kb90) zijn aparte uitgevoerde zorgen, elk met een eigen type bestemmeling.
+Elke verstrekking is één `uitgevoerdezorg`-node, en elke node heeft één type bestemmeling. Daaruit volgt:
 
-| Situatie | Zorg uit de nomenclatuur | Remgeld | Vrije nomenclatuur (KB90) |
+- **Het remgeld is geen aparte node.** Het staat als percentage op de node van de verstrekking. Uit één node met type bestemmeling 1 en `remgeld` = 100 maakt TDM3 twee facturen: een voor het ziekenfonds en een remgeldfactuur voor de patiënt.
+- **Een extra dienst is wel een aparte node**, met een eigen type bestemmeling. Zie [vrije nomenclatuur](/nurse/wat#vrije-nomenclatuur).
+- **De betaler staat op de node.** Zorgen uit hetzelfde bezoek kunnen dus elk een andere betaler hebben.
+
+De tabel gaat uit van één bezoek met één verstrekking uit de nomenclatuur en één extra dienst. Dat zijn in elke situatie **twee** `uitgevoerdezorg`-nodes. Zonder extra dienst is het er één.
+
+| Situatie | Node 1: verstrekking uit de nomenclatuur | Node 2: extra dienst (426856 met `kb90bedrag`) | Wat TDM3 factureert |
 | --- | --- | --- | --- |
-| Ziekenfonds betaalt, geen remgeld, extra's door de patiënt | type bestemmeling 1 | `remgeld` = 0 | type bestemmeling 3 |
-| Ziekenfonds betaalt, remgeld en extra's door de patiënt | type bestemmeling 1 | `remgeld` = 1 tot 100, factuur aan de patiënt | type bestemmeling 3 |
-| Ziekenfonds betaalt, remgeld en extra's door een andere partij | type bestemmeling 1 | Niet ondersteund: het remgeld gaat altijd naar de patiënt | type bestemmeling 2, 4 of 5, met `derdebetalercode` |
-| Alles door de patiënt | type bestemmeling 3, met `derdebetalercode` | Niet van toepassing: alles gaat naar de patiënt | type bestemmeling 3 |
-| Alles door een andere partij, met remgeld | type bestemmeling 2 of 4, met `derdebetalercode` | leeg, wordt genegeerd | type bestemmeling 2 of 4, met `derdebetalercode` |
-| Alles door een andere partij, zonder remgeld | zoals de vorige rij | zoals de vorige rij | zoals de vorige rij |
+| 1. Het ziekenfonds betaalt, zonder remgeld. De patiënt betaalt de extra dienst. | `rep_typebestemmeling_id` = 1<br>`remgeld` = 0 | `rep_typebestemmeling_id` = 3<br>`derdebetalercode` | Ziekenfonds: de verstrekking.<br>Patiënt: de extra dienst. |
+| 2. Het ziekenfonds betaalt. De patiënt betaalt het remgeld en de extra dienst. | `rep_typebestemmeling_id` = 1<br>`remgeld` = 100, of een lager percentage | `rep_typebestemmeling_id` = 3<br>`derdebetalercode` | Ziekenfonds: de verstrekking.<br>Patiënt: het remgeld en de extra dienst. |
+| 3. Het ziekenfonds betaalt. Een andere partij betaalt de extra dienst. | `rep_typebestemmeling_id` = 1<br>`remgeld` = 0 tot 100 | `rep_typebestemmeling_id` = 2, 4 of 5<br>`derdebetalercode` | Ziekenfonds: de verstrekking.<br>Patiënt: het remgeld, als er remgeld is.<br>Andere partij: de extra dienst. |
+| 4. De patiënt betaalt alles. | `rep_typebestemmeling_id` = 3<br>`derdebetalercode` | `rep_typebestemmeling_id` = 3<br>`derdebetalercode` | Patiënt: de volledige verstrekking en de extra dienst. |
+| 5. Een andere partij betaalt alles. | `rep_typebestemmeling_id` = 2 of 4<br>`derdebetalercode`<br>`remgeld` leeg | `rep_typebestemmeling_id` = 2 of 4<br>`derdebetalercode` | Andere partij: de verstrekking en de extra dienst.<br>Er is geen remgeld. |
+
+Twee combinaties kent het bestand niet:
+
+- Het remgeld kan niet naar een andere partij dan de patiënt gaan.
+- Bij een andere betaler dan het ziekenfonds (situatie 5) is er geen onderscheid met of zonder remgeld.
+
+### Voorbeeld: ziekenfonds, remgeld en een extra dienst voor de patiënt
+
+Situatie 2 uit de tabel: een wondzorg op voorschrift en incontinentiemateriaal in hetzelfde bezoek. Het zijn twee nodes. Er is geen derde node voor het remgeld.
+
+```xml
+<!-- Node 1: de verstrekking. Het ziekenfonds betaalt, de patiënt betaalt het volledige remgeld. -->
+<uitgevoerdezorg>
+    <input_uitgevoerdezorg_id>9001</input_uitgevoerdezorg_id>
+    <externeid>423</externeid>
+    <datumuitvoering>2026-02-16T08:00:00</datumuitvoering>
+    <datumvoorschrift>2026-02-01T00:00:00</datumvoorschrift>
+    <rizivnummervoorschrijver>10828168004</rizivnummervoorschrijver>
+    <remgeld>100</remgeld>
+    <nomenclatuurnummer>424336</nomenclatuurnummer>
+    <rizivnummerverpleegkundige>149488014401</rizivnummerverpleegkundige>
+    <patientgegevens_id>341</patientgegevens_id>
+    <bezoeknummer>1</bezoeknummer>
+    <rep_typebestemmeling_id>1</rep_typebestemmeling_id>
+    <insuline>false</insuline>
+    <TypeFacturering>0</TypeFacturering>
+</uitgevoerdezorg>
+<!-- Node 2: de extra dienst. De patiënt betaalt. -->
+<uitgevoerdezorg>
+    <input_uitgevoerdezorg_id>9002</input_uitgevoerdezorg_id>
+    <externeid>423</externeid>
+    <datumuitvoering>2026-02-16T08:00:00</datumuitvoering>
+    <remgeld>0</remgeld>
+    <nomenclatuurnummer>000000</nomenclatuurnummer>
+    <pseudocodenummer>426856</pseudocodenummer>
+    <kb90bedrag>12.50</kb90bedrag>
+    <kb90omschrijving>Incontinentiemateriaal</kb90omschrijving>
+    <rizivnummerverpleegkundige>149488014401</rizivnummerverpleegkundige>
+    <patientgegevens_id>341</patientgegevens_id>
+    <bezoeknummer>1</bezoeknummer>
+    <rep_typebestemmeling_id>3</rep_typebestemmeling_id>
+    <insuline>false</insuline>
+    <derdebetalercode>341</derdebetalercode>
+    <TypeFacturering>0</TypeFacturering>
+    <BtwPercentage>21</BtwPercentage>
+    <BedragInclusiefBtw>true</BedragInclusiefBtw>
+</uitgevoerdezorg>
+```
 
 ## Factuur aan de patiënt
 
@@ -84,6 +137,84 @@ Bij e-mail moet `emailfactuurpatient` ingevuld zijn met het e-mailadres waarnaar
 Voor facturen die niet naar een ziekenfonds of de patiënt gaan (verzekering, medisch huis, OCMW, ...) kan `derdebetaleremail` op [uitgevoerdezorg](/nurse/nodes#node-uitgevoerdezorg) het e-mailadres van de derdebetaler bevatten waarnaar de factuur verstuurd mag worden.
 
 Het veld is optioneel en wordt enkel gebruikt wanneer de factuur niet naar een ziekenfonds of de patiënt gaat (`rep_typebestemmeling_id` ≠ 1 en ≠ 3).
+
+## De node betaler (voorstel)
+
+::: warning Nog niet ondersteund
+De node `betaler` is een voorstel. Ze staat in het XSD, maar de import van TDM3 verwerkt ze nog niet. Tot dan gelden de [derdebetalergegevens](#derdebetalergegevens) op uitgevoerdezorg.
+:::
+
+De derdebetalervelden op uitgevoerdezorg bevatten weinig gegevens: een code, een naam, een adres en een e-mailadres. Ze staan bovendien op elke zorg opnieuw. De node `betaler` beschrijft een betaler één keer per bestand, met meer gegevens: een KBO- of RIZIV-nummer, een eigen referentie van de betaler, een contactpersoon en het kanaal waarlangs de factuur verstuurd wordt (post, eBox, e-mail of Peppol).
+
+### De link met uitgevoerdezorg
+
+- De node staat binnen `pakketgegevens`, naast de andere nodes.
+- `betaler.referentienr` is gelijk aan de `derdebetalercode` op de uitgevoerde zorgen van die betaler.
+- Per unieke `derdebetalercode` staat er hoogstens één `betaler` in het bestand.
+- `betaler.type` is het type bestemmeling van die zorgen.
+- Met een `betaler` hoeven `derdebetalernaam`, `derdebetaleradres` en `derdebetaleremail` niet meer op de zorg te staan. Enkel `derdebetalercode` blijft.
+
+### Per type bestemmeling
+
+| Type bestemmeling | Betaler-node | Gegevens die de node toevoegt |
+| --- | --- | --- |
+| 1. Ziekenfonds | geen | - |
+| 2. Verzekering | `type` = 2 | `naam`, `kbonr`, `uwreferentie` (polis- of dossiernummer), `terattentievan`, `facturatiekanaal`, factuuradres |
+| 3. Patiënt | `type` = 3 | `naam` en `voornaam`, `rijksregisternr`, `taalcode`, `facturatiekanaal`, factuuradres |
+| 4. OCMW | `type` = 4 | `naam`, `kbonr`, `uwreferentie`, `terattentievan`, `facturatiekanaal`, factuuradres |
+| 5. Medisch huis | `type` = 5 | `naam`, `rizivnr`, `kbonr`, `facturatiekanaal`, factuuradres |
+
+Alle velden van de node staan op [Nodes](/nurse/nodes#node-betaler-voorstel).
+
+### Voorbeeld: verzekering met factuur via Peppol
+
+Een wondzorg na een arbeidsongeval wordt aan de verzekering gefactureerd. De zorg verwijst met `derdebetalercode` naar de betaler; de gegevens van de verzekering staan één keer in het bestand.
+
+```xml
+<uitgevoerdezorg>
+    <input_uitgevoerdezorg_id>9101</input_uitgevoerdezorg_id>
+    <externeid>423</externeid>
+    <datumuitvoering>2026-02-16T08:00:00</datumuitvoering>
+    <datumvoorschrift>2026-02-01T00:00:00</datumvoorschrift>
+    <rizivnummervoorschrijver>10828168004</rizivnummervoorschrijver>
+    <nomenclatuurnummer>424336</nomenclatuurnummer>
+    <rizivnummerverpleegkundige>149488014401</rizivnummerverpleegkundige>
+    <patientgegevens_id>341</patientgegevens_id>
+    <bezoeknummer>1</bezoeknummer>
+    <rep_typebestemmeling_id>2</rep_typebestemmeling_id>
+    <insuline>false</insuline>
+    <derdebetalercode>VERZ01</derdebetalercode>
+    <datumongeval>2026-01-20T00:00:00</datumongeval>
+    <werkgever>Voorbeeld Bouw nv</werkgever>
+    <TypeFacturering>0</TypeFacturering>
+</uitgevoerdezorg>
+
+<betaler>
+    <externeid>VERZ01</externeid>
+    <type>2</type>
+    <referentienr>VERZ01</referentienr>
+    <naam>Voorbeeld Verzekeringen nv</naam>
+    <voornaam/>
+    <email>facturen@voorbeeldverzekeringen.example</email>
+    <taalcode>nl</taalcode>
+    <kbonr>0123456789</kbonr>
+    <facturatiekanaal>3</facturatiekanaal>
+    <uwreferentie>DOSSIER-2026-0042</uwreferentie>
+    <terattentievan>Dienst arbeidsongevallen</terattentievan>
+    <adressen>
+        <adres>
+            <type>Factuur</type>
+            <straat>Voorbeeldlaan</straat>
+            <huisnummer>1</huisnummer>
+            <postcode>1000</postcode>
+            <gemeente>Brussel</gemeente>
+            <landcode>BE</landcode>
+        </adres>
+    </adressen>
+</betaler>
+```
+
+De gegevens in het voorbeeld zijn fictief.
 
 ## Adressering en busnummers
 

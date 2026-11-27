@@ -265,7 +265,7 @@ Voorbeeld adressen
 De node betaler is een voorstel. De import van TDM3 verwerkt deze node momenteel niet.
 :::
 
-Dit is een node binnen [pakketgegevens](#node-pakketgegevens) die verwijst naar de derdebetalercode in de uitgevoerdezorg node.
+Dit is een node binnen [pakketgegevens](#node-pakketgegevens) die verwijst naar de derdebetalercode in de uitgevoerdezorg node. De uitleg per type bestemmeling en een voorbeeld staan op [Aan wie](/nurse/aan-wie#de-node-betaler-voorstel).
 Per unieke derdebetalercode mag er max 1 betaler element meegegeven worden.
 Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefondsen (patienten, medische huizen, ziekenhuizen, verzekeringen, enz)
 - **externeid**: (string) Het externe id van het versturende systeem.
