@@ -112,7 +112,7 @@ Het pakket vult `datumvoorschrift` en `rizivnummervoorschrijver` enkel in bij ee
 | Verstrekking zonder voorschrift | niets | geen datum |
 
 - Een `datumvoorschrift` zonder geldig `rizivnummervoorschrijver` geeft een validatiefout.
-- `naamvoorschrijver` is optioneel. De naam gaat niet naar het ziekenfonds.
+- `naamvoorschrijver` is niet verplicht. TDM3 zoekt de naam van de voorschrijver zelf op aan de hand van `rizivnummervoorschrijver`. De naam gaat niet naar het ziekenfonds.
 - Bij een digitaal verwijsvoorschrift komt ook het referentienummer mee, zie [Digitaal verwijsvoorschrift](#digitaal-verwijsvoorschrift).
 
 ## Pseudocodes die wel meekomen

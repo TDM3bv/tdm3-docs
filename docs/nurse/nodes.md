@@ -306,7 +306,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **zorgminuten** (int): Het aantal minuten de uitgevoerdezorg heeft geduurd. Bijvoorbeeld in het kader van een complexe wondzorg.
 - **datumvoorschrift** (dateTime): De datum waarop de prestatie is voorgeschreven. Enkel bij een verstrekking met een voorschrift, en altijd samen met rizivnummervoorschrijver, zie [Voorschrift: datum en voorschrijver](/nurse/wat#voorschrift-datum-en-voorschrijver).
 - **rizivnummervoorschrijver** (string): De rizivnummer van de voorschrijvende geneesheer.
-- **naamvoorschrijver** (string): De naam van de voorschrijvende geneesheer (optioneel).
+- **naamvoorschrijver** (string): De naam van de voorschrijvende geneesheer. Niet verplicht: TDM3 zoekt de naam zelf op aan de hand van rizivnummervoorschrijver.
 - **referentieverwijsvoorschrift** (string): referentienummer (Short RefID) (Short Code) van het digitaal verwijsvoorschrift. Dit nummer bestaat uit 6 alfanumerieke karakters. Moet ingevuld worden wanneer voor de verstrekking  een digitaal verwijsvoorschrift werd gebruikt.
 - **remgeld** (string): uitgedrukt als percentage van het persoonlijk aandeel dat wordt gevraagd, van 0 tem 100. 0 is geen remgeld tellen, 100 = het volledige persoonlijk aandeel wordt gevraagd.
 - **nomenclatuurnummer** (string): De nomenclatuurnummer van de prestatie.
