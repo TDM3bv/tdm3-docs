@@ -285,7 +285,9 @@ Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefond
 - **uwreferentie**: (string) polisnummer, dossiernummer, ordernummer of andere referentie die voor de partij op de factuur moet verschijnen zodat men efficënt de link kan leggen met het eigen dossierbeheer systeem
 - **telefoon**: (string) gsm of telefoonnummer van de betaler waarmee TDM3 contact kan opnemen ikv verdere opvolging van de factuur
 - **terattentievan**: (string) hiermee kan verder gespecifieerd worden aan wie of welke afdeling binnen een organisatie de factuur mag gericht worden
-- **facturatiekanaal**: (int) 0=POST, 1=EBOX, 2=EMAIL, 3=PEPPOL. Hier kan aangegeven worden via welk kanaal de factuur moet/mag verstuurd worden. Afhankelijk van he kanaal, worden bepaalde informatievelden verplicht. Bvb: indien PEPPOL of EBOX => KBONr verplicht.
+- **facturatiekanaal**: (int) 0=POST, 1=EBOX, 2=EMAIL, 3=PEPPOL. Hier kan aangegeven worden via welk kanaal de factuur moet/mag verstuurd worden. Afhankelijk van het kanaal worden bepaalde informatievelden verplicht:
+    - PEPPOL: het KBO-nummer (`kbonr`) is verplicht.
+    - EBOX: het KBO-nummer is enkel verplicht wanneer de betaler geen patiënt is. Bij een patiënt dient het rijksregisternummer (`rijksregisternr`) als identificatie.
 - **adressen**: (complexeType) minstens 1 adres van het [AdresType](#element-adres-op-node-patientgegevens) Factuur 
 - **metadata**: (complexeType) zie uitleg bij [metadata](#type-metadata)  
 

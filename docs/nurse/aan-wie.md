@@ -173,6 +173,11 @@ De derdebetalervelden op uitgevoerdezorg bevatten weinig gegevens: een code, een
 | 4. OCMW | `type` = 4 | `naam`, `kbonr`, `uwreferentie`, `terattentievan`, `facturatiekanaal`, factuuradres |
 | 5. Medisch huis | `type` = 5 | `naam`, `rizivnr`, `kbonr`, `facturatiekanaal`, factuuradres |
 
+Het kanaal bepaalt welke identificatie nodig is:
+
+- **Peppol**: het KBO-nummer is verplicht.
+- **eBox**: het KBO-nummer is enkel verplicht wanneer de betaler geen patiënt is. Bij een patiënt dient het rijksregisternummer als identificatie.
+
 Alle velden van de node staan op [Nodes](/nurse/nodes#node-betaler-voorstel).
 
 ### Remgeld via de betaler-node
