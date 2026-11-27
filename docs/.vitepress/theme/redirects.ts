@@ -34,6 +34,7 @@ const nurseNodes: Record<string, string> = {
   'element-adres-op-node-patientgegeven': '/nurse/nodes#element-adres-op-node-patientgegevens',
   'voorbeeld-patientgegeven': '/nurse/nodes#voorbeeld-patientgegevens',
   'node-kennsigevingwondzorg': '/nurse/nodes#node-kennisgevingwondzorg',
+  'node-betaler-voorstel': '/nurse/nodes#node-betaler',
   'type-metadata-en-optioneel-element-metadata-op-patientgegeven-en-uitgevoerdezorg': '/nurse/nodes#type-metadata',
   'xml-nodes': '/nurse/nodes#node-pakketgegevens',
   'opmerkingen': '/nurse/nodes#algemene-regels',

@@ -38,7 +38,7 @@ TDM3 koppelt de code per praktijk aan de eigen stamgegevens:
 - Bij de patiënt (3) worden de naam en het adres de naam en het adres op de factuur.
 
 ::: info Node betaler
-De node `betaler` is een voorstel om meer gegevens over een betaler mee te geven. Zie [De node betaler](#de-node-betaler-voorstel).
+Met de node `betaler` geef je meer gegevens over een betaler mee, één keer per bestand. Zie [De node betaler](#de-node-betaler).
 :::
 
 ## Remgeld
@@ -64,7 +64,7 @@ De remgeldfactuur staat altijd op naam van de patiënt. Moet ze bij een andere p
 
 - **Via patientgegevens, per e-mail**: `kanaalfactuurpatient` = 2 met het e-mailadres van die partij in `emailfactuurpatient`. Zie [Factuur aan de patiënt](#factuur-aan-de-patient).
 - **Via patientgegevens, per post**: een adres van het type `Factuur` in het element [adressen](/nurse/nodes#element-adres-op-node-patientgegevens). De adresvelden van patientgegevens blijven dan het domicilieadres. Zie [voorbeeld 4](#voorbeeld-4-factuuradres-als-adres-van-het-type-factuur). Staat het postadres toch in de adresvelden van patientgegevens zelf, dan komt het domicilieadres mee als adres van het type `Domicilie`.
-- **Via een betaler-node** (voorstel): een `betaler` met het rijksregisternummer van de patiënt. Daarmee geef je de verzendwijze gedetailleerder mee, onder meer met `terattentievan` (ter attentie van). Zie [Remgeld via de betaler-node](#remgeld-via-de-betaler-node).
+- **Via een betaler-node**: een `betaler` met het rijksregisternummer van de patiënt. Daarmee geef je de verzendwijze gedetailleerder mee, onder meer met `terattentievan` (ter attentie van). Zie [Remgeld via de betaler-node](#remgeld-via-de-betaler-node).
 
 ## Wie betaalt wat
 
@@ -149,13 +149,11 @@ Voor facturen die niet naar een ziekenfonds of de patiënt gaan (verzekering, me
 
 Het veld is optioneel en wordt enkel gebruikt wanneer de factuur niet naar een ziekenfonds of de patiënt gaat (`rep_typebestemmeling_id` ≠ 1 en ≠ 3).
 
-## De node betaler (voorstel)
-
-::: warning Nog niet ondersteund
-De node `betaler` is een voorstel. Ze staat in het XSD, maar de import van TDM3 verwerkt ze nog niet. Tot dan gelden de [derdebetalergegevens](#derdebetalergegevens) op uitgevoerdezorg.
-:::
+## De node betaler
 
 De derdebetalervelden op uitgevoerdezorg bevatten weinig gegevens: een code, een naam, een adres en een e-mailadres. Ze staan bovendien op elke zorg opnieuw. De node `betaler` beschrijft een betaler één keer per bestand, met meer gegevens: een KBO- of RIZIV-nummer, een eigen referentie van de betaler, een contactpersoon en het kanaal waarlangs de factuur verstuurd wordt (post, eBox, e-mail of Peppol).
+
+Zonder `betaler` gelden de [derdebetalergegevens](#derdebetalergegevens) op uitgevoerdezorg.
 
 ### De link met uitgevoerdezorg
 
@@ -181,7 +179,7 @@ Het kanaal bepaalt welke identificatie nodig is:
 - **Peppol**: het KBO-nummer is verplicht.
 - **eBox**: het KBO-nummer is enkel verplicht wanneer de betaler geen patiënt is. Bij een patiënt dient het rijksregisternummer als identificatie.
 
-Alle velden van de node staan op [Nodes](/nurse/nodes#node-betaler-voorstel).
+Alle velden van de node staan op [Nodes](/nurse/nodes#node-betaler).
 
 ### Remgeld via de betaler-node
 

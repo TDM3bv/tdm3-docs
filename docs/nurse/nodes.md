@@ -23,7 +23,7 @@ Deze node is de overkoepelende node waaronder alle andere nodes verzameld staan.
 - een aantal profielen-nodes
 - een aantal lezingidentiteit nodes
 - een aantal kennisgevingwondzorg nodes
-- een aantal betaler-nodes ([voorstel](#node-betaler-voorstel), nog niet verwerkt)
+- een aantal [betaler](#node-betaler)-nodes
 
 Welke elementen verplicht zijn, staat in het [XSD-schema](/schemas/tdm3prestatiebestand.xsd). De voorbeelden op deze site tonen enkel de elementen die voor de situatie van belang zijn.
 
@@ -266,13 +266,9 @@ De elementen staan in de volgorde van het XSD-schema.
 	</patientgegevens>
 ```
 
-## Node betaler (voorstel)
+## Node betaler
 
-::: warning Nog niet ondersteund
-De node betaler is een voorstel. De import van TDM3 verwerkt deze node momenteel niet.
-:::
-
-Dit is een node binnen [pakketgegevens](#node-pakketgegevens) die verwijst naar de derdebetalercode in de uitgevoerdezorg node. De uitleg per type bestemmeling en een voorbeeld staan op [Aan wie](/nurse/aan-wie#de-node-betaler-voorstel).
+Dit is een node binnen [pakketgegevens](#node-pakketgegevens) die verwijst naar de derdebetalercode in de uitgevoerdezorg node. De uitleg per type bestemmeling en een voorbeeld staan op [Aan wie](/nurse/aan-wie#de-node-betaler).
 Per unieke derdebetalercode mag er max 1 betaler element meegegeven worden.
 Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefondsen (patienten, medische huizen, ziekenhuizen, verzekeringen, enz)
 - **externeid**: (string) Het externe id van het versturende systeem.
