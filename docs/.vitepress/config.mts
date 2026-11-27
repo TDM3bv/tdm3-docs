@@ -28,16 +28,32 @@ export default defineConfig({
     ],
     sidebar: {
       '/nurse/': [
-      {
-        text: "Nurse-XML",
-        items: [          
-          { text: 'Algemeen', link: '/nurse/' },
-          { text: 'Nodes', link: '/nurse/nodes' },
-          { text: 'Voorbeelden artikel 8', link: '/nurse/artikel8' },
-          { text: 'Pilootproject artikel 56', link: '/nurse/artikel56' },
-          { text: 'Changelog', link: '/nurse/CHANGELOG' }
-        ]        
-      }],
+        {
+          text: 'Prestatiebestand',
+          items: [
+            { text: 'Overzicht', link: '/nurse/' },
+            { text: 'Wie voert de zorg uit?', link: '/nurse/wie' },
+            { text: 'Wat: zorg bij de patiënt', link: '/nurse/wat' },
+            { text: 'Aan wie: de betaler', link: '/nurse/aan-wie' },
+            { text: 'Hoe: factureren en aanleveren', link: '/nurse/hoe' }
+          ]
+        },
+        {
+          text: 'Specificatie',
+          items: [
+            { text: 'Nodes', link: '/nurse/nodes' },
+            { text: 'Veelgestelde vragen', link: '/nurse/faq' },
+            { text: 'Changelog', link: '/nurse/CHANGELOG' }
+          ]
+        },
+        {
+          text: 'Voorbeelden',
+          items: [
+            { text: 'Artikel 8', link: '/nurse/artikel8' },
+            { text: 'Pilootproject artikel 56', link: '/nurse/artikel56' }
+          ]
+        }
+      ],
       '/doctor/': [
       {
         text: "Doctor",
@@ -57,7 +73,7 @@ export default defineConfig({
       provider: 'local'
     },
     footer: {
-      copyright: "Copyright © 2023 TDM3 CVBA"
+      copyright: `Copyright © 2023-${new Date().getFullYear()} TDM3`
     },
     
   },

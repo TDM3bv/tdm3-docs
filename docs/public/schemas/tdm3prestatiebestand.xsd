@@ -214,37 +214,37 @@
 						</xs:sequence>
 					</xs:complexType>
           </xs:element>
+				<xs:element name="betaler">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="externeid" type="xs:string" minOccurs="1" />
+							<xs:element name="type" type="xs:long" minOccurs="1" />
+							<xs:element name="referentienr" type="xs:string" minOccurs="1" />
+							<xs:element name="naam" type="xs:string" minOccurs="1" />
+							<xs:element name="voornaam" type="xs:string" minOccurs="1" />
+							<xs:element name="email" type="xs:string" minOccurs="0" />
+							<xs:element name="taalcode" type="xs:string" minOccurs="0" />
+							<xs:element name="rijksregisternr" type="xs:string" minOccurs="0" />
+							<xs:element name="kbonr" type="xs:string" minOccurs="0" />
+							<xs:element name="rizivnr" type="xs:string" minOccurs="0" />
+							<xs:element name="facturatiekanaal" type="xs:long" minOccurs="0" />
+							<xs:element name="telefoon" type="xs:string" minOccurs="0" />
+							<xs:element name="uwreferentie" type="xs:string" minOccurs="0" />
+							<xs:element name="terattentievan" type="xs:string" minOccurs="0" />
+							<xs:element name="metadata" type="metadata" minOccurs="0" />
+							<xs:element name="adressen" nillable="true" >
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="adres" name="adres" minOccurs="1" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
 			</xs:choice>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="betaler">
-			<xs:complexType>
-				<xs:sequence>
-						<xs:element name="externeid" type="xs:string" minOccurs="1" />
-						<xs:element name="type" type="xs:long" minOccurs="1" />
-						<xs:element name="referentienr" type="xs:string" minOccurs="1" />
-						<xs:element name="naam" type="xs:string" minOccurs="1" />
-						<xs:element name="voornaam" type="xs:string" minOccurs="1" />
-						<xs:element name="email" type="xs:string" minOccurs="0" />								
-						<xs:element name="taalcode" type="xs:string" minOccurs="0" />
-						<xs:element name="rijksregisternr" type="xs:string" minOccurs="0" />
-						<xs:element name="kbonr" type="xs:string" minOccurs="0" />
-						<xs:element name="rizivnr" type="xs:string" minOccurs="0" />
-						<xs:element name="facturatiekanaal" type="xs:long" minOccurs="0" />
-						<xs:element name="telefoon" type="xs:string" minOccurs="0" />
-						<xs:element name="uwreferentie" type="xs:string" minOccurs="0" />								
-						<xs:element name="terattentievan" type="xs:string" minOccurs="0" />								
-						<xs:element name="metadata" type="metadata" minOccurs="0" />
-						<xs:element name="adressen" nillable="true" >
-							<xs:complexType>
-								<xs:sequence>
-									<xs:element type="adres" name="adres" minOccurs="1" maxOccurs="unbounded"/>
-								</xs:sequence>
-							</xs:complexType>
-						</xs:element>
-					</xs:sequence>
-			 </xs:complexType>
-			</xs:element>
 	<xs:simpleType name="emptyDateTime">
 		<xs:annotation>
 			<xs:documentation>Simple union for enabling null for date</xs:documentation>

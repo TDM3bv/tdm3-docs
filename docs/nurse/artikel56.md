@@ -55,7 +55,7 @@ De plaats van de directe zorg wordt meegegeven in het bestaande element `Locatie
 ## Palliatief forfait
 
 - Het palliatief forfait **423975** wordt meegegeven als een aparte uitgevoerdezorg, met het bezoeknummer van de bijhorende directe zorg.
-- Zoals in de [algemene instructies](/nurse/#toevoegingen-door-tdm3) kijkt TDM3 naar de startdatum palliatief op node patientgegevens om te bepalen of een patiënt palliatief is.
+- Zoals bij [palliatieve patiënten](/nurse/wat#palliatieve-patienten) kijkt TDM3 naar de startdatum palliatief op node patientgegevens om te bepalen of een patiënt palliatief is.
 
 ## Rurale vergoeding
 
@@ -84,7 +84,7 @@ Sommige prestaties worden gefinancierd buiten artikel 8, via de klassieke nomenc
 ## Lezing identiteit
 
 - Een [lezingidentiteit](/nurse/nodes#node-lezingidentiteit) komt mee voor elk contact directe zorg bij de patiënt, zoals vandaag.
-- Bij een lezing van de chipkaart zijn `redenmanueleinvoering` en `redengebruikvignet` 0 (niet van toepassing) of worden ze weggelaten.
+- Bij een lezing van de chipkaart zijn `redenmanueleinvoering` en `redengebruikvignet` 0 (niet van toepassing). Beide elementen zijn verplicht in het XSD.
 - `redengebruikvignet` wordt enkel ingevuld bij `typevandrageridentiteitsdocument` = 7 (vignet).
 - `typevandrageridentiteitsdocument` = 0 mag enkel samen met `redenmanueleinvoering` = 7.
 - Bij directe zorg **op afstand** (locatie 421396) is geen vignet vereist: TDM3 voegt de lezingidentiteit zelf toe.

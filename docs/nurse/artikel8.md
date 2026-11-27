@@ -5,7 +5,7 @@ outline: deep
 
 Deze pagina toont voorbeelden van het prestatiebestand (nurse-xml) voor de facturatie van thuisverpleging volgens artikel 8 van de nomenclatuur. Elk voorbeeld beschrijft een situatie, de XML die de software van de praktijk aanlevert, en wat TDM3 daarna zelf doet.
 
-De gegevens in de voorbeelden zijn fictief. De combinaties van codes, de tijdstippen en de minuten zijn representatief voor de bestanden die TDM3 ontvangt. De voorbeelden tonen enkel de nodes die voor de situatie van belang zijn; de volledige beschrijving staat bij de [nodes](/nurse/nodes), de algemene regels bij de [algemene instructies](/nurse/). Voor het pilootproject artikel 56, zie [Pilootproject artikel 56](/nurse/artikel56).
+De gegevens in de voorbeelden zijn fictief. De combinaties van codes, de tijdstippen en de minuten zijn representatief voor de bestanden die TDM3 ontvangt. De voorbeelden tonen enkel de nodes die voor de situatie van belang zijn; de volledige beschrijving staat bij de [nodes](/nurse/nodes), de algemene regels in het [overzicht](/nurse/) en op de pagina's [Wie](/nurse/wie), [Wat](/nurse/wat), [Aan wie](/nurse/aan-wie) en [Hoe](/nurse/hoe). Voor het pilootproject artikel 56, zie [Pilootproject artikel 56](/nurse/artikel56).
 
 ## Afspraken in alle voorbeelden
 
@@ -13,7 +13,7 @@ De gegevens in de voorbeelden zijn fictief. De combinaties van codes, de tijdsti
 - De zorgen van eenzelfde bezoek hebben hetzelfde `bezoeknummer`. Per dag krijgt elk bezoek een eigen bezoeknummer (1, 2, 3, ...).
 - Elk bezoek met zorg die aan het ziekenfonds gefactureerd wordt, heeft een `lezingidentiteit` met hetzelfde bezoeknummer.
 - Een `datumvoorschrift` komt altijd samen met `rizivnummervoorschrijver`.
-- Basisverstrekkingen, forfaits, het supplement PN, het opvolgingshonorarium diabetes en de verplaatsingskosten (ruraal) worden niet meegegeven: TDM3 voegt die zelf toe, zie [Toevoegingen door TDM3](/nurse/#toevoegingen-door-tdm3).
+- Basisverstrekkingen, forfaits, het supplement PN, het opvolgingshonorarium diabetes en de verplaatsingskosten (ruraal) worden niet meegegeven: TDM3 voegt die zelf toe, zie [Wat TDM3 zelf toevoegt](/nurse/wat#wat-tdm3-zelf-toevoegt).
 
 - Elk voorbeeld staat op zichzelf. Een volledig bestand bevat altijd ook de nodes `patientgegevens`, `vereniging`, `facturatieperiode` en `tarificatiedienst`; die zijn in de voorbeelden weggelaten, behalve waar ze voor de situatie van belang zijn.
 - De RIZIV- en rijksregisternummers in de voorbeelden zijn bewust ongeldig. Gebruik voor een testbestand eigen geldige testnummers.
@@ -480,11 +480,11 @@ Een patiënt krijgt op een weekdag complexe wondzorg (424351) van 35 minuten. Er
 **Wat TDM3 doet**
 
 - Als de som van `zorgminuten` van de complexe wondzorgen op die dag minstens 30 minuten is en er een kennisgeving geldt, voegt TDM3 het bijkomend honorarium complexe wondzorg toe.
-- Zie ook [hervorming wondzorg nomenclatuur december 2022](/nurse/#hervorming-wondzorg-nomenclatuur-december-2022).
+- Zie ook [Complexe wondzorg](/nurse/wat#complexe-wondzorg).
 
 ### Voorbeeld 8: toilet in een hersteloord
 
-Een toilet in een hersteloord heeft een eigen code (425913). De plaats wordt aangeduid met de locatiecode 421212 in het element `Locatie`, zie [Locatie veld bij node uitgevoerde zorg](/nurse/#locatie-veld-bij-node-uitgevoerde-zorg).
+Een toilet in een hersteloord heeft een eigen code (425913). De plaats wordt aangeduid met de locatiecode 421212 in het element `Locatie`, zie [Betrekkelijke verstrekking: locatie](/nurse/wat#betrekkelijke-verstrekking-locatie).
 
 ```xml
 <!-- Profiel T7, geldig op de zorgdag -->
@@ -597,11 +597,11 @@ Bij een patiënt met profiel A worden tijdens het bezoek een toilet en de wekeli
 
 **Wat TDM3 doet**
 
-- Op een forfaitfactuur vervangt TDM3 424874 door de pseudocode 426576, zie [pseudocodes die wel kunnen meegegeven worden](/nurse/#pseudocodes-die-wel-kunnen-meegegeven-worden-in-het-xml-bestand).
+- Op een forfaitfactuur vervangt TDM3 424874 door de pseudocode 426576, zie [Pseudocodes die wel meekomen](/nurse/wat#pseudocodes-die-wel-meekomen).
 
 ### Voorbeeld 10: zorg zonder RIZIV-nomenclatuur (KB90) aan de patiënt
 
-'s Ochtends krijgt de patiënt een toilet, gefactureerd aan het ziekenfonds. 's Avonds volgt een avondzorg zonder RIZIV-nomenclatuur, gefactureerd aan de patiënt via pseudocode 426856 en een `kb90bedrag`. Zie ook [Zorgen zonder riziv-nomenclatuur](/nurse/#zorgen-zonder-riziv-nomenclatuur).
+'s Ochtends krijgt de patiënt een toilet, gefactureerd aan het ziekenfonds. 's Avonds volgt een avondzorg zonder RIZIV-nomenclatuur, gefactureerd aan de patiënt via pseudocode 426856 en een `kb90bedrag`. Zie ook [Zorg zonder RIZIV-nomenclatuur](/nurse/wat#zorg-zonder-riziv-nomenclatuur-kb90).
 
 ```xml
 <!-- Profiel T7, geldig op de zorgdag -->
@@ -772,5 +772,5 @@ Na een bezoek van de adviserend geneesheer wordt het profiel van de patiënt afg
 **Wat TDM3 doet**
 
 - TDM3 maakt een correctiefactuur voor het forfait: de oorspronkelijke factuurlijnen worden in min gezet en de nieuwe factuurlijnen in plus.
-- Zie ook [het doorgeven van een afscoring forfait](/nurse/#het-doorgeven-van-een-afscoring-forfait).
-- Een correctieforfait is enkel mogelijk bij een profiel dat forfaitdagen draagt (A, B, C, PA, PB, PC, PP) of bij T7 en P7. Anders geeft TDM3 een fout.
+- Zie ook [Correctie forfait](/nurse/hoe#correctie-forfait-afscoring).
+- Een correctieforfait is enkel mogelijk bij een profiel dat forfaitdagen draagt (A, B, C, PA, PB, PC) of bij T7 en P7. Anders geeft TDM3 een fout.
