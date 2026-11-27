@@ -14,7 +14,6 @@ Het prestatiebestand (nurse-xml) is het XML-bestand waarmee een softwarepakket v
 
 ## Principes
 
-- **Eén richting.** Het pakket exporteert, TDM3 verwerkt. TDM3 koppelt niet terug naar het pakket: de zorgverlener en de praktijk volgen het resultaat op via de prestatie- en betalingsoverzichten van TDM3.
 - **Per praktijk, per facturatiemaand.** Normaal gezien levert het pakket één bestand per praktijk per facturatiemaand. Meerdere bestanden voor dezelfde praktijk en maand mogen ook: TDM3 voegt ze samen.
 - **De verenigingscode is verplicht.** Ze identificeert de praktijk en wordt door TDM3 toegekend. Zie [Wie](/nurse/wie#de-praktijk).
 - **Een eigen softwarehuiscode.** Elk softwarepakket krijgt van TDM3 een code voor de node [softwarehuis](/nurse/nodes#node-softwarehuis).
