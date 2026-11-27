@@ -67,13 +67,15 @@ Elke verstrekking is één `uitgevoerdezorg`-node, en elke node heeft één type
 
 De tabel gaat uit van één bezoek met één verstrekking uit de nomenclatuur en één extra dienst. Dat zijn in elke situatie **twee** `uitgevoerdezorg`-nodes. Zonder extra dienst is het er één.
 
-| Situatie | Node 1: verstrekking uit de nomenclatuur | Node 2: extra dienst (426856 met `kb90bedrag`) | Wat TDM3 factureert |
+In de tabel staat "bestemmeling" voor het veld `rep_typebestemmeling_id`, en "code" voor `derdebetalercode`.
+
+| Situatie | Node 1: verstrekking uit de nomenclatuur | Node 2: extra dienst (426856) | Wat TDM3 factureert |
 | --- | --- | --- | --- |
-| 1. Het ziekenfonds betaalt, zonder remgeld. De patiënt betaalt de extra dienst. | `rep_typebestemmeling_id` = 1<br>`remgeld` = 0 | `rep_typebestemmeling_id` = 3<br>`derdebetalercode` | Ziekenfonds: de verstrekking.<br>Patiënt: de extra dienst. |
-| 2. Het ziekenfonds betaalt. De patiënt betaalt het remgeld en de extra dienst. | `rep_typebestemmeling_id` = 1<br>`remgeld` = 100, of een lager percentage | `rep_typebestemmeling_id` = 3<br>`derdebetalercode` | Ziekenfonds: de verstrekking.<br>Patiënt: het remgeld en de extra dienst. |
-| 3. Het ziekenfonds betaalt. Een andere partij betaalt de extra dienst. | `rep_typebestemmeling_id` = 1<br>`remgeld` = 0 tot 100 | `rep_typebestemmeling_id` = 2, 4 of 5<br>`derdebetalercode` | Ziekenfonds: de verstrekking.<br>Patiënt: het remgeld, als er remgeld is.<br>Andere partij: de extra dienst. |
-| 4. De patiënt betaalt alles. | `rep_typebestemmeling_id` = 3<br>`derdebetalercode` | `rep_typebestemmeling_id` = 3<br>`derdebetalercode` | Patiënt: de volledige verstrekking en de extra dienst. |
-| 5. Een andere partij betaalt alles. | `rep_typebestemmeling_id` = 2 of 4<br>`derdebetalercode`<br>`remgeld` leeg | `rep_typebestemmeling_id` = 2 of 4<br>`derdebetalercode` | Andere partij: de verstrekking en de extra dienst.<br>Er is geen remgeld. |
+| 1. Ziekenfonds betaalt, zonder remgeld. Patiënt betaalt de extra dienst. | bestemmeling 1<br>remgeld 0 | bestemmeling 3<br>code | Ziekenfonds: de verstrekking.<br>Patiënt: de extra dienst. |
+| 2. Ziekenfonds betaalt. Patiënt betaalt het remgeld en de extra dienst. | bestemmeling 1<br>remgeld 100, of lager | bestemmeling 3<br>code | Ziekenfonds: de verstrekking.<br>Patiënt: het remgeld en de extra dienst. |
+| 3. Ziekenfonds betaalt. Een andere partij betaalt de extra dienst. | bestemmeling 1<br>remgeld 0 tot 100 | bestemmeling 2, 4 of 5<br>code | Ziekenfonds: de verstrekking.<br>Patiënt: het remgeld, als er remgeld is.<br>Andere partij: de extra dienst. |
+| 4. Patiënt betaalt alles. | bestemmeling 3<br>code | bestemmeling 3<br>code | Patiënt: de volledige verstrekking en de extra dienst. |
+| 5. Een andere partij betaalt alles. | bestemmeling 2 of 4<br>code<br>remgeld leeg | bestemmeling 2 of 4<br>code | Andere partij: de verstrekking en de extra dienst.<br>Er is geen remgeld. |
 
 Twee combinaties kent het bestand niet:
 
