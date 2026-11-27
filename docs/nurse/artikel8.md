@@ -773,4 +773,4 @@ Na een bezoek van de adviserend geneesheer wordt het profiel van de patiënt afg
 
 - TDM3 maakt een correctiefactuur voor het forfait: de oorspronkelijke factuurlijnen worden in min gezet en de nieuwe factuurlijnen in plus.
 - Zie ook [Correctie forfait](/nurse/hoe#correctie-forfait-afscoring).
-- Een correctieforfait is enkel mogelijk bij een profiel dat forfaitdagen draagt (A, B, C, PA, PB, PC, PP) of bij T7 en P7. Anders geeft TDM3 een fout.
+- Een correctieforfait is enkel mogelijk bij een profiel dat forfaitdagen draagt (A, B, C, PA, PB, PC) of bij T7 en P7. Anders geeft TDM3 een fout.

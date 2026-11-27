@@ -41,9 +41,11 @@ Een creditering en een herindiening zijn twee aparte lijnen. Op een creditering 
 
 Wanneer het profiel van een patiënt na het bezoek van de adviserend geneesheer wordt afgescoord, maakt TDM3 een correctiefactuur:
 
-- Het oorspronkelijke forfait en de oorspronkelijke zorgen komen niet opnieuw mee.
-- De zorgen en het nieuwe profiel komen wel mee, met `TypeFacturering` = 5 op de betrokken zorgen.
-- TDM3 haalt de oorspronkelijke factuurlijnen op en zet ze in min, en zet de nieuwe factuurlijnen in plus. Dit is het enige type waarbij min- en pluslijnen in dezelfde factuur staan: het pakket stuurt enkel de nieuwe, juiste situatie.
+- Het oorspronkelijke forfait komt niet mee: TDM3 haalt de oorspronkelijke facturatie zelf op.
+- Het pakket geeft de zorgen van de betrokken dagen opnieuw door, samen met het nieuwe profiel, met `TypeFacturering` = 5 op die zorgen.
+- TDM3 zet de oorspronkelijke factuurlijnen in min en de nieuwe factuurlijnen in plus. Dit is het enige type waarbij min- en pluslijnen in dezelfde factuur staan.
+
+Een correctie forfait kan enkel bij een profiel met forfaitdagen (A, B, C, PA, PB, PC) of bij T7 en P7.
 
 Werd de oorspronkelijke facturatie niet door TDM3 of onder een ander groepsnummer uitgevoerd, dan kan dat niet via het bestand. Dat vraagt een manuele tussenkomst van een tarificateur van TDM3.
 
@@ -61,9 +63,6 @@ Voorbeeld van een afscoring van profiel A naar T7:
     <input_uitgevoerdezorg_id>7007</input_uitgevoerdezorg_id>
     <externeid>423</externeid>
     <datumuitvoering>2018-04-28T11:00:00</datumuitvoering>
-    <datumvoorschrift>2018-04-01T00:00:00</datumvoorschrift>
-    <rizivnummervoorschrijver/>
-    <naamvoorschrijver> </naamvoorschrijver>
     <remgeld>0</remgeld>
     <nomenclatuurnummer>425515</nomenclatuurnummer>
     <pseudocodenummer>000000</pseudocodenummer>

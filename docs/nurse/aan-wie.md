@@ -88,7 +88,7 @@ In de tabel staat "bestemmeling" voor het veld `rep_typebestemmeling_id`, en "co
 Bij deze situaties hoort nog:
 
 - Het remgeld wordt altijd aan de patiënt gefactureerd. De factuur zelf kan wel bij een andere partij terechtkomen, zie [De remgeldfactuur bij een andere partij](#de-remgeldfactuur-bij-een-andere-partij).
-- Bij een andere betaler dan het ziekenfonds (situatie 5) is er geen onderscheid met of zonder remgeld.
+- Bij een verzekering of een OCMW (situatie 5) is er geen onderscheid met of zonder remgeld.
 
 ### Voorbeeld: ziekenfonds, remgeld en een extra dienst voor de patiënt
 
@@ -137,7 +137,7 @@ Situatie 2 uit de tabel: een wondzorg op voorschrift en incontinentiemateriaal i
 
 Voor facturen aan de patiënt zelf (remgeldfactuur of patiëntfactuur) zijn er twee kanalen, via `kanaalfactuurpatient` op [patientgegevens](/nurse/nodes#node-patientgegevens):
 
-- **Post** (`kanaalfactuurpatient` = 1): verzending per post naar het adres van de patiënt. Dit is ook de standaard wanneer het veld leeg is.
+- **Post** (`kanaalfactuurpatient` = 1): verzending per post naar het adres van de patiënt. Dit is ook de standaard wanneer het veld ontbreekt.
 - **E-mail** (`kanaalfactuurpatient` = 2): verzending naar het opgegeven e-mailadres, via een tijdelijke en beveiligde link. De praktijk heeft dan de toestemming van de patiënt om de factuur via dit kanaal te versturen.
 
 Bij e-mail moet `emailfactuurpatient` ingevuld zijn met het e-mailadres waarnaar de factuur verstuurd wordt.
@@ -159,9 +159,9 @@ De derdebetalervelden op uitgevoerdezorg bevatten weinig gegevens: een code, een
 ### De link met uitgevoerdezorg
 
 - De node staat binnen `pakketgegevens`, naast de andere nodes.
-- `betaler.referentienr` is gelijk aan de `derdebetalercode` op de uitgevoerde zorgen van die betaler.
+- `betaler.referentienr` is gelijk aan de `derdebetalercode` op de uitgevoerde zorgen van die betaler. Bij een betaler voor het remgeld is dat het patiëntnummer, zie [Remgeld via de betaler-node](#remgeld-via-de-betaler-node).
 - Per unieke `derdebetalercode` staat er hoogstens één `betaler` in het bestand.
-- `betaler.type` is het type bestemmeling van die zorgen.
+- `betaler.type` geeft het soort betaler aan, met dezelfde codes als het type bestemmeling: 2 voor een verzekering, 3 voor de patiënt, 4 voor een OCMW, 5 voor een medisch huis.
 - Met een `betaler` hoeven `derdebetalernaam`, `derdebetaleradres` en `derdebetaleremail` niet meer op de zorg te staan. Enkel `derdebetalercode` blijft.
 
 ### Per type bestemmeling
@@ -183,7 +183,7 @@ Alle velden van de node staan op [Nodes](/nurse/nodes#node-betaler-voorstel).
 
 ### Remgeld via de betaler-node
 
-Bij zorg voor het ziekenfonds (type bestemmeling 1) staat er geen `derdebetalercode` op de zorg. Een `betaler` voor het remgeld wordt daarom aan de patiënt gekoppeld via het rijksregisternummer: `betaler.rijksregisternr` is gelijk aan `rijksregisternummer` op [patientgegevens](/nurse/nodes#node-patientgegevens).
+Bij zorg voor het ziekenfonds (type bestemmeling 1) staat er geen `derdebetalercode` op de zorg. Een `betaler` voor het remgeld wordt daarom aan de patiënt gekoppeld via het rijksregisternummer: `betaler.rijksregisternr` is gelijk aan `rijksregisternummer` op [patientgegevens](/nurse/nodes#node-patientgegevens). `referentienr` bevat het patiëntnummer: dezelfde code die bij een patiëntfactuur in `derdebetalercode` staat.
 
 Met die node bepaal je waar en hoe de remgeldfactuur van de patiënt toekomt: het kanaal (`facturatiekanaal`), het factuuradres, het e-mailadres en `terattentievan`. Dat gaat verder dan `kanaalfactuurpatient` op patientgegevens.
 
@@ -269,7 +269,7 @@ De gegevens in het voorbeeld zijn fictief.
 
 Voor een correcte adressering komt het busnummer (bus, appartement) in een apart veld, niet in het huisnummer. Het busnummer bestaat op twee plaatsen op [patientgegevens](/nurse/nodes#node-patientgegevens):
 
-- **Postadres van de patiëntfactuur**: het veld `busnr`, bij het adres waarnaar de factuur aan de patiënt verstuurd wordt. TDM3 gebruikt dit adres voor de afdruk, en voor de verzending wanneer `kanaalfactuurpatient` = 1 of leeg is.
+- **Postadres van de patiëntfactuur**: het veld `busnr`, bij het adres waarnaar de factuur aan de patiënt verstuurd wordt. TDM3 gebruikt dit adres voor de afdruk, en voor de verzending wanneer `kanaalfactuurpatient` = 1 is of ontbreekt.
 - **Bestemmeling van het bewijsstuk**: het veld `busbestemmelingbewijsstuk`, bij het adres van de ontvanger van het bewijsstuk (de patiënt of een vertegenwoordiger).
 
 Vul het busnummer in wanneer het adres er een vereist en het pakket het in een apart veld bijhoudt. Zo komen facturen en bewijsstukken op het juiste adres aan.

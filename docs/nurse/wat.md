@@ -11,7 +11,7 @@ Het pakket levert de patiënten, hun profielen en de uitgevoerde zorgen aan. TDM
 | --- | --- |
 | [patientgegevens](/nurse/nodes#node-patientgegevens) | Eén node per patiënt: rijksregister- of stamnummer, ziekenfonds, startdatum palliatief, ruraal, adressen. |
 | [uitgevoerdezorg](/nurse/nodes#node-uitgevoerdezorg) | Eén node per zorgverstrekking: nomenclatuur of pseudocode, zorgverlener, bestemmeling, voorschrift, bezoeknummer. |
-| [profielen](/nurse/nodes#node-profielen) | Het profiel van de patiënt: A, B, C, P, T2, T7, ... |
+| [profielen](/nurse/nodes#node-profielen) | Het profiel van de patiënt: A, B, C, P2, P7, T2, T7, ... |
 | [lezingidentiteit](/nurse/nodes#node-lezingidentiteit) | De verificatie van de identiteit van de patiënt (eID-lezing). |
 | [kennisgevingwondzorg](/nurse/nodes#node-kennisgevingwondzorg) | De kennisgeving complexe wondzorg. |
 
@@ -128,7 +128,7 @@ Pseudocodes die een bijkomende, noodzakelijke registratie zijn en op zichzelf no
 ## Samenvoegen binnen eenzelfde bezoek
 
 - Komt er meer dan één *eenvoudige wondzorg* (bijvoorbeeld 424336) mee in hetzelfde bezoek, dan vervangt TDM3 die door één *complexe wondzorg* (bijvoorbeeld 424351).
-- Komt er meer dan één *Toedienen geneesmiddelen (IM, SC, HD)* (bijvoorbeeld 423076) mee in hetzelfde bezoek, dan vervangt TDM3 die door één *Toedienen geneesmiddelen (IM, SC, HD, IV) in verschillende injectieplaatsen* (bijvoorbeeld 424351).
+- Komt er meer dan één *Toedienen geneesmiddelen (IM, SC, HD)* (bijvoorbeeld 423076) mee in hetzelfde bezoek, dan vervangt TDM3 die door één *Toedienen geneesmiddelen (IM, SC, HD, IV) in verschillende injectieplaatsen* (bijvoorbeeld 423091).
 
 ## Betrekkelijke verstrekking: locatie
 
@@ -196,9 +196,9 @@ Op basis van de zorgduur van de complexe wondzorgen die dag en de meest recente 
     <externeid>6454</externeid>
     <datumuitvoering>2022-12-28T09:08:00</datumuitvoering>
     <zorgminuten>45</zorgminuten>
-    <datumvoorschrift/>
-    <rizivnummervoorschrijver/>
-    <naamvoorschrijver/>
+    <datumvoorschrift>2022-12-01T00:00:00</datumvoorschrift>
+    <rizivnummervoorschrijver>10828168004</rizivnummervoorschrijver>
+    <naamvoorschrijver>Peter Janssens</naamvoorschrijver>
     <remgeld>0</remgeld>
     <nomenclatuurnummer>424351</nomenclatuurnummer>
     <pseudocodenummer>000000</pseudocodenummer>

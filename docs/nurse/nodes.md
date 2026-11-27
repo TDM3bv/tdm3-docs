@@ -25,7 +25,7 @@ Deze node is de overkoepelende node waaronder alle andere nodes verzameld staan.
 - een aantal kennisgevingwondzorg nodes
 - een aantal betaler-nodes ([voorstel](#node-betaler-voorstel), nog niet verwerkt)
 
-Tenzij anders vermeld, worden alle elementen als verplicht beschouwd. 
+Welke elementen verplicht zijn, staat in het [XSD-schema](/schemas/tdm3prestatiebestand.xsd). De voorbeelden op deze site tonen enkel de elementen die voor de situatie van belang zijn.
 
 ```xml
 	<pakketgegevens>
@@ -214,14 +214,14 @@ Voorbeeld adressen
 
 ### Voorbeeld patientgegevens
 
+De elementen staan in de volgorde van het XSD-schema.
+
 ```xml
 	<patientgegevens>
 		<patientgegevens_id>…</patientgegevens_id>
 		<externeid>…</externeid>
 		<naam>…</naam>
 		<email>…</email>
-		<kanaalfactuurpatient>…</kanaalfactuurpatient>
-		<emailfactuurpatient>…</emailfactuurpatient>
 		<voornaam>…</voornaam>
 		<geslacht>…</geslacht>
 		<geboortedatum>…</geboortedatum>
@@ -238,6 +238,8 @@ Voorbeeld adressen
 		<ruraal>…</ruraal>
 		<startdatumpal>…</startdatumpal>
 		<rijksregisternummer>…</rijksregisternummer>
+		<kanaalfactuurpatient>…</kanaalfactuurpatient>
+		<emailfactuurpatient>…</emailfactuurpatient>
 		<kanaalbewijsstuk>…</kanaalbewijsstuk>
 		<bestemmelingbewijsstuk>…</bestemmelingbewijsstuk>
 		<naambestemmelingbewijsstuk>…</naambestemmelingbewijsstuk>
@@ -247,10 +249,10 @@ Voorbeeld adressen
 		<busbestemmelingbewijsstuk>…</busbestemmelingbewijsstuk>
 		<postcodebestemmelingbewijsstuk>…</postcodebestemmelingbewijsstuk>
 		<gemeentebestemmelingbewijsstuk>…</gemeentebestemmelingbewijsstuk>
+		<landcodebestemmelingbewijsstuk>…</landcodebestemmelingbewijsstuk>
 		<emailbestemmelingbewijsstuk>…</emailbestemmelingbewijsstuk>
 		<identificatiebestemmelingbewijsstuk>…</identificatiebestemmelingbewijsstuk>
 		<identificatietypebestemmelingbewijsstuk>…</identificatietypebestemmelingbewijsstuk>
-		<landcodebestemmelingbewijsstuk>…</landcodebestemmelingbewijsstuk>
 		<taalcodebewijsstuk>…</taalcodebewijsstuk>
 		<metadata>
 			<item>
@@ -274,7 +276,7 @@ Dit is een node binnen [pakketgegevens](#node-pakketgegevens) die verwijst naar 
 Per unieke derdebetalercode mag er max 1 betaler element meegegeven worden.
 Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefondsen (patienten, medische huizen, ziekenhuizen, verzekeringen, enz)
 - **externeid**: (string) Het externe id van het versturende systeem.
-- **type** (long): Indicator die aangeeft over welk soort betaler het gaat. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis, 6=ziekenhuis
+- **type** (long): Indicator die aangeeft over welk soort betaler het gaat. Dezelfde codes als het type bestemmeling: 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis. Voor het ziekenfonds is er geen betaler-node. De waarde 6=ziekenhuis is voorzien, maar bestaat nog niet als type bestemmeling op uitgevoerdezorg.
 - **referentienr**: (string) komt overeen met *uitgevoerdezorg.derdebetalercode*.
 - **naam** (string): De naam van de organisatie of achernaam van de persoon.
 - **voornaam** (string): De voornaam van de persoon, leeg indien een organisatie.
@@ -290,7 +292,7 @@ Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefond
 - **uwreferentie**: (string) polisnummer, dossiernummer, ordernummer of andere referentie die voor de partij op de factuur moet verschijnen zodat men efficënt de link kan leggen met het eigen dossierbeheer systeem
 - **telefoon**: (string) gsm of telefoonnummer van de betaler waarmee TDM3 contact kan opnemen ikv verdere opvolging van de factuur
 - **terattentievan**: (string) hiermee kan verder gespecifieerd worden aan wie of welke afdeling binnen een organisatie de factuur mag gericht worden
-- **facturatiekanaal**: (int) 0=POST, 1=EBOX, 2=EMAIL, 3=PEPPOL. Hier kan aangegeven worden via welk kanaal de factuur moet/mag verstuurd worden. Afhankelijk van het kanaal worden bepaalde informatievelden verplicht:
+- **facturatiekanaal**: (long) 0=POST, 1=EBOX, 2=EMAIL, 3=PEPPOL. Hier kan aangegeven worden via welk kanaal de factuur moet/mag verstuurd worden. Afhankelijk van het kanaal worden bepaalde informatievelden verplicht:
     - PEPPOL: het KBO-nummer (`kbonr`) is verplicht.
     - EBOX: het KBO-nummer is enkel verplicht wanneer de betaler geen patiënt is. Bij een patiënt dient het rijksregisternummer (`rijksregisternr`) als identificatie.
 - **adressen**: (complexeType) minstens 1 adres van het [AdresType](#element-adres-op-node-patientgegevens) Factuur 
@@ -327,14 +329,14 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **rep\_typebestemmeling\_id** (long): Indicator die aangeeft voor wie de factuur is. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis,…
 - **insuline** (boolean): Dit zou op &#39;True&#39; moeten staan wanneer de verpleegkundige een dossier bijhoudt van een diabetes patiënt en de verpleegkundige insuline inspuitingen geeft.  De verpleegkundige krijgt dan een forfait honoraria (423231,423334).  Dit forfait wordt dan door TDM3 toegevoegd.
 - **derdebetalercode** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). Bij deze facturen is derdebetalercode of derdebetalernaam verplicht, zie [Derdebetalergegevens](/nurse/aan-wie#derdebetalergegevens). Voor patiëntfacturen staat hier de patientnummer(dit mag een interne id zijn, eigen nummering,…), voor andere staat hierin de id van de verzekering in het versturende systeem. Dit veld mag maximum 10 posities lang zijn.
-- **derdebetalernaam** (string): Enkel voor niet-ziekenfonds facturen (verzekering, medisch huis, ocmw, etc). Naam van de verzekeringsinstelling.
-- **derdebetaleradres** (string): Enkel voor niet-ziekenfonds facturen (verzekering medisch huis, ocmw, etc). Het adres van de verzekeringsinstelling.
+- **derdebetalernaam** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). De naam van de betaler. Bij een patiëntfactuur is dit de naam op de factuur.
+- **derdebetaleradres** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). Het adres van de betaler. Bij een patiëntfactuur is dit het adres op de factuur.
 - **derdebetaleremail** (string): Enkel voor niet-ziekenfonds facturen (verzekering medisch huis, ocmw, etc). Indien gewenst door de derde kan hier het email adres meegegeven worden waarnaar de factuur verstuurd moet worden.
 - **polisnummer** (string): In geval van facturatie aan verzekering staat hier het eventuele polisnummer.
 - **dossiernummer** (string): In geval van facturatie aan verzekering staat hier het eventuele dossiernummer.
 - **datumongeval** (dateTime): In geval van een arbeidsongeval staat hier de datum van het ongeval.
 - **werkgever** (string): In geval van een arbeidsongeval staat hier de naam van de werkgever.
-- **TypeFacturering** (string)
+- **TypeFacturering** (int)
   - 0 = standaard factuur
   - 1 = herindiening, enkel in afspraak met TDM3. Vul in de gewone situatie 0 in, zie [Herindieningen](/nurse/hoe#herindieningen)
   - 3 = kredietnota
@@ -505,7 +507,7 @@ Dit is enkel van toepassing bij facturatie via electronische derdebetaler! Maw, 
 De volgende gegevens zijn vereist.
 
 * **externeid** (string): de patientid uit het versturende systeem refererend naar externid van patientgegevens.	Cfr de uitgevoerdezorg node 
-* **patientgegevens_id** (int): De unieke nummer van de patiënt binnen dit bestand. Cfr de uitgevoerdezorg node 
+* **patientgegevens_id** (long): De unieke nummer van de patiënt binnen dit bestand. Cfr de uitgevoerdezorg node 
 * **redenmanueleinvoering** (int):
     * Mogelijke waardes:
         - 0 = Niet van toepassing
@@ -517,7 +519,7 @@ De volgende gegevens zijn vereist.
         - 6 = Gebrek aan interconnectiviteit tussen software
         - 7 = Rechthebbende bezig geen identiteitsdocument (zoals bedoeld in artikel 3 van het KB 18/09/2015)
 * **datumuitvoering** (dateTime): de datum van het bezoek, cfr datumuitvoering veld in uitgevoerdezorg node
-* **bezoeknummer** (int): Nummer van het bezoek. Cfr node uitgevoerdezorg.
+* **bezoeknummer** (long): Nummer van het bezoek. Cfr node uitgevoerdezorg.
 * **datumlezingidentiteitsdocument** (dateTime): datum waarop het identiteitsdocument is ingelezen. Dit element moet steeds ingevuld worden, behalve indien “typevanlezingidentiteitsdocument” = 4 en redenmanueleinvoering = 3.
 *	**identificatiepatient** (string): de rijksregisternr, insz van de rechthebbende, cfr patientgegeven node.
 *	**typevanlezingidentiteitsdocument** (string): Mogelijke waardes
@@ -622,10 +624,12 @@ Dit formaat wordt als volgt gedefinëerd: JJJJ-MM-DDTHH:MM:SS.
 | --- | --- |
 | `ruraal` | `true` of `false`. De waarden `1`, `0` of een leeg veld worden gelezen als `false`. |
 | `remgeld` | Een geheel getal van 0 tot en met 100, zonder decimalen. Leeg is 0. |
-| `TypeFacturering` | 0, 1, 3 of 5. Leeg is 0. Zie [Type facturering](/nurse/hoe#type-facturering). |
-| `rep_typebestemmeling_id` | 1 tot en met 5. Leeg of 0 is het ziekenfonds. Zie [Type bestemmeling](/nurse/aan-wie#type-bestemmeling). |
+| `TypeFacturering` | 0, 1, 3 of 5. Weggelaten is 0. Zie [Type facturering](/nurse/hoe#type-facturering). |
+| `rep_typebestemmeling_id` | 1 tot en met 5. Weggelaten of 0 is het ziekenfonds. Zie [Type bestemmeling](/nurse/aan-wie#type-bestemmeling). |
 | `bezoeknummer` | 1 tot en met 10. |
 | `kb90bedrag` | Een bedrag met een punt als decimaalteken, bijvoorbeeld 6.25. |
+
+Een getal (int, long) of een boolean die niet van toepassing is, laat je weg: een leeg element is voor die types ongeldig volgens het XSD.
 
 Het veld `ruraal` is in het XSD een string op patientgegevens en een boolean op adres. Dat is historisch zo gegroeid. Vul op beide plaatsen `true` of `false` in.
 

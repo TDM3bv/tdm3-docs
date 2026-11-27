@@ -13,7 +13,7 @@ De praktijk is de **vereniging** in het bestand. Ze wordt geïdentificeerd door 
 - Op basis van de verenigingscode koppelt TDM3 de zorg aan de contracten, de financiële afspraken en de afscherming van de gegevens van de praktijk.
 - Per praktijk en per facturatiemaand levert het pakket normaal gezien één bestand. Zie [Aanlevering](/nurse/hoe#aanlevering).
 
-Het prestatiebestand is niet het facturatiebestand voor het ziekenfonds. Het pakket levert per praktijk of team (verenigingscode) aan. TDM3 groepeert die bestanden zelf onder het juiste derdebetalersnummer, in één of meerdere facturatiebestanden. Zo kan een team aanleveren en gefactureerd worden zodra het klaar is. De verenigingscode is de enige sleutel in het bestand die TDM3 bepaalt.
+Het prestatiebestand is niet het facturatiebestand voor het ziekenfonds. Het pakket levert per praktijk of team (verenigingscode) aan. TDM3 groepeert die bestanden zelf onder het juiste derdebetalersnummer, in één of meerdere facturatiebestanden. Zo kan een team aanleveren en gefactureerd worden zodra het klaar is. De verenigingscode is de sleutel waarmee TDM3 de bestanden aan de praktijk koppelt.
 
 ## De zorgverlener
 
