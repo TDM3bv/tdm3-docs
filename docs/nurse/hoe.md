@@ -18,7 +18,7 @@ Het veld `TypeFacturering` op [uitgevoerdezorg](/nurse/nodes#node-uitgevoerdezor
 
 ## Correcties en verwerpingen
 
-TDM3 koppelt niet terug naar het pakket. Verworpen of te corrigeren zorg ziet de praktijk in de prestatie- en betalingsoverzichten van TDM3. Er zijn dan twee wegen:
+Verworpen of te corrigeren zorg ziet de praktijk in de prestatie- en betalingsoverzichten van TDM3. Er zijn dan twee wegen:
 
 - **In het pakket**: de zorg corrigeren en opnieuw exporteren.
 - **Door TDM3**: TDM3 crediteert of herindient zelf, ook in bulk.

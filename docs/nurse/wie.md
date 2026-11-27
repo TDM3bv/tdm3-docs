@@ -15,10 +15,6 @@ De praktijk is de **vereniging** in het bestand. Ze wordt geïdentificeerd door 
 
 Het prestatiebestand is niet het facturatiebestand voor het ziekenfonds. Het pakket levert per praktijk of team (verenigingscode) aan. TDM3 groepeert die bestanden zelf onder het juiste derdebetalersnummer, in één of meerdere facturatiebestanden. Zo kan een team aanleveren en gefactureerd worden zodra het klaar is. De verenigingscode is de enige sleutel in het bestand die TDM3 bepaalt.
 
-::: tip Indeling in het pakket
-Hoe meer het pakket toelaat om de verenigingscode in te stellen, hoe beter: voor de hele installatie, per team, of beide. Verschillende teams kunnen dezelfde verenigingscode hebben, of elk een eigen code.
-:::
-
 ## De zorgverlener
 
 Op elke [uitgevoerdezorg](/nurse/nodes#node-uitgevoerdezorg) staat de zorgverlener die de zorg effectief uitvoerde.
