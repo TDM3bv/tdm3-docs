@@ -16,6 +16,7 @@ Het veld `rep_typebestemmeling_id` op [uitgevoerdezorg](/nurse/nodes#node-uitgev
 | 3 | Patiënt |
 | 4 | OCMW |
 | 5 | Medisch huis |
+| 6 | Zorgorganisatie: een andere zorgorganisatie dan een medisch huis, bijvoorbeeld een ziekenhuis, een groepering of een woonzorgcentrum |
 
 Facturen aan een ziekenfonds (1) verstuurt TDM3 via eFact. De andere bestemmelingen krijgen een factuur van TDM3.
 
@@ -28,7 +29,7 @@ Voor facturen die niet naar een ziekenfonds gaan, identificeren de derdebetalerv
 - **derdebetaleremail**: optioneel, zie [Factuur aan een derdebetaler](#factuur-aan-een-derdebetaler).
 - **polisnummer**, **dossiernummer**, **datumongeval** en **werkgever**: bij facturatie aan een verzekering of bij een arbeidsongeval.
 
-Bij een verzekering (2), de patiënt (3), een OCMW (4) en een medisch huis (5) is `derdebetalercode` of `derdebetalernaam` verplicht. Geef bij voorkeur de code mee. Het adres en het e-mailadres zijn optioneel.
+Bij een verzekering (2), de patiënt (3), een OCMW (4), een medisch huis (5) en een zorgorganisatie (6) is `derdebetalercode` of `derdebetalernaam` verplicht. Geef bij voorkeur de code mee. Het adres en het e-mailadres zijn optioneel.
 
 TDM3 koppelt de code per praktijk aan de eigen stamgegevens:
 
@@ -54,7 +55,7 @@ Het veld `remgeld` op [uitgevoerdezorg](/nurse/nodes#node-uitgevoerdezorg) is ee
 
 Het remgeld gaat altijd naar de patiënt, en enkel bij zorg die aan het ziekenfonds (type bestemmeling 1) of een medisch huis (type bestemmeling 5) wordt gefactureerd:
 
-- Bij facturatie aan een verzekering (type bestemmeling 2) of een OCMW (type bestemmeling 4) blijft `remgeld` leeg. Is het toch ingevuld, dan negeert TDM3 het.
+- Bij facturatie aan een verzekering (type bestemmeling 2), een OCMW (type bestemmeling 4) of een zorgorganisatie (type bestemmeling 6) blijft `remgeld` leeg. Is het toch ingevuld, dan negeert TDM3 het.
 - Bij facturatie aan de patiënt (type bestemmeling 3) gaat de volledige zorg naar de patiënt.
 
 ### De remgeldfactuur bij een andere partij
@@ -81,14 +82,14 @@ In de tabel staat "bestemmeling" voor het veld `rep_typebestemmeling_id`, en "co
 | --- | --- | --- | --- |
 | 1. Ziekenfonds betaalt, zonder remgeld. Patiënt betaalt de extra dienst. | bestemmeling 1<br>remgeld 0 | bestemmeling 3<br>code | Ziekenfonds: de verstrekking.<br>Patiënt: de extra dienst. |
 | 2. Ziekenfonds betaalt. Patiënt betaalt het remgeld en de extra dienst. | bestemmeling 1<br>remgeld 100, of lager | bestemmeling 3<br>code | Ziekenfonds: de verstrekking.<br>Patiënt: het remgeld en de extra dienst. |
-| 3. Ziekenfonds betaalt. Een andere partij betaalt de extra dienst. | bestemmeling 1<br>remgeld 0 tot 100 | bestemmeling 2, 4 of 5<br>code | Ziekenfonds: de verstrekking.<br>Patiënt: het remgeld, als er remgeld is.<br>Andere partij: de extra dienst. |
+| 3. Ziekenfonds betaalt. Een andere partij betaalt de extra dienst. | bestemmeling 1<br>remgeld 0 tot 100 | bestemmeling 2, 4, 5 of 6<br>code | Ziekenfonds: de verstrekking.<br>Patiënt: het remgeld, als er remgeld is.<br>Andere partij: de extra dienst. |
 | 4. Patiënt betaalt alles. | bestemmeling 3<br>code | bestemmeling 3<br>code | Patiënt: de volledige verstrekking en de extra dienst. |
-| 5. Een andere partij betaalt alles. | bestemmeling 2 of 4<br>code<br>remgeld leeg | bestemmeling 2 of 4<br>code | Andere partij: de verstrekking en de extra dienst.<br>Er is geen remgeld. |
+| 5. Een andere partij betaalt alles. | bestemmeling 2, 4 of 6<br>code<br>remgeld leeg | bestemmeling 2, 4 of 6<br>code | Andere partij: de verstrekking en de extra dienst.<br>Er is geen remgeld. |
 
 Bij deze situaties hoort nog:
 
 - Het remgeld wordt altijd aan de patiënt gefactureerd. De factuur zelf kan wel bij een andere partij terechtkomen, zie [De remgeldfactuur bij een andere partij](#de-remgeldfactuur-bij-een-andere-partij).
-- Bij een verzekering of een OCMW (situatie 5) is er geen onderscheid met of zonder remgeld.
+- Bij een verzekering, een OCMW of een zorgorganisatie (situatie 5) is er geen onderscheid met of zonder remgeld.
 
 ### Voorbeeld: ziekenfonds, remgeld en een extra dienst voor de patiënt
 
@@ -144,7 +145,7 @@ Bij e-mail moet `emailfactuurpatient` ingevuld zijn met het e-mailadres waarnaar
 
 ## Factuur aan een derdebetaler
 
-Voor facturen die niet naar een ziekenfonds of de patiënt gaan (verzekering, medisch huis, OCMW, ...) kan `derdebetaleremail` op [uitgevoerdezorg](/nurse/nodes#node-uitgevoerdezorg) het e-mailadres van de derdebetaler bevatten waarnaar de factuur verstuurd mag worden.
+Voor facturen die niet naar een ziekenfonds of de patiënt gaan (verzekering, medisch huis, OCMW, zorgorganisatie) kan `derdebetaleremail` op [uitgevoerdezorg](/nurse/nodes#node-uitgevoerdezorg) het e-mailadres van de derdebetaler bevatten waarnaar de factuur verstuurd mag worden.
 
 Het veld is optioneel en wordt enkel gebruikt wanneer de factuur niet naar een ziekenfonds of de patiënt gaat (`rep_typebestemmeling_id` ≠ 1 en ≠ 3).
 
@@ -161,7 +162,7 @@ De derdebetalervelden op uitgevoerdezorg bevatten weinig gegevens: een code, een
 - De node staat binnen `pakketgegevens`, naast de andere nodes.
 - `betaler.referentienr` is gelijk aan de `derdebetalercode` op de uitgevoerde zorgen van die betaler. Bij een betaler voor het remgeld is dat het patiëntnummer, zie [Remgeld via de betaler-node](#remgeld-via-de-betaler-node).
 - Per unieke `derdebetalercode` staat er hoogstens één `betaler` in het bestand.
-- `betaler.type` geeft het soort betaler aan, met dezelfde codes als het type bestemmeling: 2 voor een verzekering, 3 voor de patiënt, 4 voor een OCMW, 5 voor een medisch huis.
+- `betaler.type` geeft het soort betaler aan, met dezelfde codes als het type bestemmeling: 2 voor een verzekering, 3 voor de patiënt, 4 voor een OCMW, 5 voor een medisch huis, 6 voor een zorgorganisatie.
 - Met een `betaler` hoeven `derdebetalernaam`, `derdebetaleradres` en `derdebetaleremail` niet meer op de zorg te staan. Enkel `derdebetalercode` blijft.
 
 ### Per type bestemmeling
@@ -173,6 +174,7 @@ De derdebetalervelden op uitgevoerdezorg bevatten weinig gegevens: een code, een
 | 3. Patiënt | `type` = 3 | `naam` en `voornaam`, `rijksregisternr`, `taalcode`, `facturatiekanaal`, factuuradres |
 | 4. OCMW | `type` = 4 | `naam`, `kbonr`, `uwreferentie`, `terattentievan`, `facturatiekanaal`, factuuradres |
 | 5. Medisch huis | `type` = 5 | `naam`, `rizivnr`, `kbonr`, `facturatiekanaal`, factuuradres |
+| 6. Zorgorganisatie | `type` = 6 | `naam`, `rizivnr`, `kbonr`, `uwreferentie`, `terattentievan`, `facturatiekanaal`, factuuradres |
 
 Het kanaal bepaalt welke identificatie nodig is:
 

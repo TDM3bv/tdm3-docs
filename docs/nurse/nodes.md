@@ -276,7 +276,7 @@ Dit is een node binnen [pakketgegevens](#node-pakketgegevens) die verwijst naar 
 Per unieke derdebetalercode mag er max 1 betaler element meegegeven worden.
 Dit laat toe om extra gegevens mee te geven ikv de facturatie aan niet-ziekefondsen (patienten, medische huizen, ziekenhuizen, verzekeringen, enz)
 - **externeid**: (string) Het externe id van het versturende systeem.
-- **type** (long): Indicator die aangeeft over welk soort betaler het gaat. Dezelfde codes als het type bestemmeling: 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis. Voor het ziekenfonds is er geen betaler-node. De waarde 6=ziekenhuis is voorzien, maar bestaat nog niet als type bestemmeling op uitgevoerdezorg.
+- **type** (long): Indicator die aangeeft over welk soort betaler het gaat. Dezelfde codes als het type bestemmeling: 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis, 6=zorgorganisatie. Voor het ziekenfonds is er geen betaler-node.
 - **referentienr**: (string) komt overeen met *uitgevoerdezorg.derdebetalercode*.
 - **naam** (string): De naam van de organisatie of achernaam van de persoon.
 - **voornaam** (string): De voornaam van de persoon, leeg indien een organisatie.
@@ -324,7 +324,7 @@ Per zorgverstrekking is er een uitgevoerdezorg node met hierin de volgende gegev
 - **naamverpleegkundige** (string): de naam van  de verpleegkundige
 - **patientgegevens\_id** (long): De unieke nummer van de patiënt binnen dit bestand.
 - **bezoeknummer** (long): Het volgnummer van het bezoek bij de patiënt op die dag, van 1 tot en met 10. Het is geen uniek id in het bestand. Alle zorgen van hetzelfde bezoek hebben hetzelfde nummer. De [lezingidentiteit](#node-lezingidentiteit) wordt gekoppeld op patiënt, datum en bezoeknummer.
-- **rep\_typebestemmeling\_id** (long): Indicator die aangeeft voor wie de factuur is. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis,…
+- **rep\_typebestemmeling\_id** (long): Indicator die aangeeft voor wie de factuur is. Mogelijke waardes: 1=ziekenfonds, 2=verzekering, 3=patiënt, 4=ocmw, 5=medisch huis, 6=zorgorganisatie (een andere zorgorganisatie dan een medisch huis, bijvoorbeeld een ziekenhuis of een groepering). Zie [Type bestemmeling](/nurse/aan-wie#type-bestemmeling).
 - **insuline** (boolean): Dit zou op &#39;True&#39; moeten staan wanneer de verpleegkundige een dossier bijhoudt van een diabetes patiënt en de verpleegkundige insuline inspuitingen geeft.  De verpleegkundige krijgt dan een forfait honoraria (423231,423334).  Dit forfait wordt dan door TDM3 toegevoegd.
 - **derdebetalercode** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). Bij deze facturen is derdebetalercode of derdebetalernaam verplicht, zie [Derdebetalergegevens](/nurse/aan-wie#derdebetalergegevens). Voor patiëntfacturen staat hier de patientnummer(dit mag een interne id zijn, eigen nummering,…), voor andere staat hierin de id van de verzekering in het versturende systeem. Dit veld mag maximum 10 posities lang zijn.
 - **derdebetalernaam** (string): Enkel voor niet-ziekenfonds facturen (patiënt, verzekering, medisch huis, ocmw, etc). De naam van de betaler. Bij een patiëntfactuur is dit de naam op de factuur.
@@ -623,7 +623,7 @@ Dit formaat wordt als volgt gedefinëerd: JJJJ-MM-DDTHH:MM:SS.
 | `ruraal` | `true` of `false`. De waarden `1`, `0` of een leeg veld worden gelezen als `false`. |
 | `remgeld` | Een geheel getal van 0 tot en met 100, zonder decimalen. Leeg is 0. |
 | `TypeFacturering` | 0, 1, 3 of 5. Weggelaten is 0. Zie [Type facturering](/nurse/hoe#type-facturering). |
-| `rep_typebestemmeling_id` | 1 tot en met 5. Weggelaten of 0 is het ziekenfonds. Zie [Type bestemmeling](/nurse/aan-wie#type-bestemmeling). |
+| `rep_typebestemmeling_id` | 1 tot en met 6. Weggelaten of 0 is het ziekenfonds. Zie [Type bestemmeling](/nurse/aan-wie#type-bestemmeling). |
 | `bezoeknummer` | 1 tot en met 10. |
 | `kb90bedrag` | Een bedrag met een punt als decimaalteken, bijvoorbeeld 6.25. |
 
